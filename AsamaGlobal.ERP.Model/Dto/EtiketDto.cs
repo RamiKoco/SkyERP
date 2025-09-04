@@ -9,6 +9,8 @@ namespace AbcYazilim.OgrenciTakip.Model.Dto
     public class EtiketS : Etiket
     {
         public string RenkAdi { get; set; }
+        public string RenkRGB { get; set; }
+        public int? RenkForeColor { get; set; }
         public string OzelKod1Adi { get; set; }
         public string OzelKod2Adi { get; set; }
     }
@@ -18,6 +20,8 @@ namespace AbcYazilim.OgrenciTakip.Model.Dto
         public KayitTuru KayitTuru { get; set; }
         public string Aciklama { get; set; }
         public string RenkAdi { get; set; }
+        public string RenkRGB { get; set; }
+        public int? RenkForeColor { get; set; }
         public int YaziRgbKodu { get; set; }
         public string OzelKod1Adi { get; set; }
         public string OzelKod2Adi { get; set; }

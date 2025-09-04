@@ -2,6 +2,7 @@
 using AbcYazilim.OgrenciTakip.Model.Dto;
 using AbcYazilim.OgrenciTakip.Model.Dto.KisiDto;
 using AbcYazilim.OgrenciTakip.Model.Entities;
+using AsamaGlobal.ERP.Bll.General;
 using AsamaGlobal.ERP.Bll.General.KisiBll;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Functions;
@@ -30,7 +31,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
         private BaseTablo _adreslerTable;
         private List<EtiketL> _tumEtiketler;
         private List<long> _oldEtiketIdListesi = new List<long>();
-        private List<long> _guncelEtiketIdListesi = new List<long>();    
+        private List<long> _guncelEtiketIdListesi = new List<long>();
+        private EtiketHelper _etiketHelper;
         public KisiEditForm()
         {
             InitializeComponent();
@@ -39,7 +41,9 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
             Bll = new KisiBll(DataLayoutGenelBilgiler);
             BaseKartTuru = KartTuru.Kisi;
             EventsLoad();
-            txtCinsiyet.Properties.Items.AddRange(EnumFunctions.GetEnumDescriptionList<Cinsiyet>());           
+            txtCinsiyet.Properties.Items.AddRange(EnumFunctions.GetEnumDescriptionList<Cinsiyet>());
+            _etiketHelper = new EtiketHelper();
+            _etiketHelper.EtiketleriYukle(txtEtiket, KayitTuru.Kisi);
         }
         public override void Yukle()
         {
@@ -113,7 +117,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
         }
         private void EtiketleriYukle()
         {
-            var etiketBll = new Bll.General.EtiketBll();
+            var etiketBll = new EtiketBll();
             _tumEtiketler = etiketBll.List(x => x.Durum == true && x.KayitTuru == KayitTuru.Kisi).Cast<EtiketL>().ToList();
             txtEtiket.Properties.DataSource = _tumEtiketler;
             txtEtiket.Properties.DisplayMember = "EtiketAdi";
@@ -280,8 +284,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
 
             if (_adreslerTable != null && !_adreslerTable.Kaydet()) return false;
             if (_bilgiNotlariTable != null && !_bilgiNotlariTable.Kaydet()) return false;
-            if (_iletisimBilgileriTable != null && !_iletisimBilgileriTable.Kaydet()) return false;    
-            
+            if (_iletisimBilgileriTable != null && !_iletisimBilgileriTable.Kaydet()) return false;
+
             if (seciliEtiketIdler != null)
             {
                 using (var db = new ERPContext())
@@ -352,8 +356,9 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
                 }
 
                 _adreslerTable.Tablo.GridControl.Focus();
-               
+
             }
         }
+
     }
 }

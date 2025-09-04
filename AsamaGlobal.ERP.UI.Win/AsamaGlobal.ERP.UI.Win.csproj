@@ -1029,9 +1029,11 @@
     <Compile Include="Forms\YakinlikForms\YakinlikListForm.Designer.cs">
       <DependentUpon>YakinlikListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Functions\EtiketHelper.cs" />
     <Compile Include="Functions\FileFunctions.cs" />
     <Compile Include="Functions\FilterFunctions.cs" />
     <Compile Include="Functions\GeneralFunctions.cs" />
+    <Compile Include="Functions\ImageHelper.cs" />
     <Compile Include="Functions\SelectFunctions.cs" />
     <Compile Include="Functions\SelectPictureFunctions.cs" />
     <Compile Include="Functions\SelectRepositoryFunctions.cs" />

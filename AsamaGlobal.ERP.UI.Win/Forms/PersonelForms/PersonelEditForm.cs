@@ -1,6 +1,7 @@
 ﻿using AbcYazilim.OgrenciTakip.Common.Enums;
 using AbcYazilim.OgrenciTakip.Model.Dto;
 using AbcYazilim.OgrenciTakip.Model.Entities;
+using AsamaGlobal.ERP.Bll.General;
 using AsamaGlobal.ERP.Bll.General.PersonelBll;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Functions;
@@ -30,6 +31,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
         private BaseTablo _iletisimBilgileriTable;
         private BaseTablo _personelBelgeTable;
         private List<EtiketL> _tumEtiketler;
+        private EtiketHelper _etiketHelper;
         private List<long> _oldEtiketIdListesi = new List<long>();
         private List<long> _guncelEtiketIdListesi = new List<long>();
         public PersonelEditForm()
@@ -44,90 +46,14 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             txtKanGrubu.Properties.Items.AddRange(EnumFunctions.GetEnumDescriptionList<KanGrubu>());
             txtAskerlikDurumu.Properties.Items.AddRange(EnumFunctions.GetEnumDescriptionList<AskerlikDurumu>());
             txtMedeniDurum.Properties.Items.AddRange(EnumFunctions.GetEnumDescriptionList<MedeniDurum>());
-            txtKimlikNo.Validating += TxtKimlikNo_Validating;
-            txtKimlikTuru.EditValueChanged += TxtKimlikTuru_EditValueChanged;
-        }
-        private void TxtKimlikTuru_IdChanged(object sender, EventArgs e)
-        {
-            if (txtKimlikTuru.Id == null)
-                return;
+            txtCinsiyet.EditValueChanged += TxtCinsiyet_EditValueChanged;
 
-            var bll = new Bll.General.KimlikTuruBll();
-            var secilen = bll.Single(x => x.Id == (long)txtKimlikTuru.Id) as KimlikTuru;
-
-            int yeniUzunluk = secilen?.Uzunluk ?? 11;
-            txtKimlikNo.Properties.MaxLength = yeniUzunluk;
-
-            if (txtKimlikNo.Text.Length > yeniUzunluk)
-                txtKimlikNo.Text = txtKimlikNo.Text.Substring(0, yeniUzunluk);
+            _etiketHelper = new EtiketHelper();
+            _etiketHelper.EtiketleriYukle(txtEtiket, KayitTuru.Personel);
         }
         private void TxtKimlikTuru_EditValueChanged(object sender, EventArgs e)
         {
-            if (txtKimlikTuru.EditValue == null)
-                return;
-
-            var bll = new Bll.General.KimlikTuruBll();
-
-            if (long.TryParse(txtKimlikTuru.EditValue.ToString(), out long secilenId))
-            {
-                var secilen = bll.Single(x => x.Id == secilenId) as KimlikTuru;
-                if (secilen == null)
-                    return;
-
-                int yeniUzunluk = secilen.Uzunluk;
-
-                // MaxLength ayarla
-                txtKimlikNo.Properties.MaxLength = yeniUzunluk;
-
-                // Mask kapalı, çünkü Validating ile kontrol ediyoruz
-                txtKimlikNo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-                txtKimlikNo.Properties.Mask.EditMask = null;
-            }
-        }
-        private void TxtKimlikNo_Validating(object sender, CancelEventArgs e)
-        {
-            if (txtKimlikTuru.Id == null)
-                return;
-
-            var bll = new Bll.General.KimlikTuruBll();
-            var secilen = bll.Single(x => x.Id == (long)txtKimlikTuru.Id) as KimlikTuru;
-
-            if (secilen == null)
-                return;
-
-            int istenenUzunluk = secilen.Uzunluk;
-            string karakterTipi = secilen.KarakterTipi;
-            string girilen = txtKimlikNo.Text.Trim();
-
-            // Uzunluk kontrolü
-            if (girilen.Length != istenenUzunluk)
-            {
-                Messages.UyariMesaji($"Kimlik numarası {istenenUzunluk} karakter olmalıdır.");
-                e.Cancel = true;
-                return;
-            }
-
-            // Karakter tipi kontrolü
-            if (karakterTipi == "Numeric")
-            {
-                // Sadece rakam kontrolü
-                if (!System.Text.RegularExpressions.Regex.IsMatch(girilen, @"^\d+$"))
-                {
-                    Messages.UyariMesaji("Kimlik numarası sadece rakamlardan oluşmalıdır.");
-                    e.Cancel = true;
-                    return;
-                }
-            }
-            else if (karakterTipi == "AlphaNumeric")
-            {
-                // Harf ve rakam kontrolü
-                if (!System.Text.RegularExpressions.Regex.IsMatch(girilen, @"^[a-zA-Z0-9]+$"))
-                {
-                    Messages.UyariMesaji("Kimlik numarası sadece harf ve rakamlardan oluşmalıdır.");
-                    e.Cancel = true;
-                    return;
-                }
-            }
+            KimlikTuruAyarla(txtKimlikTuru.Id);
         }
         public override void Yukle()
         {
@@ -140,10 +66,14 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             Id = BaseIslemTuru.IdOlustur(OldEntity);
             txtKod.Text = ((PersonelBll)Bll).YeniKodVer();
             txtAdi.Focus();
-        }       
+        }
+        private byte[] _oldResim;
+        private bool _resimDegisti;
         protected override void NesneyiKontrollereBagla()
         {
             var entity = (PersonelS)OldEntity;
+            _oldResim = entity.Resim;          // orijinal bytes
+            _resimDegisti = false;
             txtKod.Text = entity.Kod;
             txtKimlikNo.Text = entity.KimlikNo;
             txtAdi.Text = entity.Ad;
@@ -156,19 +86,22 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             txtAskerlikDurumu.SelectedItem = entity.AskerlikDurumu.ToName();
             txtMedeniDurum.SelectedItem = entity.MedeniDurum.ToName();
             txtDogumTarihi.EditValue = entity.DogumTarihi;
-            imgResim.EditValue = entity.Resim;
+            imgResim.EditValueChanged -= ImgResim_EditValueChanged;
+            imgResim.EditValue = entity.Resim; // sadece gösterim
+            imgResim.EditValueChanged += ImgResim_EditValueChanged;
             txtAciklama.Text = entity.Aciklama;
             txtDepartman.Id = entity.DepartmanId;
             txtDepartman.Text = entity.DepartmanAdi;
-            txtKimlikTuru.Id = entity.KimlikTuruId;
-            TxtKimlikTuru_IdChanged(txtKimlikTuru, EventArgs.Empty);
-            txtKimlikTuru.Text = entity.KimlikTuruAdi;
+            TxtCinsiyet_EditValueChanged(null, null);
             txtMeslek.Id = entity.MeslekId;
             txtMeslek.Text = entity.MeslekAdi;
             txtUyruk.Id = entity.UyrukId;
             txtUyruk.Text = entity.UyrukAdi;
             txtPozisyon.Id = entity.PozisyonId;
             txtPozisyon.Text = entity.PozisyonAdi;
+            txtKimlikTuru.Id = entity.KimlikTuruId;
+            txtKimlikTuru.Text = entity.KimlikTuruAdi;
+            KimlikTuruAyarla(entity.KimlikTuruId);
             txtOzelKod1.Id = entity.OzelKod1Id;
             txtOzelKod1.Text = entity.OzelKod1Adi;
             txtOzelKod2.Id = entity.OzelKod2Id;
@@ -177,9 +110,14 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
 
             KisiyeAitEtiketleriYukle();
         }
+        private void ImgResim_EditValueChanged(object sender, EventArgs e)
+        {
+            _resimDegisti = true;
+        }
         protected override void GuncelNesneOlustur()
         {
             var etiketValue = txtEtiket.EditValue;
+
             if (etiketValue is string str)
             {
                 _guncelEtiketIdListesi = str
@@ -190,6 +128,21 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             }
             else
                 _guncelEtiketIdListesi = new List<long>();
+
+            var oldBytes = ((PersonelS)OldEntity).Resim;
+            var currentBytes = ImageHelper.GetBytesFromEditValue(imgResim.EditValue);
+            byte[] resimBytes;
+
+            if (currentBytes == null && oldBytes == null)
+                resimBytes = null;
+            else if (ImageHelper.ByteArrayEqual(currentBytes, oldBytes))
+                resimBytes = oldBytes;  // değişiklik yok
+            else
+            {
+                var img = ImageHelper.ToImage(currentBytes);
+                var resized = ImageHelper.ResizeHighQuality(img, 250, 250);
+                resimBytes = ImageHelper.ToBytes(resized);
+            }
 
             CurrentEntity = new Personel
             {
@@ -206,7 +159,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
                 MedeniDurum = txtMedeniDurum.Text.GetEnum<MedeniDurum>(),
                 AskerlikDurumu = txtAskerlikDurumu.Text.GetEnum<AskerlikDurumu>(),
                 DogumTarihi = (DateTime?)txtDogumTarihi.EditValue,
-                Resim = (byte[])imgResim.EditValue,
+                Resim = resimBytes, // ← SADECE BURAYI KULLAN!
                 Aciklama = txtAciklama.Text,
                 DepartmanId = txtDepartman.Id,
                 UyrukId = txtUyruk.Id,
@@ -219,9 +172,21 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             };
             ButonEnabledDurumu();
         }
+        private void TxtCinsiyet_EditValueChanged(object sender, EventArgs e)
+        {
+            // Eğer kız seçiliyse askerlik durumu görünmesin, değilse görünsün
+            if (txtCinsiyet.EditValue != null && txtCinsiyet.EditValue.ToString() == Cinsiyet.Kiz.ToName())
+            {
+                txtAskerlikDurumu.SelectedItem = null;
+                txtAskerlikDurumu.EditValue = null;
+                AskerlikDurumuLbl.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+            }
+            else
+                txtAskerlikDurumu.Visible = true;
+        }
         private void EtiketleriYukle()
         {
-            var etiketBll = new Bll.General.EtiketBll();
+            var etiketBll = new EtiketBll();
             _tumEtiketler = etiketBll.List(x => x.Durum == true && x.KayitTuru == KayitTuru.Personel).Cast<EtiketL>().ToList();
             txtEtiket.Properties.DataSource = _tumEtiketler;
             txtEtiket.Properties.DisplayMember = "EtiketAdi";
@@ -245,7 +210,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
         {
             if (txtKimlikTuru.Id != null)
             {
-                var bll = new Bll.General.KimlikTuruBll();
+                var bll = new KimlikTuruBll();
                 var secilen = bll.Single(x => x.Id == (long)txtKimlikTuru.Id) as KimlikTuru;
                 int istenenUzunluk = secilen?.Uzunluk ?? 0;
                 string karakterTipi = secilen?.KarakterTipi;
@@ -333,42 +298,47 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
                 else if (sender == txtKimlikTuru)
                 {
                     sec.Sec(txtKimlikTuru);
-
-                    if (txtKimlikTuru.Id != null)
-                    {
-                        var bll = new Bll.General.KimlikTuruBll();
-                        var secilen = bll.Single(x => x.Id == (long)txtKimlikTuru.Id) as KimlikTuru;
-                        int yeniUzunluk = secilen?.Uzunluk ?? 11;
-                        string karakterTipi = secilen?.KarakterTipi;
-
-                        // Zorunlu uzunluk
-                        txtKimlikNo.Properties.MaxLength = yeniUzunluk;
-
-                        // Maske ayarları
-                        txtKimlikNo.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.None;
-                        txtKimlikNo.Properties.Mask.UseMaskAsDisplayFormat = true;
-
-                        if (karakterTipi == "Numeric")
-                        {
-                            txtKimlikNo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
-                            txtKimlikNo.Properties.Mask.EditMask = $@"\d{{{yeniUzunluk}}}";
-                        }
-                        else if (karakterTipi == "AlphaNumeric")
-                        {
-                            txtKimlikNo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
-                            txtKimlikNo.Properties.Mask.EditMask = $@"[a-zA-Z0-9]{{{yeniUzunluk}}}";
-                        }
-                        else
-                        {
-                            txtKimlikNo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-                            txtKimlikNo.Properties.Mask.EditMask = null;
-                        }
-
-                        // Giriş fazlaysa kırp
-                        if (txtKimlikNo.Text.Length > yeniUzunluk)
-                            txtKimlikNo.Text = txtKimlikNo.Text.Substring(0, yeniUzunluk);
-                    }
+                    KimlikTuruAyarla(txtKimlikTuru.Id);
                 }
+                //else if (sender == txtKimlikTuru)
+                //{
+                //    sec.Sec(txtKimlikTuru);
+
+                //    if (txtKimlikTuru.Id != null)
+                //    {
+                //        var bll = new KimlikTuruBll();
+                //        var secilen = bll.Single(x => x.Id == (long)txtKimlikTuru.Id) as KimlikTuru;
+                //        int yeniUzunluk = secilen?.Uzunluk ?? 11;
+                //        string karakterTipi = secilen?.KarakterTipi;
+
+                //        // Zorunlu uzunluk
+                //        txtKimlikNo.Properties.MaxLength = yeniUzunluk;
+
+                //        // Maske ayarları
+                //        txtKimlikNo.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.None;
+                //        txtKimlikNo.Properties.Mask.UseMaskAsDisplayFormat = true;
+
+                //        if (karakterTipi == "Numeric")
+                //        {
+                //            txtKimlikNo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+                //            txtKimlikNo.Properties.Mask.EditMask = $@"\d{{{yeniUzunluk}}}";
+                //        }
+                //        else if (karakterTipi == "AlphaNumeric")
+                //        {
+                //            txtKimlikNo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+                //            txtKimlikNo.Properties.Mask.EditMask = $@"[a-zA-Z0-9]{{{yeniUzunluk}}}";
+                //        }
+                //        else
+                //        {
+                //            txtKimlikNo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+                //            txtKimlikNo.Properties.Mask.EditMask = null;
+                //        }
+
+                //        // Giriş fazlaysa kırp
+                //        if (txtKimlikNo.Text.Length > yeniUzunluk)
+                //            txtKimlikNo.Text = txtKimlikNo.Text.Substring(0, yeniUzunluk);
+                //    }
+                //}
                 else if (sender == txtMeslek)
                     sec.Sec(txtMeslek);
                 else if (sender == txtOzelKod1)
@@ -395,7 +365,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             if (_bilgiNotlariTable != null && TableValueChanged(_bilgiNotlariTable))
                 _bilgiNotlariTable.Yukle();
             if (_iletisimBilgileriTable != null && TableValueChanged(_iletisimBilgileriTable))
-                _iletisimBilgileriTable.Yukle();            
+                _iletisimBilgileriTable.Yukle();
             if (_personelBelgeTable != null && TableValueChanged(_personelBelgeTable))
                 _personelBelgeTable.Yukle();
         }
@@ -420,7 +390,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
                 _iletisimBilgileriTable.Tablo.GridControl.Focus();
                 return true;
             }
-        
+
             if (_personelBelgeTable != null && _personelBelgeTable.HataliGiris())
             {
                 tabUst.SelectedPage = pageBelgeler;
@@ -438,7 +408,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
 
 
             bool TableValueChanged()
-            {              
+            {
                 if (_adreslerTable != null && _adreslerTable.TableValueChanged) return true;
                 if (_bilgiNotlariTable != null && _bilgiNotlariTable.TableValueChanged) return true;
                 if (_iletisimBilgileriTable != null && _iletisimBilgileriTable.TableValueChanged) return true;
@@ -468,7 +438,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
                          ?.Select(x => long.TryParse(x, out var val) ? val : 0)
                          ?.Where(x => x > 0)
                          ?.ToArray();
-           
+
             if (_adreslerTable != null && !_adreslerTable.Kaydet()) return false;
             if (_bilgiNotlariTable != null && !_bilgiNotlariTable.Kaydet()) return false;
             if (_iletisimBilgileriTable != null && !_iletisimBilgileriTable.Kaydet()) return false;
@@ -541,7 +511,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
 
                 _iletisimBilgileriTable.Tablo.GridControl.Focus();
             }
-      
             else if (e.Page == pageBelgeler)
             {
                 // Yeni kayıttaysa tabloyu hiç oluşturma!
@@ -558,6 +527,43 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
                 _personelBelgeTable.Tablo.GridControl.Focus();
             }
         }
+        private void KimlikTuruAyarla(long? kimlikTuruId)
+        {
+            if (kimlikTuruId == null) return;
 
+            var bll = new KimlikTuruBll();
+            var secilen = bll.Single(x => x.Id == kimlikTuruId) as KimlikTuru;
+            if (secilen == null) return;
+
+            int yeniUzunluk = secilen.Uzunluk;
+            string karakterTipi = secilen.KarakterTipi;
+
+            // MaxLength
+            txtKimlikNo.Properties.MaxLength = yeniUzunluk;
+
+            // Maske ayarı
+            txtKimlikNo.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.None;
+            txtKimlikNo.Properties.Mask.UseMaskAsDisplayFormat = true;
+
+            if (karakterTipi == "Numeric")
+            {
+                txtKimlikNo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+                txtKimlikNo.Properties.Mask.EditMask = $@"\d{{{yeniUzunluk}}}";
+            }
+            else if (karakterTipi == "AlphaNumeric")
+            {
+                txtKimlikNo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+                txtKimlikNo.Properties.Mask.EditMask = $@"[a-zA-Z0-9]{{{yeniUzunluk}}}";
+            }
+            else
+            {
+                txtKimlikNo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+                txtKimlikNo.Properties.Mask.EditMask = null;
+            }
+
+            // Uzun girişi kırp
+            if (txtKimlikNo.Text.Length > yeniUzunluk)
+                txtKimlikNo.Text = txtKimlikNo.Text.Substring(0, yeniUzunluk);
+        }
     }
 }
