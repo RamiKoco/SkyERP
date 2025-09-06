@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PersonelListForm));
             this.grid = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridControl();
             this.tablo = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridView();
+            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.colResim = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colKod = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colAd = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
@@ -107,6 +109,7 @@
             this.tablo.Appearance.ViewCaption.Options.UseForeColor = true;
             this.tablo.BandPanelRowHeight = 40;
             this.tablo.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
+            this.gridBand4,
             this.gridBand1,
             this.gridBand2,
             this.gridBand3});
@@ -120,7 +123,8 @@
             this.colPozisyonAdi,
             this.colAciklama,
             this.colOzelKod1Adi,
-            this.colOzelKod2Adi});
+            this.colOzelKod2Adi,
+            this.colResim});
             this.tablo.GridControl = this.grid;
             this.tablo.Name = "tablo";
             this.tablo.OptionsMenu.EnableColumnMenu = false;
@@ -141,6 +145,26 @@
             this.tablo.StatusBarKisaYolAciklama = null;
             this.tablo.ViewCaption = "Personel Kartları";
             // 
+            // gridBand4
+            // 
+            this.gridBand4.Caption = "Resim";
+            this.gridBand4.Columns.Add(this.colResim);
+            this.gridBand4.Name = "gridBand4";
+            this.gridBand4.VisibleIndex = 0;
+            this.gridBand4.Width = 95;
+            // 
+            // colResim
+            // 
+            this.colResim.Caption = "Resim";
+            this.colResim.FieldName = "Resim";
+            this.colResim.Name = "colResim";
+            this.colResim.OptionsColumn.AllowEdit = false;
+            this.colResim.StatusBarAciklama = null;
+            this.colResim.StatusBarKisaYol = null;
+            this.colResim.StatusBarKisaYolAciklama = null;
+            this.colResim.Visible = true;
+            this.colResim.Width = 95;
+            // 
             // gridBand1
             // 
             this.gridBand1.Caption = "Genel Bilgiler";
@@ -149,11 +173,13 @@
             this.gridBand1.Columns.Add(this.colSoyad);
             this.gridBand1.Columns.Add(this.colCinsiyet);
             this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 0;
+            this.gridBand1.VisibleIndex = 1;
             this.gridBand1.Width = 499;
             // 
             // colKod
             // 
+            this.colKod.AppearanceCell.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.colKod.AppearanceCell.Options.UseFont = true;
             this.colKod.AppearanceCell.Options.UseTextOptions = true;
             this.colKod.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colKod.Caption = "Kod";
@@ -165,6 +191,8 @@
             // 
             // colAd
             // 
+            this.colAd.AppearanceCell.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.colAd.AppearanceCell.Options.UseFont = true;
             this.colAd.Caption = "Ad";
             this.colAd.FieldName = "Ad";
             this.colAd.Name = "colAd";
@@ -177,6 +205,8 @@
             // 
             // colSoyad
             // 
+            this.colSoyad.AppearanceCell.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.colSoyad.AppearanceCell.Options.UseFont = true;
             this.colSoyad.Caption = "Soyad";
             this.colSoyad.FieldName = "Soyad";
             this.colSoyad.Name = "colSoyad";
@@ -189,6 +219,8 @@
             // 
             // colCinsiyet
             // 
+            this.colCinsiyet.AppearanceCell.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.colCinsiyet.AppearanceCell.Options.UseFont = true;
             this.colCinsiyet.Caption = "Cinsiyet";
             this.colCinsiyet.FieldName = "Cinsiyet";
             this.colCinsiyet.Name = "colCinsiyet";
@@ -205,11 +237,13 @@
             this.gridBand2.Columns.Add(this.colOzelKod1Adi);
             this.gridBand2.Columns.Add(this.colOzelKod2Adi);
             this.gridBand2.Name = "gridBand2";
-            this.gridBand2.VisibleIndex = 1;
+            this.gridBand2.VisibleIndex = 2;
             this.gridBand2.Width = 286;
             // 
             // colOzelKod1Adi
             // 
+            this.colOzelKod1Adi.AppearanceCell.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.colOzelKod1Adi.AppearanceCell.Options.UseFont = true;
             this.colOzelKod1Adi.Caption = "Özel Kod-1";
             this.colOzelKod1Adi.FieldName = "OzelKod1Adi";
             this.colOzelKod1Adi.Name = "colOzelKod1Adi";
@@ -222,6 +256,8 @@
             // 
             // colOzelKod2Adi
             // 
+            this.colOzelKod2Adi.AppearanceCell.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.colOzelKod2Adi.AppearanceCell.Options.UseFont = true;
             this.colOzelKod2Adi.Caption = "Özel Kod-2";
             this.colOzelKod2Adi.FieldName = "OzelKod2Adi";
             this.colOzelKod2Adi.Name = "colOzelKod2Adi";
@@ -239,11 +275,13 @@
             this.gridBand3.Columns.Add(this.colPozisyonAdi);
             this.gridBand3.Columns.Add(this.colAciklama);
             this.gridBand3.Name = "gridBand3";
-            this.gridBand3.VisibleIndex = 2;
+            this.gridBand3.VisibleIndex = 3;
             this.gridBand3.Width = 678;
             // 
             // colDepartmanAdi
             // 
+            this.colDepartmanAdi.AppearanceCell.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.colDepartmanAdi.AppearanceCell.Options.UseFont = true;
             this.colDepartmanAdi.Caption = "Departman";
             this.colDepartmanAdi.FieldName = "DepartmanAdi";
             this.colDepartmanAdi.Name = "colDepartmanAdi";
@@ -256,6 +294,8 @@
             // 
             // colPozisyonAdi
             // 
+            this.colPozisyonAdi.AppearanceCell.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.colPozisyonAdi.AppearanceCell.Options.UseFont = true;
             this.colPozisyonAdi.Caption = "Pozisyon";
             this.colPozisyonAdi.FieldName = "PozisyonAdi";
             this.colPozisyonAdi.Name = "colPozisyonAdi";
@@ -268,6 +308,8 @@
             // 
             // colAciklama
             // 
+            this.colAciklama.AppearanceCell.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.colAciklama.AppearanceCell.Options.UseFont = true;
             this.colAciklama.Caption = "Açıklama";
             this.colAciklama.FieldName = "Aciklama";
             this.colAciklama.Name = "colAciklama";
@@ -285,6 +327,7 @@
             this.colId.Name = "colId";
             this.colId.OptionsColumn.AllowEdit = false;
             this.colId.OptionsColumn.ShowInCustomizationForm = false;
+            this.colId.Width = 50;
             // 
             // longNavigator
             // 
@@ -322,16 +365,18 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colId;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colKod;
         private UserControls.Navigators.LongNavigator longNavigator;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private UserControls.Grid.MyBandedGridColumn colAd;
         private UserControls.Grid.MyBandedGridColumn colSoyad;
         private UserControls.Grid.MyBandedGridColumn colCinsiyet;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private UserControls.Grid.MyBandedGridColumn colOzelKod1Adi;
         private UserControls.Grid.MyBandedGridColumn colOzelKod2Adi;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private UserControls.Grid.MyBandedGridColumn colDepartmanAdi;
         private UserControls.Grid.MyBandedGridColumn colPozisyonAdi;
         private UserControls.Grid.MyBandedGridColumn colAciklama;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
+        private UserControls.Grid.MyBandedGridColumn colResim;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
     }
 }

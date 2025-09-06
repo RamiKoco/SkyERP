@@ -22,7 +22,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             btnIletisimKartlari.ItemClick += BarItem_ItemClick;
             btnAdresKartlari.ItemClick += BarItem_ItemClick;
         }
-
         protected override void DegiskenleriDoldur()
         {
             Tablo = tablo;
@@ -41,7 +40,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
         {
             BagliKartAc(e.Item);
         }
-
         protected override void BagliKartAc(BarItem barItem)
         {
             var entity = Tablo.GetRow<PersonelL>();
@@ -53,7 +51,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             }
             else if (barItem == btnAdresKartlari)
             {
-                ShowListForms<GenelAdresListForm>.ShowListForm(KartTuru.GenelAdres, entity.Id, entity.Ad);
+                ShowListForms<GenelAdresListForm>.ShowListForm(KartTuru.PersonelAdres, entity.Id, entity.Ad);
             }
         }
     }

@@ -34,6 +34,13 @@ namespace AsamaGlobal.ERP.Data.Contexts
             modelBuilder.Entity<Cariler>().HasMany(x => x.CariSubeler).WithRequired().WillCascadeOnDelete(true);
             modelBuilder.Entity<Banka>().HasMany(x => x.BankaSube).WithRequired().WillCascadeOnDelete(true);
             modelBuilder.Entity<Indirim>().HasMany(x => x.IndiriminUygulanacagiHizmetBilgileri).WithRequired().WillCascadeOnDelete(true);
+            modelBuilder.Entity<GenelAdres>()
+             .Property(x => x.Enlem)
+             .HasPrecision(9, 6);
+
+            modelBuilder.Entity<GenelAdres>()
+                .Property(x => x.Boylam)
+                .HasPrecision(9, 6);
         }
         public DbSet<Ulke> Ulke { get; set; }
         public DbSet<Il> Il { get; set; }

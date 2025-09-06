@@ -1349,6 +1349,9 @@
     <Compile Include="UserControls\Controls\MyKodTextEdit.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserControls\Controls\MyKoordinatTextEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserControls\Controls\MyLookUpEdit.cs">
       <SubType>Component</SubType>
     </Compile>

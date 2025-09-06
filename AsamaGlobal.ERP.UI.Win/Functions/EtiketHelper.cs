@@ -1,6 +1,8 @@
 ﻿using AbcYazilim.OgrenciTakip.Common.Enums;
 using AbcYazilim.OgrenciTakip.Model.Dto;
+using AbcYazilim.OgrenciTakip.Model.Entities;
 using AsamaGlobal.ERP.Bll.General;
+using AsamaGlobal.ERP.Data.Contexts;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
@@ -152,6 +154,46 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
         {
             var yiq = (c.R * 299 + c.G * 587 + c.B * 114) / 1000;
             return yiq >= 128 ? Color.Black : Color.White;
+        }
+        public void BaglantilariGuncelle(KayitTuru kayitTuru, long kayitId, IEnumerable<long> seciliEtiketIdler)
+        {
+            var db = new ERPContext();
+
+            var eskiBaglantilar = db.EtiketKayitTuruBaglanti
+                .Where(x => x.KayitTuru == kayitTuru && x.KayitId == kayitId)
+                .ToList();
+
+            db.EtiketKayitTuruBaglanti.RemoveRange(eskiBaglantilar);
+
+            foreach (var etiketId in seciliEtiketIdler)
+            {
+                db.EtiketKayitTuruBaglanti.Add(new EtiketKayitTuruBaglanti
+                {
+                    EtiketId = etiketId,
+                    KayitTuru = kayitTuru,
+                    KayitId = kayitId
+                });
+            }
+
+            db.SaveChanges();
+        }
+        public List<long> EtiketIdleriniAl(object editValue)
+        {
+            if (editValue == null) return new List<long>();
+
+            if (editValue is string str)
+                return str.Split(',')
+                          .Select(x => long.TryParse(x, out var val) ? val : 0)
+                          .Where(x => x > 0)
+                          .ToList();
+
+            if (editValue is IEnumerable<long> longList)
+                return longList.ToList();
+
+            if (editValue is long singleLong)
+                return new List<long> { singleLong };
+
+            return new List<long>();
         }
     }
 }

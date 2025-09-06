@@ -8,6 +8,7 @@ using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
 using DevExpress.XtraEditors;
 using System;
+using System.Globalization;
 
 namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
 {
@@ -60,15 +61,20 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
             txtAdresTurleri.Text = entity.AdresTurleriAdi;
             txtPostaKodu.Text = entity.PostaKodu;
             txtAdres.Text = entity.Adres;
-            txtEnlem.EditValue = entity.Enlem ?? 0m;
-            txtBoylam.EditValue = entity.Boylam ?? 0m;
+            txtEnlem.Text = (entity.Enlem ?? 0m).ToString("F6", CultureInfo.InvariantCulture);
+            txtBoylam.Text = (entity.Boylam ?? 0m).ToString("F6", CultureInfo.InvariantCulture);
             txtAciklama.Text = entity.Aciklama;
             tglDurum.IsOn = entity.Durum;
         }
         protected override void GuncelNesneOlustur()
         {
-            decimal.TryParse(txtEnlem.EditValue?.ToString(), out var enlem);
-            decimal.TryParse(txtBoylam.EditValue?.ToString(), out var boylam);
+            decimal? enlem = null;
+            if (!string.IsNullOrWhiteSpace(txtEnlem.Text))
+                enlem = Math.Round(decimal.Parse(txtEnlem.Text, CultureInfo.InvariantCulture), 6);
+
+            decimal? boylam = null;
+            if (!string.IsNullOrWhiteSpace(txtBoylam.Text))
+                boylam = Math.Round(decimal.Parse(txtBoylam.Text, CultureInfo.InvariantCulture), 6);
 
             CurrentEntity = new GenelAdres
             {

@@ -1,8 +1,5 @@
 ﻿using AbcYazilim.OgrenciTakip.Common.Enums;
-using AbcYazilim.OgrenciTakip.Model.Dto;
 using AbcYazilim.OgrenciTakip.Model.Dto.KisiDto;
-using AbcYazilim.OgrenciTakip.Model.Entities;
-using AsamaGlobal.ERP.Bll.General;
 using AsamaGlobal.ERP.Bll.General.KisiBll;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Functions;
@@ -29,7 +26,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
         private BaseTablo _bilgiNotlariTable;
         private BaseTablo _iletisimBilgileriTable;
         private BaseTablo _adreslerTable;
-        private List<EtiketL> _tumEtiketler;
         private List<long> _oldEtiketIdListesi = new List<long>();
         private List<long> _guncelEtiketIdListesi = new List<long>();
         private EtiketHelper _etiketHelper;
@@ -47,7 +43,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
         }
         public override void Yukle()
         {
-            EtiketleriYukle();
             OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new KisiS() : ((KisiBll)Bll).Single(FilterFunctions.Filter<Kisi>(Id));
             NesneyiKontrollereBagla();
             BagliTabloYukle();
@@ -84,17 +79,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
         }
         protected override void GuncelNesneOlustur()
         {
-            var etiketValue = txtEtiket.EditValue;
-            if (etiketValue is string str)
-            {
-                _guncelEtiketIdListesi = str
-                    .Split(',')
-                    .Select(x => long.TryParse(x, out var val) ? val : 0)
-                    .Where(x => x > 0)
-                    .ToList();
-            }
-            else
-                _guncelEtiketIdListesi = new List<long>();
+            _guncelEtiketIdListesi = _etiketHelper.EtiketIdleriniAl(txtEtiket.EditValue);
 
             CurrentEntity = new Kisi
             {
@@ -115,14 +100,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
             };
             ButonEnabledDurumu();
         }
-        private void EtiketleriYukle()
-        {
-            var etiketBll = new EtiketBll();
-            _tumEtiketler = etiketBll.List(x => x.Durum == true && x.KayitTuru == KayitTuru.Kisi).Cast<EtiketL>().ToList();
-            txtEtiket.Properties.DataSource = _tumEtiketler;
-            txtEtiket.Properties.DisplayMember = "EtiketAdi";
-            txtEtiket.Properties.ValueMember = "Id";
-        }
         private void KisiyeAitEtiketleriYukle()
         {
             using (var db = new ERPContext())
@@ -141,7 +118,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
         {
             GuncelNesneOlustur();
 
-            bool etiketDegisti = !_oldEtiketIdListesi?.SequenceEqual(_guncelEtiketIdListesi ?? new List<long>()) ?? false;
+            bool etiketDegisti = !_oldEtiketIdListesi.SequenceEqual(_guncelEtiketIdListesi ?? new List<long>());
             bool entityDegisti = !OldEntity.Equals(CurrentEntity);
 
             if (kapanis && !entityDegisti && !etiketDegisti && !FarkliSubeIslemi)
@@ -157,8 +134,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
 
                         _oldEtiketIdListesi = _guncelEtiketIdListesi.ToList();
 
-                        // base.Kaydet yerine doğrudan kayıt işlemini sen yap
-                        var sonuc = BaseIslemTuru == IslemTuru.EntityInsert
+                        // Kayıt işlemini doğrudan yap
+                        bool sonuc = BaseIslemTuru == IslemTuru.EntityInsert
                             ? EntityInsert()
                             : EntityUpdate();
 
@@ -177,7 +154,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
                 }
             }
 
-            // Menüden kaydet gibi durumlarda
+            // Menüden kaydet gibi durumlar
             if (!BagliTabloKaydet()) return false;
 
             _oldEtiketIdListesi = _guncelEtiketIdListesi.ToList();
@@ -204,16 +181,11 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
         }
         protected override void BagliTabloYukle()
         {
-            bool TableValueChanged(BaseTablo tablo)
-            {
-                return tablo.Tablo.DataController.ListSource.Cast<IBaseHareketEntity>()
-                    .Any(x => x.Insert || x.Update || x.Delete);
-            }
-            if (_bilgiNotlariTable != null && TableValueChanged(_bilgiNotlariTable))
+            if (_bilgiNotlariTable != null && TabloDegisti())
                 _bilgiNotlariTable.Yukle();
-            if (_iletisimBilgileriTable != null && TableValueChanged(_iletisimBilgileriTable))
+            if (_iletisimBilgileriTable != null && TabloDegisti())
                 _iletisimBilgileriTable.Yukle();
-            if (_adreslerTable != null && TableValueChanged(_adreslerTable))
+            if (_adreslerTable != null && TabloDegisti())
                 _adreslerTable.Yukle();
         }
         protected override bool BagliTabloHataliGirisKontrol()
@@ -245,25 +217,13 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
         {
             if (!IsLoaded) return;
 
-            bool etiketDegisti = !_oldEtiketIdListesi?.SequenceEqual(_guncelEtiketIdListesi ?? new List<long>()) ?? false;
-
-
-
-            bool TableValueChanged()
-            {
-                if (_iletisimBilgileriTable != null && _iletisimBilgileriTable.TableValueChanged) return true;
-                if (_adreslerTable != null && _adreslerTable.TableValueChanged) return true;
-                if (_bilgiNotlariTable != null && _bilgiNotlariTable.TableValueChanged) return true;
-
-                return false;
-
-            }
+            bool etiketDegisti = !(_oldEtiketIdListesi?.SequenceEqual(_guncelEtiketIdListesi ?? new List<long>()) ?? true);
 
             if (FarkliSubeIslemi)
             {
                 GeneralFunctions.ButtonEnabledDurumu(btnYeni, btnKaydet, btnGerial, btnSil);
             }
-            else if (TableValueChanged())
+            else if (TabloDegisti())
             {
                 GeneralFunctions.ButtonEnabledDurumu(btnYeni, btnKaydet, btnGerial, btnSil, OldEntity, CurrentEntity, true);
             }
@@ -274,41 +234,18 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
         }
         protected override bool BagliTabloKaydet()
         {
-            var seciliEtiketIdler = txtEtiket.EditValue as IEnumerable<long>
-                         ?? txtEtiket.EditValue as long[]
-                         ?? txtEtiket.EditValue?.ToString()
-                         ?.Split(',')
-                         ?.Select(x => long.TryParse(x, out var val) ? val : 0)
-                         ?.Where(x => x > 0)
-                         ?.ToArray();
-
             if (_adreslerTable != null && !_adreslerTable.Kaydet()) return false;
             if (_bilgiNotlariTable != null && !_bilgiNotlariTable.Kaydet()) return false;
             if (_iletisimBilgileriTable != null && !_iletisimBilgileriTable.Kaydet()) return false;
 
-            if (seciliEtiketIdler != null)
-            {
-                using (var db = new ERPContext())
-                {
-                    var eskiBaglantilar = db.EtiketKayitTuruBaglanti
-                        .Where(x => x.KayitTuru == KayitTuru.Kisi && x.KayitId == Id)
-                        .ToList();
-                    db.EtiketKayitTuruBaglanti.RemoveRange(eskiBaglantilar);
+            // Etiket ID'lerini Helper üzerinden alıyoruz
+            var seciliEtiketIdler = _etiketHelper.EtiketIdleriniAl(txtEtiket.EditValue);
 
-                    foreach (var etiketId in seciliEtiketIdler)
-                    {
-                        var baglanti = new EtiketKayitTuruBaglanti
-                        {
-                            EtiketId = etiketId,
-                            KayitTuru = KayitTuru.Kisi,
-                            KayitId = Id
-                        };
-                        db.EtiketKayitTuruBaglanti.Add(baglanti);
-                    }
-                    db.SaveChanges();
-                }
-            }
+            // Helper ile DB güncellemesini yapıyoruz
+            _etiketHelper.BaglantilariGuncelle(KayitTuru.Kisi, Id, seciliEtiketIdler);
 
+            // Güncel etiket listesi old liste olarak kaydediliyor
+            _oldEtiketIdListesi = seciliEtiketIdler.ToList();
             return true;
         }
         protected override void Control_SelectedPageChanged(object sender, SelectedPageChangedEventArgs e)
@@ -358,6 +295,23 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
                 _adreslerTable.Tablo.GridControl.Focus();
 
             }
+        }
+        private bool TabloDegisti()
+        {
+            bool Degisti(BaseTablo tablo)
+            {
+                var list = tablo?.Tablo.DataController.ListSource;
+                if (list == null)
+                    return false;
+
+                return list.Cast<IBaseHareketEntity>()
+                           .Any(x => x.Insert || x.Update || x.Delete);
+            }
+            if (Degisti(_bilgiNotlariTable)) return true;
+            if (Degisti(_iletisimBilgileriTable)) return true;
+            if (Degisti(_adreslerTable)) return true;
+
+            return false;
         }
 
     }
