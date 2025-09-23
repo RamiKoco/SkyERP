@@ -37,7 +37,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
         }
         protected override void Listele()
         {
-            Tablo.GridControl.DataSource = ((CarilerBll)Bll).List(FilterFunctions.Filter<Cariler>(AktifKartlariGoster));
+            Tablo.GridControl.DataSource = ((CarilerBll)Bll).List(FilterFunctions.Filter<Cariler>(AktifKartlariGoster));           
         }
         private void BarItem_ItemClick(object sender, ItemClickEventArgs e)
         {

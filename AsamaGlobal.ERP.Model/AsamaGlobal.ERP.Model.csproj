@@ -113,6 +113,7 @@
     <Compile Include="Dto\SubeDto.cs" />
     <Compile Include="Dto\TahakkukDto.cs" />
     <Compile Include="Dto\Uyruk.cs" />
+    <Compile Include="Dto\VergiDairesiDto.cs" />
     <Compile Include="Entities\AdresBilgileri.cs" />
     <Compile Include="Entities\AdresHareketleri.cs" />
     <Compile Include="Entities\AdresTurleri.cs" />
@@ -208,6 +209,7 @@
     <Compile Include="Entities\OdemeTuru.cs" />
     <Compile Include="Entities\Ulke.cs" />
     <Compile Include="Entities\Uyruk.cs" />
+    <Compile Include="Entities\VergiDairesi.cs" />
     <Compile Include="Entities\YabanciDil.cs" />
     <Compile Include="Entities\Yakinlik.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

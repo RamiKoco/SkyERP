@@ -7,6 +7,7 @@ namespace AsamaGlobal.ERP.Model.Dto.CariDto
     [NotMapped]
     public class CarilerS : Cariler
     {
+        public string VergiDairesiAdi { get; set; }
         public string KimlikTuruAdi { get; set; }
         public string OzelKod1Adi { get; set; }
         public string OzelKod2Adi { get; set; }
@@ -22,13 +23,14 @@ namespace AsamaGlobal.ERP.Model.Dto.CariDto
         public string Soyad { get; set; }
         public string KimlikNo { get; set; }
         public bool Sahis { get; set; }
-        public string VergiDairesi { get; set; }
+        //public string VergiDairesi { get; set; }
         public string VergiNo { get; set; }
         public string VergiKodu { get; set; }
         public string YetkiKodu { get; set; }
         public string HesapKodu { get; set; }
         public string ProjeKodu { get; set; }
         public string Aciklama { get; set; }
+        public string VergiDairesiAdi { get; set; }
         public string KimlikTuruAdi { get; set; }
         public string OzelKod1Adi { get; set; }
         public string OzelKod2Adi { get; set; }

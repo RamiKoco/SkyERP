@@ -2,13 +2,17 @@
 using AsamaGlobal.ERP.Bll.General.CarilerBll;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Message;
+using AsamaGlobal.ERP.Model.Dto;
 using AsamaGlobal.ERP.Model.Dto.CariDto;
 using AsamaGlobal.ERP.Model.Entities.Base.Interfaces;
 using AsamaGlobal.ERP.Model.Entities.CariEntity;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
+using AsamaGlobal.ERP.UI.Win.Forms.VergiDairesiForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
+using AsamaGlobal.ERP.UI.Win.Show;
 using AsamaGlobal.ERP.UI.Win.UserControls.UserControl.Base;
 using AsamaGlobal.ERP.UI.Win.UserControls.UserControl.TahakkukEditFormTable;
+using DevExpress.XtraBars;
 using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraEditors;
 using System;
@@ -40,6 +44,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             Id = BaseIslemTuru.IdOlustur(OldEntity);
             txtKod.Text = ((CarilerBll)Bll).YeniKodVer();
             txtAdi.Focus();
+
         }
         protected override void NesneyiKontrollereBagla()
         {
@@ -50,7 +55,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             txtKimlikNo.Text = entity.KimlikNo;
             txtAdi.Text = entity.Ad;
             txtSoyAdi.Text = entity.Soyad;
-            txtVergiDairesi.Text = entity.VergiDairesi;
+            //txtVergiDairesi.Text = entity.VergiDairesi;
             txtVergiNo.Text = entity.VergiNo;
             txtVergiKodu.Text = entity.VergiKodu;
             txtHesapKodu.Text = entity.HesapKodu;
@@ -61,6 +66,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             txtKimlikTuru.Id = entity.KimlikTuruId;
             TxtKimlikTuru_IdChanged(txtKimlikTuru, EventArgs.Empty);
             txtKimlikTuru.Text = entity.KimlikTuruAdi;
+            txtVergiDairesi.Id = entity.VergiDairesiId;
+            txtVergiDairesi.Text = entity.VergiDairesiAdi;
             txtOzelKod1.Id = entity.OzelKod1Id;
             txtOzelKod1.Text = entity.OzelKod1Adi;
             txtOzelKod2.Id = entity.OzelKod2Id;
@@ -86,13 +93,14 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
                 Ad = txtAdi.Text,
                 Soyad = txtSoyAdi.Text,
                 Unvan = txtUnvan.Text,
-                VergiDairesi = txtVergiDairesi.Text,
+                //VergiDairesi = txtVergiDairesi.Text,
                 VergiNo = txtVergiNo.Text,
                 VergiKodu = txtVergiKodu.Text,
                 HesapKodu = txtHesapKodu.Text,
                 YetkiKodu = txtYetkiKodu.Text,
                 ProjeKodu = txtProjeKodu.Text,
-                KimlikTuruId = txtKimlikTuru.Id,
+                KimlikTuruId = txtKimlikTuru.Id,   
+                VergiDairesiId= txtVergiDairesi.Id,
                 OzelKod1Id = txtOzelKod1.Id,
                 OzelKod2Id = txtOzelKod2.Id,
                 OzelKod3Id = txtOzelKod3.Id,
@@ -158,6 +166,10 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
                             txtKimlikNo.Text = txtKimlikNo.Text.Substring(0, yeniUzunluk);
                     }
                 }
+
+                else if (sender == txtVergiDairesi)
+                    sec.Sec(txtVergiDairesi, KartTuru.VergiDairesi);
+
 
         }
 
@@ -243,7 +255,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
                 }
             }
         }
-
         protected override void BagliTabloYukle()
         {
             bool TableValueChanged(BaseTablo tablo)
@@ -267,7 +278,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
 
             return result;
         }
-
         protected override bool EntityUpdate()
         {          
             if (BagliTabloHataliGirisKontrol()) return false;

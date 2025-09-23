@@ -22,8 +22,8 @@ namespace AsamaGlobal.ERP.Model.Entities.CariEntity
         public string Ad { get; set; }
         [Required, StringLength(30), ZorunluAlan("SoyAdı", "txtSoyAdi")]
         public string Soyad { get; set; }
-        [StringLength(50)]
-        public string VergiDairesi { get; set; }
+        //[StringLength(50)]
+        //public string VergiDairesi { get; set; }
         [StringLength(20)]
         public string VergiNo { get; set; }
         [StringLength(20)]
@@ -37,6 +37,7 @@ namespace AsamaGlobal.ERP.Model.Entities.CariEntity
         public bool Sahis { get; set; }
         [StringLength(500)]
         public string Aciklama { get; set; }
+        public long? VergiDairesiId { get; set; }
         public long? KimlikTuruId { get; set; }
         public long? OzelKod1Id { get; set; }
         public long? OzelKod2Id { get; set; }
@@ -44,6 +45,7 @@ namespace AsamaGlobal.ERP.Model.Entities.CariEntity
         public long? OzelKod4Id { get; set; }
         public long? OzelKod5Id { get; set; }
 
+        public VergiDairesi VergiDairesi { get; set; }
         public KimlikTuru KimlikTuru { get; set; }
         public OzelKod OzelKod1 { get; set; }
         public OzelKod OzelKod2 { get; set; }

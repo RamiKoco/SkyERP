@@ -127,6 +127,7 @@
             this.colServer = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colYetkilendirmeTuru = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.sagMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.btnVergiDairesiKartlari = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablo)).BeginInit();
@@ -139,7 +140,6 @@
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
-            this.ribbonControl.SearchEditItem,
             this.btnYeni,
             this.btnDuzelt,
             this.btnSil,
@@ -169,9 +169,10 @@
             this.barStaticItem17,
             this.barStaticItem18,
             this.barStaticItem19,
-            this.barStaticItem20});
+            this.barStaticItem20,
+            this.btnVergiDairesiKartlari});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 31;
+            this.ribbonControl.MaxItemId = 32;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -180,7 +181,7 @@
             this.ribbonControl.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
             this.ribbonControl.ShowToolbarCustomizeItem = false;
-            this.ribbonControl.Size = new System.Drawing.Size(1128, 132);
+            this.ribbonControl.Size = new System.Drawing.Size(1128, 158);
             this.ribbonControl.StatusBar = this.ribbonStatusBar1;
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
             // 
@@ -589,6 +590,7 @@
             this.ribbonPageGroup3.ItemLinks.Add(this.btnKullaniciKartlari);
             this.ribbonPageGroup3.ItemLinks.Add(this.btnKullaniciBirimYetkileri);
             this.ribbonPageGroup3.ItemLinks.Add(this.btnRolKartlari);
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnVergiDairesiKartlari);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "Kullanıcı İşlemleri";
             // 
@@ -642,11 +644,11 @@
             // grid
             // 
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.Location = new System.Drawing.Point(0, 132);
+            this.grid.Location = new System.Drawing.Point(0, 158);
             this.grid.MainView = this.tablo;
             this.grid.MenuManager = this.ribbonControl;
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(1128, 421);
+            this.grid.Size = new System.Drawing.Size(1128, 395);
             this.grid.TabIndex = 3;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tablo});
@@ -747,6 +749,12 @@
             this.sagMenu.Name = "sagMenu";
             this.sagMenu.Ribbon = this.ribbonControl;
             // 
+            // btnVergiDairesiKartlari
+            // 
+            this.btnVergiDairesiKartlari.Caption = "barButtonItem1";
+            this.btnVergiDairesiKartlari.Id = 31;
+            this.btnVergiDairesiKartlari.Name = "btnVergiDairesiKartlari";
+            // 
             // AnaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -821,5 +829,6 @@
         private Win.UserControls.Grid.MyGridColumn colServer;
         private Win.UserControls.Grid.MyGridColumn colYetkilendirmeTuru;
         private DevExpress.XtraBars.PopupMenu sagMenu;
+        private DevExpress.XtraBars.BarButtonItem btnVergiDairesiKartlari;
     }
 }

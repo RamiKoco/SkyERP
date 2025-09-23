@@ -208,9 +208,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.BaseForms
         protected virtual void Yazdir()
         {
             TablePrintingFunctions.Yazdir(Tablo, Tablo.ViewCaption, AnaForm.SubeAdi);
-
-
-
         }
         protected virtual void BaskiOnizleme() { }
         protected virtual void BagliKartAc() { }
@@ -346,9 +343,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.BaseForms
 
             Cursor.Current = DefaultCursor;
         }
-
-       
-
         private void Tablo_DoubleClick(object sender, EventArgs e)
         {
             //sonradan eklendi.udemy soru cevaptan çift tıklama ile ilgili durumdan kaynaklı.

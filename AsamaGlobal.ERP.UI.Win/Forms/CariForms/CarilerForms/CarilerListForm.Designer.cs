@@ -48,7 +48,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.colSoyad = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.VergiKodu = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
-            this.colVergiDairesi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
+            this.colVergiDairesiAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.colVergiNo = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colOzelKod1Adi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
@@ -136,7 +136,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.colCariAdi,
             this.colUnvan,
             this.colKimlikNo,
-            this.colVergiDairesi,
+            this.colVergiDairesiAdi,
             this.colVergiNo,
             this.VergiKodu,
             this.colOzelKod1Adi,
@@ -259,7 +259,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             // 
             this.gridBand3.Caption = "Vergi Bilgileri";
             this.gridBand3.Columns.Add(this.VergiKodu);
-            this.gridBand3.Columns.Add(this.colVergiDairesi);
+            this.gridBand3.Columns.Add(this.colVergiDairesiAdi);
             this.gridBand3.Columns.Add(this.colVergiNo);
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 2;
@@ -277,17 +277,17 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.VergiKodu.Visible = true;
             this.VergiKodu.Width = 103;
             // 
-            // colVergiDairesi
+            // colVergiDairesiAdi
             // 
-            this.colVergiDairesi.Caption = "Vergi Dairesi";
-            this.colVergiDairesi.FieldName = "VergiDairesi";
-            this.colVergiDairesi.Name = "colVergiDairesi";
-            this.colVergiDairesi.OptionsColumn.AllowEdit = false;
-            this.colVergiDairesi.StatusBarAciklama = null;
-            this.colVergiDairesi.StatusBarKisaYol = null;
-            this.colVergiDairesi.StatusBarKisaYolAciklama = null;
-            this.colVergiDairesi.Visible = true;
-            this.colVergiDairesi.Width = 103;
+            this.colVergiDairesiAdi.Caption = "Vergi Dairesi";
+            this.colVergiDairesiAdi.FieldName = "VergiDairesiAdi";
+            this.colVergiDairesiAdi.Name = "colVergiDairesiAdi";
+            this.colVergiDairesiAdi.OptionsColumn.AllowEdit = false;
+            this.colVergiDairesiAdi.StatusBarAciklama = null;
+            this.colVergiDairesiAdi.StatusBarKisaYol = null;
+            this.colVergiDairesiAdi.StatusBarKisaYolAciklama = null;
+            this.colVergiDairesiAdi.Visible = true;
+            this.colVergiDairesiAdi.Width = 103;
             // 
             // colVergiNo
             // 
@@ -443,7 +443,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
         private UserControls.Grid.MyBandedGridColumn colCariAdi;
         private UserControls.Grid.MyBandedGridColumn colUnvan;
         private UserControls.Grid.MyBandedGridColumn colKimlikNo;
-        private UserControls.Grid.MyBandedGridColumn colVergiDairesi;
+        private UserControls.Grid.MyBandedGridColumn colVergiDairesiAdi;
         private UserControls.Grid.MyBandedGridColumn colVergiNo;
         private UserControls.Grid.MyBandedGridColumn VergiKodu;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;

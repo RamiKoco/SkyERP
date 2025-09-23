@@ -43,6 +43,7 @@ using AsamaGlobal.ERP.UI.Win.Forms.SubeForms;
 using AsamaGlobal.ERP.UI.Win.Forms.TesvikForms;
 using AsamaGlobal.ERP.UI.Win.Forms.UlkeForms;
 using AsamaGlobal.ERP.UI.Win.Forms.UyrukForms;
+using AsamaGlobal.ERP.UI.Win.Forms.VergiDairesiForms;
 using AsamaGlobal.ERP.UI.Win.Forms.YabancıDilForms;
 using AsamaGlobal.ERP.UI.Win.Show;
 using AsamaGlobal.ERP.UI.Win.UserControls.Controls;
@@ -292,6 +293,17 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
                         {
                             _btnEdit.Id = entity.Id;
                             _btnEdit.EditValue = entity.EtiketAdi;
+                        }
+                    }
+                    break;
+
+                case "txtVergiDairesi":
+                    {
+                        var entity = (VergiDairesiL)ShowListForms<VergiDairesiListForm>.ShowDialogListForm(KartTuru.VergiDairesi, _btnEdit.Id);
+                        if (entity != null)
+                        {
+                            _btnEdit.Id = entity.Id;
+                            _btnEdit.EditValue = entity.VergiDairesiAdi;
                         }
                     }
                     break;

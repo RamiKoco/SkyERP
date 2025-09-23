@@ -218,6 +218,8 @@ namespace AsamaGlobal.ERP.Common.Enums
         CariIletisim = 106,
         [Description("Genel Adres Kartı")]
         GenelAdres = 107,
+        [Description("Vergi Dairesi")]
+        VergiDairesi = 108,
 
     }
 }

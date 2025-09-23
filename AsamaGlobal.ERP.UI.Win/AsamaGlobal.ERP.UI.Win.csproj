@@ -1005,6 +1005,18 @@
     <Compile Include="Forms\UyrukForms\UyrukListForm.Designer.cs">
       <DependentUpon>UyrukListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\VergiDairesiForms\VergiDairesiEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\VergiDairesiForms\VergiDairesiEditForm.Designer.cs">
+      <DependentUpon>VergiDairesiEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\VergiDairesiForms\VergiDairesiListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\VergiDairesiForms\VergiDairesiListForm.Designer.cs">
+      <DependentUpon>VergiDairesiListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\YabancıDilForms\YabanciDilEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2041,6 +2053,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UyrukForms\UyrukListForm.resx">
       <DependentUpon>UyrukListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\VergiDairesiForms\VergiDairesiEditForm.resx">
+      <DependentUpon>VergiDairesiEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\VergiDairesiForms\VergiDairesiListForm.resx">
+      <DependentUpon>VergiDairesiListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\YabancıDilForms\YabanciDilEditForm.resx">
       <DependentUpon>YabanciDilEditForm.cs</DependentUpon>

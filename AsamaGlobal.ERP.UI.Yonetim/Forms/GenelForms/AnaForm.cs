@@ -1,9 +1,5 @@
-﻿using System.Security;
+﻿using AsamaGlobal.ERP.Bll.General;
 using AsamaGlobal.ERP.Common.Enums;
-using DevExpress.XtraBars;
-using DevExpress.XtraBars.Ribbon;
-using System.Windows.Forms;
-using AsamaGlobal.ERP.Bll.General;
 using AsamaGlobal.ERP.Common.Message;
 using AsamaGlobal.ERP.Data.Contexts;
 using AsamaGlobal.ERP.Model.Entities;
@@ -11,9 +7,14 @@ using AsamaGlobal.ERP.Model.Entities.Base;
 using AsamaGlobal.ERP.UI.Win.Forms.DonemForms;
 using AsamaGlobal.ERP.UI.Win.Forms.KullaniciForms;
 using AsamaGlobal.ERP.UI.Win.Forms.SubeForms;
+using AsamaGlobal.ERP.UI.Win.Forms.VergiDairesiForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
 using AsamaGlobal.ERP.UI.Win.GenelForms;
 using AsamaGlobal.ERP.UI.Win.Show;
+using DevExpress.XtraBars;
+using DevExpress.XtraBars.Ribbon;
+using System.Security;
+using System.Windows.Forms;
 
 namespace AsamaGlobal.ERP.UI.Yonetim.Forms.GenelForms
 {
@@ -130,6 +131,8 @@ namespace AsamaGlobal.ERP.UI.Yonetim.Forms.GenelForms
                     ShowEditForms<KurumBilgileriEditForm>.ShowDialogEditForm(null,entity.Kod,entity.KurumAdi);
                 else if (e.Item == btnRolKartlari)
                     ShowListForms<RolListForm>.ShowDialogListForm();
+                else if (e.Item == btnVergiDairesiKartlari)
+                    ShowListForms<VergiDairesiListForm>.ShowDialogListForm();
                 else if (e.Item == btnKullaniciKartlari)
                     ShowListForms<KullaniciListForm>.ShowDialogListForm();
                 else if (e.Item == btnKullaniciBirimYetkileri)

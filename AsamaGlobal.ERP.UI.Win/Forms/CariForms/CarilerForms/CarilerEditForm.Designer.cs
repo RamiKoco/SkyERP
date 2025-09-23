@@ -63,6 +63,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.tabUst = new DevExpress.XtraBars.Navigation.TabPane();
             this.pageGenelBilgiler = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.DataLayoutGenelBilgiler = new AsamaGlobal.ERP.UI.Win.UserControls.Controls.MyDataLayoutControl();
+            this.txtVergiNo = new AsamaGlobal.ERP.UI.Win.UserControls.Controls.MySGKSicilNoTextEdit();
             this.txtHesapKodu = new AsamaGlobal.ERP.UI.Win.UserControls.Controls.MyTextEdit();
             this.txtYetkiKodu = new AsamaGlobal.ERP.UI.Win.UserControls.Controls.MyTextEdit();
             this.txtProjeKodu = new AsamaGlobal.ERP.UI.Win.UserControls.Controls.MyTextEdit();
@@ -79,7 +80,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.tglDurum = new AsamaGlobal.ERP.UI.Win.UserControls.Controls.MyToogleSwitch();
             this.txtAciklama = new AsamaGlobal.ERP.UI.Win.UserControls.Controls.MyMemoEdit();
             this.txtVergiKodu = new AsamaGlobal.ERP.UI.Win.UserControls.Controls.MyTextEdit();
-            this.txtVergiDairesi = new AsamaGlobal.ERP.UI.Win.UserControls.Controls.MyTextEdit();
             this.txtSoyAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Controls.MyTextEdit();
             this.txtAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Controls.MyTextEdit();
             this.txtCariAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Controls.MyTextEdit();
@@ -92,7 +92,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem22 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -103,13 +102,14 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem23 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
             this.pageNotlar = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtVergiNo = new AsamaGlobal.ERP.UI.Win.UserControls.Controls.MySGKSicilNoTextEdit();
-            this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtVergiDairesi = new AsamaGlobal.ERP.UI.Win.UserControls.Controls.MyButtonEdit();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resimMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataLayoutGenel)).BeginInit();
@@ -121,6 +121,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.pageGenelBilgiler.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataLayoutGenelBilgiler)).BeginInit();
             this.DataLayoutGenelBilgiler.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVergiNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHesapKodu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYetkiKodu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtProjeKodu.Properties)).BeginInit();
@@ -137,7 +138,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             ((System.ComponentModel.ISupportInitialize)(this.tglDurum.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAciklama.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVergiKodu.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtVergiDairesi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoyAdi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAdi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCariAdi.Properties)).BeginInit();
@@ -150,7 +150,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).BeginInit();
@@ -161,12 +160,13 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtVergiNo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVergiDairesi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -253,6 +253,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             // 
             // DataLayoutGenelBilgiler
             // 
+            this.DataLayoutGenelBilgiler.Controls.Add(this.txtVergiDairesi);
             this.DataLayoutGenelBilgiler.Controls.Add(this.txtVergiNo);
             this.DataLayoutGenelBilgiler.Controls.Add(this.txtHesapKodu);
             this.DataLayoutGenelBilgiler.Controls.Add(this.txtYetkiKodu);
@@ -270,7 +271,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.DataLayoutGenelBilgiler.Controls.Add(this.tglDurum);
             this.DataLayoutGenelBilgiler.Controls.Add(this.txtAciklama);
             this.DataLayoutGenelBilgiler.Controls.Add(this.txtVergiKodu);
-            this.DataLayoutGenelBilgiler.Controls.Add(this.txtVergiDairesi);
             this.DataLayoutGenelBilgiler.Controls.Add(this.txtSoyAdi);
             this.DataLayoutGenelBilgiler.Controls.Add(this.txtAdi);
             this.DataLayoutGenelBilgiler.Controls.Add(this.txtCariAdi);
@@ -290,6 +290,29 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.DataLayoutGenelBilgiler.Size = new System.Drawing.Size(790, 203);
             this.DataLayoutGenelBilgiler.TabIndex = 0;
             this.DataLayoutGenelBilgiler.Text = "myDataLayoutControl1";
+            // 
+            // txtVergiNo
+            // 
+            this.txtVergiNo.EnterMoveNextControl = true;
+            this.txtVergiNo.Location = new System.Drawing.Point(357, 108);
+            this.txtVergiNo.MenuManager = this.ribbonControl;
+            this.txtVergiNo.Name = "txtVergiNo";
+            this.txtVergiNo.Properties.Appearance.Options.UseTextOptions = true;
+            this.txtVergiNo.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.txtVergiNo.Properties.AppearanceFocused.BackColor = System.Drawing.Color.LightCyan;
+            this.txtVergiNo.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.txtVergiNo.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtVergiNo.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
+            this.txtVergiNo.Properties.MaskSettings.Set("allowBlankInput", true);
+            this.txtVergiNo.Properties.MaskSettings.Set("mask", "\\d{11}");
+            this.txtVergiNo.Properties.MaskSettings.Set("isAutoComplete", false);
+            this.txtVergiNo.Properties.MaskSettings.Set("isOptimistic", false);
+            this.txtVergiNo.Properties.MaskSettings.Set("placeholder", ' ');
+            this.txtVergiNo.Properties.MaxLength = 50;
+            this.txtVergiNo.Size = new System.Drawing.Size(161, 20);
+            this.txtVergiNo.StatusBarAciklama = "SGK Sicil No Giriniz. Örn: 12345678912";
+            this.txtVergiNo.StyleController = this.DataLayoutGenelBilgiler;
+            this.txtVergiNo.TabIndex = 21;
             // 
             // txtHesapKodu
             // 
@@ -562,20 +585,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.txtVergiKodu.StyleController = this.DataLayoutGenelBilgiler;
             this.txtVergiKodu.TabIndex = 9;
             // 
-            // txtVergiDairesi
-            // 
-            this.txtVergiDairesi.EnterMoveNextControl = true;
-            this.txtVergiDairesi.Location = new System.Drawing.Point(357, 60);
-            this.txtVergiDairesi.MenuManager = this.ribbonControl;
-            this.txtVergiDairesi.Name = "txtVergiDairesi";
-            this.txtVergiDairesi.Properties.AppearanceFocused.BackColor = System.Drawing.Color.LightCyan;
-            this.txtVergiDairesi.Properties.AppearanceFocused.Options.UseBackColor = true;
-            this.txtVergiDairesi.Properties.MaxLength = 50;
-            this.txtVergiDairesi.Size = new System.Drawing.Size(161, 20);
-            this.txtVergiDairesi.StatusBarAciklama = "Vergi Dairesi Giriniz.";
-            this.txtVergiDairesi.StyleController = this.DataLayoutGenelBilgiler;
-            this.txtVergiDairesi.TabIndex = 8;
-            // 
             // txtSoyAdi
             // 
             this.txtSoyAdi.EnterMoveNextControl = true;
@@ -631,7 +640,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.layoutControlItem20,
             this.layoutControlItem11,
             this.layoutControlItem12,
-            this.layoutControlItem6,
             this.layoutControlItem8,
             this.layoutControlItem21,
             this.layoutControlItem22,
@@ -642,8 +650,9 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.layoutControlItem13,
             this.layoutControlItem19,
             this.layoutControlItem23,
-            this.layoutControlItem18,
-            this.layoutControlItem24});
+            this.layoutControlItem24,
+            this.layoutControlItem7,
+            this.layoutControlItem18});
             this.layoutControlGroup1.LayoutMode = DevExpress.XtraLayout.Utils.LayoutMode.Table;
             this.layoutControlGroup1.Name = "Root";
             columnDefinition1.SizeType = System.Windows.Forms.SizeType.Absolute;
@@ -813,22 +822,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.layoutControlItem12.Text = "Kimlik No";
             this.layoutControlItem12.TextSize = new System.Drawing.Size(52, 13);
             // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.AppearanceItemCaption.ForeColor = System.Drawing.Color.Maroon;
-            this.layoutControlItem6.AppearanceItemCaption.Options.UseForeColor = true;
-            this.layoutControlItem6.Control = this.txtVergiDairesi;
-            this.layoutControlItem6.Location = new System.Drawing.Point(280, 48);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.OptionsTableLayoutItem.ColumnIndex = 3;
-            this.layoutControlItem6.OptionsTableLayoutItem.ColumnSpan = 2;
-            this.layoutControlItem6.OptionsTableLayoutItem.RowIndex = 2;
-            this.layoutControlItem6.Size = new System.Drawing.Size(230, 24);
-            this.layoutControlItem6.Text = "Vergi Dairesi";
-            this.layoutControlItem6.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(60, 20);
-            this.layoutControlItem6.TextToControlDistance = 5;
-            // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.AppearanceItemCaption.ForeColor = System.Drawing.Color.Maroon;
@@ -975,19 +968,21 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.layoutControlItem23.TextSize = new System.Drawing.Size(70, 20);
             this.layoutControlItem23.TextToControlDistance = 5;
             // 
-            // layoutControlItem18
+            // layoutControlItem24
             // 
-            this.layoutControlItem18.AppearanceItemCaption.ForeColor = System.Drawing.Color.Maroon;
-            this.layoutControlItem18.AppearanceItemCaption.Options.UseForeColor = true;
-            this.layoutControlItem18.Control = this.txtKod;
-            this.layoutControlItem18.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem18.Name = "layoutControlItem18";
-            this.layoutControlItem18.OptionsTableLayoutItem.ColumnSpan = 2;
-            this.layoutControlItem18.Size = new System.Drawing.Size(250, 24);
-            this.layoutControlItem18.Text = "Kod";
-            this.layoutControlItem18.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem18.TextSize = new System.Drawing.Size(70, 20);
-            this.layoutControlItem18.TextToControlDistance = 5;
+            this.layoutControlItem24.AppearanceItemCaption.ForeColor = System.Drawing.Color.Maroon;
+            this.layoutControlItem24.AppearanceItemCaption.Options.UseForeColor = true;
+            this.layoutControlItem24.Control = this.txtVergiNo;
+            this.layoutControlItem24.Location = new System.Drawing.Point(280, 96);
+            this.layoutControlItem24.Name = "layoutControlItem24";
+            this.layoutControlItem24.OptionsTableLayoutItem.ColumnIndex = 3;
+            this.layoutControlItem24.OptionsTableLayoutItem.ColumnSpan = 2;
+            this.layoutControlItem24.OptionsTableLayoutItem.RowIndex = 4;
+            this.layoutControlItem24.Size = new System.Drawing.Size(230, 24);
+            this.layoutControlItem24.Text = "Vergi No";
+            this.layoutControlItem24.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            this.layoutControlItem24.TextSize = new System.Drawing.Size(60, 20);
+            this.layoutControlItem24.TextToControlDistance = 5;
             // 
             // pageNotlar
             // 
@@ -1050,44 +1045,54 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
-            // txtVergiNo
+            // txtVergiDairesi
             // 
-            this.txtVergiNo.EnterMoveNextControl = true;
-            this.txtVergiNo.Location = new System.Drawing.Point(357, 108);
-            this.txtVergiNo.MenuManager = this.ribbonControl;
-            this.txtVergiNo.Name = "txtVergiNo";
-            this.txtVergiNo.Properties.Appearance.Options.UseTextOptions = true;
-            this.txtVergiNo.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.txtVergiNo.Properties.AppearanceFocused.BackColor = System.Drawing.Color.LightCyan;
-            this.txtVergiNo.Properties.AppearanceFocused.Options.UseBackColor = true;
-            this.txtVergiNo.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.txtVergiNo.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
-            this.txtVergiNo.Properties.MaskSettings.Set("allowBlankInput", true);
-            this.txtVergiNo.Properties.MaskSettings.Set("mask", "\\d{11}");
-            this.txtVergiNo.Properties.MaskSettings.Set("isAutoComplete", false);
-            this.txtVergiNo.Properties.MaskSettings.Set("isOptimistic", false);
-            this.txtVergiNo.Properties.MaskSettings.Set("placeholder", ' ');
-            this.txtVergiNo.Properties.MaxLength = 50;
-            this.txtVergiNo.Size = new System.Drawing.Size(161, 20);
-            this.txtVergiNo.StatusBarAciklama = "SGK Sicil No Giriniz. Örn: 12345678912";
-            this.txtVergiNo.StyleController = this.DataLayoutGenelBilgiler;
-            this.txtVergiNo.TabIndex = 21;
+            this.txtVergiDairesi.EnterMoveNextControl = true;
+            this.txtVergiDairesi.Id = null;
+            this.txtVergiDairesi.Location = new System.Drawing.Point(357, 60);
+            this.txtVergiDairesi.MenuManager = this.ribbonControl;
+            this.txtVergiDairesi.Name = "txtVergiDairesi";
+            this.txtVergiDairesi.Properties.AppearanceFocused.BackColor = System.Drawing.Color.LightCyan;
+            this.txtVergiDairesi.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.txtVergiDairesi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.txtVergiDairesi.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.txtVergiDairesi.Size = new System.Drawing.Size(161, 20);
+            this.txtVergiDairesi.StatusBarAciklama = "Vergi Dairesi Seçiniz.";
+            this.txtVergiDairesi.StatusBarKisaYol = "F4 :";
+            this.txtVergiDairesi.StatusBarKisaYolAciklama = "Seçim Yap";
+            this.txtVergiDairesi.StyleController = this.DataLayoutGenelBilgiler;
+            this.txtVergiDairesi.TabIndex = 22;
             // 
-            // layoutControlItem24
+            // layoutControlItem7
             // 
-            this.layoutControlItem24.AppearanceItemCaption.ForeColor = System.Drawing.Color.Maroon;
-            this.layoutControlItem24.AppearanceItemCaption.Options.UseForeColor = true;
-            this.layoutControlItem24.Control = this.txtVergiNo;
-            this.layoutControlItem24.Location = new System.Drawing.Point(280, 96);
-            this.layoutControlItem24.Name = "layoutControlItem24";
-            this.layoutControlItem24.OptionsTableLayoutItem.ColumnIndex = 3;
-            this.layoutControlItem24.OptionsTableLayoutItem.ColumnSpan = 2;
-            this.layoutControlItem24.OptionsTableLayoutItem.RowIndex = 4;
-            this.layoutControlItem24.Size = new System.Drawing.Size(230, 24);
-            this.layoutControlItem24.Text = "Vergi No";
-            this.layoutControlItem24.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem24.TextSize = new System.Drawing.Size(60, 20);
-            this.layoutControlItem24.TextToControlDistance = 5;
+            this.layoutControlItem7.AppearanceItemCaption.ForeColor = System.Drawing.Color.Maroon;
+            this.layoutControlItem7.AppearanceItemCaption.Options.UseForeColor = true;
+            this.layoutControlItem7.Control = this.txtVergiDairesi;
+            this.layoutControlItem7.Location = new System.Drawing.Point(280, 48);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.OptionsTableLayoutItem.ColumnIndex = 3;
+            this.layoutControlItem7.OptionsTableLayoutItem.ColumnSpan = 2;
+            this.layoutControlItem7.OptionsTableLayoutItem.RowIndex = 2;
+            this.layoutControlItem7.Size = new System.Drawing.Size(230, 24);
+            this.layoutControlItem7.Text = "Vergi Dairesi";
+            this.layoutControlItem7.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(60, 20);
+            this.layoutControlItem7.TextToControlDistance = 5;
+            // 
+            // layoutControlItem18
+            // 
+            this.layoutControlItem18.AppearanceItemCaption.ForeColor = System.Drawing.Color.Maroon;
+            this.layoutControlItem18.AppearanceItemCaption.Options.UseForeColor = true;
+            this.layoutControlItem18.Control = this.txtKod;
+            this.layoutControlItem18.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem18.Name = "layoutControlItem18";
+            this.layoutControlItem18.OptionsTableLayoutItem.ColumnSpan = 2;
+            this.layoutControlItem18.Size = new System.Drawing.Size(250, 24);
+            this.layoutControlItem18.Text = "Kod";
+            this.layoutControlItem18.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            this.layoutControlItem18.TextSize = new System.Drawing.Size(70, 20);
+            this.layoutControlItem18.TextToControlDistance = 5;
             // 
             // CarilerEditForm
             // 
@@ -1112,6 +1117,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.pageGenelBilgiler.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataLayoutGenelBilgiler)).EndInit();
             this.DataLayoutGenelBilgiler.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtVergiNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHesapKodu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYetkiKodu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtProjeKodu.Properties)).EndInit();
@@ -1128,7 +1134,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             ((System.ComponentModel.ISupportInitialize)(this.tglDurum.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAciklama.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVergiKodu.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtVergiDairesi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoyAdi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAdi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCariAdi.Properties)).EndInit();
@@ -1141,7 +1146,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).EndInit();
@@ -1152,12 +1156,13 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtVergiNo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVergiDairesi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1182,7 +1187,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private UserControls.Controls.MyTextEdit txtSoyAdi;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private UserControls.Controls.MyTextEdit txtVergiDairesi;
         private UserControls.Controls.MyTextEdit txtVergiKodu;
         private UserControls.Controls.MyMemoEdit txtAciklama;
         private UserControls.Controls.MyToogleSwitch tglDurum;
@@ -1202,7 +1206,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
         private UserControls.Controls.MyTextEdit txtProjeKodu;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem21;
         private UserControls.Controls.MyTextEdit txtYetkiKodu;
@@ -1215,9 +1218,11 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem19;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem23;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem18;
         private DevExpress.XtraBars.Navigation.TabNavigationPage pageNotlar;
         private UserControls.Controls.MySGKSicilNoTextEdit txtVergiNo;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem24;
+        private UserControls.Controls.MyButtonEdit txtVergiDairesi;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem18;
     }
 }

@@ -130,5 +130,6 @@ namespace AsamaGlobal.ERP.Data.Contexts
         public DbSet<CariSubeler> CariSubeler { get; set; }
         public DbSet<GenelIletisim> GenelIletisim { get; set; }
         public DbSet<GenelAdres> GenelAdres { get; set; }
+        public DbSet<VergiDairesi> VergiDairesi { get; set; }
     }
 }
