@@ -81,7 +81,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             txtAciklama.Text = entity.Aciklama;
             tglDurum.IsOn = entity.Durum;
         }
-
         protected override void GuncelNesneOlustur()
         {
             CurrentEntity = new Cariler
@@ -168,11 +167,9 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
                 }
 
                 else if (sender == txtVergiDairesi)
-                    sec.Sec(txtVergiDairesi, KartTuru.VergiDairesi);
-
+                    sec.Sec(txtVergiDairesi, KartTuru.VergiDairesi);               
 
         }
-
         private void TxtKimlikTuru_IdChanged(object sender, EventArgs e)
         {
             if (txtKimlikTuru.Id == null)

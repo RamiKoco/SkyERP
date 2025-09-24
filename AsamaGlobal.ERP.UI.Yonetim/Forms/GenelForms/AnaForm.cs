@@ -132,7 +132,18 @@ namespace AsamaGlobal.ERP.UI.Yonetim.Forms.GenelForms
                 else if (e.Item == btnRolKartlari)
                     ShowListForms<RolListForm>.ShowDialogListForm();
                 else if (e.Item == btnVergiDairesiKartlari)
-                    ShowListForms<VergiDairesiListForm>.ShowDialogListForm();
+                {                   
+                        // Formu aç, btnYeni görünür olsun
+                        ShowListForms<VergiDairesiListForm>.ShowDialogListForm(
+                            KartTuru.VergiDairesi,
+                            null, // seciliId yok
+                            frm => { 
+                                frm.ShowYeniButton = true;
+                                frm.ShowDuzeltButton = true;
+                                frm.ShowSilButton = true;
+                            }
+                        );                   
+                }                  
                 else if (e.Item == btnKullaniciKartlari)
                     ShowListForms<KullaniciListForm>.ShowDialogListForm();
                 else if (e.Item == btnKullaniciBirimYetkileri)

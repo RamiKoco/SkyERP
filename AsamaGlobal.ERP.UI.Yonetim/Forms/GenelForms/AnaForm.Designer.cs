@@ -29,58 +29,58 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem1 = new DevExpress.Utils.ToolTipSeparatorItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem21 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem11 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipItem toolTipItem22 = new DevExpress.Utils.ToolTipItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnaForm));
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem2 = new DevExpress.Utils.ToolTipSeparatorItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem3 = new DevExpress.Utils.ToolTipSeparatorItem();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem4 = new DevExpress.Utils.ToolTipSeparatorItem();
-            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem5 = new DevExpress.Utils.ToolTipSeparatorItem();
-            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem6 = new DevExpress.Utils.ToolTipSeparatorItem();
-            DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem13 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem7 = new DevExpress.Utils.ToolTipSeparatorItem();
-            DevExpress.Utils.ToolTipItem toolTipItem14 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem15 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem8 = new DevExpress.Utils.ToolTipSeparatorItem();
-            DevExpress.Utils.ToolTipItem toolTipItem16 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem17 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem9 = new DevExpress.Utils.ToolTipSeparatorItem();
-            DevExpress.Utils.ToolTipItem toolTipItem18 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem19 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem10 = new DevExpress.Utils.ToolTipSeparatorItem();
-            DevExpress.Utils.ToolTipItem toolTipItem20 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem13 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem23 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem12 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem14 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem24 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip13 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem15 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem25 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem13 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipItem toolTipItem26 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip14 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem16 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem27 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem14 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipItem toolTipItem28 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip15 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem17 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem29 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem15 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipItem toolTipItem30 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip16 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem18 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem31 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem16 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipItem toolTipItem32 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip17 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem19 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem33 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem17 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipItem toolTipItem34 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip18 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem20 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem35 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem18 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipItem toolTipItem36 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip19 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem21 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem37 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem19 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipItem toolTipItem38 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip20 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem22 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem39 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem20 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipItem toolTipItem40 = new DevExpress.Utils.ToolTipItem();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnYeni = new DevExpress.XtraBars.BarButtonItem();
             this.btnDuzelt = new DevExpress.XtraBars.BarButtonItem();
@@ -112,6 +112,7 @@
             this.barStaticItem18 = new DevExpress.XtraBars.BarStaticItem();
             this.barStaticItem19 = new DevExpress.XtraBars.BarStaticItem();
             this.barStaticItem20 = new DevExpress.XtraBars.BarStaticItem();
+            this.btnVergiDairesiKartlari = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -127,7 +128,6 @@
             this.colServer = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colYetkilendirmeTuru = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.sagMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.btnVergiDairesiKartlari = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablo)).BeginInit();
@@ -192,20 +192,20 @@
             this.btnYeni.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.additem_32x321;
             this.btnYeni.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Insert);
             this.btnYeni.Name = "btnYeni";
-            toolTipTitleItem1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            toolTipTitleItem1.Appearance.Options.UseFont = true;
-            toolTipTitleItem1.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.comment_16x16;
-            toolTipTitleItem1.Text = "(Insert)";
-            toolTipItem1.Text = "Yeni";
-            toolTipItem2.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            toolTipItem2.Appearance.Options.UseFont = true;
-            toolTipItem2.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.suggestion_16x16;
-            toolTipItem2.Text = "Yeni Kurum Ekle";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            superToolTip1.Items.Add(toolTipSeparatorItem1);
-            superToolTip1.Items.Add(toolTipItem2);
-            this.btnYeni.SuperTip = superToolTip1;
+            toolTipTitleItem12.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            toolTipTitleItem12.Appearance.Options.UseFont = true;
+            toolTipTitleItem12.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.comment_16x16;
+            toolTipTitleItem12.Text = "(Insert)";
+            toolTipItem21.Text = "Yeni";
+            toolTipItem22.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            toolTipItem22.Appearance.Options.UseFont = true;
+            toolTipItem22.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.suggestion_16x16;
+            toolTipItem22.Text = "Yeni Kurum Ekle";
+            superToolTip11.Items.Add(toolTipTitleItem12);
+            superToolTip11.Items.Add(toolTipItem21);
+            superToolTip11.Items.Add(toolTipSeparatorItem11);
+            superToolTip11.Items.Add(toolTipItem22);
+            this.btnYeni.SuperTip = superToolTip11;
             // 
             // btnDuzelt
             // 
@@ -215,21 +215,21 @@
             this.btnDuzelt.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDuzelt.ImageOptions.LargeImage")));
             this.btnDuzelt.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F3);
             this.btnDuzelt.Name = "btnDuzelt";
-            toolTipTitleItem2.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            toolTipTitleItem2.Appearance.Options.UseFont = true;
-            toolTipTitleItem2.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.comment_16x16;
-            toolTipTitleItem2.Text = "(F3)";
-            toolTipItem3.Text = "Yeni";
-            toolTipItem4.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            toolTipItem4.Appearance.Options.UseFont = true;
-            toolTipItem4.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.suggestion_16x16;
-            toolTipItem4.Text = "Kurum Bilgilerini Düzelt";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem3);
-            superToolTip2.Items.Add(toolTipSeparatorItem2);
-            superToolTip2.Items.Add(toolTipTitleItem3);
-            superToolTip2.Items.Add(toolTipItem4);
-            this.btnDuzelt.SuperTip = superToolTip2;
+            toolTipTitleItem13.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            toolTipTitleItem13.Appearance.Options.UseFont = true;
+            toolTipTitleItem13.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.comment_16x16;
+            toolTipTitleItem13.Text = "(F3)";
+            toolTipItem23.Text = "Yeni";
+            toolTipItem24.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            toolTipItem24.Appearance.Options.UseFont = true;
+            toolTipItem24.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.suggestion_16x16;
+            toolTipItem24.Text = "Kurum Bilgilerini Düzelt";
+            superToolTip12.Items.Add(toolTipTitleItem13);
+            superToolTip12.Items.Add(toolTipItem23);
+            superToolTip12.Items.Add(toolTipSeparatorItem12);
+            superToolTip12.Items.Add(toolTipTitleItem14);
+            superToolTip12.Items.Add(toolTipItem24);
+            this.btnDuzelt.SuperTip = superToolTip12;
             // 
             // btnSil
             // 
@@ -239,18 +239,18 @@
             this.btnSil.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSil.ImageOptions.LargeImage")));
             this.btnSil.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Delete);
             this.btnSil.Name = "btnSil";
-            toolTipTitleItem4.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.comment_16x16;
-            toolTipTitleItem4.Text = "(Delete)";
-            toolTipItem5.Text = "Kurum Sil";
-            toolTipItem6.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipItem6.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.suggestion_16x16;
-            toolTipItem6.Text = "<b>Seçilen Kurum Onayınız Alınarak Veritabanı Dosyaları Dahil <u>Tamamen Silinir." +
+            toolTipTitleItem15.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.comment_16x16;
+            toolTipTitleItem15.Text = "(Delete)";
+            toolTipItem25.Text = "Kurum Sil";
+            toolTipItem26.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipItem26.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.suggestion_16x16;
+            toolTipItem26.Text = "<b>Seçilen Kurum Onayınız Alınarak Veritabanı Dosyaları Dahil <u>Tamamen Silinir." +
     "</u></b>";
-            superToolTip3.Items.Add(toolTipTitleItem4);
-            superToolTip3.Items.Add(toolTipItem5);
-            superToolTip3.Items.Add(toolTipSeparatorItem3);
-            superToolTip3.Items.Add(toolTipItem6);
-            this.btnSil.SuperTip = superToolTip3;
+            superToolTip13.Items.Add(toolTipTitleItem15);
+            superToolTip13.Items.Add(toolTipItem25);
+            superToolTip13.Items.Add(toolTipSeparatorItem13);
+            superToolTip13.Items.Add(toolTipItem26);
+            this.btnSil.SuperTip = superToolTip13;
             // 
             // btnKurumBilgileri
             // 
@@ -260,20 +260,20 @@
             this.btnKurumBilgileri.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnKurumBilgileri.ImageOptions.LargeImage")));
             this.btnKurumBilgileri.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F4);
             this.btnKurumBilgileri.Name = "btnKurumBilgileri";
-            toolTipTitleItem5.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipTitleItem5.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            toolTipTitleItem5.Appearance.Options.UseFont = true;
-            toolTipTitleItem5.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.comment_16x16;
-            toolTipTitleItem5.Text = "<b>(F4)</b>";
-            toolTipItem7.Text = "Kurum Bilgileri";
-            toolTipItem8.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipItem8.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.suggestion_16x16;
-            toolTipItem8.Text = "<b>Kurumla İlgili Detay Bilgiler</b>";
-            superToolTip4.Items.Add(toolTipTitleItem5);
-            superToolTip4.Items.Add(toolTipItem7);
-            superToolTip4.Items.Add(toolTipSeparatorItem4);
-            superToolTip4.Items.Add(toolTipItem8);
-            this.btnKurumBilgileri.SuperTip = superToolTip4;
+            toolTipTitleItem16.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem16.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            toolTipTitleItem16.Appearance.Options.UseFont = true;
+            toolTipTitleItem16.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.comment_16x16;
+            toolTipTitleItem16.Text = "<b>(F4)</b>";
+            toolTipItem27.Text = "Kurum Bilgileri";
+            toolTipItem28.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipItem28.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.suggestion_16x16;
+            toolTipItem28.Text = "<b>Kurumla İlgili Detay Bilgiler</b>";
+            superToolTip14.Items.Add(toolTipTitleItem16);
+            superToolTip14.Items.Add(toolTipItem27);
+            superToolTip14.Items.Add(toolTipSeparatorItem14);
+            superToolTip14.Items.Add(toolTipItem28);
+            this.btnKurumBilgileri.SuperTip = superToolTip14;
             // 
             // btnSubeKartlari
             // 
@@ -283,17 +283,17 @@
             this.btnSubeKartlari.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSubeKartlari.ImageOptions.LargeImage")));
             this.btnSubeKartlari.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F5);
             this.btnSubeKartlari.Name = "btnSubeKartlari";
-            toolTipTitleItem6.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.comment_16x16;
-            toolTipTitleItem6.Text = "(F5)";
-            toolTipItem9.Text = "Şube Kartları";
-            toolTipItem10.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipItem10.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.suggestion_16x16;
-            toolTipItem10.Text = "<b>Seçilen Kuruma Bağlı Şubeleri Listelenir.</b>";
-            superToolTip5.Items.Add(toolTipTitleItem6);
-            superToolTip5.Items.Add(toolTipItem9);
-            superToolTip5.Items.Add(toolTipSeparatorItem5);
-            superToolTip5.Items.Add(toolTipItem10);
-            this.btnSubeKartlari.SuperTip = superToolTip5;
+            toolTipTitleItem17.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.comment_16x16;
+            toolTipTitleItem17.Text = "(F5)";
+            toolTipItem29.Text = "Şube Kartları";
+            toolTipItem30.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipItem30.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.suggestion_16x16;
+            toolTipItem30.Text = "<b>Seçilen Kuruma Bağlı Şubeleri Listelenir.</b>";
+            superToolTip15.Items.Add(toolTipTitleItem17);
+            superToolTip15.Items.Add(toolTipItem29);
+            superToolTip15.Items.Add(toolTipSeparatorItem15);
+            superToolTip15.Items.Add(toolTipItem30);
+            this.btnSubeKartlari.SuperTip = superToolTip15;
             // 
             // btnDonemKartlari
             // 
@@ -303,20 +303,20 @@
             this.btnDonemKartlari.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.schedule32x32;
             this.btnDonemKartlari.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F6);
             this.btnDonemKartlari.Name = "btnDonemKartlari";
-            toolTipTitleItem7.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipTitleItem7.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            toolTipTitleItem7.Appearance.Options.UseFont = true;
-            toolTipTitleItem7.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.comment_16x16;
-            toolTipTitleItem7.Text = "<b>(F6)</b>";
-            toolTipItem11.Text = "Dönem Kartları";
-            toolTipItem12.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipItem12.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.suggestion_16x16;
-            toolTipItem12.Text = "<b>Seçilen Kuruma Bağlı Dönemler Listelenir.</b>";
-            superToolTip6.Items.Add(toolTipTitleItem7);
-            superToolTip6.Items.Add(toolTipItem11);
-            superToolTip6.Items.Add(toolTipSeparatorItem6);
-            superToolTip6.Items.Add(toolTipItem12);
-            this.btnDonemKartlari.SuperTip = superToolTip6;
+            toolTipTitleItem18.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem18.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            toolTipTitleItem18.Appearance.Options.UseFont = true;
+            toolTipTitleItem18.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.comment_16x16;
+            toolTipTitleItem18.Text = "<b>(F6)</b>";
+            toolTipItem31.Text = "Dönem Kartları";
+            toolTipItem32.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipItem32.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.suggestion_16x16;
+            toolTipItem32.Text = "<b>Seçilen Kuruma Bağlı Dönemler Listelenir.</b>";
+            superToolTip16.Items.Add(toolTipTitleItem18);
+            superToolTip16.Items.Add(toolTipItem31);
+            superToolTip16.Items.Add(toolTipSeparatorItem16);
+            superToolTip16.Items.Add(toolTipItem32);
+            this.btnDonemKartlari.SuperTip = superToolTip16;
             // 
             // btnKullaniciKartlari
             // 
@@ -326,16 +326,16 @@
             this.btnKullaniciKartlari.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.team32x32;
             this.btnKullaniciKartlari.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F7);
             this.btnKullaniciKartlari.Name = "btnKullaniciKartlari";
-            toolTipTitleItem8.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.comment_16x16;
-            toolTipTitleItem8.Text = "(F7)";
-            toolTipItem13.Text = "Kullanıcı Kartları";
-            toolTipItem14.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.suggestion_16x16;
-            toolTipItem14.Text = "Kullanıcı ile İlgili İşlemler Yapılır.";
-            superToolTip7.Items.Add(toolTipTitleItem8);
-            superToolTip7.Items.Add(toolTipItem13);
-            superToolTip7.Items.Add(toolTipSeparatorItem7);
-            superToolTip7.Items.Add(toolTipItem14);
-            this.btnKullaniciKartlari.SuperTip = superToolTip7;
+            toolTipTitleItem19.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.comment_16x16;
+            toolTipTitleItem19.Text = "(F7)";
+            toolTipItem33.Text = "Kullanıcı Kartları";
+            toolTipItem34.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.suggestion_16x16;
+            toolTipItem34.Text = "Kullanıcı ile İlgili İşlemler Yapılır.";
+            superToolTip17.Items.Add(toolTipTitleItem19);
+            superToolTip17.Items.Add(toolTipItem33);
+            superToolTip17.Items.Add(toolTipSeparatorItem17);
+            superToolTip17.Items.Add(toolTipItem34);
+            this.btnKullaniciKartlari.SuperTip = superToolTip17;
             // 
             // btnKullaniciBirimYetkileri
             // 
@@ -344,17 +344,17 @@
             this.btnKullaniciBirimYetkileri.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.permission_32x32;
             this.btnKullaniciBirimYetkileri.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F8);
             this.btnKullaniciBirimYetkileri.Name = "btnKullaniciBirimYetkileri";
-            toolTipTitleItem9.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.comment_16x16;
-            toolTipTitleItem9.Text = "(F8)";
-            toolTipItem15.Text = "Kullanıcı Birim Yetkileri";
-            toolTipItem16.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipItem16.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.suggestion_16x16;
-            toolTipItem16.Text = "<b>Seçilen Kullanıcının Yetkili Olduğu Brimler\r\nBelirlenir.</b>";
-            superToolTip8.Items.Add(toolTipTitleItem9);
-            superToolTip8.Items.Add(toolTipItem15);
-            superToolTip8.Items.Add(toolTipSeparatorItem8);
-            superToolTip8.Items.Add(toolTipItem16);
-            this.btnKullaniciBirimYetkileri.SuperTip = superToolTip8;
+            toolTipTitleItem20.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.comment_16x16;
+            toolTipTitleItem20.Text = "(F8)";
+            toolTipItem35.Text = "Kullanıcı Birim Yetkileri";
+            toolTipItem36.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipItem36.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.suggestion_16x16;
+            toolTipItem36.Text = "<b>Seçilen Kullanıcının Yetkili Olduğu Brimler\r\nBelirlenir.</b>";
+            superToolTip18.Items.Add(toolTipTitleItem20);
+            superToolTip18.Items.Add(toolTipItem35);
+            superToolTip18.Items.Add(toolTipSeparatorItem18);
+            superToolTip18.Items.Add(toolTipItem36);
+            this.btnKullaniciBirimYetkileri.SuperTip = superToolTip18;
             // 
             // btnRolKartlari
             // 
@@ -364,17 +364,17 @@
             this.btnRolKartlari.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.coordination_32x32;
             this.btnRolKartlari.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F9);
             this.btnRolKartlari.Name = "btnRolKartlari";
-            toolTipTitleItem10.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.comment_16x16;
-            toolTipTitleItem10.Text = "(F9)";
-            toolTipItem17.Text = "Rol Kartları";
-            toolTipItem18.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipItem18.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.suggestion_16x16;
-            toolTipItem18.Text = "<b>Kullanıcılara Atanmak Üzere Rol Tanımlamaları\r\nYapılır.</b>";
-            superToolTip9.Items.Add(toolTipTitleItem10);
-            superToolTip9.Items.Add(toolTipItem17);
-            superToolTip9.Items.Add(toolTipSeparatorItem9);
-            superToolTip9.Items.Add(toolTipItem18);
-            this.btnRolKartlari.SuperTip = superToolTip9;
+            toolTipTitleItem21.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.comment_16x16;
+            toolTipTitleItem21.Text = "(F9)";
+            toolTipItem37.Text = "Rol Kartları";
+            toolTipItem38.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipItem38.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.suggestion_16x16;
+            toolTipItem38.Text = "<b>Kullanıcılara Atanmak Üzere Rol Tanımlamaları\r\nYapılır.</b>";
+            superToolTip19.Items.Add(toolTipTitleItem21);
+            superToolTip19.Items.Add(toolTipItem37);
+            superToolTip19.Items.Add(toolTipSeparatorItem19);
+            superToolTip19.Items.Add(toolTipItem38);
+            this.btnRolKartlari.SuperTip = superToolTip19;
             // 
             // btnEmailParametreleri
             // 
@@ -384,17 +384,17 @@
             this.btnEmailParametreleri.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnEmailParametreleri.ImageOptions.LargeImage")));
             this.btnEmailParametreleri.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F11);
             this.btnEmailParametreleri.Name = "btnEmailParametreleri";
-            toolTipTitleItem11.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.comment_16x16;
-            toolTipTitleItem11.Text = "(F7)";
-            toolTipItem19.Text = "E-Mail Parametreleri";
-            toolTipItem20.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipItem20.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.suggestion_16x16;
-            toolTipItem20.Text = "<b>Kurumun E-Mail Gönderimi İçin Kullanılacak Parametreler.</b>";
-            superToolTip10.Items.Add(toolTipTitleItem11);
-            superToolTip10.Items.Add(toolTipItem19);
-            superToolTip10.Items.Add(toolTipSeparatorItem10);
-            superToolTip10.Items.Add(toolTipItem20);
-            this.btnEmailParametreleri.SuperTip = superToolTip10;
+            toolTipTitleItem22.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.comment_16x16;
+            toolTipTitleItem22.Text = "(F7)";
+            toolTipItem39.Text = "E-Mail Parametreleri";
+            toolTipItem40.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipItem40.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.suggestion_16x16;
+            toolTipItem40.Text = "<b>Kurumun E-Mail Gönderimi İçin Kullanılacak Parametreler.</b>";
+            superToolTip20.Items.Add(toolTipTitleItem22);
+            superToolTip20.Items.Add(toolTipItem39);
+            superToolTip20.Items.Add(toolTipSeparatorItem20);
+            superToolTip20.Items.Add(toolTipItem40);
+            this.btnEmailParametreleri.SuperTip = superToolTip20;
             // 
             // barStaticItem1
             // 
@@ -555,6 +555,14 @@
             this.barStaticItem20.Caption = "E-Mail Parametreleri";
             this.barStaticItem20.Id = 30;
             this.barStaticItem20.Name = "barStaticItem20";
+            // 
+            // btnVergiDairesiKartlari
+            // 
+            this.btnVergiDairesiKartlari.Caption = "Veri Dairesi";
+            this.btnVergiDairesiKartlari.Id = 31;
+            this.btnVergiDairesiKartlari.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.inlinewithtext_16x16;
+            this.btnVergiDairesiKartlari.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Yonetim.Properties.Resources.inlinewithtext_32x32;
+            this.btnVergiDairesiKartlari.Name = "btnVergiDairesiKartlari";
             // 
             // ribbonPage1
             // 
@@ -748,12 +756,6 @@
             this.sagMenu.ItemLinks.Add(this.btnSil);
             this.sagMenu.Name = "sagMenu";
             this.sagMenu.Ribbon = this.ribbonControl;
-            // 
-            // btnVergiDairesiKartlari
-            // 
-            this.btnVergiDairesiKartlari.Caption = "barButtonItem1";
-            this.btnVergiDairesiKartlari.Id = 31;
-            this.btnVergiDairesiKartlari.Name = "btnVergiDairesiKartlari";
             // 
             // AnaForm
             // 

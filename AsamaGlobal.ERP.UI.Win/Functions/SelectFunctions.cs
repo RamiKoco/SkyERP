@@ -299,7 +299,17 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
 
                 case "txtVergiDairesi":
                     {
-                        var entity = (VergiDairesiL)ShowListForms<VergiDairesiListForm>.ShowDialogListForm(KartTuru.VergiDairesi, _btnEdit.Id);
+                        var entity = (VergiDairesiL)ShowListForms<VergiDairesiListForm>.ShowDialogListForm(
+                            KartTuru.VergiDairesi,
+                            _btnEdit.Id,
+                            frm => {
+                                frm.ShowYeniButton = false;
+                                frm.ShowDuzeltButton = false;
+                                frm.ShowSilButton = false;                             
+                            }
+
+                        );
+
                         if (entity != null)
                         {
                             _btnEdit.Id = entity.Id;

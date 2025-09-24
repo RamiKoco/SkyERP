@@ -103,7 +103,6 @@ namespace AsamaGlobal.ERP.UI.Win.Show
 
         }
 
-
         public static IEnumerable<IBaseEntity> ShowDialogListForm(KartTuru kartTuru, bool multiSelect, params object[] prm)
         {
             if (!kartTuru.YetkiKontrolu(YetkiTuru.Gorebilir)) return null;
@@ -120,8 +119,27 @@ namespace AsamaGlobal.ERP.UI.Win.Show
 
             }
 
-        }
+        }       
 
+        public static BaseEntity ShowDialogListForm(KartTuru kartTuru, long? seciliGelecekId, Action<TForm> configure = null, params object[] prm)
+        {
+            if (!kartTuru.YetkiKontrolu(YetkiTuru.Gorebilir)) return null;
+
+            using (var frm = (TForm)Activator.CreateInstance(typeof(TForm), prm))
+            {
+                frm.SeciliGelecekId = seciliGelecekId;
+
+                // Lambda önce uygulanmalı
+                configure?.Invoke(frm);
+
+                // Sonra form yüklenmeli
+                frm.Yukle();
+                if (!frm.IsDisposed)
+                    frm.ShowDialog();
+
+                return frm.DialogResult == DialogResult.OK ? frm.SelectedEntity : null;
+            }
+        }
     }
 }
 
