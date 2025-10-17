@@ -4,6 +4,8 @@ using AsamaGlobal.ERP.Model.Dto;
 using AsamaGlobal.ERP.Model.Entities;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
+using DevExpress.XtraEditors;
+using System;
 
 namespace AsamaGlobal.ERP.UI.Win.Forms.VergiDairesiForms
 {
@@ -17,34 +19,39 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.VergiDairesiForms
             BaseKartTuru = KartTuru.VergiDairesi;
             EventsLoad();
         }
-  
+
         public override void Yukle()
         {
             OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new VergiDairesiS() : ((VergiDairesiBll)Bll).Single(FilterFunctions.Filter<VergiDairesi>(Id));
             NesneyiKontrollereBagla();
-  
+
             if (BaseIslemTuru != IslemTuru.EntityInsert) return;
             Id = BaseIslemTuru.IdOlustur(OldEntity);
             txtKod.Text = ((VergiDairesiBll)Bll).YeniKodVer();
-            txtVergiDairesiAdi.Focus();
-        }
+            txtVergiDairesiKodu.Focus();
+        }    
         protected override void NesneyiKontrollereBagla()
         {
             var entity = (VergiDairesiS)OldEntity;
 
             txtKod.Text = entity.Kod;
-            txtVergiDairesiAdi.Text = entity.VergiDairesiAdi;
+            txtVergiDairesiAdi.Text = entity.Ad;
+            txtVergiDairesiKodu.Text = entity.VergiDairesiKodu;
+            txtIl.Id = entity.IlId;
+            txtIl.Text = entity.IlAdi;
             txtAciklama.Text = entity.Aciklama;
             tglDurum.IsOn = entity.Durum;
 
-        }   
+        }
         protected override void GuncelNesneOlustur()
         {
             CurrentEntity = new VergiDairesi
             {
                 Id = Id,
                 Kod = txtKod.Text,
-                VergiDairesiAdi = txtVergiDairesiAdi.Text,
+                Ad = txtVergiDairesiAdi.Text,
+                VergiDairesiKodu = txtVergiDairesiKodu.Text,
+                IlId = Convert.ToInt64(txtIl.Id),
                 Aciklama = txtAciklama.Text,
                 Durum = tglDurum.IsOn
             };
@@ -52,5 +59,17 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.VergiDairesiForms
 
         }
 
+
+        protected override void SecimYap(object sender)
+        {
+            if (!(sender is ButtonEdit)) return;
+
+            using (var sec = new SelectFunctions())
+            {
+                if (sender == txtIl)
+                    sec.Sec(txtIl);
+            }
+
+        }
     }
 }

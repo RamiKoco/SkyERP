@@ -1,4 +1,5 @@
-﻿using AbcYazilim.OgrenciTakip.Model.Dto;
+﻿using AbcYazilim.OgrenciTakip.Bll.General;
+using AbcYazilim.OgrenciTakip.Model.Dto;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Message;
 using AsamaGlobal.ERP.UI.Win.Forms.KisiForms;
@@ -15,7 +16,7 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
         {
             InitializeComponent();
 
-            Bll = new Bll.General.AdresHareketleriBll();
+            Bll = new AdresHareketleriBll();
             Tablo = tablo;
             EventsLoad();
             TabloEventsYukle();
@@ -29,7 +30,7 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
         protected internal override void Listele()
         {
 
-            var list = ((Bll.General.AdresHareketleriBll)Bll)
+            var list = ((AdresHareketleriBll)Bll)
                 .List(x => x.KisiId == OwnerForm.Id)
                 .ToBindingList<AdresHareketleriL>();
 

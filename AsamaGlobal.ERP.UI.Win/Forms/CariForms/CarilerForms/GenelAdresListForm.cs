@@ -3,7 +3,7 @@ using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
 using AsamaGlobal.ERP.UI.Win.Show;
 
-namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
+namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
 {
     public partial class GenelAdresListForm : BaseListForm
     {

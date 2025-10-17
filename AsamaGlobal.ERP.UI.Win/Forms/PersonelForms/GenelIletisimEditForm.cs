@@ -20,13 +20,15 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
     {
         #region Variables
         private readonly long _personelId;
-        private readonly string _personelAdi;    
+        private readonly string _personelAdi;
+        private readonly string _personelSoyadi;
         #endregion
         public GenelIletisimEditForm(params object[] prm)
         {
             InitializeComponent();
             _personelId = (long)prm[0];
             _personelAdi = prm[1].ToString();
+            _personelSoyadi = prm[2].ToString();
 
             DataLayoutControl = myDataLayoutControl;
             Bll = new GenelIletisimBll(myDataLayoutControl);
@@ -45,7 +47,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
         {
             OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new GenelIletisimS() : ((GenelIletisimBll)Bll).Single(FilterFunctions.Filter<GenelIletisim>(Id));
             NesneyiKontrollereBagla();
-            Text = Text + $" - ( {_personelAdi} )";
+            Text = Text + $" - ( {_personelAdi} {_personelSoyadi} )📌";
 
             if (BaseIslemTuru != IslemTuru.EntityInsert) return;
             Id = BaseIslemTuru.IdOlustur(OldEntity);

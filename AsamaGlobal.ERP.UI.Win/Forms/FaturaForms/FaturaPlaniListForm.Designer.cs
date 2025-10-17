@@ -33,8 +33,6 @@
             DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
-            this.colNetTutar = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
-            this.repositoryDecimal = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.longNavigator = new AsamaGlobal.ERP.UI.Win.UserControls.Navigators.LongNavigator();
             this.grid = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridControl();
             this.tablo = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridView();
@@ -56,7 +54,9 @@
             this.colIptalDurumu = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colBrutTutar = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
+            this.repositoryDecimal = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.colIndirim = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
+            this.colNetTutar = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.gridBand5 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colPlanTutar = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.colPlanIndirim = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
@@ -69,18 +69,25 @@
             this.colOzelKod5 = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.progressBarControl = new DevExpress.XtraEditors.ProgressBarControl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryDecimal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryTarih)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryTarih.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryDecimal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarControl.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
             // 
             this.ribbonControl.ExpandCollapseItem.Id = 0;
-            this.ribbonControl.Size = new System.Drawing.Size(914, 135);
+            // 
+            // 
+            // 
+            this.ribbonControl.SearchEditItem.AccessibleName = "Search Item";
+            this.ribbonControl.SearchEditItem.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Left;
+            this.ribbonControl.SearchEditItem.EditWidth = 150;
+            this.ribbonControl.SearchEditItem.Id = -5000;
+            this.ribbonControl.SearchEditItem.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
             // 
             // btnGonder
@@ -102,32 +109,6 @@
             // 
             this.barSubItem8.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem8.ImageOptions.Image")));
             // 
-            // colNetTutar
-            // 
-            this.colNetTutar.Caption = "Net Tutar";
-            this.colNetTutar.ColumnEdit = this.repositoryDecimal;
-            this.colNetTutar.FieldName = "HizmetNetTutar";
-            this.colNetTutar.Name = "colNetTutar";
-            this.colNetTutar.OptionsColumn.AllowEdit = false;
-            this.colNetTutar.StatusBarAciklama = null;
-            this.colNetTutar.StatusBarKisaYol = null;
-            this.colNetTutar.StatusBarKisaYolAciklama = null;
-            this.colNetTutar.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "HizmetNetTutar", "{0:n2}")});
-            this.colNetTutar.Visible = true;
-            this.colNetTutar.Width = 100;
-            // 
-            // repositoryDecimal
-            // 
-            this.repositoryDecimal.Appearance.Options.UseTextOptions = true;
-            this.repositoryDecimal.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.repositoryDecimal.AutoHeight = false;
-            this.repositoryDecimal.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryDecimal.DisplayFormat.FormatString = "{0:n2}";
-            this.repositoryDecimal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.repositoryDecimal.Name = "repositoryDecimal";
-            // 
             // longNavigator
             // 
             this.longNavigator.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -139,14 +120,14 @@
             // grid
             // 
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.Location = new System.Drawing.Point(0, 135);
+            this.grid.Location = new System.Drawing.Point(0, 109);
             this.grid.MainView = this.tablo;
             this.grid.MenuManager = this.ribbonControl;
             this.grid.Name = "grid";
             this.grid.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryTarih,
             this.repositoryDecimal});
-            this.grid.Size = new System.Drawing.Size(914, 299);
+            this.grid.Size = new System.Drawing.Size(914, 325);
             this.grid.TabIndex = 3;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tablo});
@@ -203,7 +184,6 @@
             this.colOzelKod5});
             gridFormatRule1.ApplyToRow = true;
             gridFormatRule1.Column = this.colNetTutar;
-            gridFormatRule1.Description = null;
             gridFormatRule1.Name = "Format0";
             formatConditionRuleExpression1.Appearance.BackColor = System.Drawing.Color.IndianRed;
             formatConditionRuleExpression1.Appearance.Options.HighPriority = true;
@@ -212,7 +192,6 @@
             gridFormatRule1.Rule = formatConditionRuleExpression1;
             gridFormatRule2.ApplyToRow = true;
             gridFormatRule2.Column = this.colNetTutar;
-            gridFormatRule2.Description = null;
             gridFormatRule2.Name = "Format1";
             formatConditionRuleExpression2.Appearance.BackColor = System.Drawing.Color.LemonChiffon;
             formatConditionRuleExpression2.Appearance.Options.HighPriority = true;
@@ -464,6 +443,17 @@
             this.colBrutTutar.Visible = true;
             this.colBrutTutar.Width = 100;
             // 
+            // repositoryDecimal
+            // 
+            this.repositoryDecimal.Appearance.Options.UseTextOptions = true;
+            this.repositoryDecimal.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.repositoryDecimal.AutoHeight = false;
+            this.repositoryDecimal.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryDecimal.DisplayFormat.FormatString = "{0:n2}";
+            this.repositoryDecimal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repositoryDecimal.Name = "repositoryDecimal";
+            // 
             // colIndirim
             // 
             this.colIndirim.Caption = "İndirim";
@@ -478,6 +468,21 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "HizmetIndirim", "{0:n2}")});
             this.colIndirim.Visible = true;
             this.colIndirim.Width = 100;
+            // 
+            // colNetTutar
+            // 
+            this.colNetTutar.Caption = "Net Tutar";
+            this.colNetTutar.ColumnEdit = this.repositoryDecimal;
+            this.colNetTutar.FieldName = "HizmetNetTutar";
+            this.colNetTutar.Name = "colNetTutar";
+            this.colNetTutar.OptionsColumn.AllowEdit = false;
+            this.colNetTutar.StatusBarAciklama = null;
+            this.colNetTutar.StatusBarKisaYol = null;
+            this.colNetTutar.StatusBarKisaYolAciklama = null;
+            this.colNetTutar.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "HizmetNetTutar", "{0:n2}")});
+            this.colNetTutar.Visible = true;
+            this.colNetTutar.Width = 100;
             // 
             // gridBand5
             // 
@@ -624,22 +629,22 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 482);
-            this.Controls.Add(this.grid);
             this.Controls.Add(this.progressBarControl);
+            this.Controls.Add(this.grid);
             this.Controls.Add(this.longNavigator);
             this.IconOptions.ShowIcon = false;
             this.Name = "FaturaPlaniListForm";
             this.Text = "Fatura Planı Kartları";
             this.Controls.SetChildIndex(this.ribbonControl, 0);
             this.Controls.SetChildIndex(this.longNavigator, 0);
-            this.Controls.SetChildIndex(this.progressBarControl, 0);
             this.Controls.SetChildIndex(this.grid, 0);
+            this.Controls.SetChildIndex(this.progressBarControl, 0);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryDecimal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryTarih.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryTarih)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryDecimal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarControl.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

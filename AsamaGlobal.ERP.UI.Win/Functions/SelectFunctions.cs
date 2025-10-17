@@ -3,15 +3,23 @@ using AbcYazilim.OgrenciTakip.Model.Dto.KisiDto;
 using AbcYazilim.OgrenciTakip.Model.Entities;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Model.Dto;
+using AsamaGlobal.ERP.Model.Dto.CariDto.CariSubeDto;
 using AsamaGlobal.ERP.Model.Dto.PersonelDto;
 using AsamaGlobal.ERP.Model.Entities;
+using AsamaGlobal.ERP.Model.Entities.CariEntity.CariGrublari;
+using AsamaGlobal.ERP.Model.Entities.CariEntity.CariSube;
+using AsamaGlobal.ERP.Model.Entities.CariEntity.CariTurleri;
 using AsamaGlobal.ERP.Model.Entities.KisiEntity;
 using AsamaGlobal.ERP.UI.Win.Forms.AdresTurleriForms;
 using AsamaGlobal.ERP.UI.Win.Forms.AvukatForms;
 using AsamaGlobal.ERP.UI.Win.Forms.BankaForms;
 using AsamaGlobal.ERP.UI.Win.Forms.BankaHesapForms;
 using AsamaGlobal.ERP.UI.Win.Forms.BankaSubeForms;
+using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
 using AsamaGlobal.ERP.UI.Win.Forms.CariForms;
+using AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariGruplariForms;
+using AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms.CariSubeGrubuForms;
+using AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariTurleriForms;
 using AsamaGlobal.ERP.UI.Win.Forms.DepartmanForms;
 using AsamaGlobal.ERP.UI.Win.Forms.EtiketForms;
 using AsamaGlobal.ERP.UI.Win.Forms.GorevForms;
@@ -36,6 +44,7 @@ using AsamaGlobal.ERP.UI.Win.Forms.PersonelForms;
 using AsamaGlobal.ERP.UI.Win.Forms.PozisyonForms;
 using AsamaGlobal.ERP.UI.Win.Forms.RehberForms;
 using AsamaGlobal.ERP.UI.Win.Forms.RenkForms;
+using AsamaGlobal.ERP.UI.Win.Forms.SektorForms;
 using AsamaGlobal.ERP.UI.Win.Forms.SinifForms;
 using AsamaGlobal.ERP.UI.Win.Forms.SinifGrupForms;
 using AsamaGlobal.ERP.UI.Win.Forms.SosyalMedyaForms;
@@ -47,6 +56,7 @@ using AsamaGlobal.ERP.UI.Win.Forms.VergiDairesiForms;
 using AsamaGlobal.ERP.UI.Win.Forms.YabancıDilForms;
 using AsamaGlobal.ERP.UI.Win.Show;
 using AsamaGlobal.ERP.UI.Win.UserControls.Controls;
+using DevExpress.XtraEditors;
 using System;
 
 namespace AsamaGlobal.ERP.UI.Win.Functions
@@ -296,16 +306,17 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
                         }
                     }
                     break;
-
                 case "txtVergiDairesi":
                     {
                         var entity = (VergiDairesiL)ShowListForms<VergiDairesiListForm>.ShowDialogListForm(
                             KartTuru.VergiDairesi,
                             _btnEdit.Id,
-                            frm => {
+                            frm =>
+                            {
                                 frm.ShowYeniButton = false;
                                 frm.ShowDuzeltButton = false;
-                                frm.ShowSilButton = false;                             
+                                frm.ShowSilButton = false;
+                               
                             }
 
                         );
@@ -313,10 +324,53 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
                         if (entity != null)
                         {
                             _btnEdit.Id = entity.Id;
-                            _btnEdit.EditValue = entity.VergiDairesiAdi;
+                            _btnEdit.EditValue = entity.Ad;
                         }
                     }
                     break;
+
+                case "txtCariTuru":
+                    {
+                        var entity = (CariTuru)ShowListForms<CariTuruListForm>.ShowDialogListForm(KartTuru.CariTuru, _btnEdit.Id);
+                        if (entity != null)
+                        {
+                            _btnEdit.Id = entity.Id;
+                            _btnEdit.EditValue = entity.Ad;
+                        }
+                    }
+                    break;
+
+                case "txtCariGrubu":
+                    {
+                        var entity = (CariGrubu)ShowListForms<CariGrubuListForm>.ShowDialogListForm(KartTuru.CariGrubu, _btnEdit.Id);
+                        if (entity != null)
+                        {
+                            _btnEdit.Id = entity.Id;
+                            _btnEdit.EditValue = entity.Ad;
+                        }
+                    }
+                    break;   
+                case "txtCariSubeGrubu":
+                    {
+                        var entity = (CariSubeGrubuL)ShowListForms<CariSubeGrubuListForm>.ShowDialogListForm(KartTuru.CariSubeGrubu, _btnEdit.Id);
+                        if (entity != null)
+                        {
+                            _btnEdit.Id = entity.Id;
+                            _btnEdit.EditValue = entity.Ad;
+                        }
+                    }
+                    break;   
+                    
+                case "txtSektor":
+                    {
+                        var entity = (Sektor)ShowListForms<SektorListForm>.ShowDialogListForm(KartTuru.Sektor, _btnEdit.Id);
+                        if (entity != null)
+                        {
+                            _btnEdit.Id = entity.Id;
+                            _btnEdit.EditValue = entity.Ad;
+                        }
+                    }
+                    break;                                 
 
                 case "txtRenk":
                     {

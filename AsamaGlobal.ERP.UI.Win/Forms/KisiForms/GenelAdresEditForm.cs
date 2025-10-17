@@ -17,12 +17,15 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
         #region Variables
         private readonly long _kisiId;
         private readonly string _kisiAdi;
+        private readonly string _kisiSoyadi;
         #endregion
         public GenelAdresEditForm(params object[] prm)
         {
             InitializeComponent();
             _kisiId = (long)prm[0];
             _kisiAdi = prm[1].ToString();
+            _kisiSoyadi = prm[2].ToString();
+
             DataLayoutControl = myDataLayoutControl;
             Bll = new GenelAdresBll(myDataLayoutControl);
             txtAdresTipi.Properties.Items.AddRange(EnumFunctions.GetEnumDescriptionList<AdresTipi>());
@@ -33,7 +36,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
         {
             OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new GenelAdresS() : ((GenelAdresBll)Bll).Single(FilterFunctions.Filter<GenelAdres>(Id));
             NesneyiKontrollereBagla();
-            Text = Text + $" - ( {_kisiAdi} )";
+            Text = Text + $" - ( {_kisiAdi}  {_kisiSoyadi} )";
             if (BaseIslemTuru != IslemTuru.EntityInsert) return;
             Id = BaseIslemTuru.IdOlustur(OldEntity);
             txtKod.Text = ((GenelAdresBll)Bll).YeniKodVer(x => x.KisiId == _kisiId);
@@ -67,7 +70,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
             tglDurum.IsOn = entity.Durum;
         }
         protected override void GuncelNesneOlustur()
-        {
+        {         
+
             decimal? enlem = null;
             if (!string.IsNullOrWhiteSpace(txtEnlem.Text))
                 enlem = Math.Round(decimal.Parse(txtEnlem.Text, CultureInfo.InvariantCulture), 6);

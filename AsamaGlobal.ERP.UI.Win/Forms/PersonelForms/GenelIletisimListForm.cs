@@ -10,6 +10,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
         #region Variables
         private readonly long _personelId;
         private readonly string _personelAdi;
+        private readonly string _personelSoyadi;
         #endregion
         public GenelIletisimListForm(params object[] prm)
         {
@@ -19,13 +20,14 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
 
             _personelId = (long)prm[0];
             _personelAdi = prm[1].ToString();
+            _personelSoyadi = prm[2].ToString();
         }
         protected override void DegiskenleriDoldur()
         {
             Tablo = tablo;
             BaseKartTuru = KartTuru.GenelIletisim;
             Navigator = longNavigator.Navigator;
-            Text = Text + $" - ( {_personelAdi} )";
+            Text = Text + $" - ( {_personelAdi} {_personelSoyadi})";
         }
         protected override void Listele()
         {
@@ -33,7 +35,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
         }
         protected override void ShowEditForm(long id)
         {
-            var result = ShowEditForms<GenelIletisimEditForm>.ShowDialogEditForm(KartTuru.GenelIletisim, id, _personelId, _personelAdi);
+            var result = ShowEditForms<GenelIletisimEditForm>.ShowDialogEditForm(KartTuru.GenelIletisim, id, _personelId, _personelAdi, _personelSoyadi);
             ShowEditFormDefault(result);
         }
     }

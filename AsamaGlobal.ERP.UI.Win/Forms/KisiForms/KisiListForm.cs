@@ -48,11 +48,11 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
 
             if (barItem == btnIletisimKartlari)
             {
-                ShowListForms<GenelIletisimListForm>.ShowListForm(KartTuru.GenelIletisim, entity.Id, entity.Ad);
+                ShowListForms<GenelIletisimListForm>.ShowListForm(KartTuru.KisiIletisim, entity.Id, entity.Ad, entity.Soyad);
             }
             else if (barItem == btnAdresKartlari)
             {
-                ShowListForms<GenelAdresListForm>.ShowListForm(KartTuru.GenelAdres, entity.Id, entity.Ad);
+                ShowListForms<GenelAdresListForm>.ShowListForm(KartTuru.KisiAdres, entity.Id, entity.Ad, entity.Soyad);
             }
         }
     }

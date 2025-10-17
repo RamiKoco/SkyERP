@@ -3,6 +3,7 @@ using AsamaGlobal.ERP.Model.Entities;
 using AsamaGlobal.ERP.Model.Entities.Base;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
+
 namespace AsamaGlobal.ERP.Model.Dto
 {
     [NotMapped]
@@ -11,40 +12,10 @@ namespace AsamaGlobal.ERP.Model.Dto
         public string SosyalMedyaPlatformuAdi { get; set; }
         public string OzelKod1Adi { get; set; }
         public string OzelKod2Adi { get; set; }
-        //public string KisiAdi { get; set; }
-        //public string KayitHesabiAdi
-        //{
-        //    get
-        //    {
-        //        if (KayitTuru == KayitTuru.Kisi)
-        //            return KisiAdi;
-        //        //else if (KayitTuru == KayitTuru.Personel)
-        //        //    return PersonelAdi;
-        //        //else if (KayitTuru == KayitTuru.Meslek)
-        //        //    return MeslekAdi;
-        //        else
-        //            return null;
-        //    }
-        //}
     }
     public class GenelIletisimL:BaseEntity
     {
-        //public string KisiAdi { get; set; }
         public KayitTuru KayitTuru { get; set; }
-        //public string KayitHesabiAdi
-        //{
-        //    get
-        //    {
-        //        if (KayitTuru == KayitTuru.Kisi)
-        //            return KisiAdi;
-        //        //else if (KayitTuru == KayitTuru.Personel)
-        //        //    return PersonelAdi;
-        //        //else if (KayitTuru == KayitTuru.Meslek)
-        //        //    return MeslekAdi;
-        //        else
-        //            return null;
-        //    }
-        //}
         public IletisimTuru IletisimTuru { get; set; }
         public IletisimDurumu IzinDurumu { get; set; }
         public IletisimKanalTipi IletisimKanalTipi { get; set; }

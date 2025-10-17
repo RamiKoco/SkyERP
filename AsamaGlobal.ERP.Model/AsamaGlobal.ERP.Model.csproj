@@ -65,7 +65,9 @@
     <Compile Include="Dto\BelgeTuruDto.cs" />
     <Compile Include="Dto\BilgiNotlariDto.cs" />
     <Compile Include="Dto\CariDto.cs" />
+    <Compile Include="Dto\CariDto\CariGrubuDto.cs" />
     <Compile Include="Dto\CariDto\CarilerDto.cs" />
+    <Compile Include="Dto\CariDto\CariSubeDto\CariSubeGrubuDto.cs" />
     <Compile Include="Dto\CariDto\CariSubeDto\CariSubelerDto.cs" />
     <Compile Include="Dto\EposBilgileriDto.cs" />
     <Compile Include="Dto\EtiketDto.cs" />
@@ -119,8 +121,11 @@
     <Compile Include="Entities\AdresTurleri.cs" />
     <Compile Include="Entities\BaglantiAyarlari.cs" />
     <Compile Include="Entities\BelgeTuru.cs" />
+    <Compile Include="Entities\CariEntity\CariGruplari\CariGrubu.cs" />
     <Compile Include="Entities\CariEntity\Cariler.cs" />
+    <Compile Include="Entities\CariEntity\CariSube\CariSubeGrubu.cs" />
     <Compile Include="Entities\CariEntity\CariSube\CariSubeler.cs" />
+    <Compile Include="Entities\CariEntity\CariTurleri\CariTuru.cs" />
     <Compile Include="Entities\Departman.cs" />
     <Compile Include="Entities\DonemParametre.cs" />
     <Compile Include="Entities\Etiket.cs" />
@@ -198,6 +203,8 @@
     <Compile Include="Entities\Rol.cs" />
     <Compile Include="Entities\RolYetki.cs" />
     <Compile Include="Entities\RolYetkileri.cs" />
+    <Compile Include="Entities\Sektor.cs" />
+    <Compile Include="Entities\CariSektorBaglanti.cs" />
     <Compile Include="Entities\Servis.cs" />
     <Compile Include="Entities\SinavBilgileri.cs" />
     <Compile Include="Entities\Sinif.cs" />

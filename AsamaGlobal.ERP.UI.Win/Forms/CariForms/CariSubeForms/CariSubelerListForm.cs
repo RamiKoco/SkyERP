@@ -1,4 +1,5 @@
-﻿using AsamaGlobal.ERP.Common.Enums;
+﻿using AsamaGlobal.ERP.Bll.General.CarilerBll;
+using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Model.Dto.CariDto.CariSubeDto;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
@@ -16,7 +17,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
         public CariSubelerListForm(params object[] prm)
         {
             InitializeComponent();
-            Bll = new Bll.General.CarilerBll.CariSubeBll.CariSubelerBll();
+            Bll = new CariSubelerBll();
 
             _carilerId = (long)prm[0];
             _carilerAdi = prm[1].ToString();
@@ -37,7 +38,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
         }
         protected override void Listele()
         {
-            Tablo.GridControl.DataSource = ((Bll.General.CarilerBll.CariSubeBll.CariSubelerBll)Bll).List(x => x.Durum == AktifKartlariGoster && x.CarilerId == _carilerId);
+            Tablo.GridControl.DataSource = ((CariSubelerBll)Bll).List(x => x.Durum == AktifKartlariGoster && x.CarilerId == _carilerId);
         }
 
         protected override void ShowEditForm(long id)
@@ -57,7 +58,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
 
             if (barItem == btnAdresKartlari)
             {
-                ShowListForms<GenelAdresListForm>.ShowListForm(KartTuru.GenelAdres, entity.Id, entity.CariSubeAdi);
+                ShowListForms<GenelAdresListForm>.ShowListForm(KartTuru.CariSubeAdres, entity.Id, entity.CariSubeAdi);
             }
             else if (barItem == btnIletisimKartlari)
             {

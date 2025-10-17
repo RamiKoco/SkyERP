@@ -1,4 +1,5 @@
-﻿using AbcYazilim.OgrenciTakip.Model.Entities;
+﻿using AbcYazilim.OgrenciTakip.Bll.General;
+using AbcYazilim.OgrenciTakip.Model.Entities;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
@@ -11,7 +12,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.SosyalMedyaForms
         public SosyalMedyaPlatformuListForm()
         {
             InitializeComponent();
-            Bll = new Bll.General.SosyalMedyaPlatformuBll();
+            Bll = new SosyalMedyaPlatformuBll();
         }
 
         protected override void DegiskenleriDoldur()
@@ -24,7 +25,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.SosyalMedyaForms
 
         protected override void Listele()
         {
-            Tablo.GridControl.DataSource = ((Bll.General.SosyalMedyaPlatformuBll)Bll).List(FilterFunctions.Filter<SosyalMedyaPlatformu>(AktifKartlariGoster));
+            Tablo.GridControl.DataSource = ((SosyalMedyaPlatformuBll)Bll).List(FilterFunctions.Filter<SosyalMedyaPlatformu>(AktifKartlariGoster));
         }
     }
 }

@@ -1,16 +1,19 @@
 ﻿using AbcYazilim.OgrenciTakip.Common.Enums;
 using AsamaGlobal.ERP.Bll.General;
+using AsamaGlobal.ERP.Bll.General.CarilerBll;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Functions;
 using AsamaGlobal.ERP.Model.Dto;
+using AsamaGlobal.ERP.Model.Dto.CariDto;
 using AsamaGlobal.ERP.Model.Entities;
+using AsamaGlobal.ERP.Model.Entities.CariEntity;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
 using DevExpress.XtraEditors;
 using System;
 using System.Globalization;
 
-namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
+namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
 {
     public partial class GenelAdresEditForm : BaseEditForm
     {

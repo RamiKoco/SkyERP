@@ -1,4 +1,4 @@
-﻿namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
+﻿namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
 {
     partial class GenelIletisimEditForm
     {

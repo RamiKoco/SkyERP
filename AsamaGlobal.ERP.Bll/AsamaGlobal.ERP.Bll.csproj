@@ -43,6 +43,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -75,8 +76,11 @@
     <Compile Include="General\BelgeTuruBll.cs" />
     <Compile Include="General\BilgiNotlariBll.cs" />
     <Compile Include="General\CariBll.cs" />
+    <Compile Include="General\CarilerBll\CariGruplariBll\CariGrubuBll.cs" />
     <Compile Include="General\CarilerBll\CarilerBll.cs" />
+    <Compile Include="General\CarilerBll\CariSubeBll\CariSubeGrubuBll.cs" />
     <Compile Include="General\CarilerBll\CariSubeBll\CariSubelerBll.cs" />
+    <Compile Include="General\CarilerBll\CariTurleriBll\CariTuruBll.cs" />
     <Compile Include="General\DepartmanBll.cs" />
     <Compile Include="General\DonemBll.cs" />
     <Compile Include="General\DonemParametreBll.cs" />
@@ -147,6 +151,7 @@
     <Compile Include="General\RenkBll.cs" />
     <Compile Include="General\RolBll.cs" />
     <Compile Include="General\RolYetkileriBll.cs" />
+    <Compile Include="General\SektorBll.cs" />
     <Compile Include="General\ServisBll.cs" />
     <Compile Include="General\SinavBilgileriBll.cs" />
     <Compile Include="General\SinifBll.cs" />
@@ -191,5 +196,6 @@
       <Name>AsamaGlobal.ERP.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

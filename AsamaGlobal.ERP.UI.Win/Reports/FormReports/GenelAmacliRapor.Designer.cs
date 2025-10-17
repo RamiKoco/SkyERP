@@ -183,15 +183,7 @@
             // ribbonControl
             // 
             this.ribbonControl.ExpandCollapseItem.Id = 0;
-            // 
-            // 
-            // 
-            this.ribbonControl.SearchEditItem.AccessibleName = "Search Item";
-            this.ribbonControl.SearchEditItem.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Left;
-            this.ribbonControl.SearchEditItem.EditWidth = 150;
-            this.ribbonControl.SearchEditItem.Id = -5000;
-            this.ribbonControl.SearchEditItem.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.ribbonControl.Size = new System.Drawing.Size(1015, 109);
+            this.ribbonControl.Size = new System.Drawing.Size(1015, 135);
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
             // 
             // btnGonder
@@ -231,11 +223,11 @@
             this.myDataLayoutControl.Controls.Add(this.txtKayitSekli);
             this.myDataLayoutControl.Controls.Add(this.txtSubeler);
             this.myDataLayoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.myDataLayoutControl.Location = new System.Drawing.Point(0, 109);
+            this.myDataLayoutControl.Location = new System.Drawing.Point(0, 135);
             this.myDataLayoutControl.Name = "myDataLayoutControl";
             this.myDataLayoutControl.OptionsFocus.EnableAutoTabOrder = false;
             this.myDataLayoutControl.Root = this.Root;
-            this.myDataLayoutControl.Size = new System.Drawing.Size(1015, 466);
+            this.myDataLayoutControl.Size = new System.Drawing.Size(1015, 440);
             this.myDataLayoutControl.TabIndex = 2;
             this.myDataLayoutControl.Text = "myDataLayoutControl1";
             // 
@@ -248,7 +240,7 @@
             this.grid.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryDecimal,
             this.repositoryYuzde});
-            this.grid.Size = new System.Drawing.Size(1011, 386);
+            this.grid.Size = new System.Drawing.Size(1011, 360);
             this.grid.TabIndex = 10;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tablo});
@@ -374,6 +366,7 @@
             this.colKalan});
             gridFormatRule1.ApplyToRow = true;
             gridFormatRule1.Column = this.colIptalDurumu;
+            gridFormatRule1.Description = null;
             gridFormatRule1.Name = "Format0";
             formatConditionRuleExpression1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             formatConditionRuleExpression1.Appearance.Options.HighPriority = true;
@@ -1828,7 +1821,7 @@
             // 
             // longNavigator
             // 
-            this.longNavigator.Location = new System.Drawing.Point(2, 442);
+            this.longNavigator.Location = new System.Drawing.Point(2, 416);
             this.longNavigator.Name = "longNavigator";
             this.longNavigator.Size = new System.Drawing.Size(1011, 22);
             this.longNavigator.TabIndex = 9;
@@ -1889,7 +1882,6 @@
             // 
             this.txtKayitSekli.EnterMoveNextControl = true;
             this.txtKayitSekli.Location = new System.Drawing.Point(91, 28);
-            this.txtKayitSekli.MenuManager = this.ribbonControl;
             this.txtKayitSekli.Name = "txtKayitSekli";
             this.txtKayitSekli.Properties.Appearance.BackColor = System.Drawing.Color.LightCyan;
             this.txtKayitSekli.Properties.Appearance.Options.UseBackColor = true;
@@ -1901,7 +1893,6 @@
             this.txtKayitSekli.StatusBarAciklama = null;
             this.txtKayitSekli.StatusBarKisaYol = "F4 :";
             this.txtKayitSekli.StatusBarKisaYolAciklama = null;
-            this.txtKayitSekli.StyleController = this.myDataLayoutControl;
             this.txtKayitSekli.TabIndex = 5;
             // 
             // txtSubeler
@@ -1973,7 +1964,7 @@
             rowDefinition3,
             rowDefinition4});
             this.Root.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 2, 0);
-            this.Root.Size = new System.Drawing.Size(1015, 466);
+            this.Root.Size = new System.Drawing.Size(1015, 440);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -2052,7 +2043,7 @@
             this.layoutControlItem6.AppearanceItemCaption.ForeColor = System.Drawing.Color.Maroon;
             this.layoutControlItem6.AppearanceItemCaption.Options.UseForeColor = true;
             this.layoutControlItem6.Control = this.longNavigator;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 438);
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 412);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.OptionsTableLayoutItem.ColumnSpan = 7;
             this.layoutControlItem6.OptionsTableLayoutItem.RowIndex = 3;
@@ -2069,7 +2060,7 @@
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.OptionsTableLayoutItem.ColumnSpan = 7;
             this.layoutControlItem7.OptionsTableLayoutItem.RowIndex = 2;
-            this.layoutControlItem7.Size = new System.Drawing.Size(1015, 390);
+            this.layoutControlItem7.Size = new System.Drawing.Size(1015, 364);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 

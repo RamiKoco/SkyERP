@@ -5,11 +5,12 @@ using AsamaGlobal.ERP.UI.Win.Show;
 
 namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
 {
-    public partial class GenelAdresListForm :BaseListForm
+    public partial class GenelAdresListForm : BaseListForm
     {
         #region Variables
         private readonly long _kisiId;
         private readonly string _kisiAdi;
+        private readonly string _kisiSoyadi;
         #endregion
         public GenelAdresListForm(params object[] prm)
         {
@@ -18,13 +19,14 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
 
             _kisiId = (long)prm[0];
             _kisiAdi = prm[1].ToString();
+            _kisiSoyadi = prm[2].ToString();
         }
         protected override void DegiskenleriDoldur()
         {
             Tablo = tablo;
             BaseKartTuru = KartTuru.GenelAdres;
             Navigator = longNavigator.Navigator;
-            Text = Text + $" - ( {_kisiAdi} )";
+            Text = Text + $" - ( {_kisiAdi} {_kisiSoyadi})";
         }
         protected override void Listele()
         {
@@ -32,7 +34,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
         }
         protected override void ShowEditForm(long id)
         {
-            var result = ShowEditForms<GenelAdresEditForm>.ShowDialogEditForm(KartTuru.GenelAdres, id, _kisiId, _kisiAdi);
+            var result = ShowEditForms<GenelAdresEditForm>.ShowDialogEditForm(KartTuru.GenelAdres, id, _kisiId, _kisiAdi, _kisiSoyadi);
             ShowEditFormDefault(result);
 
         }

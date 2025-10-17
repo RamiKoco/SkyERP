@@ -30,12 +30,12 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnaForm));
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem1 = new DevExpress.Utils.ToolTipSeparatorItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnaForm));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnOkulKartlari = new DevExpress.XtraBars.BarButtonItem();
             this.btnIlKartlari = new DevExpress.XtraBars.BarButtonItem();
@@ -117,6 +117,11 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
             this.btnKurumTuruKartlari = new DevExpress.XtraBars.BarButtonItem();
             this.btnKurumlarKartlari = new DevExpress.XtraBars.BarButtonItem();
             this.btnCarilerKartlari = new DevExpress.XtraBars.BarButtonItem();
+            this.btnTest = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCariTuruKartlari = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCariGrubuKartlari = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSektorKartlari = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCariSubeGrubuKartlari = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -239,9 +244,14 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
             this.btnBelgeTuruKartlari,
             this.btnKurumTuruKartlari,
             this.btnKurumlarKartlari,
-            this.btnCarilerKartlari});
+            this.btnCarilerKartlari,
+            this.btnTest,
+            this.btnCariTuruKartlari,
+            this.btnCariGrubuKartlari,
+            this.btnSektorKartlari,
+            this.btnCariSubeGrubuKartlari});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 81;
+            this.ribbonControl.MaxItemId = 86;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -340,16 +350,16 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
             // 
             this.btnMeslekKartlari.Caption = "Meslek Kartları";
             this.btnMeslekKartlari.Id = 10;
-            this.btnMeslekKartlari.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.builder_16x16;
-            this.btnMeslekKartlari.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.builder_32x32;
+            this.btnMeslekKartlari.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnMeslekKartlari.ImageOptions.Image")));
+            this.btnMeslekKartlari.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnMeslekKartlari.ImageOptions.LargeImage")));
             this.btnMeslekKartlari.Name = "btnMeslekKartlari";
             // 
             // btnYakinlikKartlari
             // 
             this.btnYakinlikKartlari.Caption = "Yakınlık Kartları";
             this.btnYakinlikKartlari.Id = 11;
-            this.btnYakinlikKartlari.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.proximity_16x16;
-            this.btnYakinlikKartlari.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.proximity_32x32;
+            this.btnYakinlikKartlari.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnYakinlikKartlari.ImageOptions.Image")));
+            this.btnYakinlikKartlari.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnYakinlikKartlari.ImageOptions.LargeImage")));
             this.btnYakinlikKartlari.Name = "btnYakinlikKartlari";
             this.btnYakinlikKartlari.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
@@ -357,8 +367,8 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
             // 
             this.btnIsyeriKartlari.Caption = "İşyeri Kartları";
             this.btnIsyeriKartlari.Id = 12;
-            this.btnIsyeriKartlari.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.office_16x16;
-            this.btnIsyeriKartlari.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.office_32x32;
+            this.btnIsyeriKartlari.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnIsyeriKartlari.ImageOptions.Image")));
+            this.btnIsyeriKartlari.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnIsyeriKartlari.ImageOptions.LargeImage")));
             this.btnIsyeriKartlari.Name = "btnIsyeriKartlari";
             this.btnIsyeriKartlari.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
@@ -366,8 +376,8 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
             // 
             this.btnGorevKartlari.Caption = "Görev Kartları";
             this.btnGorevKartlari.Id = 13;
-            this.btnGorevKartlari.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.network_connection_16x16;
-            this.btnGorevKartlari.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.network_connection_32x32;
+            this.btnGorevKartlari.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGorevKartlari.ImageOptions.Image")));
+            this.btnGorevKartlari.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGorevKartlari.ImageOptions.LargeImage")));
             this.btnGorevKartlari.Name = "btnGorevKartlari";
             // 
             // btnIndirimTuruKartlari
@@ -783,16 +793,16 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
             // 
             this.btnKayitKaynakKartlari.Caption = "Kaynak Kartları";
             this.btnKayitKaynakKartlari.Id = 62;
-            this.btnKayitKaynakKartlari.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.replace_16x16;
-            this.btnKayitKaynakKartlari.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.replace_32x32;
+            this.btnKayitKaynakKartlari.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnKayitKaynakKartlari.ImageOptions.Image")));
+            this.btnKayitKaynakKartlari.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnKayitKaynakKartlari.ImageOptions.LargeImage")));
             this.btnKayitKaynakKartlari.Name = "btnKayitKaynakKartlari";
             // 
             // btnKisiGrubuKartlari
             // 
             this.btnKisiGrubuKartlari.Caption = "Grup Kartları";
             this.btnKisiGrubuKartlari.Id = 63;
-            this.btnKisiGrubuKartlari.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.showproduct_16x16;
-            this.btnKisiGrubuKartlari.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.showproduct_32x32;
+            this.btnKisiGrubuKartlari.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnKisiGrubuKartlari.ImageOptions.Image")));
+            this.btnKisiGrubuKartlari.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnKisiGrubuKartlari.ImageOptions.LargeImage")));
             this.btnKisiGrubuKartlari.Name = "btnKisiGrubuKartlari";
             // 
             // btnKisiKartlari
@@ -806,30 +816,32 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
             // 
             this.btnRenkKartlari.Caption = "Renkler";
             this.btnRenkKartlari.Id = 65;
-            this.btnRenkKartlari.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.palette_16x16;
-            this.btnRenkKartlari.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.palette_32x32;
+            this.btnRenkKartlari.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRenkKartlari.ImageOptions.Image")));
+            this.btnRenkKartlari.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnRenkKartlari.ImageOptions.LargeImage")));
             this.btnRenkKartlari.Name = "btnRenkKartlari";
             // 
             // btnEtiketKartlari
             // 
             this.btnEtiketKartlari.Caption = "Etiket Kartları";
             this.btnEtiketKartlari.Id = 66;
-            this.btnEtiketKartlari.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.newfeed_16x16;
-            this.btnEtiketKartlari.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.newfeed_32x32;
+            this.btnEtiketKartlari.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEtiketKartlari.ImageOptions.Image")));
+            this.btnEtiketKartlari.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnEtiketKartlari.ImageOptions.LargeImage")));
             this.btnEtiketKartlari.Name = "btnEtiketKartlari";
             // 
             // btnUlkeKartlari
             // 
             this.btnUlkeKartlari.Caption = "Ülke Kartları";
             this.btnUlkeKartlari.Id = 67;
-            this.btnUlkeKartlari.ImageOptions.SvgImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.business_world;
+            this.btnUlkeKartlari.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUlkeKartlari.ImageOptions.Image")));
+            this.btnUlkeKartlari.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnUlkeKartlari.ImageOptions.LargeImage")));
             this.btnUlkeKartlari.Name = "btnUlkeKartlari";
             // 
             // btnAdresTurleriKartlari
             // 
             this.btnAdresTurleriKartlari.Caption = "Adres Türleri";
             this.btnAdresTurleriKartlari.Id = 68;
-            this.btnAdresTurleriKartlari.ImageOptions.SvgImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.bo_state;
+            this.btnAdresTurleriKartlari.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAdresTurleriKartlari.ImageOptions.Image")));
+            this.btnAdresTurleriKartlari.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAdresTurleriKartlari.ImageOptions.LargeImage")));
             this.btnAdresTurleriKartlari.Name = "btnAdresTurleriKartlari";
             // 
             // btnAdresKartlari
@@ -854,24 +866,24 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
             // 
             this.btnSosyalMedyaKartlari.Caption = "Sosyal Medya";
             this.btnSosyalMedyaKartlari.Id = 71;
-            this.btnSosyalMedyaKartlari.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.viewonweb_16x16;
-            this.btnSosyalMedyaKartlari.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.viewonweb_32x32;
+            this.btnSosyalMedyaKartlari.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSosyalMedyaKartlari.ImageOptions.Image")));
+            this.btnSosyalMedyaKartlari.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSosyalMedyaKartlari.ImageOptions.LargeImage")));
             this.btnSosyalMedyaKartlari.Name = "btnSosyalMedyaKartlari";
             // 
             // btnDepartmanKartlari
             // 
             this.btnDepartmanKartlari.Caption = "Departman Kartları";
             this.btnDepartmanKartlari.Id = 72;
-            this.btnDepartmanKartlari.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.chartsshowlegend_16x16;
-            this.btnDepartmanKartlari.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.chartsshowlegend_32x32;
+            this.btnDepartmanKartlari.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.departman;
+            this.btnDepartmanKartlari.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.departman1;
             this.btnDepartmanKartlari.Name = "btnDepartmanKartlari";
             // 
             // btnKimlikTuruKartlari
             // 
             this.btnKimlikTuruKartlari.Caption = "Kimlik Kartları";
             this.btnKimlikTuruKartlari.Id = 73;
-            this.btnKimlikTuruKartlari.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.card_16x16;
-            this.btnKimlikTuruKartlari.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.card_32x32;
+            this.btnKimlikTuruKartlari.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnKimlikTuruKartlari.ImageOptions.Image")));
+            this.btnKimlikTuruKartlari.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnKimlikTuruKartlari.ImageOptions.LargeImage")));
             this.btnKimlikTuruKartlari.Name = "btnKimlikTuruKartlari";
             // 
             // btnUyrukKartlari
@@ -885,7 +897,8 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
             // 
             this.btnPozisyonKartlari.Caption = "Pozisyon Kartları";
             this.btnPozisyonKartlari.Id = 75;
-            this.btnPozisyonKartlari.ImageOptions.SvgImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.re_layout;
+            this.btnPozisyonKartlari.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPozisyonKartlari.ImageOptions.Image")));
+            this.btnPozisyonKartlari.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPozisyonKartlari.ImageOptions.LargeImage")));
             this.btnPozisyonKartlari.Name = "btnPozisyonKartlari";
             // 
             // btnPersonelKartlari
@@ -907,14 +920,16 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
             // 
             this.btnKurumTuruKartlari.Caption = "Kurum Türü Kartları";
             this.btnKurumTuruKartlari.Id = 78;
-            this.btnKurumTuruKartlari.ImageOptions.SvgImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.greendatabargradient;
+            this.btnKurumTuruKartlari.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnKurumTuruKartlari.ImageOptions.Image")));
+            this.btnKurumTuruKartlari.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnKurumTuruKartlari.ImageOptions.LargeImage")));
             this.btnKurumTuruKartlari.Name = "btnKurumTuruKartlari";
             // 
             // btnKurumlarKartlari
             // 
             this.btnKurumlarKartlari.Caption = "Kurum Kartları";
             this.btnKurumlarKartlari.Id = 79;
-            this.btnKurumlarKartlari.ImageOptions.SvgImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.printcurrentpage;
+            this.btnKurumlarKartlari.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnKurumlarKartlari.ImageOptions.Image")));
+            this.btnKurumlarKartlari.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnKurumlarKartlari.ImageOptions.LargeImage")));
             this.btnKurumlarKartlari.Name = "btnKurumlarKartlari";
             // 
             // btnCarilerKartlari
@@ -923,6 +938,41 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
             this.btnCarilerKartlari.Id = 80;
             this.btnCarilerKartlari.ImageOptions.SvgImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.chart;
             this.btnCarilerKartlari.Name = "btnCarilerKartlari";
+            // 
+            // btnTest
+            // 
+            this.btnTest.Caption = "barButtonItem1";
+            this.btnTest.Id = 81;
+            this.btnTest.Name = "btnTest";
+            // 
+            // btnCariTuruKartlari
+            // 
+            this.btnCariTuruKartlari.Caption = "Cari Türü Kartları";
+            this.btnCariTuruKartlari.Id = 82;
+            this.btnCariTuruKartlari.ImageOptions.SvgImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.datalabels;
+            this.btnCariTuruKartlari.Name = "btnCariTuruKartlari";
+            // 
+            // btnCariGrubuKartlari
+            // 
+            this.btnCariGrubuKartlari.Caption = "Cari Grubu Kartları";
+            this.btnCariGrubuKartlari.Id = 83;
+            this.btnCariGrubuKartlari.ImageOptions.SvgImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources._enum;
+            this.btnCariGrubuKartlari.Name = "btnCariGrubuKartlari";
+            // 
+            // btnSektorKartlari
+            // 
+            this.btnSektorKartlari.Caption = "Sektör Kartları";
+            this.btnSektorKartlari.Id = 84;
+            this.btnSektorKartlari.ImageOptions.SvgImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.itemtypestandard;
+            this.btnSektorKartlari.Name = "btnSektorKartlari";
+            // 
+            // btnCariSubeGrubuKartlari
+            // 
+            this.btnCariSubeGrubuKartlari.Caption = "Cari Şube G.K.";
+            this.btnCariSubeGrubuKartlari.Id = 85;
+            this.btnCariSubeGrubuKartlari.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.pielabelsdatalabels_16x16;
+            this.btnCariSubeGrubuKartlari.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.pielabelsdatalabels_32x32;
+            this.btnCariSubeGrubuKartlari.Name = "btnCariSubeGrubuKartlari";
             // 
             // ribbonPage1
             // 
@@ -999,6 +1049,9 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
             this.ribbonPageGroup3.ItemLinks.Add(this.btnKurumTuruKartlari);
             this.ribbonPageGroup3.ItemLinks.Add(this.btnKurumlarKartlari);
             this.ribbonPageGroup3.ItemLinks.Add(this.btnTahakkukKartlari);
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnCariTuruKartlari);
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnCariGrubuKartlari);
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnSektorKartlari);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             // 
             // ribbonPage6
@@ -1362,5 +1415,10 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
         private DevExpress.XtraBars.BarButtonItem btnKurumTuruKartlari;
         private DevExpress.XtraBars.BarButtonItem btnKurumlarKartlari;
         private DevExpress.XtraBars.BarButtonItem btnCarilerKartlari;
+        private DevExpress.XtraBars.BarButtonItem btnTest;
+        private DevExpress.XtraBars.BarButtonItem btnCariTuruKartlari;
+        private DevExpress.XtraBars.BarButtonItem btnCariGrubuKartlari;
+        private DevExpress.XtraBars.BarButtonItem btnSektorKartlari;
+        private DevExpress.XtraBars.BarButtonItem btnCariSubeGrubuKartlari;
     }
 }

@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VergiDairesiListForm));
             this.grid = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridControl();
             this.tablo = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridView();
             this.colId = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
-            this.colKod = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
-            this.colVergiDairesiAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
+            this.colVergiDairesiKodu = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
+            this.colAd = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
+            this.colIlAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colAciklama = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.longNavigator = new AsamaGlobal.ERP.UI.Win.UserControls.Navigators.LongNavigator();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
@@ -45,6 +47,25 @@
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Size = new System.Drawing.Size(914, 135);
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
+            // 
+            // btnGonder
+            // 
+            this.btnGonder.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGonder.ImageOptions.Image")));
+            this.btnGonder.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGonder.ImageOptions.LargeImage")));
+            // 
+            // btnYeniMakbuz
+            // 
+            this.btnYeniMakbuz.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnYeniMakbuz.ImageOptions.Image")));
+            this.btnYeniMakbuz.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnYeniMakbuz.ImageOptions.LargeImage")));
+            // 
+            // btnYeniRapor
+            // 
+            this.btnYeniRapor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnYeniRapor.ImageOptions.Image")));
+            this.btnYeniRapor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnYeniRapor.ImageOptions.LargeImage")));
+            // 
+            // barSubItem8
+            // 
+            this.barSubItem8.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem8.ImageOptions.Image")));
             // 
             // grid
             // 
@@ -72,8 +93,9 @@
             this.tablo.Appearance.ViewCaption.Options.UseForeColor = true;
             this.tablo.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colId,
-            this.colKod,
-            this.colVergiDairesiAdi,
+            this.colVergiDairesiKodu,
+            this.colAd,
+            this.colIlAdi,
             this.colAciklama});
             this.tablo.GridControl = this.grid;
             this.tablo.Name = "tablo";
@@ -106,33 +128,46 @@
             this.colId.StatusBarKisaYol = null;
             this.colId.StatusBarKisaYolAciklama = null;
             // 
-            // colKod
+            // colVergiDairesiKodu
             // 
-            this.colKod.AppearanceCell.Options.UseTextOptions = true;
-            this.colKod.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colKod.Caption = "Kod";
-            this.colKod.FieldName = "Kod";
-            this.colKod.Name = "colKod";
-            this.colKod.OptionsColumn.AllowEdit = false;
-            this.colKod.StatusBarAciklama = null;
-            this.colKod.StatusBarKisaYol = null;
-            this.colKod.StatusBarKisaYolAciklama = null;
-            this.colKod.Visible = true;
-            this.colKod.VisibleIndex = 0;
-            this.colKod.Width = 120;
+            this.colVergiDairesiKodu.AppearanceCell.Options.UseTextOptions = true;
+            this.colVergiDairesiKodu.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colVergiDairesiKodu.Caption = "Vergi Dairesi Kodu";
+            this.colVergiDairesiKodu.FieldName = "VergiDairesiKodu";
+            this.colVergiDairesiKodu.Name = "colVergiDairesiKodu";
+            this.colVergiDairesiKodu.OptionsColumn.AllowEdit = false;
+            this.colVergiDairesiKodu.StatusBarAciklama = null;
+            this.colVergiDairesiKodu.StatusBarKisaYol = null;
+            this.colVergiDairesiKodu.StatusBarKisaYolAciklama = null;
+            this.colVergiDairesiKodu.Visible = true;
+            this.colVergiDairesiKodu.VisibleIndex = 0;
+            this.colVergiDairesiKodu.Width = 120;
             // 
-            // colVergiDairesiAdi
+            // colAd
             // 
-            this.colVergiDairesiAdi.Caption = "Vergi Dairesi Adı";
-            this.colVergiDairesiAdi.FieldName = "VergiDairesiAdi";
-            this.colVergiDairesiAdi.Name = "colVergiDairesiAdi";
-            this.colVergiDairesiAdi.OptionsColumn.AllowEdit = false;
-            this.colVergiDairesiAdi.StatusBarAciklama = null;
-            this.colVergiDairesiAdi.StatusBarKisaYol = null;
-            this.colVergiDairesiAdi.StatusBarKisaYolAciklama = null;
-            this.colVergiDairesiAdi.Visible = true;
-            this.colVergiDairesiAdi.VisibleIndex = 1;
-            this.colVergiDairesiAdi.Width = 250;
+            this.colAd.Caption = "Vergi Dairesi";
+            this.colAd.FieldName = "Ad";
+            this.colAd.Name = "colAd";
+            this.colAd.OptionsColumn.AllowEdit = false;
+            this.colAd.StatusBarAciklama = null;
+            this.colAd.StatusBarKisaYol = null;
+            this.colAd.StatusBarKisaYolAciklama = null;
+            this.colAd.Visible = true;
+            this.colAd.VisibleIndex = 1;
+            this.colAd.Width = 200;
+            // 
+            // colIlAdi
+            // 
+            this.colIlAdi.Caption = "Il";
+            this.colIlAdi.FieldName = "IlAdi";
+            this.colIlAdi.Name = "colIlAdi";
+            this.colIlAdi.OptionsColumn.AllowEdit = false;
+            this.colIlAdi.StatusBarAciklama = null;
+            this.colIlAdi.StatusBarKisaYol = null;
+            this.colIlAdi.StatusBarKisaYolAciklama = null;
+            this.colIlAdi.Visible = true;
+            this.colIlAdi.VisibleIndex = 2;
+            this.colIlAdi.Width = 200;
             // 
             // colAciklama
             // 
@@ -144,8 +179,8 @@
             this.colAciklama.StatusBarKisaYol = null;
             this.colAciklama.StatusBarKisaYolAciklama = null;
             this.colAciklama.Visible = true;
-            this.colAciklama.VisibleIndex = 2;
-            this.colAciklama.Width = 450;
+            this.colAciklama.VisibleIndex = 3;
+            this.colAciklama.Width = 400;
             // 
             // longNavigator
             // 
@@ -164,7 +199,7 @@
             this.Controls.Add(this.longNavigator);
             this.IconOptions.ShowIcon = false;
             this.Name = "VergiDairesiListForm";
-            this.Text = "VergiDairesi Kartları";
+            this.Text = "Vergi Dairesi Kartları";
             this.Controls.SetChildIndex(this.ribbonControl, 0);
             this.Controls.SetChildIndex(this.longNavigator, 0);
             this.Controls.SetChildIndex(this.grid, 0);
@@ -181,9 +216,10 @@
         private UserControls.Grid.MyGridControl grid;
         private UserControls.Grid.MyGridView tablo;
         private UserControls.Grid.MyGridColumn colId;
-        private UserControls.Grid.MyGridColumn colKod;
-        private UserControls.Grid.MyGridColumn colVergiDairesiAdi;
+        private UserControls.Grid.MyGridColumn colVergiDairesiKodu;
+        private UserControls.Grid.MyGridColumn colAd;
         private UserControls.Grid.MyGridColumn colAciklama;
         private UserControls.Navigators.LongNavigator longNavigator;
+        private UserControls.Grid.MyGridColumn colIlAdi;
     }
 }

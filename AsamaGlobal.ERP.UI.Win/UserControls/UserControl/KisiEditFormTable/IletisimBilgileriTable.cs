@@ -1,4 +1,5 @@
-﻿using AbcYazilim.OgrenciTakip.Model.Dto.IletisimlerDto;
+﻿using AbcYazilim.OgrenciTakip.Bll.General;
+using AbcYazilim.OgrenciTakip.Model.Dto.IletisimlerDto;
 using AsamaGlobal.ERP.Common.Message;
 using AsamaGlobal.ERP.UI.Win.Functions;
 using AsamaGlobal.ERP.UI.Win.UserControls.UserControl.Base;
@@ -15,7 +16,7 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
         {
             InitializeComponent();
 
-            Bll = new Bll.General.IletisimBilgiBll();
+            Bll = new IletisimBilgiBll();
             Tablo = tablo;
             EventsLoad();
             HideItems = new BarItem[] { btnBelgeHareketleri };
@@ -57,7 +58,7 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
         protected internal override void Listele()
         {
 
-            var list = ((Bll.General.IletisimBilgiBll)Bll)
+            var list = ((IletisimBilgiBll)Bll)
                 .List(x => x.KisiId == OwnerForm.Id)
                 .ToBindingList<IletisimBilgiL>();
 

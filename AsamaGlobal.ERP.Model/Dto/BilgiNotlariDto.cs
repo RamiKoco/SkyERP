@@ -5,7 +5,7 @@ using AsamaGlobal.ERP.Model.Entities.Base.Interfaces;
 namespace AsamaGlobal.ERP.Model.Dto
 {
     [NotMapped]
-    public class BilgiNotlariL:BilgiNotlari,IBaseHareketEntity
+    public class YorumlarL : Yorumlar, IBaseHareketEntity
     {
 
         public bool Insert { get; set; }

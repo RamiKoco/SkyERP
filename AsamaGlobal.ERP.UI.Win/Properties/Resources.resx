@@ -802,16 +802,34 @@
   <data name="tag_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tag_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="2754601_call_communication_contact_phone_support_icon (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\2754601_call_communication_contact_phone_support_icon (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="departman" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\departman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="love_like_review_feedback_icon_229986" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\love_like_review_feedback_icon_229986.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="departman1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\departman1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="whatsapp_icon_161055 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\whatsapp_icon_161055 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="datalabels" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\datalabels.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="folderbluemail_93279 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\folderbluemail_93279 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="enum" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enum.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="itemtypestandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\itemtypestandard.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="pielabelsdatalabels_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pielabelsdatalabels_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pielabelsdatalabels_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pielabelsdatalabels_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wizard_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wizard_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edittask_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edittask_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edittask_32x321" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edittask_32x321.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

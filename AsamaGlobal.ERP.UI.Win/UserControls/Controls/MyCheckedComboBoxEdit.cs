@@ -1,7 +1,8 @@
-﻿using System.ComponentModel;
-using System.Drawing;
-using AsamaGlobal.ERP.UI.Win.Interfaces;
+﻿using AsamaGlobal.ERP.UI.Win.Interfaces;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
+using System.ComponentModel;
+using System.Drawing;
 
 namespace AsamaGlobal.ERP.UI.Win.UserControls.Controls
 {
@@ -11,7 +12,7 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.Controls
         public MyCheckedComboBoxEdit()
         {
             Properties.AppearanceFocused.BackColor = Color.LightCyan;
-           
+            //Properties.TextEditStyle = TextEditStyles.Standard;
 
         }
 

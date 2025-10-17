@@ -1,4 +1,4 @@
-﻿namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
+﻿namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
 {
     partial class GenelAdresListForm
     {
@@ -451,11 +451,11 @@
             private UserControls.Grid.MyBandedGridColumn colOzelKod2Adi;
             private UserControls.Grid.MyBandedGridColumn colAciklama;
             private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colId;
-            private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
-            private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
-            private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
-            private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
-            private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand6;
-            private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand7;
-        }
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand6;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand7;
+    }
 }

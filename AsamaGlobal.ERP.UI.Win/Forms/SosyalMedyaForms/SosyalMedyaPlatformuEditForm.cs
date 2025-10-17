@@ -1,4 +1,5 @@
-﻿using AbcYazilim.OgrenciTakip.Model.Dto;
+﻿using AbcYazilim.OgrenciTakip.Bll.General;
+using AbcYazilim.OgrenciTakip.Model.Dto;
 using AbcYazilim.OgrenciTakip.Model.Entities;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
@@ -16,20 +17,20 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.SosyalMedyaForms
 
 
             DataLayoutControl = myDataLayoutControl;
-            Bll = new Bll.General.SosyalMedyaPlatformuBll(myDataLayoutControl);
+            Bll = new SosyalMedyaPlatformuBll(myDataLayoutControl);
             BaseKartTuru = KartTuru.SosyalMedyaPlatformu;
             EventsLoad();
         }
 
         public override void Yukle()
         {
-            OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new SosyalMedyaPlatformuS() : ((Bll.General.SosyalMedyaPlatformuBll)Bll).Single(FilterFunctions.Filter<SosyalMedyaPlatformu>(Id));
+            OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new SosyalMedyaPlatformuS() : ((SosyalMedyaPlatformuBll)Bll).Single(FilterFunctions.Filter<SosyalMedyaPlatformu>(Id));
             NesneyiKontrollereBagla();
             TabloYukle();
 
             if (BaseIslemTuru != IslemTuru.EntityInsert) return;
             Id = BaseIslemTuru.IdOlustur(OldEntity);
-            txtKod.Text = ((Bll.General.SosyalMedyaPlatformuBll)Bll).YeniKodVer();
+            txtKod.Text = ((SosyalMedyaPlatformuBll)Bll).YeniKodVer();
             txtAd.Focus();
         }
 

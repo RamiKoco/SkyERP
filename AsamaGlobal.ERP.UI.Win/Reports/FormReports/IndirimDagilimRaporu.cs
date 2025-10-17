@@ -6,13 +6,8 @@ using AsamaGlobal.ERP.UI.Win.Functions;
 using AsamaGlobal.ERP.UI.Win.Reports.FormReports.Base;
 using AsamaGlobal.ERP.UI.Win.Show;
 using System.Linq;
-using AsamaGlobal.ERP.UI.Win.GenelForms;
-using AsamaGlobal;
-using AsamaGlobal.ERP;
-using AsamaGlobal.ERP.UI;
-using AsamaGlobal.ERP.UI.Win;
 
-namespace AsamaGlobal.ERP.UI.Win.Reports.FormReports
+namespace AsamaGlobal.ERP.UI.Win.GenelForms
 {
     public partial class IndirimDagilimRaporu : BaseRapor
     {

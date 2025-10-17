@@ -181,10 +181,7 @@
   <data name="Webalys_Kameleon_pics_Programming" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Webalys-Kameleon.pics-Programming.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="inlinewithtext_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\inlinewithtext_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="inlinewithtext_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\inlinewithtext_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="treemap" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\treemap.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
 </root>

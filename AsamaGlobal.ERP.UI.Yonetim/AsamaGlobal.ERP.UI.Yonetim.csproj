@@ -227,10 +227,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\inlinewithtext_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\inlinewithtext_16x16.png" />
+    <None Include="Resources\treemap.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

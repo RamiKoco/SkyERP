@@ -11,8 +11,6 @@ namespace AbcYazilim.OgrenciTakip.Common.Enums
         [Description("Yapıldı")]
         Yapildi = 3,
         [Description("Yapılmadı")]
-        Yapilmadi = 4,
-        [Description("Bedelli")]
-        Bedelli = 5
+        Yapilmadi = 4
     }
 }

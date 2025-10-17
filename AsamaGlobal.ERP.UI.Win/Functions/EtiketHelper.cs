@@ -1,7 +1,7 @@
-﻿using AbcYazilim.OgrenciTakip.Common.Enums;
+﻿using AbcYazilim.OgrenciTakip.Bll.General;
+using AbcYazilim.OgrenciTakip.Common.Enums;
 using AbcYazilim.OgrenciTakip.Model.Dto;
 using AbcYazilim.OgrenciTakip.Model.Entities;
-using AsamaGlobal.ERP.Bll.General;
 using AsamaGlobal.ERP.Data.Contexts;
 using DevExpress.XtraEditors;
 using System;
@@ -31,7 +31,7 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
 
             txtEtiket.Properties.CustomDrawTokenText -= TxtEtiket_CustomDrawTokenText;
             txtEtiket.Properties.CustomDrawTokenText += TxtEtiket_CustomDrawTokenText;
-        }
+        }     
         private void TxtEtiket_CustomDrawTokenBackground(object sender, TokenEditCustomDrawTokenBackgroundEventArgs e)
         {
             try
@@ -107,7 +107,7 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
 
             if (etiket != null && !string.IsNullOrEmpty(etiket.RenkRGB))
                 back = ColorTranslator.FromHtml(etiket.RenkRGB);
-
+            
             Color fore = (etiket != null && etiket.YaziRgbKodu != 0)
                 ? Color.FromArgb(etiket.YaziRgbKodu)
                 : GetContrastColor(back ?? Color.White);
@@ -118,7 +118,7 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
                 var font = e.Info.PaintAppearance?.Font ?? SystemFonts.DefaultFont;
 
                 var padding = 2;
-                var fitRect = new RectangleF(rect.X + 15, rect.Y, rect.Width - padding * 4, rect.Height);
+                var fitRect = new RectangleF(rect.X +15, rect.Y, rect.Width - padding * 4, rect.Height);            
                 var size = g.MeasureString(text, font);
                 float minFont = 7f;
                 if (size.Width > fitRect.Width)

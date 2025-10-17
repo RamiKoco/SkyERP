@@ -34,6 +34,7 @@
             this.repositoryTarih = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.colBilgiNotu = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.repositoryNot = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryTarih)).BeginInit();
@@ -91,7 +92,7 @@
             this.tablo.StatusBarAciklama = "Bilgi Notu Giriniz.";
             this.tablo.StatusBarKisaYol = "Shift+Insert :";
             this.tablo.StatusBarKisaYolAciklama = "Not Girin";
-            this.tablo.ViewCaption = "Bilgi Notları";
+            this.tablo.ViewCaption = "Yorumlar";
             // 
             // colTarih
             // 
@@ -157,6 +158,7 @@
             this.Size = new System.Drawing.Size(774, 396);
             this.Controls.SetChildIndex(this.insUptNavigator, 0);
             this.Controls.SetChildIndex(this.grid, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryTarih.CalendarTimeProperties)).EndInit();

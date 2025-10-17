@@ -11,11 +11,11 @@ using AsamaGlobal.ERP.Model.Entities.Base;
 
 namespace AsamaGlobal.ERP.Bll.General
 {
-    public class BilgiNotlariBll : BaseHareketBll<BilgiNotlari, ERPContext>, IBaseHareketSelectBll<BilgiNotlari>
+    public class YorumlarBll : BaseHareketBll<Yorumlar, ERPContext>, IBaseHareketSelectBll<Yorumlar>
     {
-        public IEnumerable<BaseHareketEntity> List(Expression<Func<BilgiNotlari, bool>> filter)
+        public IEnumerable<BaseHareketEntity> List(Expression<Func<Yorumlar, bool>> filter)
         {
-            return List(filter, x => new BilgiNotlariL
+            return List(filter, x => new YorumlarL
             {
                 Id = x.Id,
                 TahakkukId = x.TahakkukId,

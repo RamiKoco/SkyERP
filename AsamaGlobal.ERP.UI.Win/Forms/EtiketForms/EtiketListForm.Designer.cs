@@ -36,7 +36,6 @@
             this.colKod = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colEtiketAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colKayitTuru = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
-            this.colRenkAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colOzelKod1Adi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colOzelKod2Adi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colAciklama = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
@@ -107,7 +106,6 @@
             this.colKod,
             this.colEtiketAdi,
             this.colKayitTuru,
-            this.colRenkAdi,
             this.colOzelKod1Adi,
             this.colOzelKod2Adi,
             this.colAciklama});
@@ -183,19 +181,6 @@
             this.colKayitTuru.VisibleIndex = 2;
             this.colKayitTuru.Width = 146;
             // 
-            // colRenkAdi
-            // 
-            this.colRenkAdi.Caption = "Renk";
-            this.colRenkAdi.FieldName = "RenkAdi";
-            this.colRenkAdi.Name = "colRenkAdi";
-            this.colRenkAdi.OptionsColumn.AllowEdit = false;
-            this.colRenkAdi.StatusBarAciklama = null;
-            this.colRenkAdi.StatusBarKisaYol = null;
-            this.colRenkAdi.StatusBarKisaYolAciklama = null;
-            this.colRenkAdi.Visible = true;
-            this.colRenkAdi.VisibleIndex = 3;
-            this.colRenkAdi.Width = 133;
-            // 
             // colOzelKod1Adi
             // 
             this.colOzelKod1Adi.Caption = "Özel Kod-1";
@@ -206,7 +191,7 @@
             this.colOzelKod1Adi.StatusBarKisaYol = null;
             this.colOzelKod1Adi.StatusBarKisaYolAciklama = null;
             this.colOzelKod1Adi.Visible = true;
-            this.colOzelKod1Adi.VisibleIndex = 4;
+            this.colOzelKod1Adi.VisibleIndex = 3;
             this.colOzelKod1Adi.Width = 123;
             // 
             // colOzelKod2Adi
@@ -219,7 +204,7 @@
             this.colOzelKod2Adi.StatusBarKisaYol = null;
             this.colOzelKod2Adi.StatusBarKisaYolAciklama = null;
             this.colOzelKod2Adi.Visible = true;
-            this.colOzelKod2Adi.VisibleIndex = 5;
+            this.colOzelKod2Adi.VisibleIndex = 4;
             this.colOzelKod2Adi.Width = 146;
             // 
             // colAciklama
@@ -232,7 +217,7 @@
             this.colAciklama.StatusBarKisaYol = null;
             this.colAciklama.StatusBarKisaYolAciklama = null;
             this.colAciklama.Visible = true;
-            this.colAciklama.VisibleIndex = 6;
+            this.colAciklama.VisibleIndex = 5;
             this.colAciklama.Width = 393;
             // 
             // EtiketListForm
@@ -264,7 +249,6 @@
         private UserControls.Grid.MyGridColumn colId;
         private UserControls.Grid.MyGridColumn colKod;
         private UserControls.Grid.MyGridColumn colEtiketAdi;
-        private UserControls.Grid.MyGridColumn colRenkAdi;
         private UserControls.Grid.MyGridColumn colKayitTuru;
         private UserControls.Grid.MyGridColumn colOzelKod1Adi;
         private UserControls.Grid.MyGridColumn colOzelKod2Adi;

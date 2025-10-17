@@ -15,7 +15,6 @@ using AsamaGlobal.ERP.UI.Win.Interfaces;
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraVerticalGrid;
-using DevExpress.XtraVerticalGrid.Events;
 
 
 namespace AsamaGlobal.ERP.UI.Win.Forms.BaseForms
@@ -401,8 +400,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.BaseForms
             SecimYap(sender);
         }
         protected virtual void Control_SelectedPageChanged(object sender, SelectedPageChangedEventArgs e) { }
-        protected virtual void Control_CellValueChanged(object sender, CellValueChangedEventArgs e) { }
-        protected virtual void Control_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e) { }
+        protected virtual void Control_CellValueChanged(object sender, DevExpress.XtraVerticalGrid.Events.CellValueChangedEventArgs e) { }
+        protected virtual void Control_FocusedRowChanged(object sender, DevExpress.XtraVerticalGrid.Events.FocusedRowChangedEventArgs e) { }
 
     }
 }

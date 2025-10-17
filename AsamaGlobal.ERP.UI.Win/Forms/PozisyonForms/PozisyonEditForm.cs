@@ -1,4 +1,5 @@
-﻿using AbcYazilim.OgrenciTakip.Model.Dto;
+﻿using AbcYazilim.OgrenciTakip.Bll.General;
+using AbcYazilim.OgrenciTakip.Model.Dto;
 using AbcYazilim.OgrenciTakip.Model.Entities;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
@@ -13,19 +14,19 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PozisyonForms
         {
             InitializeComponent();
             DataLayoutControl = myDataLayoutControl;
-            Bll = new Bll.General.PozisyonBll(myDataLayoutControl);
+            Bll = new PozisyonBll(myDataLayoutControl);
             BaseKartTuru = KartTuru.Pozisyon;
             EventsLoad();
         }
 
         public override void Yukle()
         {
-            OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new PozisyonS() : ((Bll.General.PozisyonBll)Bll).Single(FilterFunctions.Filter<Pozisyon>(Id));
+            OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new PozisyonS() : ((PozisyonBll)Bll).Single(FilterFunctions.Filter<Pozisyon>(Id));
             NesneyiKontrollereBagla();
             TabloYukle();
             if (BaseIslemTuru != IslemTuru.EntityInsert) return;
             Id = BaseIslemTuru.IdOlustur(OldEntity);
-            txtKod.Text = ((Bll.General.PozisyonBll)Bll).YeniKodVer();
+            txtKod.Text = ((PozisyonBll)Bll).YeniKodVer();
             txtPozisyonAdi.Focus();
         }
 

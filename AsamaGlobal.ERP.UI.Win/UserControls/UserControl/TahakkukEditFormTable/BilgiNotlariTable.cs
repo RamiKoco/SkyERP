@@ -13,20 +13,20 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.TahakkukEditFormTable
         {
             InitializeComponent();
 
-            Bll = new BilgiNotlariBll();
+            Bll = new YorumlarBll();
             Tablo = tablo;
             EventsLoad();
         }
 
         protected  internal override void Listele()
         {
-            tablo.GridControl.DataSource = ((BilgiNotlariBll)Bll).List(x => x.TahakkukId == OwnerForm.Id).ToBindingList<BilgiNotlariL>();
+            tablo.GridControl.DataSource = ((YorumlarBll)Bll).List(x => x.TahakkukId == OwnerForm.Id).ToBindingList<YorumlarL>();
         }
 
         protected override void HareketEkle()
         {
             var source = tablo.DataController.ListSource;
-            var row = new BilgiNotlariL
+            var row = new YorumlarL
             {
                     TahakkukId = OwnerForm.Id,
                     Tarih = DateTime.Now,
@@ -53,7 +53,7 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.TahakkukEditFormTable
 
             for (int i = 0; i < tablo.DataRowCount; i++)
             {
-                var entity = tablo.GetRow<BilgiNotlariL>(i);
+                var entity = tablo.GetRow<YorumlarL>(i);
                 if (string.IsNullOrEmpty(entity.BilgiNotu))
                 {
                     tablo.FocusedRowHandle = i;

@@ -158,7 +158,7 @@
             this.colKimlikAdi.StatusBarKisaYolAciklama = null;
             this.colKimlikAdi.Visible = true;
             this.colKimlikAdi.VisibleIndex = 1;
-            this.colKimlikAdi.Width = 134;
+            this.colKimlikAdi.Width = 250;
             // 
             // colUlkeAdi
             // 
@@ -171,7 +171,7 @@
             this.colUlkeAdi.StatusBarKisaYolAciklama = null;
             this.colUlkeAdi.Visible = true;
             this.colUlkeAdi.VisibleIndex = 2;
-            this.colUlkeAdi.Width = 149;
+            this.colUlkeAdi.Width = 100;
             // 
             // colOzelKod1Adi
             // 
@@ -184,7 +184,7 @@
             this.colOzelKod1Adi.StatusBarKisaYolAciklama = null;
             this.colOzelKod1Adi.Visible = true;
             this.colOzelKod1Adi.VisibleIndex = 3;
-            this.colOzelKod1Adi.Width = 181;
+            this.colOzelKod1Adi.Width = 100;
             // 
             // colOzelKod2Adi
             // 
@@ -197,7 +197,7 @@
             this.colOzelKod2Adi.StatusBarKisaYolAciklama = null;
             this.colOzelKod2Adi.Visible = true;
             this.colOzelKod2Adi.VisibleIndex = 4;
-            this.colOzelKod2Adi.Width = 144;
+            this.colOzelKod2Adi.Width = 100;
             // 
             // colAciklama
             // 
@@ -210,7 +210,7 @@
             this.colAciklama.StatusBarKisaYolAciklama = null;
             this.colAciklama.Visible = true;
             this.colAciklama.VisibleIndex = 5;
-            this.colAciklama.Width = 634;
+            this.colAciklama.Width = 550;
             // 
             // longNavigator
             // 
@@ -229,7 +229,7 @@
             this.Controls.Add(this.longNavigator);
             this.IconOptions.ShowIcon = false;
             this.Name = "KimlikTuruListForm";
-            this.Text = "KimlikTuruListForm";
+            this.Text = "Kimlik Türleri";
             this.Controls.SetChildIndex(this.ribbonControl, 0);
             this.Controls.SetChildIndex(this.longNavigator, 0);
             this.Controls.SetChildIndex(this.grid, 0);

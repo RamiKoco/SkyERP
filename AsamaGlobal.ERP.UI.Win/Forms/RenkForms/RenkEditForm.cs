@@ -1,4 +1,5 @@
-﻿using AbcYazilim.OgrenciTakip.Model.Dto;
+﻿using AbcYazilim.OgrenciTakip.Bll.General;
+using AbcYazilim.OgrenciTakip.Model.Dto;
 using AbcYazilim.OgrenciTakip.Model.Entities;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
@@ -16,19 +17,19 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.RenkForms
             InitializeComponent();
 
             DataLayoutControl = myDataLayoutControl;
-            Bll = new Bll.General.RenkBll(myDataLayoutControl);
+            Bll = new RenkBll(myDataLayoutControl);
             BaseKartTuru = KartTuru.Renk;
             EventsLoad();
         }
 
         public override void Yukle()
         {
-            OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new RenkS() : ((Bll.General.RenkBll)Bll).Single(FilterFunctions.Filter<Renk>(Id));
+            OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new RenkS() : ((RenkBll)Bll).Single(FilterFunctions.Filter<Renk>(Id));
             NesneyiKontrollereBagla();
             TabloYukle();
             if (BaseIslemTuru != IslemTuru.EntityInsert) return;
             Id = BaseIslemTuru.IdOlustur(OldEntity);
-            txtKod.Text = ((Bll.General.RenkBll)Bll).YeniKodVer();
+            txtKod.Text = ((RenkBll)Bll).YeniKodVer();
             txtRenkAdi.Focus();
         }
         protected override void NesneyiKontrollereBagla()
@@ -39,7 +40,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.RenkForms
             txtRenkAdi.Text = entity.RenkAdi;
             txtRGB.Text = entity.RGB;
             txtForeColor.Color = Color.FromArgb(entity.ForeColor);
-            txtRenkAdi.ForeColor = Color.FromArgb(entity.ForeColor); // <- BURASI!
+            //txtRenkAdi.ForeColor = Color.FromArgb(entity.ForeColor); // <- BURASI!
             txtAciklama.Text = entity.Aciklama;
             txtOzelKod1.Id = entity.OzelKod1Id;
             txtOzelKod1.Text = entity.OzelKod1Adi;

@@ -7,13 +7,13 @@ namespace AsamaGlobal.ERP.Model.Dto
     [NotMapped]
     public class VergiDairesiS: VergiDairesi
     {
-       
+        public string IlAdi { get; set; }
     }
-    public class VergiDairesiL : BaseEntity
+    public class VergiDairesiL: BaseEntity
     {
-        public string VergiDairesiAdi { get; set; }
-        public string VergiKodu { get; set; }
+        public string Ad { get; set; }
+        public string VergiDairesiKodu { get; set; }
+        public string IlAdi { get; set; }
         public string Aciklama { get; set; }
-
     }
 }

@@ -1,7 +1,7 @@
-﻿using AbcYazilim.OgrenciTakip.Common.Enums;
+﻿using AbcYazilim.OgrenciTakip.Bll.General;
+using AbcYazilim.OgrenciTakip.Common.Enums;
 using AbcYazilim.OgrenciTakip.Model.Dto;
 using AbcYazilim.OgrenciTakip.Model.Entities;
-using AsamaGlobal.ERP.Bll.General;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Functions;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
@@ -22,7 +22,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.EtiketForms
             BaseKartTuru = KartTuru.Etiket;
             EventsLoad();
             txtKayitTuru.Properties.Items.AddRange(EnumFunctions.GetEnumDescriptionList<KayitTuru>());
-        }
+        } 
 
         public override void Yukle()
         {

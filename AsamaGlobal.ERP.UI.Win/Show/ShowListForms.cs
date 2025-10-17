@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using AsamaGlobal.ERP.Common.Enums;
+﻿using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Model.Entities.Base;
 using AsamaGlobal.ERP.Model.Entities.Base.Interfaces;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
+using AsamaGlobal.ERP.UI.Win.Forms.CariForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace AsamaGlobal.ERP.UI.Win.Show
 {
@@ -103,6 +105,7 @@ namespace AsamaGlobal.ERP.UI.Win.Show
 
         }
 
+
         public static IEnumerable<IBaseEntity> ShowDialogListForm(KartTuru kartTuru, bool multiSelect, params object[] prm)
         {
             if (!kartTuru.YetkiKontrolu(YetkiTuru.Gorebilir)) return null;
@@ -128,18 +131,47 @@ namespace AsamaGlobal.ERP.UI.Win.Show
             using (var frm = (TForm)Activator.CreateInstance(typeof(TForm), prm))
             {
                 frm.SeciliGelecekId = seciliGelecekId;
-
-                // Lambda önce uygulanmalı
                 configure?.Invoke(frm);
 
-                // Sonra form yüklenmeli
-                frm.Yukle();
-                if (!frm.IsDisposed)
+                // Çağıranın CarilerEditForm olup olmadığını tespit et
+                var active = Form.ActiveForm;
+                bool callerIsCarilerEditForm =
+                    // 1) TForm doğrudan CarilerEditForm ise (nadiren true olur)
+                    typeof(TForm) == typeof(CarilerEditForm)
+                    // 2) aktif form CarilerEditForm ya da türevi ise
+                    || (active != null && (active.GetType() == typeof(CarilerEditForm) || active.GetType().IsSubclassOf(typeof(CarilerEditForm))))
+                    // 3) fallback: açık formlar arasında herhangi bir CarilerEditForm varsa (daha gevşek ama işe yarar)
+                    || Application.OpenForms.Cast<Form>().OfType<CarilerEditForm>().Any();
+
+                if (callerIsCarilerEditForm)
+                {
+                    // CarilerEditForm için gereken davranış
+                    frm.AktifPasifButonGoster = false;
+                    frm.Yukle();
+
+                    if (!frm.IsDisposed)
+                        frm.ShowDialog();
+
+                    return frm.DialogResult == DialogResult.OK
+                        ? frm.SelectedEntity
+                        : null;
+                }
+                else
+                {
+                    // Ribbon / normal list formlar için davranış
+                    frm.AktifPasifButonGoster = true;
+                    frm.Yukle();
                     frm.ShowDialog();
 
-                return frm.DialogResult == DialogResult.OK ? frm.SelectedEntity : null;
+                    return frm.DialogResult == DialogResult.OK
+                           && frm.SelectedEntities != null
+                           && frm.SelectedEntities.Count > 0
+                        ? frm.SelectedEntities[0]
+                        : null;
+                }
             }
         }
+
     }
 }
 

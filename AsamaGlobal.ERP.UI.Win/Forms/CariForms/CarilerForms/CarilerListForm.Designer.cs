@@ -1,11 +1,4 @@
-﻿using AsamaGlobal.ERP.UI.Win.Forms.CariForms;
-using AsamaGlobal;
-using AsamaGlobal.ERP;
-using AsamaGlobal.ERP.UI;
-using AsamaGlobal.ERP.UI.Win;
-using AsamaGlobal.ERP.UI.Win.Forms;
-
-namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
+﻿namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
 {
     partial class CarilerListForm
     {
@@ -38,28 +31,29 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CarilerListForm));
             this.grid = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridControl();
             this.tablo = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridView();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colKod = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colUnvan = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
-            this.colCariAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
-            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.colCariTuruAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
+            this.colCariGrubuAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.colKimlikNo = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.colAd = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.colSoyad = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
-            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.VergiKodu = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.colVergiDairesiAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.colVergiNo = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
-            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colOzelKod1Adi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.colOzelKod2Adi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.colOzelKod3Adi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.colOzelKod4Adi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.colOzelKod5Adi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
-            this.gridBand5 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.colKayitKaynakAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.colAciklama = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.colId = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.longNavigator = new AsamaGlobal.ERP.UI.Win.UserControls.Navigators.LongNavigator();
+            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand5 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablo)).BeginInit();
@@ -133,17 +127,18 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.colAd,
             this.colSoyad,
             this.colAciklama,
-            this.colCariAdi,
             this.colUnvan,
             this.colKimlikNo,
             this.colVergiDairesiAdi,
             this.colVergiNo,
-            this.VergiKodu,
             this.colOzelKod1Adi,
             this.colOzelKod2Adi,
             this.colOzelKod3Adi,
             this.colOzelKod4Adi,
-            this.colOzelKod5Adi});
+            this.colOzelKod5Adi,
+            this.colCariTuruAdi,
+            this.colCariGrubuAdi,
+            this.colKayitKaynakAdi});
             this.tablo.GridControl = this.grid;
             this.tablo.Name = "tablo";
             this.tablo.OptionsMenu.EnableColumnMenu = false;
@@ -164,16 +159,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.tablo.StatusBarKisaYolAciklama = null;
             this.tablo.ViewCaption = "Cari Bilgiler";
             // 
-            // gridBand1
-            // 
-            this.gridBand1.Caption = "Genel Bilgiler";
-            this.gridBand1.Columns.Add(this.colKod);
-            this.gridBand1.Columns.Add(this.colUnvan);
-            this.gridBand1.Columns.Add(this.colCariAdi);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 292;
-            // 
             // colKod
             // 
             this.colKod.AppearanceCell.Options.UseTextOptions = true;
@@ -183,7 +168,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.colKod.Name = "colKod";
             this.colKod.OptionsColumn.AllowEdit = false;
             this.colKod.Visible = true;
-            this.colKod.Width = 114;
+            this.colKod.Width = 129;
             // 
             // colUnvan
             // 
@@ -195,29 +180,31 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.colUnvan.StatusBarKisaYol = null;
             this.colUnvan.StatusBarKisaYolAciklama = null;
             this.colUnvan.Visible = true;
-            this.colUnvan.Width = 87;
+            this.colUnvan.Width = 160;
             // 
-            // colCariAdi
+            // colCariTuruAdi
             // 
-            this.colCariAdi.Caption = "Cari Adı";
-            this.colCariAdi.FieldName = "CariAdi";
-            this.colCariAdi.Name = "colCariAdi";
-            this.colCariAdi.OptionsColumn.AllowEdit = false;
-            this.colCariAdi.StatusBarAciklama = null;
-            this.colCariAdi.StatusBarKisaYol = null;
-            this.colCariAdi.StatusBarKisaYolAciklama = null;
-            this.colCariAdi.Visible = true;
-            this.colCariAdi.Width = 91;
+            this.colCariTuruAdi.Caption = "Cari Türü";
+            this.colCariTuruAdi.FieldName = "CariTuruAdi";
+            this.colCariTuruAdi.Name = "colCariTuruAdi";
+            this.colCariTuruAdi.OptionsColumn.AllowEdit = false;
+            this.colCariTuruAdi.StatusBarAciklama = null;
+            this.colCariTuruAdi.StatusBarKisaYol = null;
+            this.colCariTuruAdi.StatusBarKisaYolAciklama = null;
+            this.colCariTuruAdi.Visible = true;
+            this.colCariTuruAdi.Width = 120;
             // 
-            // gridBand4
+            // colCariGrubuAdi
             // 
-            this.gridBand4.Caption = "Kişisel Bilgiler";
-            this.gridBand4.Columns.Add(this.colKimlikNo);
-            this.gridBand4.Columns.Add(this.colAd);
-            this.gridBand4.Columns.Add(this.colSoyad);
-            this.gridBand4.Name = "gridBand4";
-            this.gridBand4.VisibleIndex = 1;
-            this.gridBand4.Width = 269;
+            this.colCariGrubuAdi.Caption = "Cari Grubu";
+            this.colCariGrubuAdi.FieldName = "CariGrubuAdi";
+            this.colCariGrubuAdi.Name = "colCariGrubuAdi";
+            this.colCariGrubuAdi.OptionsColumn.AllowEdit = false;
+            this.colCariGrubuAdi.StatusBarAciklama = null;
+            this.colCariGrubuAdi.StatusBarKisaYol = null;
+            this.colCariGrubuAdi.StatusBarKisaYolAciklama = null;
+            this.colCariGrubuAdi.Visible = true;
+            this.colCariGrubuAdi.Width = 120;
             // 
             // colKimlikNo
             // 
@@ -229,7 +216,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.colKimlikNo.StatusBarKisaYol = null;
             this.colKimlikNo.StatusBarKisaYolAciklama = null;
             this.colKimlikNo.Visible = true;
-            this.colKimlikNo.Width = 89;
+            this.colKimlikNo.Width = 101;
             // 
             // colAd
             // 
@@ -241,7 +228,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.colAd.StatusBarKisaYol = null;
             this.colAd.StatusBarKisaYolAciklama = null;
             this.colAd.Visible = true;
-            this.colAd.Width = 89;
+            this.colAd.Width = 101;
             // 
             // colSoyad
             // 
@@ -253,29 +240,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.colSoyad.StatusBarKisaYol = null;
             this.colSoyad.StatusBarKisaYolAciklama = null;
             this.colSoyad.Visible = true;
-            this.colSoyad.Width = 91;
-            // 
-            // gridBand3
-            // 
-            this.gridBand3.Caption = "Vergi Bilgileri";
-            this.gridBand3.Columns.Add(this.VergiKodu);
-            this.gridBand3.Columns.Add(this.colVergiDairesiAdi);
-            this.gridBand3.Columns.Add(this.colVergiNo);
-            this.gridBand3.Name = "gridBand3";
-            this.gridBand3.VisibleIndex = 2;
-            this.gridBand3.Width = 311;
-            // 
-            // VergiKodu
-            // 
-            this.VergiKodu.Caption = "Vergi Kodu";
-            this.VergiKodu.FieldName = "VergiKodu";
-            this.VergiKodu.Name = "VergiKodu";
-            this.VergiKodu.OptionsColumn.AllowEdit = false;
-            this.VergiKodu.StatusBarAciklama = null;
-            this.VergiKodu.StatusBarKisaYol = null;
-            this.VergiKodu.StatusBarKisaYolAciklama = null;
-            this.VergiKodu.Visible = true;
-            this.VergiKodu.Width = 103;
+            this.colSoyad.Width = 108;
             // 
             // colVergiDairesiAdi
             // 
@@ -287,7 +252,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.colVergiDairesiAdi.StatusBarKisaYol = null;
             this.colVergiDairesiAdi.StatusBarKisaYolAciklama = null;
             this.colVergiDairesiAdi.Visible = true;
-            this.colVergiDairesiAdi.Width = 103;
+            this.colVergiDairesiAdi.Width = 138;
             // 
             // colVergiNo
             // 
@@ -299,19 +264,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.colVergiNo.StatusBarKisaYol = null;
             this.colVergiNo.StatusBarKisaYolAciklama = null;
             this.colVergiNo.Visible = true;
-            this.colVergiNo.Width = 105;
-            // 
-            // gridBand2
-            // 
-            this.gridBand2.Caption = "Özel Kod";
-            this.gridBand2.Columns.Add(this.colOzelKod1Adi);
-            this.gridBand2.Columns.Add(this.colOzelKod2Adi);
-            this.gridBand2.Columns.Add(this.colOzelKod3Adi);
-            this.gridBand2.Columns.Add(this.colOzelKod4Adi);
-            this.gridBand2.Columns.Add(this.colOzelKod5Adi);
-            this.gridBand2.Name = "gridBand2";
-            this.gridBand2.VisibleIndex = 3;
-            this.gridBand2.Width = 400;
+            this.colVergiNo.Width = 143;
             // 
             // colOzelKod1Adi
             // 
@@ -373,13 +326,17 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.colOzelKod5Adi.Visible = true;
             this.colOzelKod5Adi.Width = 84;
             // 
-            // gridBand5
+            // colKayitKaynakAdi
             // 
-            this.gridBand5.Caption = "Ek Bilgiler";
-            this.gridBand5.Columns.Add(this.colAciklama);
-            this.gridBand5.Name = "gridBand5";
-            this.gridBand5.VisibleIndex = 4;
-            this.gridBand5.Width = 204;
+            this.colKayitKaynakAdi.Caption = "Kaynak";
+            this.colKayitKaynakAdi.FieldName = "KayitKaynakAdi";
+            this.colKayitKaynakAdi.Name = "colKayitKaynakAdi";
+            this.colKayitKaynakAdi.OptionsColumn.AllowEdit = false;
+            this.colKayitKaynakAdi.StatusBarAciklama = null;
+            this.colKayitKaynakAdi.StatusBarKisaYol = null;
+            this.colKayitKaynakAdi.StatusBarKisaYolAciklama = null;
+            this.colKayitKaynakAdi.Visible = true;
+            this.colKayitKaynakAdi.Width = 120;
             // 
             // colAciklama
             // 
@@ -391,7 +348,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.colAciklama.StatusBarKisaYol = null;
             this.colAciklama.StatusBarKisaYolAciklama = null;
             this.colAciklama.Visible = true;
-            this.colAciklama.Width = 204;
+            this.colAciklama.Width = 282;
             // 
             // colId
             // 
@@ -408,6 +365,58 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             this.longNavigator.Name = "longNavigator";
             this.longNavigator.Size = new System.Drawing.Size(1058, 24);
             this.longNavigator.TabIndex = 3;
+            // 
+            // gridBand1
+            // 
+            this.gridBand1.Caption = "Genel Bilgiler";
+            this.gridBand1.Columns.Add(this.colKod);
+            this.gridBand1.Columns.Add(this.colUnvan);
+            this.gridBand1.Columns.Add(this.colCariTuruAdi);
+            this.gridBand1.Columns.Add(this.colCariGrubuAdi);
+            this.gridBand1.Columns.Add(this.colKayitKaynakAdi);
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
+            this.gridBand1.Width = 649;
+            // 
+            // gridBand4
+            // 
+            this.gridBand4.Caption = "Kişisel Bilgiler";
+            this.gridBand4.Columns.Add(this.colKimlikNo);
+            this.gridBand4.Columns.Add(this.colAd);
+            this.gridBand4.Columns.Add(this.colSoyad);
+            this.gridBand4.Name = "gridBand4";
+            this.gridBand4.VisibleIndex = 1;
+            this.gridBand4.Width = 310;
+            // 
+            // gridBand3
+            // 
+            this.gridBand3.Caption = "Vergi Bilgileri";
+            this.gridBand3.Columns.Add(this.colVergiDairesiAdi);
+            this.gridBand3.Columns.Add(this.colVergiNo);
+            this.gridBand3.Name = "gridBand3";
+            this.gridBand3.VisibleIndex = 2;
+            this.gridBand3.Width = 281;
+            // 
+            // gridBand2
+            // 
+            this.gridBand2.Caption = "Özel Kod";
+            this.gridBand2.Columns.Add(this.colOzelKod1Adi);
+            this.gridBand2.Columns.Add(this.colOzelKod2Adi);
+            this.gridBand2.Columns.Add(this.colOzelKod3Adi);
+            this.gridBand2.Columns.Add(this.colOzelKod4Adi);
+            this.gridBand2.Columns.Add(this.colOzelKod5Adi);
+            this.gridBand2.Name = "gridBand2";
+            this.gridBand2.Visible = false;
+            this.gridBand2.VisibleIndex = -1;
+            this.gridBand2.Width = 400;
+            // 
+            // gridBand5
+            // 
+            this.gridBand5.Caption = "Ek Bilgiler";
+            this.gridBand5.Columns.Add(this.colAciklama);
+            this.gridBand5.Name = "gridBand5";
+            this.gridBand5.VisibleIndex = 3;
+            this.gridBand5.Width = 282;
             // 
             // CarilerListForm
             // 
@@ -440,21 +449,22 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
         private UserControls.Grid.MyBandedGridColumn colAciklama;
         private UserControls.Grid.MyBandedGridColumn colAd;
         private UserControls.Grid.MyBandedGridColumn colSoyad;
-        private UserControls.Grid.MyBandedGridColumn colCariAdi;
         private UserControls.Grid.MyBandedGridColumn colUnvan;
         private UserControls.Grid.MyBandedGridColumn colKimlikNo;
         private UserControls.Grid.MyBandedGridColumn colVergiDairesiAdi;
         private UserControls.Grid.MyBandedGridColumn colVergiNo;
-        private UserControls.Grid.MyBandedGridColumn VergiKodu;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private UserControls.Grid.MyBandedGridColumn colOzelKod1Adi;
         private UserControls.Grid.MyBandedGridColumn colOzelKod2Adi;
         private UserControls.Grid.MyBandedGridColumn colOzelKod3Adi;
         private UserControls.Grid.MyBandedGridColumn colOzelKod4Adi;
         private UserControls.Grid.MyBandedGridColumn colOzelKod5Adi;
+        private UserControls.Grid.MyBandedGridColumn colCariTuruAdi;
+        private UserControls.Grid.MyBandedGridColumn colCariGrubuAdi;
+        private UserControls.Grid.MyBandedGridColumn colKayitKaynakAdi;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
     }
 }

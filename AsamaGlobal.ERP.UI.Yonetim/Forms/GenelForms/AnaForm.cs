@@ -11,6 +11,7 @@ using AsamaGlobal.ERP.UI.Win.Forms.VergiDairesiForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
 using AsamaGlobal.ERP.UI.Win.GenelForms;
 using AsamaGlobal.ERP.UI.Win.Show;
+using AsamaGlobal.ERP.UI.Win.UserControls.Controls;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using System.Security;
@@ -101,7 +102,7 @@ namespace AsamaGlobal.ERP.UI.Yonetim.Forms.GenelForms
             tablo.RowFocus(tablo.FocusedRowHandle);
 
         }
-
+        private MyButtonEdit _btnEdit;
         private void Button_ItemClick(object sender, ItemClickEventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -127,23 +128,23 @@ namespace AsamaGlobal.ERP.UI.Yonetim.Forms.GenelForms
                     ShowListForms<SubeListForm>.ShowDialogListForm();
                 else if (e.Item == btnDonemKartlari)
                     ShowListForms<DonemListForm>.ShowDialogListForm();
-                else if (e.Item == btnKurumBilgileri)
-                    ShowEditForms<KurumBilgileriEditForm>.ShowDialogEditForm(null,entity.Kod,entity.KurumAdi);
-                else if (e.Item == btnRolKartlari)
-                    ShowListForms<RolListForm>.ShowDialogListForm();
-                else if (e.Item == btnVergiDairesiKartlari)
-                {                   
-                        // Formu aç, btnYeni görünür olsun
-                        ShowListForms<VergiDairesiListForm>.ShowDialogListForm(
-                            KartTuru.VergiDairesi,
-                            null, // seciliId yok
-                            frm => { 
+                else if (e.Item == btnVergiDaireleriKartlari)
+                {
+                    ShowListForms<VergiDairesiListForm>.ShowDialogListForm(
+                         KartTuru.VergiDairesi,
+                            null,
+                            frm =>
+                            {
                                 frm.ShowYeniButton = true;
                                 frm.ShowDuzeltButton = true;
                                 frm.ShowSilButton = true;
                             }
-                        );                   
-                }                  
+                    );
+                }
+                else if (e.Item == btnKurumBilgileri)
+                    ShowEditForms<KurumBilgileriEditForm>.ShowDialogEditForm(null,entity.Kod,entity.KurumAdi);
+                else if (e.Item == btnRolKartlari)
+                    ShowListForms<RolListForm>.ShowDialogListForm();
                 else if (e.Item == btnKullaniciKartlari)
                     ShowListForms<KullaniciListForm>.ShowDialogListForm();
                 else if (e.Item == btnKullaniciBirimYetkileri)

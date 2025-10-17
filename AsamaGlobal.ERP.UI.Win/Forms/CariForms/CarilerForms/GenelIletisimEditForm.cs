@@ -14,13 +14,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
+namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
 {
     public partial class GenelIletisimEditForm : BaseEditForm
     {
         #region Variables
         private readonly long _cariId;
-        private readonly string _cariAdi;      
+        private readonly string _cariAdi;
         #endregion
         public GenelIletisimEditForm(params object[] prm)
         {
@@ -60,8 +60,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             txtBaslik.Text = entity.Baslik;
             txtIletisimTurleri.EditValue = entity.IletisimTuru.ToName();
             entity.KayitTuru = KayitTuru.Cari;
-            //entity.KisiId = _kisId;
-            //txtKayitHesabi.Text = entity.KayitHesabiAdi;
             txtKanallar.SetEditValue(entity.Kanallar);
             txtIzinDurumu.SelectedItem = entity.IzinDurumu.ToName();
             txtIzinTarihi.EditValue = entity.IzinTarihi;

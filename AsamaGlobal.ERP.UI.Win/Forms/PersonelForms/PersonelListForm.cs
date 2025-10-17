@@ -47,11 +47,11 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
 
             else if (barItem == btnIletisimKartlari)
             {
-                ShowListForms<GenelIletisimListForm>.ShowListForm(KartTuru.GenelIletisim, entity.Id, entity.Ad);
+                ShowListForms<GenelIletisimListForm>.ShowListForm(KartTuru.GenelIletisim, entity.Id, entity.Ad, entity.Soyad);
             }
             else if (barItem == btnAdresKartlari)
             {
-                ShowListForms<GenelAdresListForm>.ShowListForm(KartTuru.PersonelAdres, entity.Id, entity.Ad);
+                ShowListForms<GenelAdresListForm>.ShowListForm(KartTuru.PersonelAdres, entity.Id, entity.Ad, entity.Soyad);
             }
         }
     }

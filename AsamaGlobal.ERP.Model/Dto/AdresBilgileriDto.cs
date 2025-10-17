@@ -10,7 +10,7 @@ namespace AbcYazilim.OgrenciTakip.Model.Dto
     {
         public string KisiAdi { get; set; }
         public string PersonelAdi { get; set; }
-        public string CariAdi { get; set; }
+        public string MeslekAdi { get; set; }
         //public string KayitHesabiAdi => KayitTuru == KayitTuru.Kisi ? KisiAdi : MeslekAdi;     
         public string KayitHesabiAdi
         {
@@ -20,8 +20,8 @@ namespace AbcYazilim.OgrenciTakip.Model.Dto
                     return KisiAdi;
                 else if (KayitTuru == KayitTuru.Personel)
                     return PersonelAdi;
-                else if (KayitTuru == KayitTuru.Cari)
-                    return CariAdi;
+                else if (KayitTuru == KayitTuru.Meslek)
+                    return MeslekAdi;
                 else
                     return null;
             }
@@ -37,7 +37,7 @@ namespace AbcYazilim.OgrenciTakip.Model.Dto
     {
         public string KisiAdi { get; set; }
         public string PersonelAdi { get; set; }
-        public string CariAdi { get; set; }
+        public string MeslekAdi { get; set; }
         //public string KayitHesabiAdi =>
         //KayitTuru == KayitTuru.Kisi ? KisiAdi : MeslekAdi;
         public string KayitHesabiAdi
@@ -48,8 +48,8 @@ namespace AbcYazilim.OgrenciTakip.Model.Dto
                     return KisiAdi;
                 else if (KayitTuru == KayitTuru.Personel)
                     return PersonelAdi;
-                else if (KayitTuru == KayitTuru.Cari)
-                    return CariAdi;
+                else if (KayitTuru == KayitTuru.Meslek)
+                    return MeslekAdi;
                 else
                     return null;
             }

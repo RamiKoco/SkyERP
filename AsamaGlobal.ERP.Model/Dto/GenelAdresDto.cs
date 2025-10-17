@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace AsamaGlobal.ERP.Model.Dto
 {
     [NotMapped]
-    public class GenelAdresS: GenelAdres
+    public class GenelAdresS : GenelAdres
     {
         public string AdresTurleriAdi { get; set; }
         public string UlkeAdi { get; set; }
@@ -15,7 +15,7 @@ namespace AsamaGlobal.ERP.Model.Dto
         public string OzelKod1Adi { get; set; }
         public string OzelKod2Adi { get; set; }
     }
-    public class GenelAdresL: BaseEntity
+    public class GenelAdresL : BaseEntity
     {
         public KayitTuru KayitTuru { get; set; }
         public string UlkeAdi { get; set; }

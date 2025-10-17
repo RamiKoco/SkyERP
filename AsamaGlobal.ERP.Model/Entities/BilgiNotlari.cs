@@ -4,7 +4,7 @@ using AsamaGlobal.ERP.Model.Entities.Base;
 
 namespace AsamaGlobal.ERP.Model.Entities
 {
-    public class BilgiNotlari:BaseHareketEntity
+    public class Yorumlar: BaseHareketEntity
     {
         
         public long TahakkukId { get; set; }

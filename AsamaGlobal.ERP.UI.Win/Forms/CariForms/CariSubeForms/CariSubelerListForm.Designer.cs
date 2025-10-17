@@ -1,11 +1,4 @@
-﻿using AsamaGlobal.ERP.UI.Win.Forms.CariForms;
-using AsamaGlobal;
-using AsamaGlobal.ERP;
-using AsamaGlobal.ERP.UI;
-using AsamaGlobal.ERP.UI.Win;
-using AsamaGlobal.ERP.UI.Win.Forms;
-
-namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
+﻿namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
 {
     partial class CariSubelerListForm
     {
@@ -41,7 +34,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
             this.colId = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colKod = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colCariSubeAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
-            this.colIlgili = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colOzelKod1Adi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colOzelKod2Adi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colAciklama = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
@@ -104,7 +96,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
             this.colId,
             this.colKod,
             this.colCariSubeAdi,
-            this.colIlgili,
             this.colOzelKod1Adi,
             this.colOzelKod2Adi,
             this.colAciklama});
@@ -167,19 +158,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
             this.colCariSubeAdi.VisibleIndex = 1;
             this.colCariSubeAdi.Width = 120;
             // 
-            // colIlgili
-            // 
-            this.colIlgili.Caption = "İlgili Kişi";
-            this.colIlgili.FieldName = "Ilgili";
-            this.colIlgili.Name = "colIlgili";
-            this.colIlgili.OptionsColumn.AllowEdit = false;
-            this.colIlgili.StatusBarAciklama = null;
-            this.colIlgili.StatusBarKisaYol = null;
-            this.colIlgili.StatusBarKisaYolAciklama = null;
-            this.colIlgili.Visible = true;
-            this.colIlgili.VisibleIndex = 2;
-            this.colIlgili.Width = 120;
-            // 
             // colOzelKod1Adi
             // 
             this.colOzelKod1Adi.Caption = "Özel Kod-1";
@@ -190,7 +168,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
             this.colOzelKod1Adi.StatusBarKisaYol = null;
             this.colOzelKod1Adi.StatusBarKisaYolAciklama = null;
             this.colOzelKod1Adi.Visible = true;
-            this.colOzelKod1Adi.VisibleIndex = 3;
+            this.colOzelKod1Adi.VisibleIndex = 2;
             this.colOzelKod1Adi.Width = 120;
             // 
             // colOzelKod2Adi
@@ -203,7 +181,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
             this.colOzelKod2Adi.StatusBarKisaYol = null;
             this.colOzelKod2Adi.StatusBarKisaYolAciklama = null;
             this.colOzelKod2Adi.Visible = true;
-            this.colOzelKod2Adi.VisibleIndex = 4;
+            this.colOzelKod2Adi.VisibleIndex = 3;
             this.colOzelKod2Adi.Width = 120;
             // 
             // colAciklama
@@ -216,7 +194,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
             this.colAciklama.StatusBarKisaYol = null;
             this.colAciklama.StatusBarKisaYolAciklama = null;
             this.colAciklama.Visible = true;
-            this.colAciklama.VisibleIndex = 5;
+            this.colAciklama.VisibleIndex = 4;
             this.colAciklama.Width = 250;
             // 
             // longNavigator
@@ -259,6 +237,5 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
         private UserControls.Grid.MyGridColumn colCariSubeAdi;
         private UserControls.Grid.MyGridColumn colOzelKod1Adi;
         private UserControls.Grid.MyGridColumn colOzelKod2Adi;
-        private UserControls.Grid.MyGridColumn colIlgili;
     }
 }

@@ -1,24 +1,25 @@
-﻿using DevExpress.XtraEditors;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
-using AsamaGlobal.ERP.Bll.Interfaces;
+﻿using AsamaGlobal.ERP.Bll.Interfaces;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Message;
 using AsamaGlobal.ERP.Model.Entities;
 using AsamaGlobal.ERP.Model.Entities.Base;
 using AsamaGlobal.ERP.UI.Win.Forms.FiltreForms;
-using DevExpress.XtraBars;
-using AsamaGlobal.ERP.UI.Win.Show.Interfaces;
-using DevExpress.XtraGrid.Views.Grid;
 using AsamaGlobal.ERP.UI.Win.Functions;
 using AsamaGlobal.ERP.UI.Win.GenelForms;
 using AsamaGlobal.ERP.UI.Win.Show;
+using AsamaGlobal.ERP.UI.Win.Show.Interfaces;
 using AsamaGlobal.ERP.UI.Win.UserControls.Grid;
 using DevExpress.Utils.Extensions;
+using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
-
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace AsamaGlobal.ERP.UI.Win.Forms.BaseForms
 {
@@ -58,6 +59,16 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.BaseForms
             //Button Events
             foreach (BarItem button in ribbonControl.Items)
                 button.ItemClick += Button_ItemClick;
+
+            foreach (GridColumn column in Tablo.Columns)
+            {
+                if (column.ColumnEdit == null) continue;
+                var type = column.ColumnEdit.GetType();
+
+                if (type == typeof(RepositoryItemImageComboBox))
+                    ((RepositoryItemImageComboBox)column.ColumnEdit).SelectedValueChanged += ImageComboBox_SelectedValueChanged;
+            }
+
 
             //Table Events
             Tablo.DoubleClick += Tablo_DoubleClick;
@@ -208,7 +219,11 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.BaseForms
         protected virtual void Yazdir()
         {
             TablePrintingFunctions.Yazdir(Tablo, Tablo.ViewCaption, AnaForm.SubeAdi);
+
+
+
         }
+        protected virtual void ImageComboBox_SelectedValueChanged(object sender, EventArgs e) { }
         protected virtual void BaskiOnizleme() { }
         protected virtual void BagliKartAc() { }
         protected virtual void BagliKartAc(BarItem barItem)
@@ -343,6 +358,9 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.BaseForms
 
             Cursor.Current = DefaultCursor;
         }
+
+       
+
         private void Tablo_DoubleClick(object sender, EventArgs e)
         {
             //sonradan eklendi.udemy soru cevaptan çift tıklama ile ilgili durumdan kaynaklı.

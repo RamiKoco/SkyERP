@@ -18,28 +18,32 @@ namespace AsamaGlobal.ERP.Bll.General.CarilerBll
     {
         public CarilerBll() : base(KartTuru.Cariler) { }
         public CarilerBll(Control ctrl) : base(ctrl, KartTuru.Cariler) { }
-
         public override BaseEntity Single(Expression<Func<Cariler, bool>> filter)
         {
+
             return BaseSingle(filter, x => new CarilerS
             {
 
                 Id = x.Id,
                 Kod = x.Kod,
-                CariAdi = x.CariAdi,
                 KimlikNo = x.KimlikNo,
                 Ad = x.Ad,
                 Soyad = x.Soyad,
                 Sahis = x.Sahis,
                 Unvan = x.Unvan,
-                //VergiDairesi = x.VergiDairesi,
                 VergiNo = x.VergiNo,
-                VergiKodu = x.VergiKodu,
-                YetkiKodu = x.YetkiKodu,
-                HesapKodu = x.HesapKodu,
-                ProjeKodu = x.ProjeKodu,
+                SektorAdi = x.SektorAdi,
                 VergiDairesiId = x.VergiDairesiId,
-                VergiDairesiAdi = x.VergiDairesi.VergiDairesiAdi,
+                VergiDairesiAdi = x.VergiDairesi.Ad,
+                CariGrubuId = x.CariGrubuId,
+                CariGrubuAdi = x.CariGrubu.Ad,
+                CariTuruId = x.CariTuruId,
+                CariTuruAdi = x.CariTuru.Ad,
+                EtiketId = x.EtiketId,
+                EtiketAdi = x.Etiket.EtiketAdi,
+                SektorId = x.SektorId,
+                KayitKaynakId = x.KayitKaynakId,
+                KayitKaynakAdi = x.KayitKaynak.KayitKaynakAdi,
                 KimlikTuruId = x.KimlikTuruId,
                 KimlikTuruAdi = x.KimlikTuru.KimlikAdi,
                 OzelKod1Id = x.OzelKod1Id,
@@ -54,29 +58,26 @@ namespace AsamaGlobal.ERP.Bll.General.CarilerBll
                 OzelKod5Adi = x.OzelKod5.OzelKodAdi,
                 Aciklama = x.Aciklama,
                 Durum = x.Durum
-
             });
         }
-
         public override IEnumerable<BaseEntity> List(Expression<Func<Cariler, bool>> filter)
         {
             return BaseList(filter, x => new CarilerL
             {
                 Id = x.Id,
                 Kod = x.Kod,
-                CariAdi = x.CariAdi,
                 KimlikNo = x.KimlikNo,
                 Ad = x.Ad,
                 Soyad = x.Soyad,
                 Sahis = x.Sahis,
                 Unvan = x.Unvan,
-                //VergiDairesi = x.VergiDairesi,
                 VergiNo = x.VergiNo,
-                VergiKodu = x.VergiKodu,
-                YetkiKodu = x.YetkiKodu,
-                HesapKodu = x.HesapKodu,
-                ProjeKodu = x.ProjeKodu,               
-                VergiDairesiAdi = x.VergiDairesi.VergiDairesiAdi,
+                SektorAdi = x.SektorAdi,
+                CariTuruAdi = x.CariTuru.Ad,
+                CariGrubuAdi = x.CariGrubu.Ad,
+                EtiketAdi = x.Etiket.EtiketAdi,
+                VergiDairesiAdi = x.VergiDairesi.Ad,
+                KayitKaynakAdi = x.KayitKaynak.KayitKaynakAdi,
                 KimlikTuruAdi = x.KimlikTuru.KimlikAdi,
                 OzelKod1Adi = x.OzelKod1.OzelKodAdi,
                 OzelKod2Adi = x.OzelKod2.OzelKodAdi,
@@ -87,7 +88,6 @@ namespace AsamaGlobal.ERP.Bll.General.CarilerBll
 
             }).OrderBy(x => x.Kod).ToList();
         }
-
         public KimlikTuru KimlikTuruGetir(long? kimlikTuruId)
         {
             if (kimlikTuruId == null) return null;

@@ -1,4 +1,5 @@
-﻿using AbcYazilim.OgrenciTakip.Model.Entities;
+﻿using AbcYazilim.OgrenciTakip.Bll.General;
+using AbcYazilim.OgrenciTakip.Model.Entities;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
@@ -11,7 +12,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KimlikTuruForms
         public KimlikTuruListForm()
         {
             InitializeComponent();
-            Bll = new Bll.General.KimlikTuruBll();
+            Bll = new KimlikTuruBll();
         }
 
         protected override void DegiskenleriDoldur()
@@ -24,7 +25,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KimlikTuruForms
 
         protected override void Listele()
         {
-            Tablo.GridControl.DataSource = ((Bll.General.KimlikTuruBll)Bll).List(FilterFunctions.Filter<KimlikTuru>(AktifKartlariGoster));
+            Tablo.GridControl.DataSource = ((KimlikTuruBll)Bll).List(FilterFunctions.Filter<KimlikTuru>(AktifKartlariGoster));
         }
     }
 }

@@ -20,13 +20,15 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
     {
         #region Variables
         private readonly long _kisiId;
-        private readonly string _kisiAdi;       
+        private readonly string _kisiAdi;
+        private readonly string _kisiSoyadi;
         #endregion
         public GenelIletisimEditForm(params object[] prm)
         {
             InitializeComponent();
             _kisiId = (long)prm[0];
             _kisiAdi = prm[1].ToString();
+            _kisiSoyadi = prm[2].ToString();
 
             DataLayoutControl = myDataLayoutControl;
             Bll = new GenelIletisimBll(myDataLayoutControl);
@@ -45,14 +47,14 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
         {
             OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new GenelIletisimS() : ((GenelIletisimBll)Bll).Single(FilterFunctions.Filter<GenelIletisim>(Id));
             NesneyiKontrollereBagla();
-            Text = Text + $" - ( {_kisiAdi} )";
+            Text = Text + $" - ( {_kisiAdi} {_kisiSoyadi} )";
 
             if (BaseIslemTuru != IslemTuru.EntityInsert) return;
             Id = BaseIslemTuru.IdOlustur(OldEntity);
             txtKod.Text = ((GenelIletisimBll)Bll).YeniKodVer(x => x.KisiId == _kisiId);
             txtBaslik.Focus();
         }
-      
+
         protected override void NesneyiKontrollereBagla()
         {
 

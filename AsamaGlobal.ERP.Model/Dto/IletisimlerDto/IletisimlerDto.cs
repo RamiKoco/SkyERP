@@ -20,7 +20,7 @@ namespace AbcYazilim.OgrenciTakip.Model.Dto.IletisimlerDto
                     return KisiAdi;
                 else if (KayitTuru == KayitTuru.Personel)
                     return PersonelAdi;
-                else if (KayitTuru == KayitTuru.Cari)
+                else if (KayitTuru == KayitTuru.Meslek)
                     return MeslekAdi;
                 else
                     return null;
@@ -49,7 +49,7 @@ namespace AbcYazilim.OgrenciTakip.Model.Dto.IletisimlerDto
                     return KisiAdi;
                 else if (KayitTuru == KayitTuru.Personel)
                     return PersonelAdi;
-                else if (KayitTuru == KayitTuru.Cari)
+                else if (KayitTuru == KayitTuru.Meslek)
                     return MeslekAdi;
                 else
                     return null;

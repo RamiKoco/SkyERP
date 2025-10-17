@@ -2,7 +2,9 @@ using AbcYazilim.OgrenciTakip.Model.Entities;
 using AsamaGlobal.ERP.Data.ERPMigration;
 using AsamaGlobal.ERP.Model.Entities;
 using AsamaGlobal.ERP.Model.Entities.CariEntity;
+using AsamaGlobal.ERP.Model.Entities.CariEntity.CariGrublari;
 using AsamaGlobal.ERP.Model.Entities.CariEntity.CariSube;
+using AsamaGlobal.ERP.Model.Entities.CariEntity.CariTurleri;
 using AsamaGlobal.ERP.Model.Entities.KisiEntity;
 using AsamaGlobal.ERP.Model.Entities.PersonelEntity;
 using System.Data.Entity;
@@ -26,17 +28,17 @@ namespace AsamaGlobal.ERP.Data.Contexts
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>(); // isimleri çoðul olarak istemiyoruz. Aksi halde Il tablosunu ILs olarak kaydederdi. 
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
-            
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();            
             modelBuilder.Entity<Il>().HasMany(x => x.Ilce).WithRequired().WillCascadeOnDelete(true);
             modelBuilder.Entity<Cariler>().HasMany(x => x.CariSubeler).WithRequired().WillCascadeOnDelete(true);
             modelBuilder.Entity<Banka>().HasMany(x => x.BankaSube).WithRequired().WillCascadeOnDelete(true);
             modelBuilder.Entity<Indirim>().HasMany(x => x.IndiriminUygulanacagiHizmetBilgileri).WithRequired().WillCascadeOnDelete(true);
+
             modelBuilder.Entity<GenelAdres>()
-             .Property(x => x.Enlem)
-             .HasPrecision(9, 6);
+                .Property(x => x.Enlem)
+                .HasPrecision(9, 6);
 
             modelBuilder.Entity<GenelAdres>()
                 .Property(x => x.Boylam)
@@ -89,7 +91,7 @@ namespace AsamaGlobal.ERP.Data.Contexts
         public DbSet<IletisimBilgileri> IletisimBilgileri { get; set; }
         public DbSet<IletisimBilgi> IletisimBilgi { get; set; }
         public DbSet<EposBilgileri> EposBilgileri { get; set; }
-        public DbSet<BilgiNotlari> BilgiNotlari { get; set; }
+        public DbSet<Yorumlar> Yorumlar { get; set; }
         public DbSet<HizmetBilgileri> HizmetBilgileri { get; set; }
         public DbSet<IndirimBilgileri> IndirimBilgileri { get; set; }
         public DbSet<OdemeBilgileri> OdemeBilgileri { get; set; }
@@ -113,6 +115,7 @@ namespace AsamaGlobal.ERP.Data.Contexts
         public DbSet<Renk> Renk { get; set; }
         public DbSet<Etiket> Etiket { get; set; }
         public DbSet<EtiketKayitTuruBaglanti> EtiketKayitTuruBaglanti { get; set; }
+        public DbSet<CariSektorBaglanti> CariSektorBaglanti { get; set; }
         public DbSet<AdresTurleri> AdresTurleri { get; set; }
         public DbSet<AdresBilgileri> AdresBilgileri { get; set; }
         public DbSet<SosyalMedyaPlatformu> SosyalMedyaPlatformu { get; set; }
@@ -128,8 +131,12 @@ namespace AsamaGlobal.ERP.Data.Contexts
         public DbSet<PersonelBelge> PersonelBelge { get; set; }
         public DbSet<Cariler> Cariler { get; set; }
         public DbSet<CariSubeler> CariSubeler { get; set; }
+        public DbSet<CariTuru> CariTuru { get; set; }
+        public DbSet<CariGrubu> CariGrubu { get; set; }
         public DbSet<GenelIletisim> GenelIletisim { get; set; }
         public DbSet<GenelAdres> GenelAdres { get; set; }
         public DbSet<VergiDairesi> VergiDairesi { get; set; }
+        public DbSet<Sektor> Sektor { get; set; }
+        public DbSet<CariSubeGrubu> CariSubeGrubu { get; set; }
     }
 }

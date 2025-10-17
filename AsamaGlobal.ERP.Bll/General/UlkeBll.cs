@@ -4,7 +4,7 @@ using AsamaGlobal.ERP.Bll.Interfaces;
 using AsamaGlobal.ERP.Common.Enums;
 using System.Windows.Forms;
 
-namespace AsamaGlobal.ERP.Bll.General
+namespace AbcYazilim.OgrenciTakip.Bll.General
 {
     public class UlkeBll : BaseGenelBll<Ulke>, IBaseGenelBll, IBaseCommonBll
     {

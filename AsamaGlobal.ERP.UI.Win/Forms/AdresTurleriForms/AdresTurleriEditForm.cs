@@ -1,4 +1,5 @@
-﻿using AbcYazilim.OgrenciTakip.Model.Dto;
+﻿using AbcYazilim.OgrenciTakip.Bll.General;
+using AbcYazilim.OgrenciTakip.Model.Dto;
 using AbcYazilim.OgrenciTakip.Model.Entities;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
@@ -14,19 +15,19 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.AdresTurleriForms
             InitializeComponent();
 
             DataLayoutControl = myDataLayoutControl;
-            Bll = new Bll.General.AdresTurleriBll(myDataLayoutControl);
+            Bll = new AdresTurleriBll(myDataLayoutControl);
             BaseKartTuru = KartTuru.AdresTurleri;
             EventsLoad();
         }
         public override void Yukle()
         {
-            OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new AdresTurleriS() : ((Bll.General.AdresTurleriBll)Bll).Single(FilterFunctions.Filter<AdresTurleri>(Id));
+            OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new AdresTurleriS() : ((AdresTurleriBll)Bll).Single(FilterFunctions.Filter<AdresTurleri>(Id));
             NesneyiKontrollereBagla();
             TabloYukle();
 
             if (BaseIslemTuru != IslemTuru.EntityInsert) return;
             Id = BaseIslemTuru.IdOlustur(OldEntity);
-            txtKod.Text = ((Bll.General.AdresTurleriBll)Bll).YeniKodVer();
+            txtKod.Text = ((AdresTurleriBll)Bll).YeniKodVer();
             txtAdresTuruAdi.Focus();
         }
 

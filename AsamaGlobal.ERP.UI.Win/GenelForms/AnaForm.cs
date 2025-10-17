@@ -12,6 +12,9 @@ using AsamaGlobal.ERP.UI.Win.Forms.BankaForms;
 using AsamaGlobal.ERP.UI.Win.Forms.BankaHesapForms;
 using AsamaGlobal.ERP.UI.Win.Forms.BelgeTuruForms;
 using AsamaGlobal.ERP.UI.Win.Forms.CariForms;
+using AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariGruplariForms;
+using AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms.CariSubeGrubuForms;
+using AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariTurleriForms;
 using AsamaGlobal.ERP.UI.Win.Forms.DepartmanForms;
 using AsamaGlobal.ERP.UI.Win.Forms.EtiketForms;
 using AsamaGlobal.ERP.UI.Win.Forms.EvrakForms;
@@ -45,6 +48,7 @@ using AsamaGlobal.ERP.UI.Win.Forms.PozisyonForms;
 using AsamaGlobal.ERP.UI.Win.Forms.PromosyonForms;
 using AsamaGlobal.ERP.UI.Win.Forms.RehberForms;
 using AsamaGlobal.ERP.UI.Win.Forms.RenkForms;
+using AsamaGlobal.ERP.UI.Win.Forms.SektorForms;
 using AsamaGlobal.ERP.UI.Win.Forms.ServisForms;
 using AsamaGlobal.ERP.UI.Win.Forms.SinifForms;
 using AsamaGlobal.ERP.UI.Win.Forms.SinifGrupForms;
@@ -53,6 +57,7 @@ using AsamaGlobal.ERP.UI.Win.Forms.TahakkukForms;
 using AsamaGlobal.ERP.UI.Win.Forms.TesvikForms;
 using AsamaGlobal.ERP.UI.Win.Forms.UlkeForms;
 using AsamaGlobal.ERP.UI.Win.Forms.UyrukForms;
+using AsamaGlobal.ERP.UI.Win.Forms.VergiDairesiForms;
 using AsamaGlobal.ERP.UI.Win.Forms.YabancıDilForms;
 using AsamaGlobal.ERP.UI.Win.Forms.YakinlikForms;
 using AsamaGlobal.ERP.UI.Win.Reports.FormReports;
@@ -261,7 +266,7 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
             else if (e.Item == btnKurumlarKartlari)
                 ShowListForms<KurumlarListForm>.ShowListForm(KartTuru.Kurumlar);
             else if (e.Item == btnCarilerKartlari)
-                ShowListForms<Forms.CariForms.CarilerForms.CarilerListForm>.ShowListForm(KartTuru.Cariler);
+                ShowListForms<CarilerListForm>.ShowListForm(KartTuru.Cariler);
 
             else if (e.Item == btnBankaKartlari)
                 ShowListForms<BankaListForm>.ShowListForm(KartTuru.Banka);
@@ -275,6 +280,12 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
                 ShowListForms<BankaHesapListForm>.ShowListForm(KartTuru.BankaHesap);
             else if (e.Item == btnIletisimKartlari)
                 ShowListForms<IletisimListForm>.ShowListForm(KartTuru.Iletisim);
+            else if (e.Item == btnCariTuruKartlari)
+                ShowListForms<CariTuruListForm>.ShowListForm(KartTuru.CariTuru);
+            else if (e.Item == btnCariGrubuKartlari)
+                ShowListForms<CariGrubuListForm>.ShowListForm(KartTuru.CariGrubu);
+            else if (e.Item == btnSektorKartlari)
+                ShowListForms<SektorListForm>.ShowListForm(KartTuru.Sektor);
 
             else if (e.Item == btnIletisimlerKartlari)
                 ShowListForms<IletisimlerListForm>.ShowListForm(KartTuru.Iletisimler);
@@ -302,7 +313,7 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
             else if (e.Item == btnUcretVeOdemeRaporu)
                 ShowEditReports<UcretVeOdemeRaporu>.ShowEditReport(KartTuru.UcretVeOdemeRaporu);
             else if (e.Item == btnIndirimDagilimRaporu)
-                ShowEditReports<Reports.FormReports.IndirimDagilimRaporu>.ShowEditReport(KartTuru.IndirimDagilimRaporu);
+                ShowEditReports<IndirimDagilimRaporu>.ShowEditReport(KartTuru.IndirimDagilimRaporu);
             else if (e.Item == btnMesleklereGoreKayitRaporu)
                 ShowEditReports<MesleklereGoreKayitRaporu>.ShowEditReport(KartTuru.MesleklereGoreKayitRaporu);
             else if (e.Item == btnAylikKayitRaporu)

@@ -9,8 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Windows.Forms;
-
-namespace AsamaGlobal.ERP.Bll.General
+namespace AbcYazilim.OgrenciTakip.Bll.General
 {
     public class EtiketBll : BaseGenelBll<Etiket>, IBaseGenelBll, IBaseCommonBll
     {

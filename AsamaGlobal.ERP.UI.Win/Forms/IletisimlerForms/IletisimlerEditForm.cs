@@ -1,10 +1,12 @@
-﻿using AbcYazilim.OgrenciTakip.Common.Enums;
+﻿using AbcYazilim.OgrenciTakip.Bll.General;
+using AbcYazilim.OgrenciTakip.Common.Enums;
 using AbcYazilim.OgrenciTakip.Model.Dto.IletisimlerDto;
 using AbcYazilim.OgrenciTakip.Model.Entities;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Functions;
 using AsamaGlobal.ERP.Common.Message;
 using AsamaGlobal.ERP.Data.Contexts;
+using AsamaGlobal.ERP.Model.Entities;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
 using DevExpress.XtraEditors;
@@ -21,7 +23,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
             InitializeComponent();
 
             DataLayoutControl = myDataLayoutControl;
-            Bll = new Bll.General.IletisimlerBll(myDataLayoutControl);
+            Bll = new IletisimlerBll(myDataLayoutControl);
             txtKayitTuru.Properties.Items.AddRange(EnumFunctions.GetEnumDescriptionList<KayitTuru>());
             txtIletisimTurleri.Properties.Items.AddRange(EnumFunctions.GetEnumDescriptionList<IletisimTuru>());
             txtIzinDurumu.Properties.Items.AddRange(EnumFunctions.GetEnumDescriptionList<IletisimDurumu>());
@@ -44,13 +46,13 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
         {
             OldEntity = BaseIslemTuru == IslemTuru.EntityInsert
                 ? new IletisimlerS()
-                : ((Bll.General.IletisimlerBll)Bll).Single(FilterFunctions.Filter<Iletisimler>(Id));
+                : ((IletisimlerBll)Bll).Single(FilterFunctions.Filter<Iletisimler>(Id));
             NesneyiKontrollereBagla();
             TabloYukle();
 
             if (BaseIslemTuru != IslemTuru.EntityInsert) return;
             Id = BaseIslemTuru.IdOlustur(OldEntity);
-            txtKod.Text = ((Bll.General.IletisimlerBll)Bll).YeniKodVer();
+            txtKod.Text = ((IletisimlerBll)Bll).YeniKodVer();
             txtBaslik.Focus();
         }
 
@@ -66,7 +68,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
                 txtKayitHesabi.Id = entity.KisiId ?? 0;
             else if (entity.KayitTuru == KayitTuru.Personel)
                 txtKayitHesabi.Id = entity.PersonelId ?? 0;
-            else if (entity.KayitTuru == KayitTuru.Cari)
+            else if (entity.KayitTuru == KayitTuru.Meslek)
                 txtKayitHesabi.Id = entity.MeslekId ?? 0;
             else
                 txtKayitHesabi.Id = 0;
@@ -103,7 +105,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
             var kayitTuru = txtKayitTuru.SelectedItem?.ToString().GetEnum<KayitTuru>() ?? KayitTuru.Kisi;
 
             var kisiId = kayitTuru == KayitTuru.Kisi ? txtKayitHesabi.Id : null;
-            var meslekId = kayitTuru == KayitTuru.Cari ? txtKayitHesabi.Id : null;
+            var meslekId = kayitTuru == KayitTuru.Meslek ? txtKayitHesabi.Id : null;
             var personelId = kayitTuru == KayitTuru.Personel ? txtKayitHesabi.Id : null;
             CurrentEntity = new Iletisimler
             {
@@ -257,7 +259,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
                         sec.Sec(txtKayitHesabi, KartTuru.Kisi);
                     else if (kayitTuru == KayitTuru.Personel)
                         sec.Sec(txtKayitHesabi, KartTuru.Personel);
-                    else if (kayitTuru == KayitTuru.Cari)
+                    else if (kayitTuru == KayitTuru.Meslek)
                         sec.Sec(txtKayitHesabi, KartTuru.Meslek);
                     else
                         sec.Sec(txtKayitHesabi);

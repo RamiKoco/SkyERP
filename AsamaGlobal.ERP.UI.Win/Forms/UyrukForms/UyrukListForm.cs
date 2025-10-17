@@ -1,4 +1,5 @@
-﻿using AbcYazilim.OgrenciTakip.Model.Entities;
+﻿using AbcYazilim.OgrenciTakip.Bll.General;
+using AbcYazilim.OgrenciTakip.Model.Entities;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
@@ -11,7 +12,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.UyrukForms
         public UyrukListForm()
         {
             InitializeComponent();
-            Bll = new Bll.General.UyrukBll();
+            Bll = new UyrukBll();
         }
         protected override void DegiskenleriDoldur()
         {
@@ -23,7 +24,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.UyrukForms
 
         protected override void Listele()
         {
-            Tablo.GridControl.DataSource = ((Bll.General.UyrukBll)Bll).List(FilterFunctions.Filter<Uyruk>(AktifKartlariGoster));
+            Tablo.GridControl.DataSource = ((UyrukBll)Bll).List(FilterFunctions.Filter<Uyruk>(AktifKartlariGoster));
         }
     }
 }

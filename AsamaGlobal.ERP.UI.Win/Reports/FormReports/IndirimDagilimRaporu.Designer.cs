@@ -1,10 +1,4 @@
-﻿using AsamaGlobal.ERP.UI.Win.GenelForms;
-using AsamaGlobal;
-using AsamaGlobal.ERP;
-using AsamaGlobal.ERP.UI;
-using AsamaGlobal.ERP.UI.Win;
-
-namespace AsamaGlobal.ERP.UI.Win.Reports.FormReports
+﻿namespace AsamaGlobal.ERP.UI.Win.GenelForms
 {
     partial class IndirimDagilimRaporu
     {
@@ -34,7 +28,7 @@ namespace AsamaGlobal.ERP.UI.Win.Reports.FormReports
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReports.IndirimDagilimRaporu));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IndirimDagilimRaporu));
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             DevExpress.XtraLayout.ColumnDefinition columnDefinition1 = new DevExpress.XtraLayout.ColumnDefinition();

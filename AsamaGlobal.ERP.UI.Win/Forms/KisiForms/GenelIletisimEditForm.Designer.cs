@@ -2,32 +2,32 @@
 {
     partial class GenelIletisimEditForm
     {
-            /// <summary>
-            /// Required designer variable.
-            /// </summary>
-            private System.ComponentModel.IContainer components = null;
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-            /// <summary>
-            /// Clean up any resources being used.
-            /// </summary>
-            /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-            protected override void Dispose(bool disposing)
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
             {
-                if (disposing && (components != null))
-                {
-                    components.Dispose();
-                }
-                base.Dispose(disposing);
+                components.Dispose();
             }
+            base.Dispose(disposing);
+        }
 
-            #region Windows Form Designer generated code
+        #region Windows Form Designer generated code
 
-            /// <summary>
-            /// Required method for Designer support - do not modify
-            /// the contents of this method with the code editor.
-            /// </summary>
-            private void InitializeComponent()
-            {
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             DevExpress.XtraLayout.ColumnDefinition columnDefinition1 = new DevExpress.XtraLayout.ColumnDefinition();
             DevExpress.XtraLayout.ColumnDefinition columnDefinition2 = new DevExpress.XtraLayout.ColumnDefinition();
             DevExpress.XtraLayout.ColumnDefinition columnDefinition3 = new DevExpress.XtraLayout.ColumnDefinition();
@@ -1167,59 +1167,59 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
-            }
+        }
 
-            #endregion
+        #endregion
 
-            private UserControls.Controls.MyDataLayoutControl myDataLayoutControl;
-            private DevExpress.XtraLayout.LayoutControlGroup Root;
-            private UserControls.Controls.MyTextEdit txtBaslik;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-            private UserControls.Controls.MyTelefonNoTextEdit txtTelefonVeFax;
-            private UserControls.Controls.MyEmailTextEdit txtEPosta;
-            private UserControls.Controls.MyButtonEdit txtOzelKod1;
-            private UserControls.Controls.MyButtonEdit txtOzelKod2;
-            private UserControls.Controls.MyMemoEdit txtAciklama;
-            private UserControls.Controls.MyToogleSwitch tglDurum;
-            private UserControls.Controls.MyKodTextEdit txtKod;
-            private UserControls.Controls.MyComboBoxEdit txtIletisimTurleri;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
-            private UserControls.Controls.MyCheckedComboBoxEdit txtKanallar;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
-            private UserControls.Controls.MyTextEdit txtIlgili;
-            private UserControls.Controls.MyTextEdit txtWeb;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem14;
-            private UserControls.Controls.MyButtonEdit txtSosyalMedyaPlatformu;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem15;
-            private UserControls.Controls.MyTextEdit txtSosyalMedyaUrl;
-            private UserControls.Controls.MyTextEdit txtKullaniciAdi;
-            private UserControls.Controls.MyToogleSwitch tglVoip;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem18;
-            private UserControls.Controls.MyTextEdit txtSIPKullaniciAdi;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem19;
-            private UserControls.Controls.MyTextEdit txtSIPServer;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem20;
-            private UserControls.Controls.MyComboBoxEdit txtIzinDurumu;
-            private UserControls.Controls.MyDateEdit txtIzinTarihi;
-            private UserControls.Controls.MySpinEdit txtOncelik;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem16;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem22;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem21;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem23;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
-            private UserControls.Controls.MyUlkeKoduTextEdit txtUlkeKodu;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-            private UserControls.Controls.MyToogleSwitch tglVarsayilanYap;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem24;
-            private UserControls.Controls.MyDahiliNoTextEdit txtDahili;
-            private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private UserControls.Controls.MyDataLayoutControl myDataLayoutControl;
+        private DevExpress.XtraLayout.LayoutControlGroup Root;
+        private UserControls.Controls.MyTextEdit txtBaslik;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private UserControls.Controls.MyTelefonNoTextEdit txtTelefonVeFax;
+        private UserControls.Controls.MyEmailTextEdit txtEPosta;
+        private UserControls.Controls.MyButtonEdit txtOzelKod1;
+        private UserControls.Controls.MyButtonEdit txtOzelKod2;
+        private UserControls.Controls.MyMemoEdit txtAciklama;
+        private UserControls.Controls.MyToogleSwitch tglDurum;
+        private UserControls.Controls.MyKodTextEdit txtKod;
+        private UserControls.Controls.MyComboBoxEdit txtIletisimTurleri;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
+        private UserControls.Controls.MyCheckedComboBoxEdit txtKanallar;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private UserControls.Controls.MyTextEdit txtIlgili;
+        private UserControls.Controls.MyTextEdit txtWeb;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem14;
+        private UserControls.Controls.MyButtonEdit txtSosyalMedyaPlatformu;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem15;
+        private UserControls.Controls.MyTextEdit txtSosyalMedyaUrl;
+        private UserControls.Controls.MyTextEdit txtKullaniciAdi;
+        private UserControls.Controls.MyToogleSwitch tglVoip;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem18;
+        private UserControls.Controls.MyTextEdit txtSIPKullaniciAdi;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem19;
+        private UserControls.Controls.MyTextEdit txtSIPServer;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem20;
+        private UserControls.Controls.MyComboBoxEdit txtIzinDurumu;
+        private UserControls.Controls.MyDateEdit txtIzinTarihi;
+        private UserControls.Controls.MySpinEdit txtOncelik;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem16;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem22;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem21;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem23;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private UserControls.Controls.MyUlkeKoduTextEdit txtUlkeKodu;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private UserControls.Controls.MyToogleSwitch tglVarsayilanYap;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem24;
+        private UserControls.Controls.MyDahiliNoTextEdit txtDahili;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
     }
 }

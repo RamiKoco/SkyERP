@@ -92,7 +92,7 @@
             this.tablo.StatusBarAciklama = "Bilgi Notu Giriniz.";
             this.tablo.StatusBarKisaYol = "Shift+Insert :";
             this.tablo.StatusBarKisaYolAciklama = "Not Girin";
-            this.tablo.ViewCaption = "Bilgi Notları";
+            this.tablo.ViewCaption = "Yorumlar";
             // 
             // colTarih
             // 

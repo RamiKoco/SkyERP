@@ -9,15 +9,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Windows.Forms;
-using AsamaGlobal.ERP.Bll.General.CarilerBll;
-using AsamaGlobal;
-using AsamaGlobal.ERP;
-using AsamaGlobal.ERP.Bll;
-using AsamaGlobal.ERP.Bll.General;
 
-namespace AsamaGlobal.ERP.Bll.General.CarilerBll.CariSubeBll
+namespace AsamaGlobal.ERP.Bll.General.CarilerBll
 {
-    public class CariSubelerBll : BaseGenelBll<CariSubeler>, IBaseCommonBll
+    public class CariSubelerBll : BaseGenelBll<CariSubeler>, IBaseGenelBll, IBaseCommonBll
     {
         public CariSubelerBll() : base(KartTuru.CariSubeler) { }
 
@@ -31,7 +26,8 @@ namespace AsamaGlobal.ERP.Bll.General.CarilerBll.CariSubeBll
                 Id = x.Id,
                 Kod = x.Kod,
                 CariSubeAdi = x.CariSubeAdi,
-                Ilgili = x.Ilgili,
+                CariSubeGrubuId = x.CariSubeGrubuId,
+                CariSubeGrubuAdi = x.CariSubeGrubu.Ad,
                 OzelKod1Id = x.OzelKod1Id,
                 OzelKod1Adi = x.OzelKod1.OzelKodAdi,
                 OzelKod2Id = x.OzelKod2Id,
@@ -48,7 +44,7 @@ namespace AsamaGlobal.ERP.Bll.General.CarilerBll.CariSubeBll
                 Id = x.Id,
                 Kod = x.Kod,
                 CariSubeAdi = x.CariSubeAdi,
-                Ilgili = x.Ilgili,
+                CariSubeGrubuAdi = x.CariSubeGrubu.Ad,
                 OzelKod1Adi = x.OzelKod1.OzelKodAdi,
                 OzelKod2Adi = x.OzelKod2.OzelKodAdi,
                 Aciklama = x.Aciklama

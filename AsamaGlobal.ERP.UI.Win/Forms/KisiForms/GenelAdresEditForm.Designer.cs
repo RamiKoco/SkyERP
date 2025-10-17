@@ -839,9 +839,9 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private UserControls.Controls.MyKoordinatTextEdit txtEnlem;
         private UserControls.Controls.MyKoordinatTextEdit txtBoylam;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private UserControls.Controls.MyKoordinatTextEdit txtEnlem;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
     }
 }

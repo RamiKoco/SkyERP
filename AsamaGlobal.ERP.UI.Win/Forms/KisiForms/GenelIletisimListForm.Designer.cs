@@ -2,32 +2,32 @@
 {
     partial class GenelIletisimListForm
     {
-            /// <summary>
-            /// Required designer variable.
-            /// </summary>
-            private System.ComponentModel.IContainer components = null;
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-            /// <summary>
-            /// Clean up any resources being used.
-            /// </summary>
-            /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-            protected override void Dispose(bool disposing)
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
             {
-                if (disposing && (components != null))
-                {
-                    components.Dispose();
-                }
-                base.Dispose(disposing);
+                components.Dispose();
             }
+            base.Dispose(disposing);
+        }
 
-            #region Windows Form Designer generated code
+        #region Windows Form Designer generated code
 
-            /// <summary>
-            /// Required method for Designer support - do not modify
-            /// the contents of this method with the code editor.
-            /// </summary>
-            private void InitializeComponent()
-            {
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenelIletisimListForm));
             this.longNavigator = new AsamaGlobal.ERP.UI.Win.UserControls.Navigators.LongNavigator();
             this.grid = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridControl();
@@ -452,14 +452,14 @@
             // 
             // gridBand6
             // 
-            this.gridBand6.Caption = "Voip Bilgileri";
+            this.gridBand6.Caption = "VOİP Bilgileri";
             this.gridBand6.Columns.Add(this.colVoipMi);
             this.gridBand6.Columns.Add(this.colSIPKullaniciAdi);
             this.gridBand6.Columns.Add(this.colSIPServer);
             this.gridBand6.Name = "gridBand6";
             this.gridBand6.Visible = false;
             this.gridBand6.VisibleIndex = -1;
-            this.gridBand6.Width = 272;
+            this.gridBand6.Width = 292;
             // 
             // colVoipMi
             // 
@@ -471,7 +471,7 @@
             this.colVoipMi.StatusBarKisaYol = null;
             this.colVoipMi.StatusBarKisaYolAciklama = null;
             this.colVoipMi.Visible = true;
-            this.colVoipMi.Width = 93;
+            this.colVoipMi.Width = 95;
             // 
             // colSIPKullaniciAdi
             // 
@@ -483,7 +483,7 @@
             this.colSIPKullaniciAdi.StatusBarKisaYol = null;
             this.colSIPKullaniciAdi.StatusBarKisaYolAciklama = null;
             this.colSIPKullaniciAdi.Visible = true;
-            this.colSIPKullaniciAdi.Width = 100;
+            this.colSIPKullaniciAdi.Width = 121;
             // 
             // colSIPServer
             // 
@@ -495,7 +495,7 @@
             this.colSIPServer.StatusBarKisaYol = null;
             this.colSIPServer.StatusBarKisaYolAciklama = null;
             this.colSIPServer.Visible = true;
-            this.colSIPServer.Width = 79;
+            this.colSIPServer.Width = 76;
             // 
             // colId
             // 
@@ -524,38 +524,38 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
-            }
+        }
 
-            #endregion
-            private UserControls.Navigators.LongNavigator longNavigator;
-            private UserControls.Grid.MyBandedGridControl grid;
-            private UserControls.Grid.MyBandedGridView tablo;
-            private UserControls.Grid.MyBandedGridColumn colIletisimTuru;
-            private UserControls.Grid.MyBandedGridColumn colBaslik;
-            private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colKod;
-            private UserControls.Grid.MyBandedGridColumn colIzinDurumu;
-            private UserControls.Grid.MyBandedGridColumn colUlkeKodu;
-            private UserControls.Grid.MyBandedGridColumn colNumara;
-            private UserControls.Grid.MyBandedGridColumn colDahiliNo;
-            private UserControls.Grid.MyBandedGridColumn colArama;
-            private UserControls.Grid.MyBandedGridColumn colSms;
-            private UserControls.Grid.MyBandedGridColumn colWhatsapp;
-            private UserControls.Grid.MyBandedGridColumn colOzelKod1Adi;
-            private UserControls.Grid.MyBandedGridColumn colOzelKod2Adi;
-            private UserControls.Grid.MyBandedGridColumn colWeb;
-            private UserControls.Grid.MyBandedGridColumn colAciklama;
-            private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colId;
-            private UserControls.Grid.MyBandedGridColumn colEPBool;
-            private UserControls.Grid.MyBandedGridColumn colEPosta;
-            private UserControls.Grid.MyBandedGridColumn colOncelik;
-        private UserControls.Grid.MyBandedGridColumn colVoipMi;
-        private UserControls.Grid.MyBandedGridColumn colSIPKullaniciAdi;
-        private UserControls.Grid.MyBandedGridColumn colSIPServer;
+        #endregion
+        private UserControls.Navigators.LongNavigator longNavigator;
+        private UserControls.Grid.MyBandedGridControl grid;
+        private UserControls.Grid.MyBandedGridView tablo;
+        private UserControls.Grid.MyBandedGridColumn colIletisimTuru;
+        private UserControls.Grid.MyBandedGridColumn colBaslik;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colKod;
+        private UserControls.Grid.MyBandedGridColumn colIzinDurumu;
+        private UserControls.Grid.MyBandedGridColumn colUlkeKodu;
+        private UserControls.Grid.MyBandedGridColumn colNumara;
+        private UserControls.Grid.MyBandedGridColumn colDahiliNo;
+        private UserControls.Grid.MyBandedGridColumn colArama;
+        private UserControls.Grid.MyBandedGridColumn colSms;
+        private UserControls.Grid.MyBandedGridColumn colWhatsapp;
+        private UserControls.Grid.MyBandedGridColumn colOzelKod1Adi;
+        private UserControls.Grid.MyBandedGridColumn colOzelKod2Adi;
+        private UserControls.Grid.MyBandedGridColumn colWeb;
+        private UserControls.Grid.MyBandedGridColumn colAciklama;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colId;
+        private UserControls.Grid.MyBandedGridColumn colEPBool;
+        private UserControls.Grid.MyBandedGridColumn colEPosta;
+        private UserControls.Grid.MyBandedGridColumn colOncelik;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand6;
+        private UserControls.Grid.MyBandedGridColumn colVoipMi;
+        private UserControls.Grid.MyBandedGridColumn colSIPKullaniciAdi;
+        private UserControls.Grid.MyBandedGridColumn colSIPServer;
     }
 }

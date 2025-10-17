@@ -5,7 +5,7 @@ using AsamaGlobal.ERP.UI.Win.Show;
 
 namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
 {
-    public partial class GenelAdresListForm :BaseListForm
+    public partial class GenelAdresListForm : BaseListForm
     {
         #region Variables
         private readonly long _cariSubeId;
@@ -34,6 +34,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
         {
             var result = ShowEditForms<GenelAdresEditForm>.ShowDialogEditForm(KartTuru.GenelAdres, id, _cariSubeId, _cariSubeAdi);
             ShowEditFormDefault(result);
-        }   
+        }
     }
 }

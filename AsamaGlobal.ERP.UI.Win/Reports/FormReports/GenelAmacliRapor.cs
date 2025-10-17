@@ -68,8 +68,6 @@ namespace AsamaGlobal.ERP.UI.Win.Reports.FormReports
             ShowEditForms<TahakkukEditForm>.ShowDialogEditForm(KartTuru.Tahakkuk, entity.TahakkukId, entity.SubeId != AnaForm.SubeId || entity.DonemId != AnaForm.DonemId);
 
         }
-
-
         protected override void Tablo_CustomSummaryCalculate(object sender, CustomSummaryEventArgs e)
         {
             if (e.SummaryProcess != CustomSummaryProcess.Finalize) return;

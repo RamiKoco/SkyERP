@@ -3,11 +3,12 @@ using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Model.Dto.CariDto;
 using AsamaGlobal.ERP.Model.Entities.CariEntity;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
+using AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
 using AsamaGlobal.ERP.UI.Win.Show;
 using DevExpress.XtraBars;
 
-namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
+namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
 {
     public partial class CarilerListForm : BaseListForm
     {
@@ -29,7 +30,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
         {
             Tablo = tablo;
             BaseKartTuru = KartTuru.Cariler;
-            FormShow = new ShowEditForms<CarilerForms.CarilerEditForm>();
+            FormShow = new ShowEditForms<CarilerEditForm>();
             Navigator = longNavigator.Navigator;
 
             if (IsMdiChild)
@@ -37,7 +38,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
         }
         protected override void Listele()
         {
-            Tablo.GridControl.DataSource = ((CarilerBll)Bll).List(FilterFunctions.Filter<Cariler>(AktifKartlariGoster));           
+            Tablo.GridControl.DataSource = ((CarilerBll)Bll).List(FilterFunctions.Filter<Cariler>(AktifKartlariGoster));
         }
         private void BarItem_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -50,16 +51,16 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
 
             if (barItem == btnBagliKartlar)
             {
-                ShowListForms<CariSubeForms.CariSubelerListForm>.ShowListForm(KartTuru.CariSubeler, entity.Id, entity.CariAdi);
+                ShowListForms<CariSubelerListForm>.ShowListForm(KartTuru.CariSubeler, entity.Id, entity.Unvan);
             }
 
             else if (barItem == btnIletisimKartlari)
             {
-                ShowListForms<CarilerForms.GenelIletisimListForm>.ShowListForm(KartTuru.GenelIletisim, entity.Id, entity.CariAdi);
+                ShowListForms<GenelIletisimListForm>.ShowListForm(KartTuru.GenelIletisim, entity.Id, entity.Unvan);
             }
             else if (barItem == btnAdresKartlari)
             {
-                ShowListForms<CarilerForms.GenelAdresListForm>.ShowListForm(KartTuru.GenelAdres, entity.Id, entity.CariAdi);
+                ShowListForms<GenelAdresListForm>.ShowListForm(KartTuru.GenelAdres, entity.Id, entity.Unvan);
             }
         }
     }

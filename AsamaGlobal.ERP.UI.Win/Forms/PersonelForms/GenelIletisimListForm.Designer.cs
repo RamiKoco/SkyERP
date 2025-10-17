@@ -1,6 +1,4 @@
-﻿using AsamaGlobal.ERP.UI.Win.Forms.KisiForms;
-
-namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
+﻿namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
 {
     partial class GenelIletisimListForm
     {
@@ -40,6 +38,10 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             this.colBaslik = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.colKod = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colIzinDurumu = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
+            this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.colVoipMi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
+            this.colSIPKullaniciAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
+            this.colSIPServer = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colUlkeKodu = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.colNumara = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
@@ -56,10 +58,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colWeb = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.colAciklama = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
-            this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.colVoipMi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
-            this.colSIPKullaniciAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
-            this.colSIPServer = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.colId = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
@@ -132,11 +130,11 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             this.tablo.BandPanelRowHeight = 40;
             this.tablo.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
             this.gridBand1,
+            this.gridBand6,
             this.gridBand2,
             this.gridBand5,
             this.gridBand3,
-            this.gridBand4,
-            this.gridBand6});
+            this.gridBand4});
             this.tablo.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
             this.colId,
             this.colKod,
@@ -156,9 +154,9 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             this.colWhatsapp,
             this.colEPBool,
             this.colEPosta,
-            this.colVoipMi,
             this.colSIPServer,
-            this.colSIPKullaniciAdi});
+            this.colSIPKullaniciAdi,
+            this.colVoipMi});
             this.tablo.GridControl = this.grid;
             this.tablo.Name = "tablo";
             this.tablo.OptionsMenu.EnableColumnMenu = false;
@@ -253,6 +251,53 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             this.colIzinDurumu.StatusBarKisaYolAciklama = null;
             this.colIzinDurumu.Visible = true;
             this.colIzinDurumu.Width = 100;
+            // 
+            // gridBand6
+            // 
+            this.gridBand6.Caption = "Voip Bilgileri";
+            this.gridBand6.Columns.Add(this.colVoipMi);
+            this.gridBand6.Columns.Add(this.colSIPKullaniciAdi);
+            this.gridBand6.Columns.Add(this.colSIPServer);
+            this.gridBand6.Name = "gridBand6";
+            this.gridBand6.Visible = false;
+            this.gridBand6.VisibleIndex = -1;
+            this.gridBand6.Width = 360;
+            // 
+            // colVoipMi
+            // 
+            this.colVoipMi.Caption = "Voip Durumu";
+            this.colVoipMi.FieldName = "VoipMi";
+            this.colVoipMi.Name = "colVoipMi";
+            this.colVoipMi.OptionsColumn.AllowEdit = false;
+            this.colVoipMi.StatusBarAciklama = null;
+            this.colVoipMi.StatusBarKisaYol = null;
+            this.colVoipMi.StatusBarKisaYolAciklama = null;
+            this.colVoipMi.Visible = true;
+            this.colVoipMi.Width = 98;
+            // 
+            // colSIPKullaniciAdi
+            // 
+            this.colSIPKullaniciAdi.Caption = "SİP Kullanıcı Adı";
+            this.colSIPKullaniciAdi.FieldName = "SIPKullaniciAdi";
+            this.colSIPKullaniciAdi.Name = "colSIPKullaniciAdi";
+            this.colSIPKullaniciAdi.OptionsColumn.AllowEdit = false;
+            this.colSIPKullaniciAdi.StatusBarAciklama = null;
+            this.colSIPKullaniciAdi.StatusBarKisaYol = null;
+            this.colSIPKullaniciAdi.StatusBarKisaYolAciklama = null;
+            this.colSIPKullaniciAdi.Visible = true;
+            this.colSIPKullaniciAdi.Width = 131;
+            // 
+            // colSIPServer
+            // 
+            this.colSIPServer.Caption = "SİP Server";
+            this.colSIPServer.FieldName = "SIPServer";
+            this.colSIPServer.Name = "colSIPServer";
+            this.colSIPServer.OptionsColumn.AllowEdit = false;
+            this.colSIPServer.StatusBarAciklama = null;
+            this.colSIPServer.StatusBarKisaYol = null;
+            this.colSIPServer.StatusBarKisaYolAciklama = null;
+            this.colSIPServer.Visible = true;
+            this.colSIPServer.Width = 131;
             // 
             // gridBand2
             // 
@@ -426,7 +471,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             this.gridBand4.Columns.Add(this.colAciklama);
             this.gridBand4.Name = "gridBand4";
             this.gridBand4.VisibleIndex = 4;
-            this.gridBand4.Width = 275;
+            this.gridBand4.Width = 300;
             // 
             // colWeb
             // 
@@ -438,7 +483,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             this.colWeb.StatusBarKisaYol = null;
             this.colWeb.StatusBarKisaYolAciklama = null;
             this.colWeb.Visible = true;
-            this.colWeb.Width = 91;
+            this.colWeb.Width = 100;
             // 
             // colAciklama
             // 
@@ -450,53 +495,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             this.colAciklama.StatusBarKisaYol = null;
             this.colAciklama.StatusBarKisaYolAciklama = null;
             this.colAciklama.Visible = true;
-            this.colAciklama.Width = 184;
-            // 
-            // gridBand6
-            // 
-            this.gridBand6.Caption = "Voip Bilgileri";
-            this.gridBand6.Columns.Add(this.colVoipMi);
-            this.gridBand6.Columns.Add(this.colSIPKullaniciAdi);
-            this.gridBand6.Columns.Add(this.colSIPServer);
-            this.gridBand6.Name = "gridBand6";
-            this.gridBand6.Visible = false;
-            this.gridBand6.VisibleIndex = -1;
-            this.gridBand6.Width = 281;
-            // 
-            // colVoipMi
-            // 
-            this.colVoipMi.Caption = "Voip Durumu";
-            this.colVoipMi.FieldName = "VoipMi";
-            this.colVoipMi.Name = "colVoipMi";
-            this.colVoipMi.OptionsColumn.AllowEdit = false;
-            this.colVoipMi.StatusBarAciklama = null;
-            this.colVoipMi.StatusBarKisaYol = null;
-            this.colVoipMi.StatusBarKisaYolAciklama = null;
-            this.colVoipMi.Visible = true;
-            this.colVoipMi.Width = 79;
-            // 
-            // colSIPKullaniciAdi
-            // 
-            this.colSIPKullaniciAdi.Caption = "SİP Kullanıcı Adı";
-            this.colSIPKullaniciAdi.FieldName = "SIPKullaniciAdi";
-            this.colSIPKullaniciAdi.Name = "colSIPKullaniciAdi";
-            this.colSIPKullaniciAdi.OptionsColumn.AllowEdit = false;
-            this.colSIPKullaniciAdi.StatusBarAciklama = null;
-            this.colSIPKullaniciAdi.StatusBarKisaYol = null;
-            this.colSIPKullaniciAdi.StatusBarKisaYolAciklama = null;
-            this.colSIPKullaniciAdi.Visible = true;
-            this.colSIPKullaniciAdi.Width = 127;
-            // 
-            // colSIPServer
-            // 
-            this.colSIPServer.Caption = "SİP Server";
-            this.colSIPServer.FieldName = "SIPServer";
-            this.colSIPServer.Name = "colSIPServer";
-            this.colSIPServer.OptionsColumn.AllowEdit = false;
-            this.colSIPServer.StatusBarAciklama = null;
-            this.colSIPServer.StatusBarKisaYol = null;
-            this.colSIPServer.StatusBarKisaYolAciklama = null;
-            this.colSIPServer.Visible = true;
+            this.colAciklama.Width = 200;
             // 
             // colId
             // 
@@ -549,14 +548,14 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
         private UserControls.Grid.MyBandedGridColumn colEPBool;
         private UserControls.Grid.MyBandedGridColumn colEPosta;
         private UserControls.Grid.MyBandedGridColumn colOncelik;
-        private UserControls.Grid.MyBandedGridColumn colVoipMi;
-        private UserControls.Grid.MyBandedGridColumn colSIPServer;
-        private UserControls.Grid.MyBandedGridColumn colSIPKullaniciAdi;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand6;
+        private UserControls.Grid.MyBandedGridColumn colVoipMi;
+        private UserControls.Grid.MyBandedGridColumn colSIPKullaniciAdi;
+        private UserControls.Grid.MyBandedGridColumn colSIPServer;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand6;
     }
 }

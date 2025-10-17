@@ -193,26 +193,6 @@ namespace AsamaGlobal.ERP.UI.Yonetim.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap inlinewithtext_16x16 {
-            get {
-                object obj = ResourceManager.GetObject("inlinewithtext_16x16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap inlinewithtext_32x32 {
-            get {
-                object obj = ResourceManager.GetObject("inlinewithtext_32x32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap permission_32x32 {
             get {
                 object obj = ResourceManager.GetObject("permission_32x32", resourceCulture);
@@ -277,6 +257,16 @@ namespace AsamaGlobal.ERP.UI.Yonetim.Properties {
             get {
                 object obj = ResourceManager.GetObject("team32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage treemap {
+            get {
+                object obj = ResourceManager.GetObject("treemap", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
             }
         }
         

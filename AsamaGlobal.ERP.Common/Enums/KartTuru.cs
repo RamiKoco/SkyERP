@@ -193,33 +193,40 @@ namespace AsamaGlobal.ERP.Common.Enums
         [Description("Kurum Kartları")]
         Kurumlar = 94,
         [Description("Personel Belge Kartları")]
-        PersonelBelge = 95,       
-        [Description("Genel İletişim Kartı")]
-        GenelIletisim = 96,
+        PersonelBelge = 95,
+        [Description("Kişi İletişim Kartları")]
+        KisiIletisim = 96,
         [Description("Kişi Adres Kartları")]
-        KisiAdres = 97,       
-        [Description("Cari-Şube İletişim Kartı")]
-        CariSubeIletisim = 98,
+        KisiAdres = 97,
+        [Description("Personel İletişim Kartları")]
+        PersonelIletisim = 98,
         [Description("Personel Adres Kartları")]
         PersonelAdres = 99,
         [Description("Cari Kart")]
         Cariler = 100,
         [Description("Cari Şube Kartı")]
-        CariSubeler = 101,      
-        [Description("Cari Adres Kartı")]
-        CariAdres = 102,
-        [Description("Cari-Şube Adres Kartı")]
-        CariSubeAdres = 103,
-        [Description("Personel İletişim Kartı")]
-        PersonelIletisim = 104,
-        [Description("Kişi İletişim Kartı")]
-        KisiIletisim = 105,
+        CariSubeler = 101,
         [Description("Cari İletişim Kartı")]
-        CariIletisim = 106,
+        CariIletisim = 102,
+        [Description("Cari Adres Kartı")]
+        CariAdres = 103,
+        [Description("Cari-Şube Adres Kartı")]
+        CariSubeAdres = 104,
+        [Description("Cari-Şube İletişim Kartı")]
+        CariSubeIletisim = 105,
+        [Description("Genel İletişim Kartı")]
+        GenelIletisim = 106,
         [Description("Genel Adres Kartı")]
         GenelAdres = 107,
         [Description("Vergi Dairesi")]
         VergiDairesi = 108,
-
+        [Description("Cari Türü Kartı")]
+        CariTuru = 109,
+        [Description("Cari Gurubu Kartı")]
+        CariGrubu = 110,
+        [Description("Sektör Kartı")]
+        Sektor = 111,
+        [Description("Cari-Şube Grubu Kartı")]
+        CariSubeGrubu = 112,
     }
 }

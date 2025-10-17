@@ -36,6 +36,7 @@
     <ApplicationIcon>Resources\Graphicloads-Flat-Finance-Stat.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accessibility" />
     <Reference Include="DevExpress.BonusSkins.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Win.BonusSkins.24.1.3\lib\net452\DevExpress.BonusSkins.v24.1.dll</HintPath>
     </Reference>
@@ -109,6 +110,7 @@
     <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -231,23 +233,17 @@
     <Compile Include="Forms\BelgeTuruForms\BelgeTuruListForm.Designer.cs">
       <DependentUpon>BelgeTuruListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CariForms\CariEditForm.cs">
+    <Compile Include="Forms\CariForms\CariGruplariForms\CariGrubuEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CariForms\CariEditForm.Designer.cs">
-      <DependentUpon>CariEditForm.cs</DependentUpon>
+    <Compile Include="Forms\CariForms\CariGruplariForms\CariGrubuEditForm.Designer.cs">
+      <DependentUpon>CariGrubuEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CariForms\CarilerForms\CarilerEditForm.cs">
+    <Compile Include="Forms\CariForms\CariGruplariForms\CariGrubuListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CariForms\CarilerForms\CarilerEditForm.Designer.cs">
-      <DependentUpon>CarilerEditForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\CariForms\CarilerForms\CarilerListForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CariForms\CarilerForms\CarilerListForm.Designer.cs">
-      <DependentUpon>CarilerListForm.cs</DependentUpon>
+    <Compile Include="Forms\CariForms\CariGruplariForms\CariGrubuListForm.Designer.cs">
+      <DependentUpon>CariGrubuListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CariForms\CarilerForms\GenelAdresEditForm.cs">
       <SubType>Form</SubType>
@@ -261,17 +257,35 @@
     <Compile Include="Forms\CariForms\CarilerForms\GenelAdresListForm.Designer.cs">
       <DependentUpon>GenelAdresListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CariForms\CariEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CariForms\CariEditForm.Designer.cs">
+      <DependentUpon>CariEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CariForms\CarilerForms\GenelIletisimEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\CariForms\CarilerForms\GenelIletisimEditForm.Designer.cs">
       <DependentUpon>GenelIletisimEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CariForms\CarilerForms\GenelIletisimListForm.cs">
+    <Compile Include="Forms\CariForms\CarilerForms\GenelletisimListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CariForms\CarilerForms\GenelIletisimListForm.Designer.cs">
-      <DependentUpon>GenelIletisimListForm.cs</DependentUpon>
+    <Compile Include="Forms\CariForms\CarilerForms\GenelletisimListForm.Designer.cs">
+      <DependentUpon>GenelletisimListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CariForms\CarilerForms\CarilerEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CariForms\CarilerForms\CarilerEditForm.Designer.cs">
+      <DependentUpon>CarilerEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CariForms\CarilerForms\CarilerListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CariForms\CarilerForms\CarilerListForm.Designer.cs">
+      <DependentUpon>CarilerListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CariForms\CariListForm.cs">
       <SubType>Form</SubType>
@@ -279,17 +293,17 @@
     <Compile Include="Forms\CariForms\CariListForm.Designer.cs">
       <DependentUpon>CariListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CariForms\CariSubeForms\CariSubelerEditForm.cs">
+    <Compile Include="Forms\CariForms\CariSubeForms\CariSubeGrubuForms\CariSubeGrubuEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CariForms\CariSubeForms\CariSubelerEditForm.Designer.cs">
-      <DependentUpon>CariSubelerEditForm.cs</DependentUpon>
+    <Compile Include="Forms\CariForms\CariSubeForms\CariSubeGrubuForms\CariSubeGrubuEditForm.Designer.cs">
+      <DependentUpon>CariSubeGrubuEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CariForms\CariSubeForms\CariSubelerListForm.cs">
+    <Compile Include="Forms\CariForms\CariSubeForms\CariSubeGrubuForms\CariSubeGrubuListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CariForms\CariSubeForms\CariSubelerListForm.Designer.cs">
-      <DependentUpon>CariSubelerListForm.cs</DependentUpon>
+    <Compile Include="Forms\CariForms\CariSubeForms\CariSubeGrubuForms\CariSubeGrubuListForm.Designer.cs">
+      <DependentUpon>CariSubeGrubuListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CariForms\CariSubeForms\GenelAdresEditForm.cs">
       <SubType>Form</SubType>
@@ -309,11 +323,35 @@
     <Compile Include="Forms\CariForms\CariSubeForms\GenelIletisimEditForm.Designer.cs">
       <DependentUpon>GenelIletisimEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CariForms\CariSubeForms\GenelIletisimListForm.cs">
+    <Compile Include="Forms\CariForms\CariSubeForms\GenelletisimListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CariForms\CariSubeForms\GenelIletisimListForm.Designer.cs">
-      <DependentUpon>GenelIletisimListForm.cs</DependentUpon>
+    <Compile Include="Forms\CariForms\CariSubeForms\GenelletisimListForm.Designer.cs">
+      <DependentUpon>GenelletisimListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CariForms\CariSubeForms\CariSubelerEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CariForms\CariSubeForms\CariSubelerEditForm.Designer.cs">
+      <DependentUpon>CariSubelerEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CariForms\CariSubeForms\CariSubelerListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CariForms\CariSubeForms\CariSubelerListForm.Designer.cs">
+      <DependentUpon>CariSubelerListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CariForms\CariTurleriForms\CariTuruEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CariForms\CariTurleriForms\CariTuruEditForm.Designer.cs">
+      <DependentUpon>CariTuruEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CariForms\CariTurleriForms\CariTuruListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CariForms\CariTurleriForms\CariTuruListForm.Designer.cs">
+      <DependentUpon>CariTuruListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DepartmanForms\DepartmanEditForm.cs">
       <SubType>Form</SubType>
@@ -591,6 +629,12 @@
     <Compile Include="Forms\KisiForms\GenelAdresListForm.Designer.cs">
       <DependentUpon>GenelAdresListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\KisiForms\KisiEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\KisiForms\KisiEditForm.Designer.cs">
+      <DependentUpon>KisiEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\KisiForms\GenelIletisimEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -602,12 +646,6 @@
     </Compile>
     <Compile Include="Forms\KisiForms\GenelIletisimListForm.Designer.cs">
       <DependentUpon>GenelIletisimListForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\KisiForms\KisiEditForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\KisiForms\KisiEditForm.Designer.cs">
-      <DependentUpon>KisiEditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\KisiForms\KisiListForm.cs">
       <SubType>Form</SubType>
@@ -807,12 +845,6 @@
     <Compile Include="Forms\PersonelForms\GenelAdresListForm.Designer.cs">
       <DependentUpon>GenelAdresListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PersonelForms\GenelIletisimEditForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\PersonelForms\GenelIletisimEditForm.Designer.cs">
-      <DependentUpon>GenelIletisimEditForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\PersonelForms\GenelIletisimListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -824,6 +856,12 @@
     </Compile>
     <Compile Include="Forms\PersonelForms\PersonelEditForm.Designer.cs">
       <DependentUpon>PersonelEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PersonelForms\GenelIletisimEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PersonelForms\GenelIletisimEditForm.Designer.cs">
+      <DependentUpon>GenelIletisimEditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\PersonelForms\PersonelListForm.cs">
       <SubType>Form</SubType>
@@ -890,6 +928,18 @@
     </Compile>
     <Compile Include="Forms\RenkForms\RenkListForm.Designer.cs">
       <DependentUpon>RenkListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SektorForms\SektorEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SektorForms\SektorEditForm.Designer.cs">
+      <DependentUpon>SektorEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SektorForms\SektorListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SektorForms\SektorListForm.Designer.cs">
+      <DependentUpon>SektorListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ServisForms\ServisEditForm.cs">
       <SubType>Form</SubType>
@@ -1370,6 +1420,9 @@
     <Compile Include="UserControls\Controls\MyMemoEdit.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserControls\Controls\MyMultiSelectLookupEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserControls\Controls\MyPictureEdit.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1433,17 +1486,17 @@
     <Compile Include="UserControls\UserControl\Base\BaseTablo.Designer.cs">
       <DependentUpon>BaseTablo.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UserControl\CariEditFormTable\BilgiNotlariTable.cs">
+    <Compile Include="UserControls\UserControl\CariEditFormTable\YorumlarTable.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UserControl\CariEditFormTable\BilgiNotlariTable.Designer.cs">
-      <DependentUpon>BilgiNotlariTable.cs</DependentUpon>
+    <Compile Include="UserControls\UserControl\CariEditFormTable\YorumlarTable.Designer.cs">
+      <DependentUpon>YorumlarTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UserControl\CariSubelerEditFormTable\BilgiNotlariTable.cs">
+    <Compile Include="UserControls\UserControl\CariSubelerEditFormTable\YorumlarTable.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UserControl\CariSubelerEditFormTable\BilgiNotlariTable.Designer.cs">
-      <DependentUpon>BilgiNotlariTable.cs</DependentUpon>
+    <Compile Include="UserControls\UserControl\CariSubelerEditFormTable\YorumlarTable.Designer.cs">
+      <DependentUpon>YorumlarTable.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UserControl\FaturaEditFormTable\FaturaPlaniTable.cs">
       <SubType>UserControl</SubType>
@@ -1613,6 +1666,12 @@
     <Compile Include="UserControls\UserControl\TahakkukEditFormTable\TahakkukBilgileriTable.Designer.cs">
       <DependentUpon>TahakkukBilgileriTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControl\TahakkukEditFormTable\YorumlarTable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControl\TahakkukEditFormTable\YorumlarTable.Designer.cs">
+      <DependentUpon>YorumlarTable.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\AdresBilgileriForms\AdresBilgileriEditForm.resx">
       <DependentUpon>AdresBilgileriEditForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1667,14 +1726,11 @@
     <EmbeddedResource Include="Forms\BelgeTuruForms\BelgeTuruListForm.resx">
       <DependentUpon>BelgeTuruListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CariForms\CariEditForm.resx">
-      <DependentUpon>CariEditForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CariForms\CariGruplariForms\CariGrubuEditForm.resx">
+      <DependentUpon>CariGrubuEditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CariForms\CarilerForms\CarilerEditForm.resx">
-      <DependentUpon>CarilerEditForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CariForms\CarilerForms\CarilerListForm.resx">
-      <DependentUpon>CarilerListForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CariForms\CariGruplariForms\CariGrubuListForm.resx">
+      <DependentUpon>CariGrubuListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CariForms\CarilerForms\GenelAdresEditForm.resx">
       <DependentUpon>GenelAdresEditForm.cs</DependentUpon>
@@ -1682,20 +1738,29 @@
     <EmbeddedResource Include="Forms\CariForms\CarilerForms\GenelAdresListForm.resx">
       <DependentUpon>GenelAdresListForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CariForms\CariEditForm.resx">
+      <DependentUpon>CariEditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CariForms\CarilerForms\GenelIletisimEditForm.resx">
       <DependentUpon>GenelIletisimEditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CariForms\CarilerForms\GenelIletisimListForm.resx">
-      <DependentUpon>GenelIletisimListForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CariForms\CarilerForms\GenelletisimListForm.resx">
+      <DependentUpon>GenelletisimListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CariForms\CarilerForms\CarilerEditForm.resx">
+      <DependentUpon>CarilerEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CariForms\CarilerForms\CarilerListForm.resx">
+      <DependentUpon>CarilerListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CariForms\CariListForm.resx">
       <DependentUpon>CariListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CariForms\CariSubeForms\CariSubelerEditForm.resx">
-      <DependentUpon>CariSubelerEditForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CariForms\CariSubeForms\CariSubeGrubuForms\CariSubeGrubuEditForm.resx">
+      <DependentUpon>CariSubeGrubuEditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CariForms\CariSubeForms\CariSubelerListForm.resx">
-      <DependentUpon>CariSubelerListForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CariForms\CariSubeForms\CariSubeGrubuForms\CariSubeGrubuListForm.resx">
+      <DependentUpon>CariSubeGrubuListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CariForms\CariSubeForms\GenelAdresEditForm.resx">
       <DependentUpon>GenelAdresEditForm.cs</DependentUpon>
@@ -1706,8 +1771,20 @@
     <EmbeddedResource Include="Forms\CariForms\CariSubeForms\GenelIletisimEditForm.resx">
       <DependentUpon>GenelIletisimEditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CariForms\CariSubeForms\GenelIletisimListForm.resx">
-      <DependentUpon>GenelIletisimListForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CariForms\CariSubeForms\GenelletisimListForm.resx">
+      <DependentUpon>GenelletisimListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CariForms\CariSubeForms\CariSubelerEditForm.resx">
+      <DependentUpon>CariSubelerEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CariForms\CariSubeForms\CariSubelerListForm.resx">
+      <DependentUpon>CariSubelerListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CariForms\CariTurleriForms\CariTuruEditForm.resx">
+      <DependentUpon>CariTuruEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CariForms\CariTurleriForms\CariTuruListForm.resx">
+      <DependentUpon>CariTuruListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DepartmanForms\DepartmanEditForm.resx">
       <DependentUpon>DepartmanEditForm.cs</DependentUpon>
@@ -1847,14 +1924,14 @@
     <EmbeddedResource Include="Forms\KisiForms\GenelAdresListForm.resx">
       <DependentUpon>GenelAdresListForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\KisiForms\KisiEditForm.resx">
+      <DependentUpon>KisiEditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\KisiForms\GenelIletisimEditForm.resx">
       <DependentUpon>GenelIletisimEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\KisiForms\GenelIletisimListForm.resx">
       <DependentUpon>GenelIletisimListForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\KisiForms\KisiEditForm.resx">
-      <DependentUpon>KisiEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\KisiForms\KisiListForm.resx">
       <DependentUpon>KisiListForm.cs</DependentUpon>
@@ -1955,14 +2032,14 @@
     <EmbeddedResource Include="Forms\PersonelForms\GenelAdresListForm.resx">
       <DependentUpon>GenelAdresListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PersonelForms\GenelIletisimEditForm.resx">
-      <DependentUpon>GenelIletisimEditForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PersonelForms\GenelIletisimListForm.resx">
       <DependentUpon>GenelIletisimListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PersonelForms\PersonelEditForm.resx">
       <DependentUpon>PersonelEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PersonelForms\GenelIletisimEditForm.resx">
+      <DependentUpon>GenelIletisimEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PersonelForms\PersonelListForm.resx">
       <DependentUpon>PersonelListForm.cs</DependentUpon>
@@ -1996,6 +2073,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RenkForms\RenkListForm.resx">
       <DependentUpon>RenkListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SektorForms\SektorEditForm.resx">
+      <DependentUpon>SektorEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SektorForms\SektorListForm.resx">
+      <DependentUpon>SektorListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ServisForms\ServisEditForm.resx">
       <DependentUpon>ServisEditForm.cs</DependentUpon>
@@ -2224,11 +2307,11 @@
     <EmbeddedResource Include="UserControls\UserControl\Base\BaseTablo.resx">
       <DependentUpon>BaseTablo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UserControl\CariEditFormTable\BilgiNotlariTable.resx">
-      <DependentUpon>BilgiNotlariTable.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\UserControl\CariEditFormTable\YorumlarTable.resx">
+      <DependentUpon>YorumlarTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UserControl\CariSubelerEditFormTable\BilgiNotlariTable.resx">
-      <DependentUpon>BilgiNotlariTable.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\UserControl\CariSubelerEditFormTable\YorumlarTable.resx">
+      <DependentUpon>YorumlarTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControl\FaturaEditFormTable\FaturaPlaniTable.resx">
       <DependentUpon>FaturaPlaniTable.cs</DependentUpon>
@@ -2313,6 +2396,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControl\TahakkukEditFormTable\TahakkukBilgileriTable.resx">
       <DependentUpon>TahakkukBilgileriTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControl\TahakkukEditFormTable\YorumlarTable.resx">
+      <DependentUpon>YorumlarTable.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -3034,16 +3120,34 @@
     <None Include="Resources\tag_16x16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\2754601_call_communication_contact_phone_support_icon %281%29.png" />
+    <None Include="Resources\departman.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\love_like_review_feedback_icon_229986.png" />
+    <None Include="Resources\departman1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\whatsapp_icon_161055 %281%29.png" />
+    <None Include="Resources\datalabels.svg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\folderbluemail_93279 %281%29.png" />
+    <None Include="Resources\enum.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\itemtypestandard.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pielabelsdatalabels_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pielabelsdatalabels_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wizard_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edittask_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edittask_32x321.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

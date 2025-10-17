@@ -1,73 +1,84 @@
-﻿using AbcYazilim.OgrenciTakip.Model.Entities;
+﻿using AbcYazilim.OgrenciTakip.Bll.General;
+using AbcYazilim.OgrenciTakip.Common.Enums;
+using AbcYazilim.OgrenciTakip.Model.Entities;
 using AsamaGlobal.ERP.Bll.General.CarilerBll;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Message;
-using AsamaGlobal.ERP.Model.Dto;
+using AsamaGlobal.ERP.Data.Contexts;
 using AsamaGlobal.ERP.Model.Dto.CariDto;
+using AsamaGlobal.ERP.Model.Entities;
 using AsamaGlobal.ERP.Model.Entities.Base.Interfaces;
 using AsamaGlobal.ERP.Model.Entities.CariEntity;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
-using AsamaGlobal.ERP.UI.Win.Forms.VergiDairesiForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
-using AsamaGlobal.ERP.UI.Win.Show;
 using AsamaGlobal.ERP.UI.Win.UserControls.UserControl.Base;
-using AsamaGlobal.ERP.UI.Win.UserControls.UserControl.TahakkukEditFormTable;
-using DevExpress.XtraBars;
+using AsamaGlobal.ERP.UI.Win.UserControls.UserControl.CariEditFormTable;
 using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Forms;
 
-namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
+namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
 {
     public partial class CarilerEditForm : BaseEditForm
     {
-        private BaseTablo _bilgiNotlariTable;
+        #region Variables
+        private BaseTablo _yorumlarTable;
+        private List<long> _oldEtiketIdListesi = new List<long>();
+        private List<long> _guncelEtiketIdListesi = new List<long>();
+        private List<long> _oldSektorIdListesi = new List<long>();
+        private List<long> _guncelSektorIdListesi = new List<long>();
+        private EtiketHelper _etiketHelper;
+        #endregion
         public CarilerEditForm()
         {
             InitializeComponent();
             DataLayoutControls = new[] { DataLayoutGenel, DataLayoutGenelBilgiler };
             Bll = new CarilerBll(DataLayoutGenelBilgiler);
-            BaseKartTuru = KartTuru.Cariler;
+            BaseKartTuru = KartTuru.Cariler;            
             EventsLoad();
+            tglSahis.Toggled += tglSahis_Toggled;
             txtKimlikNo.Validating += TxtKimlikNo_Validating;
-            txtKimlikTuru.EditValueChanged += TxtKimlikTuru_EditValueChanged;
+            txtKimlikTuru.EditValueChanged += TxtKimlikTuru_EditValueChanged;            
+            _etiketHelper = new EtiketHelper();
+            _etiketHelper.EtiketleriYukle(txtEtiket, KayitTuru.Cari);
         }
         public override void Yukle()
         {
-            OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new CarilerS() : ((CarilerBll)Bll).Single(FilterFunctions.Filter<Cariler>(Id));
-            NesneyiKontrollereBagla();
-            BagliTabloYukle();
-
+            OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new CarilerS() : ((CarilerBll)Bll).Single(FilterFunctions.Filter<Cariler>(Id));          
+            NesneyiKontrollereBagla();  
+              
             if (BaseIslemTuru != IslemTuru.EntityInsert) return;
             Id = BaseIslemTuru.IdOlustur(OldEntity);
             txtKod.Text = ((CarilerBll)Bll).YeniKodVer();
-            txtAdi.Focus();
-
-        }
+            txtUnvan.Focus();
+        }  
         protected override void NesneyiKontrollereBagla()
-        {
-            var entity = (CarilerS)OldEntity;
-
+        {          
+            var entity = (CarilerS)OldEntity;    
             txtKod.Text = entity.Kod;
-            txtCariAdi.Text = entity.CariAdi;
             txtKimlikNo.Text = entity.KimlikNo;
             txtAdi.Text = entity.Ad;
             txtSoyAdi.Text = entity.Soyad;
-            //txtVergiDairesi.Text = entity.VergiDairesi;
             txtVergiNo.Text = entity.VergiNo;
-            txtVergiKodu.Text = entity.VergiKodu;
-            txtHesapKodu.Text = entity.HesapKodu;
-            txtYetkiKodu.Text = entity.YetkiKodu;
-            txtProjeKodu.Text = entity.ProjeKodu;
             txtUnvan.Text = entity.Unvan;
-            tglSahis.IsOn = entity.Sahis;
-            txtKimlikTuru.Id = entity.KimlikTuruId;
-            TxtKimlikTuru_IdChanged(txtKimlikTuru, EventArgs.Empty);
-            txtKimlikTuru.Text = entity.KimlikTuruAdi;
+            txtCariGrubu.Id = entity.CariGrubuId;
+            txtCariGrubu.Text = entity.CariGrubuAdi;
+            txtCariTuru.Id = entity.CariTuruId;
+            txtCariTuru.Text = entity.CariTuruAdi;
             txtVergiDairesi.Id = entity.VergiDairesiId;
             txtVergiDairesi.Text = entity.VergiDairesiAdi;
+            txtKayitKaynak.Id = entity.KayitKaynakId;
+            txtKayitKaynak.Text = entity.KayitKaynakAdi;
+            txtKimlikTuru.Id = entity.KimlikTuruId;
+            TxtKimlikTuru_IdChanged(txtKimlikTuru, EventArgs.Empty);
+            txtSektor.EditValueChanged += TxtSektor_EditValueChanged;
+            txtKimlikTuru.Text = entity.KimlikTuruAdi;
             txtOzelKod1.Id = entity.OzelKod1Id;
             txtOzelKod1.Text = entity.OzelKod1Adi;
             txtOzelKod2.Id = entity.OzelKod2Id;
@@ -79,37 +90,99 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             txtOzelKod5.Id = entity.OzelKod5Id;
             txtOzelKod5.Text = entity.OzelKod5Adi;
             txtAciklama.Text = entity.Aciklama;
-            tglDurum.IsOn = entity.Durum;
-        }
+            tglSahis.IsOn = entity.Sahis;
+            tglDurum.IsOn = entity.Durum;         
+            KisiyeAitEtiketleriYukle();
+            SahisDurumunuAyarla(entity.Sahis);
+            SektorYukle();
+        }  
         protected override void GuncelNesneOlustur()
         {
+            _guncelEtiketIdListesi = _etiketHelper.EtiketIdleriniAl(txtEtiket.EditValue);        
+
             CurrentEntity = new Cariler
             {
                 Id = Id,
                 Kod = txtKod.Text,
-                CariAdi = txtCariAdi.Text,
                 KimlikNo = txtKimlikNo.Text,
                 Ad = txtAdi.Text,
                 Soyad = txtSoyAdi.Text,
                 Unvan = txtUnvan.Text,
-                //VergiDairesi = txtVergiDairesi.Text,
                 VergiNo = txtVergiNo.Text,
-                VergiKodu = txtVergiKodu.Text,
-                HesapKodu = txtHesapKodu.Text,
-                YetkiKodu = txtYetkiKodu.Text,
-                ProjeKodu = txtProjeKodu.Text,
-                KimlikTuruId = txtKimlikTuru.Id,   
-                VergiDairesiId= txtVergiDairesi.Id,
+                CariGrubuId = txtCariGrubu.Id,
+                CariTuruId= txtCariTuru.Id,
+                VergiDairesiId = txtVergiDairesi.Id,
+                KayitKaynakId = txtKayitKaynak.Id,
+                KimlikTuruId = txtKimlikTuru.Id,
                 OzelKod1Id = txtOzelKod1.Id,
                 OzelKod2Id = txtOzelKod2.Id,
                 OzelKod3Id = txtOzelKod3.Id,
                 OzelKod4Id = txtOzelKod4.Id,
                 OzelKod5Id = txtOzelKod5.Id,
-                Aciklama = txtAciklama.Text,
+                Aciklama = txtAciklama.Text,              
                 Sahis = tglSahis.IsOn,
-                Durum = tglDurum.IsOn
+                Durum = tglDurum.IsOn,
+                SektorIdListesi = txtSektor.SelectedIds.ToList(),               
             };
+            BagliTabloYukle();
             ButonEnabledDurumu();
+        }
+        private void KisiyeAitEtiketleriYukle()
+        {
+            using (var db = new ERPContext())
+            {
+                var seciliEtiketler = db.EtiketKayitTuruBaglanti
+                    .Where(x => x.KayitTuru == KayitTuru.Cari && x.KayitId == Id)
+                    .Select(x => x.EtiketId)
+                    .ToList();
+
+                txtEtiket.EditValue = string.Join(",", seciliEtiketler);
+
+                _oldEtiketIdListesi = seciliEtiketler;
+            }
+        }
+        public override bool Kaydet(bool kapanis)
+        {
+
+            bool etiketDegisti = !_oldEtiketIdListesi.SequenceEqual(_guncelEtiketIdListesi ?? new List<long>());
+            bool entityDegisti = !OldEntity.Equals(CurrentEntity);
+
+            if (kapanis && !entityDegisti && !etiketDegisti && !FarkliSubeIslemi)
+                return true;
+
+            if (kapanis)
+            {
+                var result = Messages.KapanisMesaj(); // sadece 1 kez sor
+                switch (result)
+                {
+                    case DialogResult.Yes:
+
+                        _oldEtiketIdListesi = _guncelEtiketIdListesi.ToList();
+                        // Kayıt işlemini doğrudan yap
+                        bool sonuc = BaseIslemTuru == IslemTuru.EntityInsert
+                            ? EntityInsert()
+                            : EntityUpdate();
+
+                        if (!sonuc) return false;
+
+                        OldEntity = CurrentEntity;
+                        RefleshYapilacak = true;
+
+                        return true;
+
+                    case DialogResult.No:
+                        return true;
+
+                    case DialogResult.Cancel:
+                        return false;
+                }
+            }
+
+            // Menüden kaydet gibi durumlar
+            if (!BagliTabloKaydet()) return false;
+
+            _oldEtiketIdListesi = _guncelEtiketIdListesi.ToList();
+            return base.Kaydet(kapanis);
         }
         protected override void SecimYap(object sender)
         {
@@ -132,7 +205,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
 
                     if (txtKimlikTuru.Id != null)
                     {
-                        var bll = new Bll.General.KimlikTuruBll();
+                        var bll = new KimlikTuruBll();
                         var secilen = bll.Single(x => x.Id == (long)txtKimlikTuru.Id) as KimlikTuru;
                         int yeniUzunluk = secilen?.Uzunluk ?? 11;
                         string karakterTipi = secilen?.KarakterTipi;
@@ -167,15 +240,21 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
                 }
 
                 else if (sender == txtVergiDairesi)
-                    sec.Sec(txtVergiDairesi, KartTuru.VergiDairesi);               
-
+                    sec.Sec(txtVergiDairesi, KartTuru.VergiDairesi);
+                else if (sender == txtCariTuru)
+                    sec.Sec(txtCariTuru, KartTuru.CariTuru);
+                else if (sender == txtCariGrubu)
+                    sec.Sec(txtCariGrubu, KartTuru.CariGrubu);
+                else if (sender == txtKayitKaynak)
+                    sec.Sec(txtKayitKaynak);             
+              
         }
         private void TxtKimlikTuru_IdChanged(object sender, EventArgs e)
         {
             if (txtKimlikTuru.Id == null)
                 return;
 
-            var bll = new Bll.General.KimlikTuruBll();
+            var bll = new KimlikTuruBll();
             var secilen = bll.Single(x => x.Id == (long)txtKimlikTuru.Id) as KimlikTuru;
 
             int yeniUzunluk = secilen?.Uzunluk ?? 11;
@@ -189,7 +268,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             if (txtKimlikTuru.EditValue == null)
                 return;
 
-            var bll = new Bll.General.KimlikTuruBll();
+            var bll = new KimlikTuruBll();
 
             if (long.TryParse(txtKimlikTuru.EditValue.ToString(), out long secilenId))
             {
@@ -212,7 +291,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
             if (txtKimlikTuru.Id == null)
                 return;
 
-            var bll = new Bll.General.KimlikTuruBll();
+            var bll = new KimlikTuruBll();
             var secilen = bll.Single(x => x.Id == (long)txtKimlikTuru.Id) as KimlikTuru;
 
             if (secilen == null)
@@ -254,69 +333,53 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
         }
         protected override void BagliTabloYukle()
         {
-            bool TableValueChanged(BaseTablo tablo)
-            {
-                return tablo.Tablo.DataController.ListSource.Cast<IBaseHareketEntity>()
-                    .Any(x => x.Insert || x.Update || x.Delete);
-            }
-
-            if (_bilgiNotlariTable != null && TableValueChanged(_bilgiNotlariTable))
-                _bilgiNotlariTable.Yukle();
-
-        }
-        protected override bool EntityInsert()
-        {
-            
-            if (BagliTabloHataliGirisKontrol()) return false;
-            var result = ((CarilerBll)Bll).Insert(CurrentEntity, x => x.Kod == CurrentEntity.Kod) && BagliTabloKaydet();
-
-            if (result && !KayitSonrasiFormuKapat)
-                BagliTabloYukle();
-
-            return result;
-        }
-        protected override bool EntityUpdate()
-        {          
-            if (BagliTabloHataliGirisKontrol()) return false;
-            var result = ((CarilerBll)Bll).Update(OldEntity, CurrentEntity, x => x.Kod == CurrentEntity.Kod) && BagliTabloKaydet();
-
-            if (result && !KayitSonrasiFormuKapat)
-                BagliTabloYukle();
-
-            return result;
+            if (_yorumlarTable != null && TabloDegisti())
+                _yorumlarTable.Yukle();
         }
         protected override bool BagliTabloHataliGirisKontrol()
         { 
-            if (_bilgiNotlariTable != null && _bilgiNotlariTable.HataliGiris())
+            if (_yorumlarTable != null && _yorumlarTable.HataliGiris())
             {
-                tabUst.SelectedPage = pageNotlar;
-                _bilgiNotlariTable.Tablo.GridControl.Focus();
+                tabUst.SelectedPage = pageYorumlar;
+                _yorumlarTable.Tablo.GridControl.Focus();
                 return true;
             }
-
+            
             return false;
         }
         protected internal override void ButonEnabledDurumu()
-        {
+        {   
+
             if (!IsLoaded) return;
 
-            bool TableValueChanged()
-            {               
-                if (_bilgiNotlariTable != null && _bilgiNotlariTable.TableValueChanged) return true;               
+            bool etiketDegisti = !(_oldEtiketIdListesi?.SequenceEqual(_guncelEtiketIdListesi ?? new List<long>()) ?? true);
 
-                return false;
-            }          
+            bool SektorDegisti = !((_oldSektorIdListesi ?? new List<long>())
+                 .SequenceEqual(_guncelSektorIdListesi ?? new List<long>()));
 
             if (FarkliSubeIslemi)
-                Functions.GeneralFunctions.ButtonEnabledDurumu(btnYeni, btnKaydet, btnGerial, btnSil);
+            {
+                GeneralFunctions.ButtonEnabledDurumu(btnYeni, btnKaydet, btnGerial, btnSil);
+            }
+            else if (TabloDegisti())
+            {
+                GeneralFunctions.ButtonEnabledDurumu(btnYeni, btnKaydet, btnGerial, btnSil, OldEntity, CurrentEntity, true);
+            }
             else
-                Functions.GeneralFunctions.ButtonEnabledDurumu(btnYeni, btnKaydet, btnGerial, btnSil, OldEntity, CurrentEntity,
-                     TableValueChanged());
+            {
+                GeneralFunctions.ButtonEnabledDurumu(btnYeni, btnKaydet, btnGerial, btnSil, OldEntity, CurrentEntity, etiketDegisti || SektorDegisti);
+            }
 
         }
         protected override bool BagliTabloKaydet()
-        {           
-            if (_bilgiNotlariTable != null && !_bilgiNotlariTable.Kaydet()) return false;   
+        {
+            if (_yorumlarTable != null && !_yorumlarTable.Kaydet()) return false;
+
+            var seciliEtiketIdler = _etiketHelper.EtiketIdleriniAl(txtEtiket.EditValue);           
+            _etiketHelper.BaglantilariGuncelle(KayitTuru.Cari, Id, seciliEtiketIdler);
+            _oldEtiketIdListesi = seciliEtiketIdler.ToList();
+         
+            _oldSektorIdListesi = _guncelSektorIdListesi.ToList();
 
             return true;
         }
@@ -324,22 +387,178 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CarilerForms
         {
             if (e.Page == pageGenelBilgiler)
             {
-                txtCariAdi.Focus();
+                txtUnvan.Focus();
                 txtKimlikNo.SelectAll();
-            }  
+            }
 
-            else if (e.Page == pageNotlar)
+            else if (e.Page == pageYorumlar)
             {
-                if (pageNotlar.Controls.Count == 0)
+                if (pageYorumlar.Controls.Count == 0)
                 {
-                    _bilgiNotlariTable = new BilgiNotlariTable().AddTable(this);
-                    pageNotlar.Controls.Add(_bilgiNotlariTable);
-                    _bilgiNotlariTable.Yukle();
+                    _yorumlarTable = new YorumlarTable().AddTable(this);
+                    pageYorumlar.Controls.Add(_yorumlarTable);
+                    _yorumlarTable.Yukle();
 
                 }
-
-                _bilgiNotlariTable.Tablo.GridControl.Focus();
-            }        
+                _yorumlarTable.Tablo.GridControl.Focus();
+            }
         }
+        private bool TabloDegisti()
+        {
+            bool Degisti(BaseTablo tablo)
+            {
+                var list = tablo?.Tablo.DataController.ListSource;
+                if (list == null)
+                    return false;
+
+                return list.Cast<IBaseHareketEntity>()
+                           .Any(x => x.Insert || x.Update || x.Delete);
+            }        
+            if (Degisti(_yorumlarTable)) return true;
+
+            return false;
+        }
+        private void tglSahis_Toggled(object sender, EventArgs e)
+        {
+            SahisDurumunuAyarla(tglSahis.IsOn);
+        }
+        private void SahisDurumunuAyarla(bool sahisMi)
+        {            
+            this.SuspendLayout();
+
+            try
+            {
+                txtKimlikNo.CausesValidation = false;
+                txtAdi.CausesValidation = false;
+                txtSoyAdi.CausesValidation = false;
+                txtKimlikTuru.CausesValidation = false;
+                txtVergiNo.CausesValidation = false;
+               
+                txtKimlikNo.Enabled = sahisMi;
+                txtAdi.Enabled = sahisMi;
+                txtSoyAdi.Enabled = sahisMi;
+                txtKimlikTuru.Enabled = sahisMi;
+                txtVergiNo.Enabled = !sahisMi;
+
+                if (!sahisMi)
+                {
+                    if (!string.IsNullOrEmpty(txtKimlikNo.Text)) txtKimlikNo.EditValue = null;
+                    if (!string.IsNullOrEmpty(txtAdi.Text)) txtAdi.EditValue = null;
+                    if (!string.IsNullOrEmpty(txtSoyAdi.Text)) txtSoyAdi.EditValue = null;
+                    if (!string.IsNullOrEmpty(txtKimlikTuru.Text)) txtKimlikTuru.EditValue = null;
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(txtVergiNo.Text)) txtVergiNo.EditValue = null;
+                }
+            }
+            finally
+            {
+                txtKimlikNo.CausesValidation = true;
+                txtAdi.CausesValidation = true;
+                txtSoyAdi.CausesValidation = true;
+                txtKimlikTuru.CausesValidation = true;
+                txtVergiNo.CausesValidation = true;
+               
+                this.ResumeLayout(false);
+                this.PerformLayout();
+            }
+        }
+        #region Sektörler
+        private void SektorYukle()
+        {
+            txtSektor.EditValueChanged -= TxtSektor_EditValueChanged;
+
+            using (var context = new ERPContext())
+            {
+                var entity = (Cariler)OldEntity;
+
+                var allSektorler = context.Sektor
+                    .Select(s => new
+                    {
+                        Id = s.Id,
+                        Sektör = s.Ad,
+                        Açıklama = s.Aciklama
+                    })
+                    .OrderBy(s => s.Sektör)
+                    .ToList();
+
+                var seciliIds = context.CariSektorBaglanti
+                                       .Where(c => c.KayitId == entity.Id && c.KayitTuru == KayitTuru.Cari)
+                                       .Select(c => c.SektorId)
+                                       .ToList();
+
+                txtSektor.Properties.DataSource = allSektorler;
+                txtSektor.Properties.DisplayMember = "Sektör";
+                txtSektor.Properties.ValueMember = "Id";
+                txtSektor.Properties.NullText = "Sektör Seçiniz...";
+
+                // 🚀 Otomatik kolon oluşturmayı kapat
+                txtSektor.Properties.PopulateColumns();
+                foreach (var col in txtSektor.Properties.Columns)
+                    ((LookUpColumnInfo)col).Visible = false;
+
+                // 🧩 Manuel olarak sadece görünmesini istediğin kolonları ekle
+                txtSektor.Properties.Columns.Add(new LookUpColumnInfo("Sektör", "Sektör"));
+                txtSektor.Properties.Columns.Add(new LookUpColumnInfo("Açıklama", "Açıklama"));
+
+                txtSektor.EditValue = seciliIds.ToList();
+                _oldSektorIdListesi = seciliIds;
+                _guncelSektorIdListesi = seciliIds.ToList();
+            }
+
+            txtSektor.EditValueChanged += TxtSektor_EditValueChanged;
+        }
+        private void TxtSektor_EditValueChanged(object sender, EventArgs e)
+        {
+            var selectedIds = (txtSektor.EditValue as IEnumerable)?.Cast<long>().ToList() ?? new List<long>();
+
+            if (!_guncelSektorIdListesi.SequenceEqual(selectedIds))
+            {
+                _guncelSektorIdListesi = selectedIds;
+                ButonEnabledDurumu();
+            }
+        }
+        protected override bool EntityUpdate()
+        {
+            if (BagliTabloHataliGirisKontrol())
+                return false;
+
+            GuncelNesneOlustur();
+
+            var result = ((CarilerBll)Bll).Update(OldEntity, CurrentEntity, x => x.Kod == CurrentEntity.Kod)
+                         && BagliTabloKaydet();
+
+            if (!result)
+                return false;
+
+            using (var context = new ERPContext())
+            {
+                var eskiBaglantilar = context.CariSektorBaglanti
+                                             .Where(x => x.KayitId == CurrentEntity.Id && x.KayitTuru == KayitTuru.Cari)
+                                             .ToList();
+                if (eskiBaglantilar.Any())
+                    context.CariSektorBaglanti.RemoveRange(eskiBaglantilar);
+
+                foreach (var sektorId in _guncelSektorIdListesi)
+                {
+                    context.CariSektorBaglanti.Add(new CariSektorBaglanti
+                    {
+                        KayitTuru = KayitTuru.Cari,
+                        KayitId = CurrentEntity.Id,
+                        SektorId = sektorId
+                    });
+                }
+
+                context.SaveChanges();
+                ButonEnabledDurumu();
+            }
+
+            if (result && !KayitSonrasiFormuKapat)
+                BagliTabloYukle();
+
+            return result;
+        }
+        #endregion
     }
 }

@@ -23,10 +23,13 @@ namespace AsamaGlobal.ERP.Bll.General
             {
                 Id = x.Id,
                 Kod = x.Kod,
-                VergiDairesiAdi = x.VergiDairesiAdi,
-                VergiKodu = x.VergiKodu,
-                Aciklama = x.Aciklama,              
+                Ad = x.Ad,
+                VergiDairesiKodu=x.VergiDairesiKodu,
+                IlId = x.IlId,
+                IlAdi = x.Il.IlAdi,
+                Aciklama = x.Aciklama,
                 Durum = x.Durum
+
             });
         }
         public override IEnumerable<BaseEntity> List(Expression<Func<VergiDairesi, bool>> filter)
@@ -35,11 +38,12 @@ namespace AsamaGlobal.ERP.Bll.General
             {
                 Id = x.Id,
                 Kod = x.Kod,
-                VergiDairesiAdi = x.VergiDairesiAdi,
-                VergiKodu = x.VergiKodu,
-                Aciklama = x.Aciklama,           
-
+                Ad = x.Ad,
+                VergiDairesiKodu=x.VergiDairesiKodu,
+                IlAdi = x.Il.IlAdi,
+                Aciklama = x.Aciklama
             }).OrderBy(x => x.Kod).ToList();
         }
+
     }
 }
