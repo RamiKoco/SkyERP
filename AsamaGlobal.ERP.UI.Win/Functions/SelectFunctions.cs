@@ -3,6 +3,7 @@ using AbcYazilim.OgrenciTakip.Model.Dto.KisiDto;
 using AbcYazilim.OgrenciTakip.Model.Entities;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Model.Dto;
+using AsamaGlobal.ERP.Model.Dto.CariDto;
 using AsamaGlobal.ERP.Model.Dto.CariDto.CariSubeDto;
 using AsamaGlobal.ERP.Model.Dto.PersonelDto;
 using AsamaGlobal.ERP.Model.Entities;
@@ -342,7 +343,7 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
 
                 case "txtCariGrubu":
                     {
-                        var entity = (CariGrubu)ShowListForms<CariGrubuListForm>.ShowDialogListForm(KartTuru.CariGrubu, _btnEdit.Id);
+                        var entity = (CariGrubuL)ShowListForms<CariGrubuListForm>.ShowDialogListForm(KartTuru.CariGrubu, _btnEdit.Id);
                         if (entity != null)
                         {
                             _btnEdit.Id = entity.Id;
