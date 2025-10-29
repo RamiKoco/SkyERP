@@ -18,21 +18,21 @@ namespace AbcYazilim.OgrenciTakip.Bll.General
             return List(filter, x => new AdresHareketleriL
             {
                 Id = x.Id,
-                KisiId = (long)x.AdresBilgileri.KisiId,
-                PersonelId = (long)x.AdresBilgileri.PersonelId,
-                AdresBilgileriId = x.AdresBilgileriId,
-                Baslik = x.AdresBilgileri.Baslik,
-                KayitTuru = x.AdresBilgileri.KayitTuru,
-                AdresTipi = x.AdresBilgileri.AdresTipi,
-                AdresNotu = x.AdresBilgileri.AdresNotu,
-                Adres = x.AdresBilgileri.Adres,                
-                PostaKodu = x.AdresBilgileri.PostaKodu,
-                Enlem = x.AdresBilgileri.Enlem ?? 0,
-                Boylam = x.AdresBilgileri.Boylam ?? 0,               
-                UlkeAdi = x.AdresBilgileri.Ulke.UlkeAdi,
-                IlAdi = x.AdresBilgileri.Il.IlAdi,
-                IlceAdi = x.AdresBilgileri.Ilce.IlceAdi,                
-                AdresTurleriAdi = x.AdresBilgileri.AdresTurleri.Ad
+                KisiId = (long)x.GenelAdres.KisiId,
+                PersonelId = (long)x.GenelAdres.PersonelId,
+                GenelAdresId = x.GenelAdresId,
+                Baslik = x.GenelAdres.Baslik,
+                KayitTuru = x.GenelAdres.KayitTuru,
+                AdresTipi = x.GenelAdres.AdresTipi,
+                AdresNotu = x.GenelAdres.AdresNotu,
+                Adres = x.GenelAdres.Adres,                
+                PostaKodu = x.GenelAdres.PostaKodu,
+                Enlem = x.GenelAdres.Enlem ?? 0,
+                Boylam = x.GenelAdres.Boylam ?? 0,               
+                UlkeAdi = x.GenelAdres.Ulke.UlkeAdi,
+                IlAdi = x.GenelAdres.Il.IlAdi,
+                IlceAdi = x.GenelAdres.Ilce.IlceAdi,                
+                AdresTurleriAdi = x.GenelAdres.AdresTurleri.Ad
 
             }).ToList();
         }

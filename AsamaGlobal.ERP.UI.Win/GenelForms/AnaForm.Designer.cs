@@ -848,19 +848,17 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
             // 
             this.btnAdresKartlari.Caption = "Adres Kartları";
             this.btnAdresKartlari.Id = 69;
-            this.btnAdresKartlari.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.country_16x161;
-            this.btnAdresKartlari.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.country_32x32;
+            this.btnAdresKartlari.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAdresKartlari.ImageOptions.Image")));
+            this.btnAdresKartlari.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAdresKartlari.ImageOptions.LargeImage")));
             this.btnAdresKartlari.Name = "btnAdresKartlari";
-            this.btnAdresKartlari.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // btnIletisimlerKartlari
             // 
             this.btnIletisimlerKartlari.Caption = "İletişim Kartları";
             this.btnIletisimlerKartlari.Id = 70;
-            this.btnIletisimlerKartlari.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.contact_16x16;
-            this.btnIletisimlerKartlari.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.contact_32x32;
+            this.btnIletisimlerKartlari.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnIletisimlerKartlari.ImageOptions.Image")));
+            this.btnIletisimlerKartlari.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnIletisimlerKartlari.ImageOptions.LargeImage")));
             this.btnIletisimlerKartlari.Name = "btnIletisimlerKartlari";
-            this.btnIletisimlerKartlari.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // btnSosyalMedyaKartlari
             // 
@@ -963,7 +961,8 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
             // 
             this.btnSektorKartlari.Caption = "Sektör Kartları";
             this.btnSektorKartlari.Id = 84;
-            this.btnSektorKartlari.ImageOptions.SvgImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.itemtypestandard;
+            this.btnSektorKartlari.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.version_16x16;
+            this.btnSektorKartlari.ImageOptions.LargeImage = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.version_32x32;
             this.btnSektorKartlari.Name = "btnSektorKartlari";
             // 
             // btnCariSubeGrubuKartlari

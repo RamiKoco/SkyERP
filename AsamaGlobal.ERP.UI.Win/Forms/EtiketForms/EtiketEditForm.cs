@@ -40,7 +40,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.EtiketForms
 
             txtKod.Text = entity.Kod;
             txtEtiketAdi.Text = entity.EtiketAdi;
-            txtKayitTuru.SelectedItem = entity.KayitTuru.ToName();
+            txtKayitTuru.SelectedItem = entity.KayitTuru?.ToName();
             txtAciklama.Text = entity.Aciklama;
             txtRenk.Id = entity.RenkId;
             txtRenk.Text = entity.RenkAdi;
@@ -63,7 +63,10 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.EtiketForms
                 Id = Id,
                 Kod = txtKod.Text,
                 EtiketAdi = txtEtiketAdi.Text,
-                KayitTuru = txtKayitTuru.Text.GetEnum<KayitTuru>(),
+                //KayitTuru = txtKayitTuru.Text.GetEnum<KayitTuru>(),
+                KayitTuru = string.IsNullOrWhiteSpace(txtKayitTuru.Text)
+                            ? (KayitTuru?)null
+                            : txtKayitTuru.Text.GetEnum<KayitTuru>(),
                 Aciklama = txtAciklama.Text,
                 RenkId = txtRenk.Id,
                 YaziRgbKodu = txtYaziRgbKodu.Color.ToArgb(),

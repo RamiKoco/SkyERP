@@ -132,6 +132,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
                 OzelKod1Id = txtOzelKod1.Id,
                 OzelKod2Id = txtOzelKod2.Id,
                 Aciklama = txtAciklama.Text,
+                KayitHesabiAdi = ((GenelIletisimS)OldEntity).KayitHesabiAdi,
                 VarsayilanYap = tglVarsayilanYap.IsOn,
                 VoipMi = tglVoip.IsOn,
                 Durum = tglDurum.IsOn

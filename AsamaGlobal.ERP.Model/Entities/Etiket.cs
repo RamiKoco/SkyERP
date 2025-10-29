@@ -16,7 +16,8 @@ namespace AbcYazilim.OgrenciTakip.Model.Entities
 
         [Required, StringLength(80), ZorunluAlan("Etiket Adı", "txtEtiketAdi")]
         public string EtiketAdi { get; set; }
-        public KayitTuru KayitTuru { get; set; }
+        [Required, ZorunluAlan("Kayıt Türü", "txtKayitTuru")]
+        public KayitTuru? KayitTuru { get; set; }
         [StringLength(500)]
         public string Aciklama { get; set; }
         public int YaziRgbKodu { get; set; } = Color.Black.ToArgb();

@@ -55,7 +55,7 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.PersonelEditFormTable
         {
             var entity = tablo.GetRow<AdresHareketleriL>();
             if (entity == null) return;
-            ShowEditForms<PersonelEditForm>.ShowDialogEditForm(KartTuru.Personel, entity.AdresBilgileriId);
+            ShowEditForms<PersonelEditForm>.ShowDialogEditForm(KartTuru.Personel, entity.GenelAdresId);
 
         }
         protected virtual void TabloEventsYukle()

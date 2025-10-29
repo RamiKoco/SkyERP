@@ -1,7 +1,6 @@
-﻿using AbcYazilim.OgrenciTakip.Bll.General;
-using AbcYazilim.OgrenciTakip.Model.Entities;
-using AsamaGlobal.ERP.Bll.General;
+﻿using AsamaGlobal.ERP.Bll.General;
 using AsamaGlobal.ERP.Common.Enums;
+using AsamaGlobal.ERP.Model.Entities;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
 using AsamaGlobal.ERP.UI.Win.Show;
@@ -13,18 +12,18 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.AdresBilgileriForms
         public AdresBilgileriListForm()
         {
             InitializeComponent();
-            Bll = new AdresBilgileriBll();
+            Bll = new GenelAdresBll();
         }
         protected override void DegiskenleriDoldur()
         {
             Tablo = tablo;
-            BaseKartTuru = KartTuru.AdresBilgileri;
+            BaseKartTuru = KartTuru.GenelAdres;
             FormShow = new ShowEditForms<AdresBilgileriEditForm>();
             Navigator = longNavigator.Navigator;
         }
         protected override void Listele()
         {
-            Tablo.GridControl.DataSource = ((AdresBilgileriBll)Bll).List(FilterFunctions.Filter<AdresBilgileri>(AktifKartlariGoster));
+            Tablo.GridControl.DataSource = ((GenelAdresBll)Bll).List(FilterFunctions.Filter<GenelAdres>(AktifKartlariGoster));
         }
     }
 }

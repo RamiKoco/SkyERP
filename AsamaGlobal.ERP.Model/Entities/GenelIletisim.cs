@@ -38,6 +38,7 @@ namespace AsamaGlobal.ERP.Model.Entities
         public bool Sms { get; set; }
         public bool Whatsapp { get; set; }
         public bool EPBool { get; set; }
+        public string KayitHesabiAdi { get; set; }
         public bool VarsayilanYap { get; set; }
         public string KullaniciAdi { get; set; }
         public string SosyalMedyaUrl { get; set; }

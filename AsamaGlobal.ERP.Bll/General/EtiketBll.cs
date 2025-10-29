@@ -1,4 +1,5 @@
-﻿using AbcYazilim.OgrenciTakip.Model.Dto;
+﻿using AbcYazilim.OgrenciTakip.Common.Enums;
+using AbcYazilim.OgrenciTakip.Model.Dto;
 using AbcYazilim.OgrenciTakip.Model.Entities;
 using AsamaGlobal.ERP.Bll.Base;
 using AsamaGlobal.ERP.Bll.Interfaces;
@@ -45,7 +46,7 @@ namespace AbcYazilim.OgrenciTakip.Bll.General
                 Id = x.Id,
                 Kod = x.Kod,
                 EtiketAdi = x.EtiketAdi,
-                KayitTuru = x.KayitTuru,
+                KayitTuru =(x.KayitTuru ?? 0),
                 Aciklama = x.Aciklama,
                 RenkAdi = x.Renk.RenkAdi,
                 RenkRGB = x.Renk != null ? x.Renk.RGB : null,

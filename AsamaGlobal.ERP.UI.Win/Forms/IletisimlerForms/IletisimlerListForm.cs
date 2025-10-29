@@ -1,6 +1,6 @@
-﻿using AbcYazilim.OgrenciTakip.Bll.General;
-using AbcYazilim.OgrenciTakip.Model.Entities;
+﻿using AsamaGlobal.ERP.Bll.General;
 using AsamaGlobal.ERP.Common.Enums;
+using AsamaGlobal.ERP.Model.Entities;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
 using AsamaGlobal.ERP.UI.Win.Show;
@@ -12,18 +12,18 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
         public IletisimlerListForm()
         {
             InitializeComponent();
-            Bll = new IletisimlerBll();
+            Bll = new GenelIletisimBll();
         }
         protected override void DegiskenleriDoldur()
         {
             Tablo = tablo;
-            BaseKartTuru = KartTuru.Iletisimler;
+            BaseKartTuru = KartTuru.GenelIletisim;
             FormShow = new ShowEditForms<IletisimlerEditForm>();
             Navigator = longNavigator.Navigator;
         }
         protected override void Listele()
         {
-            Tablo.GridControl.DataSource = ((IletisimlerBll)Bll).List(FilterFunctions.Filter<Iletisimler>(AktifKartlariGoster));
+            Tablo.GridControl.DataSource = ((GenelIletisimBll)Bll).List(FilterFunctions.Filter<GenelIletisim>(AktifKartlariGoster));
         }
     }
 }

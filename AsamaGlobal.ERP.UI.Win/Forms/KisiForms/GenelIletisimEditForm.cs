@@ -54,7 +54,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
             txtKod.Text = ((GenelIletisimBll)Bll).YeniKodVer(x => x.KisiId == _kisiId);
             txtBaslik.Focus();
         }
-
         protected override void NesneyiKontrollereBagla()
         {
 
@@ -101,7 +100,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
             bool eskiSms = eskiEntity?.Sms ?? false;
             bool eskiWhatsapp = eskiEntity?.Whatsapp ?? false;
             bool eskiEposta = eskiEntity?.EPBool ?? false;
-
+       
             bool yeniArama = kanalListesi.Any() ? kanalListesi.Contains("Arama") : eskiArama;
             bool yeniSms = kanalListesi.Any() ? kanalListesi.Contains("SMS") : eskiSms;
             bool yeniWhatsapp = kanalListesi.Any() ? kanalListesi.Contains("Whatsapp") : eskiWhatsapp;
@@ -136,6 +135,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
                 OzelKod2Id = txtOzelKod2.Id,
                 Aciklama = txtAciklama.Text,
                 VarsayilanYap = tglVarsayilanYap.IsOn,
+                KayitHesabiAdi = ((GenelIletisimS)OldEntity).KayitHesabiAdi,
                 VoipMi = tglVoip.IsOn,
                 Durum = tglDurum.IsOn
             };

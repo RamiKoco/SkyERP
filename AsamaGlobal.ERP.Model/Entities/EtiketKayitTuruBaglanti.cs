@@ -11,5 +11,6 @@ namespace AbcYazilim.OgrenciTakip.Model.Entities
         public long EtiketId { get; set; }
         public KayitTuru KayitTuru { get; set; }
         public long KayitId { get; set; }
+
     }
 } 

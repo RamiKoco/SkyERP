@@ -1,4 +1,5 @@
-﻿using AsamaGlobal.ERP.Bll.Base;
+﻿using AbcYazilim.OgrenciTakip.Common.Enums;
+using AsamaGlobal.ERP.Bll.Base;
 using AsamaGlobal.ERP.Bll.Interfaces;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Model.Dto;
@@ -46,7 +47,12 @@ namespace AsamaGlobal.ERP.Bll.General
                 OzelKod2Adi = x.OzelKod2.OzelKodAdi,
                 AdresTurleriId = x.AdresTurleriId,
                 AdresTurleriAdi = x.AdresTurleri.Ad,
-                Durum = x.Durum
+                Durum = x.Durum,
+                KayitHesabiAdi =
+                x.KayitTuru == KayitTuru.Kisi ? x.Kisi.Ad :
+                x.KayitTuru == KayitTuru.Personel ? x.Personel.Ad :
+                x.KayitTuru == KayitTuru.Cari ? x.Cariler.Ad :
+                null,
 
             });
         }
@@ -74,6 +80,11 @@ namespace AsamaGlobal.ERP.Bll.General
                 OzelKod1Adi = x.OzelKod1.OzelKodAdi,
                 OzelKod2Adi = x.OzelKod2.OzelKodAdi,
                 AdresTurleriAdi = x.AdresTurleri.Ad,
+                KayitHesabiAdi =
+                x.KayitTuru == KayitTuru.Kisi ? x.Kisi.Ad :
+                x.KayitTuru == KayitTuru.Personel ? x.Personel.Ad :
+                x.KayitTuru == KayitTuru.Cari ? x.Cariler.Ad :
+                null,
 
             }).OrderBy(x => x.Kod).ToList();
         }

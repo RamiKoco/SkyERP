@@ -143,7 +143,7 @@
             this.tablo.StatusBarAciklama = null;
             this.tablo.StatusBarKisaYol = null;
             this.tablo.StatusBarKisaYolAciklama = null;
-            this.tablo.ViewCaption = "Personel Kartları";
+            this.tablo.ViewCaption = "Personel Bilgileri";
             // 
             // gridBand4
             // 
@@ -346,7 +346,7 @@
             this.Controls.Add(this.longNavigator);
             this.IconOptions.ShowIcon = false;
             this.Name = "PersonelListForm";
-            this.Text = "Personel Kartları";
+            this.Text = "Personel Bilgileri";
             this.Controls.SetChildIndex(this.ribbonControl, 0);
             this.Controls.SetChildIndex(this.longNavigator, 0);
             this.Controls.SetChildIndex(this.grid, 0);

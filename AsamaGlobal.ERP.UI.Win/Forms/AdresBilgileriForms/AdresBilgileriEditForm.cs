@@ -1,16 +1,17 @@
-﻿using AbcYazilim.OgrenciTakip.Bll.General;
-using AbcYazilim.OgrenciTakip.Common.Enums;
-using AbcYazilim.OgrenciTakip.Model.Dto;
+﻿using AbcYazilim.OgrenciTakip.Common.Enums;
 using AbcYazilim.OgrenciTakip.Model.Entities;
 using AsamaGlobal.ERP.Bll.General;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Functions;
 using AsamaGlobal.ERP.Common.Message;
 using AsamaGlobal.ERP.Data.Contexts;
+using AsamaGlobal.ERP.Model.Dto;
+using AsamaGlobal.ERP.Model.Entities;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
 using DevExpress.XtraEditors;
 using System;
+using System.Globalization;
 using System.Linq;
 
 namespace AsamaGlobal.ERP.UI.Win.Forms.AdresBilgileriForms
@@ -22,10 +23,10 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.AdresBilgileriForms
             InitializeComponent();
 
             DataLayoutControl = myDataLayoutControl;
-            Bll = new AdresBilgileriBll(myDataLayoutControl);
+            Bll = new GenelAdresBll(myDataLayoutControl);
             txtKayitTuru.Properties.Items.AddRange(EnumFunctions.GetEnumDescriptionList<KayitTuru>());
             txtAdresTipi.Properties.Items.AddRange(EnumFunctions.GetEnumDescriptionList<AdresTipi>());
-            BaseKartTuru = KartTuru.AdresBilgileri;
+            BaseKartTuru = KartTuru.GenelAdres;
             txtKayitTuru.SelectedIndexChanged += (s, e) =>
             {
                 txtKayitHesabi.Id = 0;
@@ -35,17 +36,17 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.AdresBilgileriForms
         }
         public override void Yukle()
         {
-            OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new AdresBilgileriS() : ((AdresBilgileriBll)Bll).Single(FilterFunctions.Filter<AdresBilgileri>(Id));
+            OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new GenelAdresS() : ((GenelAdresBll)Bll).Single(FilterFunctions.Filter<GenelAdres>(Id));
             NesneyiKontrollereBagla();
             TabloYukle();
             if (BaseIslemTuru != IslemTuru.EntityInsert) return;
             Id = BaseIslemTuru.IdOlustur(OldEntity);
-            txtKod.Text = ((AdresBilgileriBll)Bll).YeniKodVer();
+            txtKod.Text = ((GenelAdresBll)Bll).YeniKodVer();
             txtBaslik.Focus();
         }
         protected override void NesneyiKontrollereBagla()
         {
-            var entity = (AdresBilgileriS)OldEntity;
+            var entity = (GenelAdresS)OldEntity;
             txtKod.Text = entity.Kod;
             txtBaslik.Text = entity.Baslik;
             txtAdresNotu.Text = entity.AdresNotu;
@@ -53,14 +54,13 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.AdresBilgileriForms
             txtAdresTipi.SelectedItem = entity.AdresTipi.ToName();
 
             if (entity.KayitTuru == KayitTuru.Kisi)
-                txtKayitHesabi.Id = entity.KisiId ?? 0;
+                txtKayitHesabi.Id = entity.KisiId ?? null;
             else if (entity.KayitTuru == KayitTuru.Personel)
-                txtKayitHesabi.Id = entity.PersonelId ?? 0;
-            else if (entity.KayitTuru == KayitTuru.Meslek)
-                txtKayitHesabi.Id = entity.MeslekId ?? 0;
+                txtKayitHesabi.Id = entity.PersonelId ?? null;
+            else if (entity.KayitTuru == KayitTuru.Cari)
+                txtKayitHesabi.Id = entity.CarilerId ?? null;
             else
-                txtKayitHesabi.Id = 0;
-
+                txtKayitHesabi.Id = null;
             txtKayitHesabi.Text = entity.KayitHesabiAdi;
             txtUlke.Id = entity.UlkeId;
             txtUlke.Text = entity.UlkeAdi;
@@ -76,22 +76,30 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.AdresBilgileriForms
             txtAdresTurleri.Text = entity.AdresTurleriAdi;
             txtPostaKodu.Text = entity.PostaKodu;
             txtAdres.Text = entity.Adres;
-            txtEnlem.EditValue = entity.Enlem ?? 0m;
-            txtBoylam.EditValue = entity.Boylam ?? 0m;
+            txtEnlem.Text = (entity.Enlem ?? 0m).ToString("F6", CultureInfo.InvariantCulture);
+            txtBoylam.Text = (entity.Boylam ?? 0m).ToString("F6", CultureInfo.InvariantCulture);
             txtAciklama.Text = entity.Aciklama;
             tglDurum.IsOn = entity.Durum;
         }
         protected override void GuncelNesneOlustur()
         {
-            decimal.TryParse(txtEnlem.EditValue?.ToString(), out var enlem);
-            decimal.TryParse(txtBoylam.EditValue?.ToString(), out var boylam);
+            decimal? enlem = null;
+            if (!string.IsNullOrWhiteSpace(txtEnlem.Text))
+                enlem = Math.Round(decimal.Parse(txtEnlem.Text, CultureInfo.InvariantCulture), 6);
+
+            decimal? boylam = null;
+            if (!string.IsNullOrWhiteSpace(txtBoylam.Text))
+                boylam = Math.Round(decimal.Parse(txtBoylam.Text, CultureInfo.InvariantCulture), 6);
+
             var kayitTuru = txtKayitTuru.SelectedItem?.ToString().GetEnum<KayitTuru>() ?? KayitTuru.Kisi;
 
-            var kisiId = kayitTuru == KayitTuru.Kisi ? txtKayitHesabi.Id : null;
+            var kisiId = kayitTuru == KayitTuru.Kisi
+           ? (txtKayitHesabi.Id == 0 ? null : txtKayitHesabi.Id)
+           : null;
             var personelId = kayitTuru == KayitTuru.Personel ? txtKayitHesabi.Id : null;
             var meslekId = kayitTuru == KayitTuru.Meslek ? txtKayitHesabi.Id : null;
-
-            CurrentEntity = new AdresBilgileri
+            var eskiEntity = OldEntity as GenelIletisimS; // Burada cast ediyoruz.
+            CurrentEntity = new GenelAdres
             {
                 Id = Id,
                 Kod = txtKod.Text,
@@ -101,7 +109,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.AdresBilgileriForms
                 AdresTipi = txtAdresTipi.Text.GetEnum<AdresTipi>(),
                 KisiId = kisiId,
                 PersonelId = personelId,
-                MeslekId = meslekId,
                 UlkeId = txtUlke.Id,
                 IlId = txtIl.Id,
                 IlceId = txtIlce.Id,
@@ -159,14 +166,19 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.AdresBilgileriForms
         }
         public override bool Kaydet(bool kapanis)
         {
-
             if (!kapanis)
             {
-                if (string.IsNullOrWhiteSpace(txtKayitHesabi.Text))
+                var selectedKayitTuru = txtKayitTuru.Text.GetEnum<KayitTuru>();
+
+                // Eğer KayitTuru Cari veya CariSube ise txtKayitHesabi zorunlu değil
+                if (selectedKayitTuru != KayitTuru.Cari && selectedKayitTuru != KayitTuru.CariSube)
                 {
-                    Messages.HataliVeriMesaji("Lütfen Kayıt Hesabı giriniz.");
-                    txtKayitHesabi.Focus();
-                    return false;
+                    if (string.IsNullOrWhiteSpace(txtKayitHesabi.Text))
+                    {
+                        Messages.HataliVeriMesaji("Lütfen Kayıt Hesabı giriniz.");
+                        txtKayitHesabi.Focus();
+                        return false;
+                    }
                 }
             }
 
@@ -176,19 +188,19 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.AdresBilgileriForms
 
             var kayitTuru = txtKayitTuru.Text.GetEnum<KayitTuru>();
             var kisiId = kayitTuru == KayitTuru.Kisi ? txtKayitHesabi.Id : null;
-            var personelId = kayitTuru == KayitTuru.Personel ? txtKayitHesabi.Id : 0;
+            var personelId = kayitTuru == KayitTuru.Personel ? txtKayitHesabi.Id : null;
 
 
             if (kayitTuru == KayitTuru.Kisi && kisiId.HasValue && kisiId > 0)
             {
-                var adresEntity = CurrentEntity as AdresBilgileri;
+                var adresEntity = CurrentEntity as GenelAdres;
                 if (adresEntity == null) return false;
 
                 using (var context = new ERPContext())
                 {
                     // Daha önce kaydedilmiş aynı adres kaydını sil
                     var mevcutKayitlar = context.AdresHareketleri
-                        .Where(x => x.AdresBilgileriId == adresEntity.Id)
+                        .Where(x => x.GenelAdresId == adresEntity.Id)
                         .ToList();
 
                     if (mevcutKayitlar.Any())
@@ -204,7 +216,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.AdresBilgileriForms
                     var yeniKayit = new AdresHareketleri
                     {
                         KisiId = kisiId.Value,
-                        AdresBilgileriId = adresEntity.Id
+                        GenelAdresId = adresEntity.Id
                     };
 
                     context.AdresHareketleri.Add(yeniKayit);
@@ -213,14 +225,14 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.AdresBilgileriForms
             }
             if (kayitTuru == KayitTuru.Personel && personelId.HasValue && personelId > 0)
             {
-                var adresEntity = CurrentEntity as AdresBilgileri;
+                var adresEntity = CurrentEntity as GenelAdres;
                 if (adresEntity == null) return false;
 
                 using (var context = new ERPContext())
                 {
                     // Daha önce kaydedilmiş aynı adres kaydını sil
                     var mevcutKayitlar = context.AdresHareketleri
-                        .Where(x => x.AdresBilgileriId == adresEntity.Id)
+                        .Where(x => x.GenelAdresId == adresEntity.Id)
                         .ToList();
 
                     if (mevcutKayitlar.Any())
@@ -236,7 +248,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.AdresBilgileriForms
                     var yeniKayit = new AdresHareketleri
                     {
                         PersonelId = personelId.Value,
-                        AdresBilgileriId = adresEntity.Id
+                        GenelAdresId = adresEntity.Id
                     };
 
                     context.AdresHareketleri.Add(yeniKayit);

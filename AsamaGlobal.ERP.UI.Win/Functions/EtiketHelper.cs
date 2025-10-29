@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using static DevExpress.XtraEditors.Mask.Design.MaskSettingsForm;
 
 namespace AsamaGlobal.ERP.UI.Win.Functions
 {
@@ -31,8 +32,9 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
 
             txtEtiket.Properties.CustomDrawTokenText -= TxtEtiket_CustomDrawTokenText;
             txtEtiket.Properties.CustomDrawTokenText += TxtEtiket_CustomDrawTokenText;
-        }     
-        private void TxtEtiket_CustomDrawTokenBackground(object sender, TokenEditCustomDrawTokenBackgroundEventArgs e)
+        }
+   
+        public void TxtEtiket_CustomDrawTokenBackground(object sender, TokenEditCustomDrawTokenBackgroundEventArgs e)
         {
             try
             {
@@ -88,7 +90,7 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
                 e.Handled = false;
             }
         }
-        private void TxtEtiket_CustomDrawTokenText(object sender, TokenEditCustomDrawTokenTextEventArgs e)
+        public void TxtEtiket_CustomDrawTokenText(object sender, TokenEditCustomDrawTokenTextEventArgs e)
         {
             if (e?.Info == null) { e.Handled = false; return; }
 
@@ -181,19 +183,51 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
         {
             if (editValue == null) return new List<long>();
 
-            if (editValue is string str)
-                return str.Split(',')
-                          .Select(x => long.TryParse(x, out var val) ? val : 0)
-                          .Where(x => x > 0)
-                          .ToList();
+            switch (editValue)
+            {
+                case string str:
+                    return str.Split(',')
+                              .Select(x => long.TryParse(x, out var val) ? val : 0)
+                              .Where(x => x > 0)
+                              .ToList();
 
-            if (editValue is IEnumerable<long> longList)
-                return longList.ToList();
+                case IEnumerable<long> longList:
+                    return longList.ToList();
 
-            if (editValue is long singleLong)
-                return new List<long> { singleLong };
+                case long singleLong:
+                    return new List<long> { singleLong };
 
-            return new List<long>();
+                case TokenEditToken[] tokens:
+                    return tokens.Select(x => long.TryParse(x.Value?.ToString(), out var val) ? val : 0)
+                                 .Where(x => x > 0)
+                                 .ToList();
+
+                case IEnumerable<TokenEditToken> tokenEnumerable:
+                    return tokenEnumerable.Select(x => long.TryParse(x.Value?.ToString(), out var val) ? val : 0)
+                                          .Where(x => x > 0)
+                                          .ToList();
+
+                default:
+                    return new List<long>();
+            }
+        }
+        public string GetEtiketAdi(long id)
+        {
+            return _tumEtiketler?.FirstOrDefault(x => x.Id == id)?.EtiketAdi ?? id.ToString();
+        }
+        public Color? GetEtiketBackColor(long id) =>
+    _tumEtiketler?.FirstOrDefault(x => x.Id == id) is EtiketL e
+        ? (!string.IsNullOrEmpty(e.RenkRGB) ? ColorTranslator.FromHtml(e.RenkRGB)
+                                            : (e.RenkForeColor.HasValue ? Color.FromArgb(e.RenkForeColor.Value) : (Color?)null))
+        : null;
+
+        public Color? GetEtiketForeColor(long id) =>
+            _tumEtiketler?.FirstOrDefault(x => x.Id == id) is EtiketL e
+                ? (e.YaziRgbKodu != 0 ? Color.FromArgb(e.YaziRgbKodu) : (Color?)null)
+                : null;
+        public EtiketL GetEtiket(long id)
+        {
+            return _tumEtiketler?.FirstOrDefault(x => x.Id == id);
         }
     }
 }

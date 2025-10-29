@@ -45,8 +45,13 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
             tglSahis.Toggled += tglSahis_Toggled;
             txtKimlikNo.Validating += TxtKimlikNo_Validating;
             txtKimlikTuru.EditValueChanged += TxtKimlikTuru_EditValueChanged;            
-            _etiketHelper = new EtiketHelper();
-            _etiketHelper.EtiketleriYukle(txtEtiket, KayitTuru.Cari);
+            _etiketHelper = new EtiketHelper();  
+            _etiketHelper.EtiketleriYukle(txtContainer.TokenEditControl, KayitTuru.Cari);
+            txtContainer.TokenEditControl.EditValueChanged += (s, e) =>
+            {
+                _guncelEtiketIdListesi = _etiketHelper.EtiketIdleriniAl(txtContainer.TokenEditControl.EditValue) ?? new List<long>();
+                ButonEnabledDurumu();
+            };
         }
         public override void Yukle()
         {
@@ -97,8 +102,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
             SektorYukle();
         }  
         protected override void GuncelNesneOlustur()
-        {
-            _guncelEtiketIdListesi = _etiketHelper.EtiketIdleriniAl(txtEtiket.EditValue);        
+        {          
+            _guncelEtiketIdListesi = _etiketHelper.EtiketIdleriniAl(txtContainer.TokenEditControl.EditValue);
 
             CurrentEntity = new Cariler
             {
@@ -136,11 +141,15 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
                     .Select(x => x.EtiketId)
                     .ToList();
 
-                txtEtiket.EditValue = string.Join(",", seciliEtiketler);
+                var etiketAdlari = db.Etiket
+                    .Where(e => seciliEtiketler.Contains(e.Id))
+                    .ToDictionary(e => e.Id, e => e.EtiketAdi);
 
+                txtContainer.TokenEditControl.EtiketAdlariniYukle(etiketAdlari);
+                txtContainer.TokenEditControl.EditValue = string.Join(",", seciliEtiketler);
                 _oldEtiketIdListesi = seciliEtiketler;
             }
-        }
+        }    
         public override bool Kaydet(bool kapanis)
         {
 
@@ -373,14 +382,12 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
         }
         protected override bool BagliTabloKaydet()
         {
-            if (_yorumlarTable != null && !_yorumlarTable.Kaydet()) return false;
+            if (_yorumlarTable != null && !_yorumlarTable.Kaydet()) return false;         
 
-            var seciliEtiketIdler = _etiketHelper.EtiketIdleriniAl(txtEtiket.EditValue);           
+            var seciliEtiketIdler = _etiketHelper.EtiketIdleriniAl(txtContainer.TokenEditControl.EditValue);
             _etiketHelper.BaglantilariGuncelle(KayitTuru.Cari, Id, seciliEtiketIdler);
             _oldEtiketIdListesi = seciliEtiketIdler.ToList();
-         
             _oldSektorIdListesi = _guncelSektorIdListesi.ToList();
-
             return true;
         }
         protected override void Control_SelectedPageChanged(object sender, SelectedPageChangedEventArgs e)
@@ -560,5 +567,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
             return result;
         }
         #endregion
+        //
+        // 10.000
+        
     }
 }

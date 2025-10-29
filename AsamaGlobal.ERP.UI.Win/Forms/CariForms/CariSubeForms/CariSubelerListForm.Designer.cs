@@ -117,7 +117,7 @@
             this.tablo.StatusBarAciklama = null;
             this.tablo.StatusBarKisaYol = null;
             this.tablo.StatusBarKisaYolAciklama = null;
-            this.tablo.ViewCaption = "Cari Şubeler Kartı";
+            this.tablo.ViewCaption = "Cari Şube Bilgileri";
             // 
             // colId
             // 
@@ -214,7 +214,7 @@
             this.Controls.Add(this.longNavigator);
             this.IconOptions.ShowIcon = false;
             this.Name = "CariSubelerListForm";
-            this.Text = "Cari Şube Kartları";
+            this.Text = "Cari Şube Bilgileri";
             this.Controls.SetChildIndex(this.ribbonControl, 0);
             this.Controls.SetChildIndex(this.longNavigator, 0);
             this.Controls.SetChildIndex(this.grid, 0);

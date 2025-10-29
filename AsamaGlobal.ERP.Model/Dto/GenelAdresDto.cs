@@ -14,6 +14,7 @@ namespace AsamaGlobal.ERP.Model.Dto
         public string IlceAdi { get; set; }
         public string OzelKod1Adi { get; set; }
         public string OzelKod2Adi { get; set; }
+        public string KayitHesabiAdi { get; set; }
     }
     public class GenelAdresL : BaseEntity
     {
@@ -29,6 +30,7 @@ namespace AsamaGlobal.ERP.Model.Dto
         public string AdresNotu { get; set; }
         public string PostaKodu { get; set; }
         public string Adres { get; set; }
+        public string KayitHesabiAdi { get; set; }
         public AdresTipi AdresTipi { get; set; }
         public decimal Enlem { get; set; }
         public decimal Boylam { get; set; }

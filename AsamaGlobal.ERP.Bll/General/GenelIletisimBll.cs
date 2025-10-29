@@ -1,4 +1,5 @@
-﻿using AsamaGlobal.ERP.Bll.Base;
+﻿using AbcYazilim.OgrenciTakip.Common.Enums;
+using AsamaGlobal.ERP.Bll.Base;
 using AsamaGlobal.ERP.Bll.Interfaces;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Model.Dto;
@@ -54,7 +55,12 @@ namespace AsamaGlobal.ERP.Bll.General
                 OzelKod2Id = x.OzelKod2Id,
                 OzelKod2Adi = x.OzelKod2.OzelKodAdi,
                 Aciklama = x.Aciklama,
-                Durum = x.Durum
+                Durum = x.Durum,
+                KayitHesabiAdi =
+                x.KayitTuru == KayitTuru.Kisi ? x.Kisi.Ad :
+                x.KayitTuru == KayitTuru.Personel ? x.Personel.Ad :
+                x.KayitTuru == KayitTuru.Cari ? x.Cariler.Ad :
+                null,
             });
         }
         public override IEnumerable<BaseEntity> List(Expression<Func<GenelIletisim, bool>> filter)
@@ -90,6 +96,11 @@ namespace AsamaGlobal.ERP.Bll.General
                 Web = x.Web,
                 OzelKod1Adi = x.OzelKod1.OzelKodAdi,
                 OzelKod2Adi = x.OzelKod2.OzelKodAdi,
+                KayitHesabiAdi =
+                x.KayitTuru == KayitTuru.Kisi ? x.Kisi.Ad :
+                x.KayitTuru == KayitTuru.Personel ? x.Personel.Ad :
+                x.KayitTuru == KayitTuru.Cari ? x.Cariler.Ad :
+                null,
                 Aciklama = x.Aciklama
             }).OrderBy(x => x.Kod).ToList();
         }

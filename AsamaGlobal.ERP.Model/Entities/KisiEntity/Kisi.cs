@@ -5,6 +5,7 @@ using AsamaGlobal.ERP.Model.Attributes;
 using AsamaGlobal.ERP.Model.Entities.Base;
 using AsamaGlobal.ERP.Model.Entities.PersonelEntity;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -42,6 +43,6 @@ namespace AsamaGlobal.ERP.Model.Entities.KisiEntity
         public Meslek Meslek { get; set; }
         public OzelKod OzelKod1 { get; set; }
         public OzelKod OzelKod2 { get; set; }
-
+        public List<long> SektorIdListesi { get; set; } = new List<long>();
     }
 }

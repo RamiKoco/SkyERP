@@ -15,6 +15,7 @@ using DevExpress.XtraEditors;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
 {
     public partial class CariSubelerEditForm : BaseEditForm
@@ -38,7 +39,13 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
             BaseKartTuru = KartTuru.CariSubeler;
             EventsLoad();
             _etiketHelper = new EtiketHelper();
-            _etiketHelper.EtiketleriYukle(txtEtiket, KayitTuru.CariSube);
+            _etiketHelper.EtiketleriYukle(txtContainer.TokenEditControl, KayitTuru.CariSube);
+            txtContainer.TokenEditControl.EditValueChanged += (s, e) =>
+            {
+                _guncelEtiketIdListesi = _etiketHelper.EtiketIdleriniAl(txtContainer.TokenEditControl.EditValue) ?? new List<long>();
+                ButonEnabledDurumu();
+            };
+
             Text = Text + $" - ( {_carilerAdi} )";
         }
         public override void Yukle()
@@ -69,7 +76,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
         }
         protected override void GuncelNesneOlustur()
         {
-            _guncelEtiketIdListesi = _etiketHelper.EtiketIdleriniAl(txtEtiket.EditValue);
+            _guncelEtiketIdListesi = _etiketHelper.EtiketIdleriniAl(txtContainer.TokenEditControl.EditValue);
 
             CurrentEntity = new CariSubeler
             {
@@ -94,12 +101,16 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
                     .Where(x => x.KayitTuru == KayitTuru.CariSube && x.KayitId == Id)
                     .Select(x => x.EtiketId)
                     .ToList();
+                var etiketAdlari = db.Etiket
+                    .Where(e => seciliEtiketler.Contains(e.Id))
+                    .ToDictionary(e => e.Id, e => e.EtiketAdi);
 
-                txtEtiket.EditValue = string.Join(",", seciliEtiketler);
+                txtContainer.TokenEditControl.EtiketAdlariniYukle(etiketAdlari);
+                txtContainer.TokenEditControl.EditValue = string.Join(",", seciliEtiketler);
 
                 _oldEtiketIdListesi = seciliEtiketler;
             }
-        }
+        }      
         public override bool Kaydet(bool kapanis)
         {
             bool etiketDegisti = !_oldEtiketIdListesi.SequenceEqual(_guncelEtiketIdListesi ?? new List<long>());
@@ -194,7 +205,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
         {
             if (_yorumlarTable != null && !_yorumlarTable.Kaydet()) return false;
 
-            var seciliEtiketIdler = _etiketHelper.EtiketIdleriniAl(txtEtiket.EditValue);
+            var seciliEtiketIdler = _etiketHelper.EtiketIdleriniAl(txtContainer.TokenEditControl.EditValue);
             _etiketHelper.BaglantilariGuncelle(KayitTuru.CariSube, Id, seciliEtiketIdler);
             _oldEtiketIdListesi = seciliEtiketIdler.ToList();
 

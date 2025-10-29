@@ -46,7 +46,12 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             txtCinsiyet.EditValueChanged += TxtCinsiyet_EditValueChanged;
 
             _etiketHelper = new EtiketHelper();
-            _etiketHelper.EtiketleriYukle(txtEtiket, KayitTuru.Personel);
+            _etiketHelper.EtiketleriYukle(txtContainer.TokenEditControl, KayitTuru.Personel);
+            txtContainer.TokenEditControl.EditValueChanged += (s, e) =>
+            {
+                _guncelEtiketIdListesi = _etiketHelper.EtiketIdleriniAl(txtContainer.TokenEditControl.EditValue) ?? new List<long>();
+                ButonEnabledDurumu();
+            };
         }  
         private void TxtKimlikTuru_EditValueChanged(object sender, EventArgs e)
         {
@@ -110,7 +115,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
         }
         protected override void GuncelNesneOlustur()
         {
-            _guncelEtiketIdListesi = _etiketHelper.EtiketIdleriniAl(txtEtiket.EditValue);
+            _guncelEtiketIdListesi = _etiketHelper.EtiketIdleriniAl(txtContainer.TokenEditControl.EditValue);
 
             var oldBytes = ((Personel)OldEntity).Resim;
             var currentBytes = ImageHelper.GetBytesFromEditValue(imgResim.EditValue);
@@ -177,7 +182,14 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
                     .Select(x => x.EtiketId)
                     .ToList();
 
-                txtEtiket.EditValue = string.Join(",", seciliEtiketler);
+                // Sözlüğü yükle
+                var etiketAdlari = db.Etiket
+                    .Where(e => seciliEtiketler.Contains(e.Id))
+                    .ToDictionary(e => e.Id, e => e.EtiketAdi);
+
+                txtContainer.TokenEditControl.EtiketAdlariniYukle(etiketAdlari);
+
+                txtContainer.TokenEditControl.EditValue = string.Join(",", seciliEtiketler);
 
                 _oldEtiketIdListesi = seciliEtiketler;
             }
@@ -356,15 +368,9 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             if (_iletisimBilgileriTable != null && !_iletisimBilgileriTable.Kaydet()) return false;
             if (_personelBelgeTable != null && !_personelBelgeTable.Kaydet()) return false;
 
-            // Etiket ID'lerini Helper üzerinden alıyoruz
-            var seciliEtiketIdler = _etiketHelper.EtiketIdleriniAl(txtEtiket.EditValue);
-
-            // Helper ile DB güncellemesini yapıyoruz
+            var seciliEtiketIdler = _etiketHelper.EtiketIdleriniAl(txtContainer.TokenEditControl.EditValue);
             _etiketHelper.BaglantilariGuncelle(KayitTuru.Personel, Id, seciliEtiketIdler);
-
-            // Güncel etiket listesi old liste olarak kaydediliyor
             _oldEtiketIdListesi = seciliEtiketIdler.ToList();
-
             return true;
         }
         protected override void Control_SelectedPageChanged(object sender, SelectedPageChangedEventArgs e)

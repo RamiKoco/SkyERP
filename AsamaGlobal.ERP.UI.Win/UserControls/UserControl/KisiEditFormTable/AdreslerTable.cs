@@ -59,7 +59,7 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
         {
             var entity = tablo.GetRow<AdresHareketleriL>();
             if (entity == null) return;
-            ShowEditForms<KisiEditForm>.ShowDialogEditForm(KartTuru.Kisi, entity.AdresBilgileriId);
+            ShowEditForms<KisiEditForm>.ShowDialogEditForm(KartTuru.Kisi, entity.GenelAdresId);
 
         }
         protected virtual void TabloEventsYukle()

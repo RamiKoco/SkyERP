@@ -1,18 +1,18 @@
-﻿using AbcYazilim.OgrenciTakip.Bll.General;
-using AbcYazilim.OgrenciTakip.Common.Enums;
-using AbcYazilim.OgrenciTakip.Model.Dto.IletisimlerDto;
-using AbcYazilim.OgrenciTakip.Model.Entities;
+﻿using AbcYazilim.OgrenciTakip.Common.Enums;
+using AsamaGlobal.ERP.Bll.General;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Functions;
-using AsamaGlobal.ERP.Common.Message;
 using AsamaGlobal.ERP.Data.Contexts;
+using AsamaGlobal.ERP.Model.Dto;
 using AsamaGlobal.ERP.Model.Entities;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
 {
@@ -23,7 +23,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
             InitializeComponent();
 
             DataLayoutControl = myDataLayoutControl;
-            Bll = new IletisimlerBll(myDataLayoutControl);
+            Bll = new GenelIletisimBll(myDataLayoutControl);
             txtKayitTuru.Properties.Items.AddRange(EnumFunctions.GetEnumDescriptionList<KayitTuru>());
             txtIletisimTurleri.Properties.Items.AddRange(EnumFunctions.GetEnumDescriptionList<IletisimTuru>());
             txtIzinDurumu.Properties.Items.AddRange(EnumFunctions.GetEnumDescriptionList<IletisimDurumu>());
@@ -32,7 +32,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
                         .Select(x => new CheckedListBoxItem(x))
                         .ToArray());
 
-            BaseKartTuru = KartTuru.Iletisimler;
+            BaseKartTuru = KartTuru.GenelIletisim;
             txtKayitTuru.SelectedIndexChanged += (s, e) =>
             {
                 txtKayitHesabi.Id = 0;
@@ -40,38 +40,35 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
             };
             txtIletisimTurleri.EditValueChanged += TxtIletisimTurleri_EditValueChanged;
             EventsLoad();
-        }
-
+        }      
         public override void Yukle()
         {
             OldEntity = BaseIslemTuru == IslemTuru.EntityInsert
-                ? new IletisimlerS()
-                : ((IletisimlerBll)Bll).Single(FilterFunctions.Filter<Iletisimler>(Id));
-            NesneyiKontrollereBagla();
-            TabloYukle();
-
+                ? new GenelIletisimS()
+                : ((GenelIletisimBll)Bll).Single(FilterFunctions.Filter<GenelIletisim>(Id));
+            NesneyiKontrollereBagla();    
             if (BaseIslemTuru != IslemTuru.EntityInsert) return;
             Id = BaseIslemTuru.IdOlustur(OldEntity);
-            txtKod.Text = ((IletisimlerBll)Bll).YeniKodVer();
-            txtBaslik.Focus();
+            txtKod.Text = ((GenelIletisimBll)Bll).YeniKodVer();
+            txtBaslik.Focus();   
         }
-
         protected override void NesneyiKontrollereBagla()
         {
-            var entity = (IletisimlerS)OldEntity;
+            var entity = (GenelIletisimS)OldEntity;
+            txtKayitTuru.SelectedIndexChanged -= txtKayitTuru_SelectedIndexChanged;
             txtKod.Text = entity.Kod;
             txtBaslik.Text = entity.Baslik;
-            txtIlgili.Text = entity.Ilgili;
             txtWeb.Text = entity.Web;
             txtKayitTuru.SelectedItem = entity.KayitTuru.ToName();
+
             if (entity.KayitTuru == KayitTuru.Kisi)
-                txtKayitHesabi.Id = entity.KisiId ?? 0;
+                txtKayitHesabi.Id = entity.KisiId ?? null;
             else if (entity.KayitTuru == KayitTuru.Personel)
-                txtKayitHesabi.Id = entity.PersonelId ?? 0;
-            else if (entity.KayitTuru == KayitTuru.Meslek)
-                txtKayitHesabi.Id = entity.MeslekId ?? 0;
+                txtKayitHesabi.Id = entity.PersonelId ?? null;
+            else if (entity.KayitTuru == KayitTuru.Cari)
+                txtKayitHesabi.Id = entity.CarilerId ?? null;
             else
-                txtKayitHesabi.Id = 0;
+                txtKayitHesabi.Id = null;
             txtKayitHesabi.Text = entity.KayitHesabiAdi;
             txtIletisimTurleri.EditValue = entity.IletisimTuru.ToName();
             txtKanallar.SetEditValue(entity.Kanallar);
@@ -95,30 +92,51 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
             txtOzelKod2.Text = entity.OzelKod2Adi;
             txtAciklama.Text = entity.Aciklama;
             tglVoip.IsOn = entity.VoipMi;
-            txtVarsayilanMi.IsOn = entity.VarsayilanMi;
+            tglVarsayilanYap.IsOn = entity.VarsayilanYap;
             tglDurum.IsOn = entity.Durum;
+            txtKayitTuru.SelectedIndexChanged += txtKayitTuru_SelectedIndexChanged;
+
             ButonEnabledDurumu();
         }
-
         protected override void GuncelNesneOlustur()
         {
             var kayitTuru = txtKayitTuru.SelectedItem?.ToString().GetEnum<KayitTuru>() ?? KayitTuru.Kisi;
-
-            var kisiId = kayitTuru == KayitTuru.Kisi ? txtKayitHesabi.Id : null;
+            var kisiId = kayitTuru == KayitTuru.Kisi
+             ? (txtKayitHesabi.Id == 0 ? null : txtKayitHesabi.Id)
+             : null;
             var meslekId = kayitTuru == KayitTuru.Meslek ? txtKayitHesabi.Id : null;
             var personelId = kayitTuru == KayitTuru.Personel ? txtKayitHesabi.Id : null;
-            CurrentEntity = new Iletisimler
+            var eskiEntity = OldEntity as GenelIletisimS; // Burada cast ediyoruz.
+
+            var kanalListesi = (txtKanallar.EditValue?.ToString() ?? "")
+                               .Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries)
+                               .Select(x => x.Trim())
+                               .ToList();
+
+            bool eskiArama = eskiEntity?.Arama ?? false;
+            bool eskiSms = eskiEntity?.Sms ?? false;
+            bool eskiWhatsapp = eskiEntity?.Whatsapp ?? false;
+            bool eskiEposta = eskiEntity?.EPBool ?? false;
+
+            bool yeniArama = kanalListesi.Any() ? kanalListesi.Contains("Arama") : eskiArama;
+            bool yeniSms = kanalListesi.Any() ? kanalListesi.Contains("SMS") : eskiSms;
+            bool yeniWhatsapp = kanalListesi.Any() ? kanalListesi.Contains("Whatsapp") : eskiWhatsapp;
+            bool yeniEposta = kanalListesi.Any() ? kanalListesi.Contains("E-Posta") : eskiEposta;
+
+            CurrentEntity = new GenelIletisim
             {
                 Id = Id,
                 Kod = txtKod.Text,
                 Baslik = txtBaslik.Text,
-                Ilgili = txtIlgili.Text,
                 Oncelik = (short)txtOncelik.Value,
                 Web = txtWeb.Text,
                 KayitTuru = kayitTuru,
                 KisiId = kisiId,
                 PersonelId = personelId,
-                MeslekId = meslekId,
+                Arama = yeniArama,
+                Sms = yeniSms,
+                Whatsapp = yeniWhatsapp,
+                EPBool = yeniEposta,
                 IletisimTuru = txtIletisimTurleri.Text.GetEnum<IletisimTuru>(),
                 IzinDurumu = txtIzinDurumu.Text.GetEnum<IletisimDurumu>(),
                 Kanallar = txtKanallar.EditValue?.ToString(),
@@ -135,18 +153,96 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
                 OzelKod1Id = txtOzelKod1.Id,
                 OzelKod2Id = txtOzelKod2.Id,
                 Aciklama = txtAciklama.Text,
-                VarsayilanMi = txtVarsayilanMi.IsOn,
+                KayitHesabiAdi=txtKayitHesabi.Text,
+                VarsayilanYap = tglVarsayilanYap.IsOn,
                 VoipMi = tglVoip.IsOn,
                 Durum = tglDurum.IsOn
             };
+            if (tglVarsayilanYap.IsOn)
+            {
+                using (var context = new ERPContext())
+                {
+                    var digerKayitlar = context.GenelIletisim
+                                        .Where(x => x.VarsayilanYap && x.Id != CurrentEntity.Id)
+                                        .ToList();
+
+                    foreach (var kayit in digerKayitlar)
+                        kayit.VarsayilanYap = false;
+
+                    context.SaveChanges();
+                }
+            }
             ButonEnabledDurumu();
+        }
+        private void tglVoip_EditValueChanged(object sender, EventArgs e)
+        {
+            bool isVoip = Convert.ToBoolean(tglVoip.EditValue);
+
+            txtSIPKullaniciAdi.Enabled = isVoip;
+            txtSIPServer.Enabled = isVoip;
         }
         protected internal override void ButonEnabledDurumu()
         {
             if (!IsLoaded) return;
-
             base.ButonEnabledDurumu();
+            if (txtIletisimTurleri.EditValue == null) return;
+            IletisimTuru iletisimTuru;
 
+            try
+            {
+                iletisimTuru = EnumFunctions.GetValueFromDescription<IletisimTuru>(txtIletisimTurleri.EditValue.ToString());
+            }
+            catch
+            {
+                return;
+            }
+        }
+        private void SetKanallarByIletisimTuru(IletisimTuru tur)
+        {
+            txtKanallar.Properties.Items.Clear();
+            ICollection<string> kanalListesi;
+            switch (tur)
+            {
+                case IletisimTuru.Telefon:
+                    kanalListesi = EnumFunctions.GetEnumDescriptionList<IletisimKanalTipi>().Cast<string>().ToList();
+                    break;
+                case IletisimTuru.EPosta:
+                    kanalListesi = EnumFunctions.GetEnumDescriptionList<IletisimKanalTipiEposta>().Cast<string>().ToList();
+                    break;
+                default:
+                    kanalListesi = new List<string>();
+                    break;
+            }
+
+            foreach (var item in kanalListesi)
+            {
+                var listItem = new CheckedListBoxItem(item);
+
+                if (tur == IletisimTuru.EPosta && item == "E-Posta")
+                {
+                    listItem.CheckState = CheckState.Checked;
+                }
+                else
+                {
+                    listItem.CheckState = CheckState.Unchecked;
+                }
+
+                txtKanallar.Properties.Items.Add(listItem);
+            }
+
+            // Telefon gibi diğer türlerde seçimleri temizlemek için:
+            if (tur != IletisimTuru.EPosta)
+            {
+                txtKanallar.SetEditValue(null); // Önceki seçimleri temizle
+            }
+            else
+            {
+                // E-Posta için default seçili zaten ayarlandı, ekstra işlem yok
+            }
+
+        }
+        private void TxtIletisimTurleri_EditValueChanged(object sender, EventArgs e)
+        {
             if (txtIletisimTurleri.EditValue == null) return;
 
             IletisimTuru iletisimTuru;
@@ -171,75 +267,145 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
             txtSIPKullaniciAdi.Enabled = true;
             txtSIPServer.Enabled = true;
             tglVoip.Enabled = true;
-
+            txtIzinDurumu.Enabled = true;
+            txtIzinTarihi.Enabled = true;
+            txtKanallar.Enabled = true;
+            tglVoip.Enabled = true;
+            txtSIPServer.Enabled = true;
+            txtSIPKullaniciAdi.Enabled = true;
             switch (iletisimTuru)
             {
                 case IletisimTuru.Telefon:
                     txtEPosta.Enabled = false;
+                    txtEPosta.Text = "";
                     txtSosyalMedyaPlatformu.Enabled = false;
+                    txtSosyalMedyaPlatformu.Id = null;
+                    txtSosyalMedyaPlatformu.Text = "";
                     txtWeb.Enabled = false;
+                    txtWeb.Text = "";
                     txtSosyalMedyaUrl.Enabled = false;
+                    txtSosyalMedyaUrl.Text = "";
                     txtKullaniciAdi.Enabled = false;
+                    txtKullaniciAdi.Text = "";
+                    tglVoip.EditValue = false;
+                    txtSIPKullaniciAdi.Enabled = Convert.ToBoolean(tglVoip.EditValue);
+                    txtSIPServer.Enabled = Convert.ToBoolean(tglVoip.EditValue);
+                    SetKanallarByIletisimTuru(IletisimTuru.Telefon);
                     break;
 
                 case IletisimTuru.EPosta:
                     txtUlkeKodu.Enabled = false;
+                    txtUlkeKodu.Text = "";
                     txtTelefonVeFax.Enabled = false;
+                    txtTelefonVeFax.Text = "";
                     txtDahili.Enabled = false;
-                    txtSosyalMedyaPlatformu.Enabled = false;
+                    txtDahili.Text = "";
+                    SetKanallarByIletisimTuru(IletisimTuru.EPosta);
                     txtWeb.Enabled = false;
+                    txtWeb.Text = "";
+                    txtSosyalMedyaPlatformu.Enabled = false;
+                    txtSosyalMedyaPlatformu.Id = null;
+                    txtSosyalMedyaPlatformu.Text = "";
                     txtSosyalMedyaUrl.Enabled = false;
+                    txtSosyalMedyaUrl.Text = "";
                     txtKullaniciAdi.Enabled = false;
-                    txtSIPKullaniciAdi.Enabled = false;
-                    txtSIPServer.Enabled = false;
+                    txtKullaniciAdi.Text = "";
+                    tglVoip.EditValue = false;
                     tglVoip.Enabled = false;
+                    txtSIPKullaniciAdi.Enabled = Convert.ToBoolean(tglVoip.EditValue);
+                    txtSIPKullaniciAdi.Text = "";
+                    txtSIPServer.Enabled = Convert.ToBoolean(tglVoip.EditValue);
+                    txtSIPServer.Text = "";
                     break;
 
                 case IletisimTuru.Web:
                     txtUlkeKodu.Enabled = false;
+                    txtUlkeKodu.Text = "";
                     txtTelefonVeFax.Enabled = false;
+                    txtTelefonVeFax.Text = "";
                     txtDahili.Enabled = false;
+                    txtDahili.Text = "";
                     txtEPosta.Enabled = false;
+                    txtEPosta.Text = "";
+                    txtKanallar.Enabled = false;
+                    txtKanallar.Text = "";
+                    txtIzinDurumu.Enabled = false;
+                    txtIzinDurumu.Text = null;
+                    txtIzinTarihi.Enabled = false;
+                    txtIzinTarihi.Text = null;
                     txtSosyalMedyaPlatformu.Enabled = false;
+                    txtSosyalMedyaPlatformu.Id = null;
+                    txtSosyalMedyaPlatformu.Text = "";
                     txtSosyalMedyaUrl.Enabled = false;
+                    txtSosyalMedyaUrl.Text = "";
                     txtKullaniciAdi.Enabled = false;
-                    txtSIPKullaniciAdi.Enabled = false;
-                    txtSIPServer.Enabled = false;
+                    txtKullaniciAdi.Text = "";
+                    tglVoip.EditValue = false;
                     tglVoip.Enabled = false;
+                    txtSIPKullaniciAdi.Enabled = Convert.ToBoolean(tglVoip.EditValue);
+                    txtSIPKullaniciAdi.Text = "";
+                    txtSIPServer.Enabled = Convert.ToBoolean(tglVoip.EditValue);
+                    txtSIPServer.Text = "";
                     break;
 
                 case IletisimTuru.SosyalMedya:
                     txtUlkeKodu.Enabled = false;
+                    txtUlkeKodu.Text = "";
                     txtTelefonVeFax.Enabled = false;
+                    txtTelefonVeFax.Text = "";
                     txtDahili.Enabled = false;
+                    txtDahili.Text = "";
                     txtEPosta.Enabled = false;
+                    txtEPosta.Text = "";
+                    txtKanallar.Enabled = false;
+                    txtKanallar.Text = "";
                     txtWeb.Enabled = false;
-                    txtSIPKullaniciAdi.Enabled = false;
-                    txtSIPServer.Enabled = false;
+                    txtWeb.Text = "";
+                    tglVoip.EditValue = false;
                     tglVoip.Enabled = false;
+                    txtSIPKullaniciAdi.Enabled = Convert.ToBoolean(tglVoip.EditValue);
+                    txtSIPKullaniciAdi.Text = "";
+                    txtSIPServer.Enabled = Convert.ToBoolean(tglVoip.EditValue);
+                    txtSIPServer.Text = "";
                     break;
 
                 case IletisimTuru.Fax:
+                    txtDahili.Enabled = false;
+                    txtDahili.Text = "";
                     txtEPosta.Enabled = false;
-                    txtSosyalMedyaPlatformu.Enabled = false;
+                    txtEPosta.Text = "";
+                    txtKanallar.Enabled = false;
+                    txtKanallar.Text = "";
+                    txtIzinDurumu.Enabled = false;
+                    txtIzinDurumu.Text = null;
+                    txtIzinTarihi.Enabled = false;
+                    txtIzinTarihi.Text = null;
                     txtWeb.Enabled = false;
+                    txtWeb.Text = "";
+                    txtSosyalMedyaPlatformu.Enabled = false;
+                    txtSosyalMedyaPlatformu.Id = null;
+                    txtSosyalMedyaPlatformu.Text = "";
                     txtSosyalMedyaUrl.Enabled = false;
+                    txtSosyalMedyaUrl.Text = "";
                     txtKullaniciAdi.Enabled = false;
-                    txtSIPKullaniciAdi.Enabled = false;
-                    txtSIPServer.Enabled = false;
+                    txtKullaniciAdi.Text = "";
+                    tglVoip.EditValue = false;
                     tglVoip.Enabled = false;
+                    txtSIPKullaniciAdi.Enabled = Convert.ToBoolean(tglVoip.EditValue);
+                    txtSIPKullaniciAdi.Text = "";
+                    txtSIPServer.Enabled = Convert.ToBoolean(tglVoip.EditValue);
+                    txtSIPServer.Text = "";
                     break;
-            }
-        }
-        private void TxtIletisimTurleri_EditValueChanged(object sender, EventArgs e)
-        {
-            ButonEnabledDurumu();
-        }
 
-        private void txtKayitTuru_SelectedIndexChanged(object sender, EventArgs e)
+            }
+        }          
+        protected override bool EntityInsert()
         {
-            txtKayitHesabi.Id = 0;
-            txtKayitHesabi.Text = string.Empty;
+            return ((GenelIletisimBll)Bll).Insert(CurrentEntity, x => x.Kod == CurrentEntity.Kod);
+        }
+        protected override bool EntityUpdate()
+        {
+            return ((GenelIletisimBll)Bll).Update(OldEntity, CurrentEntity, x => x.Kod == CurrentEntity.Kod);
         }
         protected override void SecimYap(object sender)
         {
@@ -247,9 +413,9 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
 
             using (var sec = new SelectFunctions())
                 if (sender == txtOzelKod1)
-                    sec.Sec(txtOzelKod1, KartTuru.Iletisim);
+                    sec.Sec(txtOzelKod1, KartTuru.GenelIletisim);
                 else if (sender == txtOzelKod2)
-                    sec.Sec(txtOzelKod2, KartTuru.Iletisim);
+                    sec.Sec(txtOzelKod2, KartTuru.GenelIletisim);
                 else if (sender == txtSosyalMedyaPlatformu)
                     sec.Sec(txtSosyalMedyaPlatformu, KartTuru.SosyalMedyaPlatformu);
                 else if (sender == txtKayitHesabi)
@@ -264,117 +430,11 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
                     else
                         sec.Sec(txtKayitHesabi);
                 }
-
         }
-        public override bool Kaydet(bool kapanis)
+        private void txtKayitTuru_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!kapanis)
-            {
-                if (string.IsNullOrWhiteSpace(txtKayitHesabi.Text))
-                {
-                    Messages.HataliVeriMesaji("Lütfen Kayıt Hesabı giriniz.");
-                    txtKayitHesabi.Focus();
-                    return false;
-                }
-            }
-
-            var sonuc = base.Kaydet(kapanis);
-
-            if (!sonuc) return false;
-
-            var kayitTuru = txtKayitTuru.Text.GetEnum<KayitTuru>();
-
-            var kisiId = kayitTuru == KayitTuru.Kisi ? txtKayitHesabi.Id : null;
-            var personelId = kayitTuru == KayitTuru.Personel ? txtKayitHesabi.Id : null;
-
-            if (kayitTuru == KayitTuru.Kisi && kisiId.HasValue && kisiId > 0)
-            {
-                var iletisimEntity = CurrentEntity as Iletisimler;
-                if (iletisimEntity == null) return false;
-
-                var entity = new IletisimBilgi
-                {
-                    KisiId = kisiId.Value,
-                    IletisimlerId = iletisimEntity.Id,
-                    Veli = true,
-                    IletisimTuru = iletisimEntity.IletisimTuru
-                };
-
-                using (var context = new ERPContext())
-                {
-                    // Aynı iletişim kaydına bağlı olan tüm kayıtları bul (yani IletisimId eşleşenler)
-                    var mevcutKayitlar = context.IletisimBilgi
-                        .Where(x => x.IletisimlerId == iletisimEntity.Id)
-                        .ToList();
-
-                    // Eğer varsa hepsini sil
-                    if (mevcutKayitlar.Any())
-                    {
-                        foreach (var kayit in mevcutKayitlar)
-                        {
-                            context.IletisimBilgi.Remove(kayit);
-                        }
-                        context.SaveChanges();
-                    }
-
-                    // Yeni kaydı ekle
-                    var yeniKayit = new IletisimBilgi
-                    {
-                        KisiId = kisiId.Value,
-                        IletisimlerId = iletisimEntity.Id,
-                        Veli = true,
-                        IletisimTuru = iletisimEntity.IletisimTuru
-                    };
-
-                    context.IletisimBilgi.Add(yeniKayit);
-                    context.SaveChanges();
-                }
-            }
-            if (kayitTuru == KayitTuru.Personel && personelId.HasValue && personelId > 0)
-            {
-                var iletisimEntity = CurrentEntity as Iletisimler;
-                if (iletisimEntity == null) return false;
-
-                var entity = new IletisimBilgi
-                {
-                    PersonelId = personelId.Value,
-                    IletisimlerId = iletisimEntity.Id,
-                    Veli = true,
-                    IletisimTuru = iletisimEntity.IletisimTuru
-                };
-
-                using (var context = new ERPContext())
-                {
-                    // Aynı iletişim kaydına bağlı olan tüm kayıtları bul (yani IletisimId eşleşenler)
-                    var mevcutKayitlar = context.IletisimBilgi
-                        .Where(x => x.IletisimlerId == iletisimEntity.Id)
-                        .ToList();
-
-                    // Eğer varsa hepsini sil
-                    if (mevcutKayitlar.Any())
-                    {
-                        foreach (var kayit in mevcutKayitlar)
-                        {
-                            context.IletisimBilgi.Remove(kayit);
-                        }
-                        context.SaveChanges();
-                    }
-
-                    // Yeni kaydı ekle
-                    var yeniKayit = new IletisimBilgi
-                    {
-                        PersonelId = personelId.Value,
-                        IletisimlerId = iletisimEntity.Id,
-                        Veli = true,
-                        IletisimTuru = iletisimEntity.IletisimTuru
-                    };
-
-                    context.IletisimBilgi.Add(yeniKayit);
-                    context.SaveChanges();
-                }
-            }
-            return true;
+            txtKayitHesabi.Id = 0;
+            txtKayitHesabi.Text = string.Empty;
         }
-
     }
 }

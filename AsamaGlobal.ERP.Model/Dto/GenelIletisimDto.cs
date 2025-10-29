@@ -12,6 +12,7 @@ namespace AsamaGlobal.ERP.Model.Dto
         public string SosyalMedyaPlatformuAdi { get; set; }
         public string OzelKod1Adi { get; set; }
         public string OzelKod2Adi { get; set; }
+      
     }
     public class GenelIletisimL:BaseEntity
     {
@@ -39,6 +40,7 @@ namespace AsamaGlobal.ERP.Model.Dto
         public short Oncelik { get; set; }
         public bool VoipMi { get; set; }
         public string Web { get; set; }
+        public string KayitHesabiAdi { get; set; }
         public string SosyalMedyaPlatformuAdi { get; set; }
         public string Aciklama { get; set; }
         public string OzelKod1Adi { get; set; }

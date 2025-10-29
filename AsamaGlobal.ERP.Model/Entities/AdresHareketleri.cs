@@ -1,4 +1,5 @@
-﻿using AsamaGlobal.ERP.Model.Entities.Base;
+﻿using AsamaGlobal.ERP.Model.Entities;
+using AsamaGlobal.ERP.Model.Entities.Base;
 
 namespace AbcYazilim.OgrenciTakip.Model.Entities
 {
@@ -7,7 +8,7 @@ namespace AbcYazilim.OgrenciTakip.Model.Entities
         public long? KisiId { get; set; }
         public long? PersonelId { get; set; }
         public long AdresBilgileriId { get; set; }
-
-        public AdresBilgileri AdresBilgileri { get; set; }
+        public long GenelAdresId { get; set; }
+        public GenelAdres GenelAdres { get; set; }
     }
 }

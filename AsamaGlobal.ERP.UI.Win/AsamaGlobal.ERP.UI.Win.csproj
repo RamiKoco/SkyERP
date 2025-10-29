@@ -1426,6 +1426,9 @@
     <Compile Include="UserControls\Controls\MyPictureEdit.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserControls\Controls\MyPopupContainerEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserControls\Controls\MySGKSicilNoTextEdit.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -3148,6 +3151,66 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\edittask_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wizard_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edittask_32x322.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\version_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\version_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wizard_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edittask_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\piestyledonut_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bo_dashboard.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\showtestreport_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paste_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\showtestreport_16x162.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\card_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mapit_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\highpriority_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\article_16x162.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edittask_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paste_16x162.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edittask_16x162.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\showtestreport_16x163.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paste_16x163.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

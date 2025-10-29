@@ -159,10 +159,6 @@
             this.txtEnlem.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.txtEnlem.Properties.AppearanceFocused.BackColor = System.Drawing.Color.LightCyan;
             this.txtEnlem.Properties.AppearanceFocused.Options.UseBackColor = true;
-            this.txtEnlem.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.None;
-            this.txtEnlem.Properties.Mask.EditMask = "\\d{0,3}(\\.\\d{0,6})?";
-            this.txtEnlem.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
-            this.txtEnlem.Properties.Mask.PlaceHolder = ' ';
             this.txtEnlem.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtEnlem.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
             this.txtEnlem.Properties.MaskSettings.Set("allowBlankInput", true);
