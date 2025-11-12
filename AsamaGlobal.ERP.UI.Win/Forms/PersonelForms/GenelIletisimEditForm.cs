@@ -1,5 +1,4 @@
-﻿using AbcYazilim.OgrenciTakip.Common.Enums;
-using AsamaGlobal.ERP.Bll.General;
+﻿using AsamaGlobal.ERP.Bll.General;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Functions;
 using AsamaGlobal.ERP.Data.Contexts;
@@ -22,6 +21,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
         private readonly long _personelId;
         private readonly string _personelAdi;
         private readonly string _personelSoyadi;
+        private long? _anaKayitId;
+        private long? _kayitId;
         #endregion
         public GenelIletisimEditForm(params object[] prm)
         {
@@ -46,6 +47,14 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
         public override void Yukle()
         {
             OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new GenelIletisimS() : ((GenelIletisimBll)Bll).Single(FilterFunctions.Filter<GenelIletisim>(Id));
+            if (BaseIslemTuru != IslemTuru.EntityInsert)
+            {
+                var old = (GenelIletisimS)OldEntity;
+                if (_kayitId == null)
+                    _kayitId = old.KayitId;
+                if (_anaKayitId == null)
+                    _anaKayitId = old.AnaKayitId;
+            }
             NesneyiKontrollereBagla();
             Text = Text + $" - ( {_personelAdi} {_personelSoyadi} )📌";
 
@@ -54,16 +63,13 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             txtKod.Text = ((GenelIletisimBll)Bll).YeniKodVer(x => x.PersonelId == _personelId);
             txtBaslik.Focus();
         }
-
         protected override void NesneyiKontrollereBagla()
         {
-
             var entity = (GenelIletisimS)OldEntity;
             txtKod.Text = entity.Kod;
             txtBaslik.Text = entity.Baslik;
             txtIletisimTurleri.EditValue = entity.IletisimTuru.ToName();
             entity.KayitTuru = KayitTuru.Personel;
-            //txtKayitHesabi.Text = entity.KayitHesabiAdi;
             txtKanallar.SetEditValue(entity.Kanallar);
             txtIzinDurumu.SelectedItem = entity.IzinDurumu.ToName();
             txtIzinTarihi.EditValue = entity.IzinTarihi;
@@ -87,8 +93,10 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             tglVarsayilanYap.IsOn = entity.VarsayilanYap;
             tglVoip.IsOn = entity.VoipMi;
             tglDurum.IsOn = entity.Durum;
+            _kayitId = entity.KayitId;
+            _anaKayitId = entity.AnaKayitId;
             tglVarsayilanYap.IsOn = entity.VarsayilanYap;
-            ButonEnabledDurumu();
+            //ButonEnabledDurumu();
         }
         protected override void GuncelNesneOlustur()
         {
@@ -132,15 +140,18 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
                 SIPServer = txtSIPServer.Text,
                 SIPKullaniciAdi = txtSIPKullaniciAdi.Text,
                 SosyalMedyaUrl = txtSosyalMedyaUrl.Text,
-                SosyalMedyaPlatformuId = txtSosyalMedyaPlatformu.Id,
-                PersonelId = BaseIslemTuru == IslemTuru.EntityInsert ? _personelId : ((GenelIletisimS)OldEntity).PersonelId,
+                SosyalMedyaPlatformuId = txtSosyalMedyaPlatformu.Id,             
                 OzelKod1Id = txtOzelKod1.Id,
                 OzelKod2Id = txtOzelKod2.Id,
                 Aciklama = txtAciklama.Text,
-                VarsayilanYap = tglVarsayilanYap.IsOn,
-                KayitHesabiAdi = ((GenelIletisimS)OldEntity).KayitHesabiAdi,
+                VarsayilanYap = tglVarsayilanYap.IsOn,               
                 VoipMi = tglVoip.IsOn,
-                Durum = tglDurum.IsOn
+                Durum = tglDurum.IsOn,
+                PersonelId = BaseIslemTuru == IslemTuru.EntityInsert ? _personelId : ((GenelIletisimS)OldEntity).PersonelId,
+                AnaKayitId = BaseIslemTuru == IslemTuru.EntityInsert ? _personelId : ((GenelIletisimS)OldEntity).PersonelId,
+                KayitId = BaseIslemTuru == IslemTuru.EntityInsert ? _personelId : ((GenelIletisimS)OldEntity).PersonelId,
+                KayitHesabiAdi = ((GenelIletisimS)OldEntity).KayitHesabiAdi,
+                AnaKayitHesabiAdi = null
             };
             if (tglVarsayilanYap.IsOn)
             {
@@ -395,9 +406,9 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
 
             using (var sec = new SelectFunctions())
                 if (sender == txtOzelKod1)
-                    sec.Sec(txtOzelKod1, KartTuru.PersonelIletisim);
+                    sec.Sec(txtOzelKod1, KartTuru.GenelIletisim);
                 else if (sender == txtOzelKod2)
-                    sec.Sec(txtOzelKod2, KartTuru.PersonelIletisim);
+                    sec.Sec(txtOzelKod2, KartTuru.GenelIletisim);
                 else if (sender == txtSosyalMedyaPlatformu)
                     sec.Sec(txtSosyalMedyaPlatformu, KartTuru.SosyalMedyaPlatformu);
         }

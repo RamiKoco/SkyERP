@@ -1,4 +1,4 @@
-﻿using AbcYazilim.OgrenciTakip.Common.Enums;
+﻿using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Model.Attributes;
 using AsamaGlobal.ERP.Model.Entities.Base;
 using System.ComponentModel.DataAnnotations;

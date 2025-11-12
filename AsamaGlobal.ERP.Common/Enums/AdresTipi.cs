@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace AbcYazilim.OgrenciTakip.Common.Enums
+namespace AsamaGlobal.ERP.Common.Enums
 {
     public enum AdresTipi : byte
     {

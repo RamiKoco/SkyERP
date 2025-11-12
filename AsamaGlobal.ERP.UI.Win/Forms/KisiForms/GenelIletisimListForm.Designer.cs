@@ -37,6 +37,7 @@
             this.colIletisimTuru = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.colBaslik = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.colKod = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colAnaKayitHesabiAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.colIzinDurumu = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
             this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colUlkeKodu = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyBandedGridColumn();
@@ -156,7 +157,8 @@
             this.colEPosta,
             this.colVoipMi,
             this.colSIPKullaniciAdi,
-            this.colSIPServer});
+            this.colSIPServer,
+            this.colAnaKayitHesabiAdi});
             this.tablo.GridControl = this.grid;
             this.tablo.Name = "tablo";
             this.tablo.OptionsMenu.EnableColumnMenu = false;
@@ -184,10 +186,11 @@
             this.gridBand1.Columns.Add(this.colIletisimTuru);
             this.gridBand1.Columns.Add(this.colBaslik);
             this.gridBand1.Columns.Add(this.colKod);
+            this.gridBand1.Columns.Add(this.colAnaKayitHesabiAdi);
             this.gridBand1.Columns.Add(this.colIzinDurumu);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 443;
+            this.gridBand1.Width = 535;
             // 
             // colOncelik
             // 
@@ -239,6 +242,18 @@
             this.colKod.OptionsColumn.AllowEdit = false;
             this.colKod.Visible = true;
             this.colKod.Width = 97;
+            // 
+            // colAnaKayitHesabiAdi
+            // 
+            this.colAnaKayitHesabiAdi.Caption = "Kayit Hesabı";
+            this.colAnaKayitHesabiAdi.FieldName = "AnaKayitHesabiAdi";
+            this.colAnaKayitHesabiAdi.Name = "colAnaKayitHesabiAdi";
+            this.colAnaKayitHesabiAdi.OptionsColumn.AllowEdit = false;
+            this.colAnaKayitHesabiAdi.StatusBarAciklama = null;
+            this.colAnaKayitHesabiAdi.StatusBarKisaYol = null;
+            this.colAnaKayitHesabiAdi.StatusBarKisaYolAciklama = null;
+            this.colAnaKayitHesabiAdi.Visible = true;
+            this.colAnaKayitHesabiAdi.Width = 92;
             // 
             // colIzinDurumu
             // 
@@ -514,7 +529,7 @@
             this.Controls.Add(this.longNavigator);
             this.IconOptions.ShowIcon = false;
             this.Name = "GenelIletisimListForm";
-            this.Text = "Kişi İletişim Kartları";
+            this.Text = "İletişim Kartları";
             this.Controls.SetChildIndex(this.ribbonControl, 0);
             this.Controls.SetChildIndex(this.longNavigator, 0);
             this.Controls.SetChildIndex(this.grid, 0);
@@ -548,14 +563,15 @@
         private UserControls.Grid.MyBandedGridColumn colEPBool;
         private UserControls.Grid.MyBandedGridColumn colEPosta;
         private UserControls.Grid.MyBandedGridColumn colOncelik;
+        private UserControls.Grid.MyBandedGridColumn colVoipMi;
+        private UserControls.Grid.MyBandedGridColumn colSIPKullaniciAdi;
+        private UserControls.Grid.MyBandedGridColumn colSIPServer;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private UserControls.Grid.MyBandedGridColumn colAnaKayitHesabiAdi;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand6;
-        private UserControls.Grid.MyBandedGridColumn colVoipMi;
-        private UserControls.Grid.MyBandedGridColumn colSIPKullaniciAdi;
-        private UserControls.Grid.MyBandedGridColumn colSIPServer;
     }
 }

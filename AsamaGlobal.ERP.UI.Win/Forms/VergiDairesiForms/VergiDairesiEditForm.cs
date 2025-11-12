@@ -27,8 +27,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.VergiDairesiForms
 
             if (BaseIslemTuru != IslemTuru.EntityInsert) return;
             Id = BaseIslemTuru.IdOlustur(OldEntity);
-            txtKod.Text = ((VergiDairesiBll)Bll).YeniKodVer();
-            txtVergiDairesiKodu.Focus();
+            txtKod.Focus();
         }    
         protected override void NesneyiKontrollereBagla()
         {
@@ -36,7 +35,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.VergiDairesiForms
 
             txtKod.Text = entity.Kod;
             txtVergiDairesiAdi.Text = entity.Ad;
-            txtVergiDairesiKodu.Text = entity.VergiDairesiKodu;
             txtIl.Id = entity.IlId;
             txtIl.Text = entity.IlAdi;
             txtAciklama.Text = entity.Aciklama;
@@ -50,7 +48,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.VergiDairesiForms
                 Id = Id,
                 Kod = txtKod.Text,
                 Ad = txtVergiDairesiAdi.Text,
-                VergiDairesiKodu = txtVergiDairesiKodu.Text,
                 IlId = Convert.ToInt64(txtIl.Id),
                 Aciklama = txtAciklama.Text,
                 Durum = tglDurum.IsOn

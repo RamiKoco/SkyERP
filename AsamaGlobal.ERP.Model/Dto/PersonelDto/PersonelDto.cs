@@ -1,5 +1,4 @@
-﻿using AbcYazilim.OgrenciTakip.Common.Enums;
-using AsamaGlobal.ERP.Common.Enums;
+﻿using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Model.Entities.Base;
 using AsamaGlobal.ERP.Model.Entities.PersonelEntity;
 using System;

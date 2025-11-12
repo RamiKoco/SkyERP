@@ -1,5 +1,4 @@
-﻿using AbcYazilim.OgrenciTakip.Common.Enums;
-using AsamaGlobal.ERP.Bll.General;
+﻿using AsamaGlobal.ERP.Bll.General;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Functions;
 using AsamaGlobal.ERP.Data.Contexts;
@@ -22,6 +21,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
         private readonly long _kisiId;
         private readonly string _kisiAdi;
         private readonly string _kisiSoyadi;
+        private long? _anaKayitId;
+        private long? _kayitId;
         #endregion
         public GenelIletisimEditForm(params object[] prm)
         {
@@ -46,7 +47,15 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
         public override void Yukle()
         {
             OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new GenelIletisimS() : ((GenelIletisimBll)Bll).Single(FilterFunctions.Filter<GenelIletisim>(Id));
-            NesneyiKontrollereBagla();
+            if (BaseIslemTuru != IslemTuru.EntityInsert)
+            {
+                var old = (GenelIletisimS)OldEntity;
+                if (_kayitId == null)
+                    _kayitId = old.KayitId;
+                if (_anaKayitId == null)
+                    _anaKayitId = old.AnaKayitId;
+            }
+            NesneyiKontrollereBagla();   
             Text = Text + $" - ( {_kisiAdi} {_kisiSoyadi} )";
 
             if (BaseIslemTuru != IslemTuru.EntityInsert) return;
@@ -56,7 +65,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
         }
         protected override void NesneyiKontrollereBagla()
         {
-
             var entity = (GenelIletisimS)OldEntity;
             txtKod.Text = entity.Kod;
             txtBaslik.Text = entity.Baslik;
@@ -85,6 +93,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
             tglVarsayilanYap.IsOn = entity.VarsayilanYap;
             tglVoip.IsOn = entity.VoipMi;
             tglDurum.IsOn = entity.Durum;
+            _kayitId = entity.KayitId;
+            _anaKayitId = entity.AnaKayitId;
             tglVarsayilanYap.IsOn = entity.VarsayilanYap;
         }
         protected override void GuncelNesneOlustur()
@@ -129,15 +139,18 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
                 SIPServer = txtSIPServer.Text,
                 SIPKullaniciAdi = txtSIPKullaniciAdi.Text,
                 SosyalMedyaUrl = txtSosyalMedyaUrl.Text,
-                SosyalMedyaPlatformuId = txtSosyalMedyaPlatformu.Id,
-                KisiId = BaseIslemTuru == IslemTuru.EntityInsert ? _kisiId : ((GenelIletisimS)OldEntity).KisiId,
+                SosyalMedyaPlatformuId = txtSosyalMedyaPlatformu.Id,               
                 OzelKod1Id = txtOzelKod1.Id,
                 OzelKod2Id = txtOzelKod2.Id,
                 Aciklama = txtAciklama.Text,
-                VarsayilanYap = tglVarsayilanYap.IsOn,
-                KayitHesabiAdi = ((GenelIletisimS)OldEntity).KayitHesabiAdi,
+                VarsayilanYap = tglVarsayilanYap.IsOn,            
                 VoipMi = tglVoip.IsOn,
-                Durum = tglDurum.IsOn
+                Durum = tglDurum.IsOn,
+                KisiId = BaseIslemTuru == IslemTuru.EntityInsert ? _kisiId : ((GenelIletisimS)OldEntity).KisiId,
+                AnaKayitId = BaseIslemTuru == IslemTuru.EntityInsert ? _kisiId : ((GenelIletisimS)OldEntity).KisiId,
+                KayitId = BaseIslemTuru == IslemTuru.EntityInsert ? _kisiId : ((GenelIletisimS)OldEntity).KisiId,
+                KayitHesabiAdi = ((GenelIletisimS)OldEntity).KayitHesabiAdi,
+                AnaKayitHesabiAdi = null
             };
             if (tglVarsayilanYap.IsOn)
             {
@@ -394,9 +407,9 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
 
             using (var sec = new SelectFunctions())
                 if (sender == txtOzelKod1)
-                    sec.Sec(txtOzelKod1, KartTuru.KisiIletisim);
+                    sec.Sec(txtOzelKod1, KartTuru.GenelIletisim);
                 else if (sender == txtOzelKod2)
-                    sec.Sec(txtOzelKod2, KartTuru.KisiIletisim);
+                    sec.Sec(txtOzelKod2, KartTuru.GenelIletisim);
                 else if (sender == txtSosyalMedyaPlatformu)
                     sec.Sec(txtSosyalMedyaPlatformu, KartTuru.SosyalMedyaPlatformu);
         }

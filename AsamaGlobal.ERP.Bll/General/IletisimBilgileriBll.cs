@@ -36,7 +36,7 @@ namespace AsamaGlobal.ERP.Bll.General
                 IsAdresIlceAdi = x.Iletisim.IsAdresIlce.IlceAdi,
                 YakinlikId = x.YakinlikId,
                 YakinlikAdi = x.Yakinlik.YakinlikAdi,
-                MeslekAdi = x.Iletisim.Meslek.MeslekAdi,
+                MeslekAdi = x.Iletisim.Meslek.Ad,
                 IsyeriAdi = x.Iletisim.Isyeri.IsyeriAdi,
                 GorevAdi = x.Iletisim.Gorev.GorevAdi,
                 Veli = x.Veli,

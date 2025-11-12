@@ -27,7 +27,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             Tablo = tablo;
             BaseKartTuru = KartTuru.GenelIletisim;
             Navigator = longNavigator.Navigator;
-            Text = Text + $" - ( {_personelAdi} {_personelSoyadi})";
+            Text = Text + $" - ( {_personelAdi} {_personelSoyadi} )";
+            tablo.ViewCaption = Text;
         }
         protected override void Listele()
         {

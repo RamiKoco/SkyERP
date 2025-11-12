@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using AbcYazilim.OgrenciTakip.Common.Enums;
+using AsamaGlobal.ERP.Common.Enums;
 
 namespace AbcYazilim.OgrenciTakip.Model.Entities
 {

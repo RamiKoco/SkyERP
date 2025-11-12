@@ -1,7 +1,6 @@
-﻿using AbcYazilim.OgrenciTakip.Common.Enums;
+﻿using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Bll.Base;
 using AsamaGlobal.ERP.Bll.Interfaces;
-using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Model.Dto;
 using AsamaGlobal.ERP.Model.Entities;
 using AsamaGlobal.ERP.Model.Entities.Base;
@@ -46,6 +45,11 @@ namespace AsamaGlobal.ERP.Bll.General
                 Ilgili = x.Ilgili,
                 Oncelik = x.Oncelik,
                 VoipMi = x.VoipMi,
+                KisiId = x.KisiId,
+                PersonelId = x.PersonelId,
+                MeslekId = x.MeslekId,
+                CarilerId = x.CarilerId,
+                CariSubelerId = x.CariSubelerId,
                 SosyalMedyaPlatformuId = x.SosyalMedyaPlatformuId,
                 SosyalMedyaPlatformuAdi = x.SosyalMedyaPlatformu.Ad,
                 IzinTarihi = x.IzinTarihi,
@@ -56,11 +60,18 @@ namespace AsamaGlobal.ERP.Bll.General
                 OzelKod2Adi = x.OzelKod2.OzelKodAdi,
                 Aciklama = x.Aciklama,
                 Durum = x.Durum,
+                AnaKayitId = x.AnaKayitId,
+                KayitId = x.KayitId,
                 KayitHesabiAdi =
-                x.KayitTuru == KayitTuru.Kisi ? x.Kisi.Ad :
-                x.KayitTuru == KayitTuru.Personel ? x.Personel.Ad :
-                x.KayitTuru == KayitTuru.Cari ? x.Cariler.Ad :
-                null,
+                    x.KayitTuru == KayitTuru.Kisi ? x.Kisi.Ad :
+                    x.KayitTuru == KayitTuru.Personel ? x.Personel.Ad :
+                    x.KayitTuru == KayitTuru.Meslek ? x.Meslek.Ad :
+                    x.KayitTuru == KayitTuru.Cari ? x.Cariler.Unvan :
+                    x.KayitTuru == KayitTuru.CariSube ? x.CariSubeler.Cariler.Unvan :
+                    null,
+
+                // Şube adı ayrı alınıyor
+                AnaKayitHesabiAdi = x.KayitTuru == KayitTuru.CariSube ? x.CariSubeler.Ad : null,
             });
         }
         public override IEnumerable<BaseEntity> List(Expression<Func<GenelIletisim, bool>> filter)
@@ -95,11 +106,18 @@ namespace AsamaGlobal.ERP.Bll.General
                 IzinTarihi = x.IzinTarihi,
                 Web = x.Web,
                 OzelKod1Adi = x.OzelKod1.OzelKodAdi,
-                OzelKod2Adi = x.OzelKod2.OzelKodAdi,
+                OzelKod2Adi = x.OzelKod2.OzelKodAdi,                
+                AnaKayitId = x.AnaKayitId,
+                KayitId = x.KayitId,
                 KayitHesabiAdi =
                 x.KayitTuru == KayitTuru.Kisi ? x.Kisi.Ad :
                 x.KayitTuru == KayitTuru.Personel ? x.Personel.Ad :
-                x.KayitTuru == KayitTuru.Cari ? x.Cariler.Ad :
+                x.KayitTuru == KayitTuru.Meslek ? x.Meslek.Ad :
+                x.KayitTuru == KayitTuru.Cari ? x.Cariler.Unvan :
+                x.KayitTuru == KayitTuru.CariSube ? (x.CariSubeler != null ? x.CariSubeler.Ad : null) :
+                null,
+                AnaKayitHesabiAdi =
+                x.KayitTuru == KayitTuru.CariSube ? (x.CariSubeler != null && x.CariSubeler.Cariler != null ? x.CariSubeler.Cariler.Unvan : null) :             
                 null,
                 Aciklama = x.Aciklama
             }).OrderBy(x => x.Kod).ToList();

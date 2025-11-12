@@ -25,7 +25,7 @@ namespace AsamaGlobal.ERP.Bll.General.CarilerBll
 
                 Id = x.Id,
                 Kod = x.Kod,
-                CariSubeAdi = x.CariSubeAdi,
+                Ad = x.Ad,
                 CariSubeGrubuId = x.CariSubeGrubuId,
                 CariSubeGrubuAdi = x.CariSubeGrubu.Ad,
                 OzelKod1Id = x.OzelKod1Id,
@@ -43,7 +43,7 @@ namespace AsamaGlobal.ERP.Bll.General.CarilerBll
             {
                 Id = x.Id,
                 Kod = x.Kod,
-                CariSubeAdi = x.CariSubeAdi,
+                Ad = x.Ad,
                 CariSubeGrubuAdi = x.CariSubeGrubu.Ad,
                 OzelKod1Adi = x.OzelKod1.OzelKodAdi,
                 OzelKod2Adi = x.OzelKod2.OzelKodAdi,

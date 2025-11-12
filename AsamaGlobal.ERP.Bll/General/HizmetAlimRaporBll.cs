@@ -61,7 +61,7 @@ namespace AsamaGlobal.ERP.Bll.General
                 VeliAdi = x.VeliBilgileri.Iletisim.Adi,
                 VeliSoyadi = x.VeliBilgileri.Iletisim.Soyadi,
                 VeliYakinlikAdi = x.VeliBilgileri.Yakinlik.YakinlikAdi,
-                VeliMeslekAdi = x.VeliBilgileri.Iletisim.Meslek.MeslekAdi,
+                VeliMeslekAdi = x.VeliBilgileri.Iletisim.Meslek.Ad,
                 VeliIsyeriAdi = x.VeliBilgileri.Iletisim.Isyeri.IsyeriAdi,
                 VeliGorevAdi = x.VeliBilgileri.Iletisim.Gorev.GorevAdi,
 

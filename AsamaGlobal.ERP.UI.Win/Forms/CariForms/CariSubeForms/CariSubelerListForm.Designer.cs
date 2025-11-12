@@ -33,7 +33,7 @@
             this.tablo = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridView();
             this.colId = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colKod = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
-            this.colCariSubeAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
+            this.colAd = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colOzelKod1Adi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colOzelKod2Adi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colAciklama = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
@@ -95,7 +95,7 @@
             this.tablo.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colId,
             this.colKod,
-            this.colCariSubeAdi,
+            this.colAd,
             this.colOzelKod1Adi,
             this.colOzelKod2Adi,
             this.colAciklama});
@@ -145,18 +145,18 @@
             this.colKod.VisibleIndex = 0;
             this.colKod.Width = 100;
             // 
-            // colCariSubeAdi
+            // colAd
             // 
-            this.colCariSubeAdi.Caption = "Cari Şube Adı";
-            this.colCariSubeAdi.FieldName = "CariSubeAdi";
-            this.colCariSubeAdi.Name = "colCariSubeAdi";
-            this.colCariSubeAdi.OptionsColumn.AllowEdit = false;
-            this.colCariSubeAdi.StatusBarAciklama = null;
-            this.colCariSubeAdi.StatusBarKisaYol = null;
-            this.colCariSubeAdi.StatusBarKisaYolAciklama = null;
-            this.colCariSubeAdi.Visible = true;
-            this.colCariSubeAdi.VisibleIndex = 1;
-            this.colCariSubeAdi.Width = 120;
+            this.colAd.Caption = "Cari Şube Adı";
+            this.colAd.FieldName = "Ad";
+            this.colAd.Name = "colAd";
+            this.colAd.OptionsColumn.AllowEdit = false;
+            this.colAd.StatusBarAciklama = null;
+            this.colAd.StatusBarKisaYol = null;
+            this.colAd.StatusBarKisaYolAciklama = null;
+            this.colAd.Visible = true;
+            this.colAd.VisibleIndex = 1;
+            this.colAd.Width = 120;
             // 
             // colOzelKod1Adi
             // 
@@ -214,7 +214,7 @@
             this.Controls.Add(this.longNavigator);
             this.IconOptions.ShowIcon = false;
             this.Name = "CariSubelerListForm";
-            this.Text = "Cari Şube Bilgileri";
+            this.Text = "Cari Şubeler";
             this.Controls.SetChildIndex(this.ribbonControl, 0);
             this.Controls.SetChildIndex(this.longNavigator, 0);
             this.Controls.SetChildIndex(this.grid, 0);
@@ -234,7 +234,7 @@
         private UserControls.Grid.MyGridColumn colKod;
         private UserControls.Navigators.LongNavigator longNavigator;
         private UserControls.Grid.MyGridColumn colAciklama;
-        private UserControls.Grid.MyGridColumn colCariSubeAdi;
+        private UserControls.Grid.MyGridColumn colAd;
         private UserControls.Grid.MyGridColumn colOzelKod1Adi;
         private UserControls.Grid.MyGridColumn colOzelKod2Adi;
     }

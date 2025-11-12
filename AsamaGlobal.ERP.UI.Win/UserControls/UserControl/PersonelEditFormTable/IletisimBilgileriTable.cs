@@ -1,6 +1,6 @@
-﻿using AbcYazilim.OgrenciTakip.Bll.General;
-using AbcYazilim.OgrenciTakip.Model.Dto.IletisimlerDto;
+﻿using AsamaGlobal.ERP.Bll.General;
 using AsamaGlobal.ERP.Common.Message;
+using AsamaGlobal.ERP.Model.Dto;
 using AsamaGlobal.ERP.UI.Win.Functions;
 using AsamaGlobal.ERP.UI.Win.UserControls.UserControl.Base;
 using DevExpress.XtraBars;
@@ -16,7 +16,7 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.PersonelEditFormTable
         {
             InitializeComponent();
 
-            Bll = new IletisimBilgiBll();
+            Bll = new GenelIletisimBll();
             Tablo = tablo;
             EventsLoad();
             HideItems = new BarItem[] { btnBelgeHareketleri };
@@ -58,9 +58,9 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.PersonelEditFormTable
         protected internal override void Listele()
         {
 
-            var list = ((IletisimBilgiBll)Bll)
+            var list = ((GenelIletisimBll)Bll)
                 .List(x => x.PersonelId == OwnerForm.Id)
-                .ToBindingList<IletisimBilgiL>();
+                .ToBindingList<GenelIletisimL>();
 
             if (Tablo?.GridControl != null)
                 Tablo.GridControl.DataSource = list;
@@ -74,7 +74,7 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.PersonelEditFormTable
 
             for (int i = 0; i < tablo.DataRowCount; i++)
             {
-                var entity = tablo.GetRow<IletisimBilgiL>(i);
+                var entity = tablo.GetRow<GenelIletisimL>(i);
 
                 if (!tablo.HasColumnErrors) continue;
                 Messages.TabloEksikBilgiMesaji($"{tablo.ViewCaption} Tablosu");

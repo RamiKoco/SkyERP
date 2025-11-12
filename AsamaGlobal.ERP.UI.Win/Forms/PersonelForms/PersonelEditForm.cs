@@ -1,5 +1,4 @@
 ﻿using AbcYazilim.OgrenciTakip.Bll.General;
-using AbcYazilim.OgrenciTakip.Common.Enums;
 using AbcYazilim.OgrenciTakip.Model.Entities;
 using AsamaGlobal.ERP.Bll.General.PersonelBll;
 using AsamaGlobal.ERP.Common.Enums;
@@ -477,14 +476,17 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
                 if (list == null)
                     return false;
 
-                return list.Cast<IBaseHareketEntity>()
-                           .Any(x => x.Insert || x.Update || x.Delete);
+                var hareketList = list as IEnumerable<IBaseHareketEntity>;
+                if (hareketList == null)
+                    return false;
+
+                return hareketList.Any(x => x.Insert || x.Update || x.Delete);
             }
 
             if (Degisti(_bilgiNotlariTable)) return true;
-            if (Degisti(_iletisimBilgileriTable)) return true;
-            if (Degisti(_adreslerTable)) return true;
-            if (Degisti(_personelBelgeTable)) return true;
+            // _iletisimBilgileriTable IBaseHareketEntity değil, o yüzden atla
+            // if (Degisti(_iletisimBilgileriTable)) return true;
+            //if (Degisti(_adreslerTable)) return true;
 
             return false;
         }

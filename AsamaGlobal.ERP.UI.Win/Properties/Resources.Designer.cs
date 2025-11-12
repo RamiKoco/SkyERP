@@ -533,6 +533,16 @@ namespace AsamaGlobal.ERP.UI.Win.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap chartsshowlegend_16x161 {
+            get {
+                object obj = ResourceManager.GetObject("chartsshowlegend_16x161", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap chartsshowlegend_32x32 {
             get {
                 object obj = ResourceManager.GetObject("chartsshowlegend_32x32", resourceCulture);
@@ -976,6 +986,16 @@ namespace AsamaGlobal.ERP.UI.Win.Properties {
         internal static System.Drawing.Bitmap documents_32x32 {
             get {
                 object obj = ResourceManager.GetObject("documents_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap drilldownonseries_chart_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("drilldownonseries_chart_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1466,6 +1486,16 @@ namespace AsamaGlobal.ERP.UI.Win.Properties {
         internal static System.Drawing.Bitmap key_32x32 {
             get {
                 object obj = ResourceManager.GetObject("key_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kpi_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("kpi_16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2516,6 +2546,26 @@ namespace AsamaGlobal.ERP.UI.Win.Properties {
         internal static System.Drawing.Bitmap user_32x32 {
             get {
                 object obj = ResourceManager.GetObject("user_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap usergroup_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("usergroup_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap usergroup_16x161 {
+            get {
+                object obj = ResourceManager.GetObject("usergroup_16x161", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

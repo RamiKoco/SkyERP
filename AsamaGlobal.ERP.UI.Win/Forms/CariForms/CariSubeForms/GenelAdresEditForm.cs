@@ -1,7 +1,7 @@
-﻿using AbcYazilim.OgrenciTakip.Common.Enums;
-using AsamaGlobal.ERP.Bll.General;
+﻿using AsamaGlobal.ERP.Bll.General;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Functions;
+using AsamaGlobal.ERP.Data.Contexts;
 using AsamaGlobal.ERP.Model.Dto;
 using AsamaGlobal.ERP.Model.Entities;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
@@ -9,6 +9,7 @@ using AsamaGlobal.ERP.UI.Win.Functions;
 using DevExpress.XtraEditors;
 using System;
 using System.Globalization;
+using System.Linq;
 
 namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
 {
@@ -17,6 +18,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
         #region Variables
         private readonly long _cariSubeId;
         private readonly string _cariSubeAdi;
+        private long? _anaKayitId;
+        private long? _kayitId;
         #endregion
         public GenelAdresEditForm(params object[] prm)
         {
@@ -32,6 +35,14 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
         public override void Yukle()
         {
             OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new GenelAdresS() : ((GenelAdresBll)Bll).Single(FilterFunctions.Filter<GenelAdres>(Id));
+            if (BaseIslemTuru != IslemTuru.EntityInsert)
+            {
+                var old = (GenelAdres)OldEntity;
+                if (_kayitId == null)
+                    _kayitId = old.KayitId;
+                if (_anaKayitId == null)
+                    _anaKayitId = old.AnaKayitId;
+            }
             NesneyiKontrollereBagla();
             Text = Text + $" - ( {_cariSubeAdi} )";
             if (BaseIslemTuru != IslemTuru.EntityInsert) return;
@@ -65,9 +76,12 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
             txtBoylam.Text = (entity.Boylam ?? 0m).ToString("F6", CultureInfo.InvariantCulture);
             txtAciklama.Text = entity.Aciklama;
             tglDurum.IsOn = entity.Durum;
+            _kayitId = entity.KayitId;
+            _anaKayitId = entity.AnaKayitId;
         }
         protected override void GuncelNesneOlustur()
         {
+            var eskiEntity = OldEntity as GenelAdresS;
             decimal? enlem = null;
             if (!string.IsNullOrWhiteSpace(txtEnlem.Text))
                 enlem = Math.Round(decimal.Parse(txtEnlem.Text, CultureInfo.InvariantCulture), 6);
@@ -75,6 +89,36 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
             decimal? boylam = null;
             if (!string.IsNullOrWhiteSpace(txtBoylam.Text))
                 boylam = Math.Round(decimal.Parse(txtBoylam.Text, CultureInfo.InvariantCulture), 6);
+
+            long? kayitId = _cariSubeId;
+            long? anaKayitId = null;
+            if (eskiEntity != null && eskiEntity.CarilerId != null && eskiEntity.CarilerId != 0)
+            {
+                anaKayitId = eskiEntity.CarilerId;
+            }
+            else
+            {
+                using (var ctx = new ERPContext())
+                {
+                    anaKayitId = ctx.CariSubeler
+                                    .Where(s => s.Id == _cariSubeId)
+                                    .Select(s => (long?)s.CarilerId)
+                                    .FirstOrDefault();
+                }
+            }
+            string parentCariUnvan = null;
+            if (eskiEntity != null && !string.IsNullOrEmpty(eskiEntity.KayitHesabiAdi))
+                parentCariUnvan = eskiEntity.KayitHesabiAdi;
+            else if (anaKayitId != null)
+            {
+                using (var ctx = new ERPContext())
+                {
+                    parentCariUnvan = ctx.Cariler
+                                          .Where(c => c.Id == anaKayitId.Value)
+                                          .Select(c => c.Unvan)
+                                          .FirstOrDefault();
+                }
+            }
 
             CurrentEntity = new GenelAdres
             {
@@ -92,11 +136,15 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
                 AdresTurleriId = txtAdresTurleri.Id,
                 PostaKodu = txtPostaKodu.Text,
                 Adres = txtAdres.Text,
-                CariSubelerId = BaseIslemTuru == IslemTuru.EntityInsert ? _cariSubeId : ((GenelAdresS)OldEntity).CariSubelerId,
                 Enlem = enlem,
                 Boylam = boylam,
                 Aciklama = txtAciklama.Text,
-                Durum = tglDurum.IsOn
+                Durum = tglDurum.IsOn,
+                CariSubelerId = BaseIslemTuru == IslemTuru.EntityInsert ? _cariSubeId : ((GenelAdresS)OldEntity).CariSubelerId,
+                AnaKayitId = anaKayitId,
+                KayitId = BaseIslemTuru == IslemTuru.EntityInsert ? _cariSubeId : ((GenelAdresS)OldEntity).CariSubelerId,
+                KayitHesabiAdi = parentCariUnvan,
+                AnaKayitHesabiAdi = _cariSubeAdi,
             };
             ButonEnabledDurumu();
         }
@@ -104,7 +152,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
         {
             return ((GenelAdresBll)Bll).Insert(CurrentEntity, x => x.Kod == CurrentEntity.Kod && x.CariSubelerId == _cariSubeId);
         }
-
         protected override bool EntityUpdate()
         {
             return ((GenelAdresBll)Bll).Update(OldEntity, CurrentEntity, x => x.Kod == CurrentEntity.Kod && x.CariSubelerId == _cariSubeId);
@@ -121,9 +168,9 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
                 else if (sender == txtIlce)
                     sec.Sec(txtIlce, txtIl);
                 else if (sender == txtOzelKod1)
-                    sec.Sec(txtOzelKod1, KartTuru.CariSubeAdres);
+                    sec.Sec(txtOzelKod1, KartTuru.AdresBilgileri);
                 else if (sender == txtOzelKod2)
-                    sec.Sec(txtOzelKod2, KartTuru.CariSubeAdres);
+                    sec.Sec(txtOzelKod2, KartTuru.AdresBilgileri);
                 else if (sender == txtAdresTurleri)
                     sec.Sec(txtAdresTurleri, KartTuru.AdresTurleri);
 

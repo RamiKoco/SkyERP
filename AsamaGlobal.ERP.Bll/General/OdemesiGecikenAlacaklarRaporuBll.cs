@@ -105,7 +105,7 @@ namespace AsamaGlobal.ERP.Bll.General
                 VeliAdi = x.VeliBilgileri.Iletisim.Adi,
                 VeliSoyadi = x.VeliBilgileri.Iletisim.Soyadi,
                 Yakinlik = x.VeliBilgileri.Yakinlik.YakinlikAdi,
-                Meslek = x.VeliBilgileri.Iletisim.Meslek.MeslekAdi,
+                Meslek = x.VeliBilgileri.Iletisim.Meslek.Ad,
                 EvTel = x.VeliBilgileri.Iletisim.EvTel,
                 IsTel1 = x.VeliBilgileri.Iletisim.IsTel1,
                 IsTel2 = x.VeliBilgileri.Iletisim.IsTel2,

@@ -1,5 +1,4 @@
-﻿using AbcYazilim.OgrenciTakip.Common.Enums;
-using AbcYazilim.OgrenciTakip.Model.Entities;
+﻿using AbcYazilim.OgrenciTakip.Model.Entities;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Model.Attributes;
 using AsamaGlobal.ERP.Model.Entities.Base;
@@ -28,7 +27,7 @@ namespace AsamaGlobal.ERP.Model.Entities.KisiEntity
         [StringLength(500)]
         public string Aciklama { get; set; }
  
-        public long? EtiketId { get; set; }
+        public long? EtiketId { get; set; } // Gerek Yok!
         public long? KisiGrubuId { get; set; }
         public long? PersonelId { get; set; }
         public long? KayitKaynakId { get; set; }

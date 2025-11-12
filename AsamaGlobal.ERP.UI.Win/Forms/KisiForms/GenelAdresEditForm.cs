@@ -1,5 +1,4 @@
-﻿using AbcYazilim.OgrenciTakip.Common.Enums;
-using AsamaGlobal.ERP.Bll.General;
+﻿using AsamaGlobal.ERP.Bll.General;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Functions;
 using AsamaGlobal.ERP.Model.Dto;
@@ -18,6 +17,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
         private readonly long _kisiId;
         private readonly string _kisiAdi;
         private readonly string _kisiSoyadi;
+        private long? _anaKayitId;
+        private long? _kayitId;
         #endregion
         public GenelAdresEditForm(params object[] prm)
         {
@@ -35,11 +36,19 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
         public override void Yukle()
         {
             OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new GenelAdresS() : ((GenelAdresBll)Bll).Single(FilterFunctions.Filter<GenelAdres>(Id));
+            if (BaseIslemTuru != IslemTuru.EntityInsert)
+            {
+                var old = (GenelAdresS)OldEntity;
+                if (_kayitId == null)
+                    _kayitId = old.KayitId;
+                if (_anaKayitId == null)
+                    _anaKayitId = old.AnaKayitId;
+            }
             NesneyiKontrollereBagla();
             Text = Text + $" - ( {_kisiAdi}  {_kisiSoyadi} )";
             if (BaseIslemTuru != IslemTuru.EntityInsert) return;
             Id = BaseIslemTuru.IdOlustur(OldEntity);
-            txtKod.Text = ((GenelAdresBll)Bll).YeniKodVer(x => x.KisiId == _kisiId);
+            txtKod.Text = ((GenelAdresBll)Bll).YeniKodVer(x => x.KayitId == _kisiId);
             txtBaslik.Focus();
         }
         protected override void NesneyiKontrollereBagla()
@@ -68,6 +77,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
             txtBoylam.Text = (entity.Boylam ?? 0m).ToString("F6", CultureInfo.InvariantCulture);
             txtAciklama.Text = entity.Aciklama;
             tglDurum.IsOn = entity.Durum;
+            _kayitId = entity.KayitId;
+            _anaKayitId = entity.AnaKayitId;
         }
         protected override void GuncelNesneOlustur()
         {         
@@ -95,24 +106,23 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
                 OzelKod2Id = txtOzelKod2.Id,
                 AdresTurleriId = txtAdresTurleri.Id,
                 PostaKodu = txtPostaKodu.Text,
-                Adres = txtAdres.Text,
-                KisiId = BaseIslemTuru == IslemTuru.EntityInsert ? _kisiId : ((GenelAdresS)OldEntity).KisiId,
+                Adres = txtAdres.Text,              
                 Enlem = enlem,
                 Boylam = boylam,
                 Aciklama = txtAciklama.Text,
-                Durum = tglDurum.IsOn
+                Durum = tglDurum.IsOn,
+                KisiId = BaseIslemTuru == IslemTuru.EntityInsert ? _kisiId : ((GenelAdresS)OldEntity).KisiId,
+                AnaKayitId = BaseIslemTuru == IslemTuru.EntityInsert ? _kisiId : ((GenelAdresS)OldEntity).KisiId,
+                KayitId = BaseIslemTuru == IslemTuru.EntityInsert ? _kisiId : ((GenelAdresS)OldEntity).KisiId,
+                KayitHesabiAdi = ((GenelAdresS)OldEntity).KayitHesabiAdi,
+                AnaKayitHesabiAdi = null
             };
             ButonEnabledDurumu();
         }
         protected override bool EntityInsert()
         {
-            return ((GenelAdresBll)Bll).Insert(CurrentEntity, x => x.Kod == CurrentEntity.Kod && x.KisiId == _kisiId);
-        }
-
-        protected override bool EntityUpdate()
-        {
-            return ((GenelAdresBll)Bll).Update(OldEntity, CurrentEntity, x => x.Kod == CurrentEntity.Kod && x.KisiId == _kisiId);
-        }
+            return ((GenelAdresBll)Bll).Insert(CurrentEntity, x => x.Kod == CurrentEntity.Kod && x.KayitId == _kisiId);  
+        }       
         protected override void SecimYap(object sender)
         {
             if (!(sender is ButtonEdit)) return;
@@ -125,9 +135,9 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
                 else if (sender == txtIlce)
                     sec.Sec(txtIlce, txtIl);
                 else if (sender == txtOzelKod1)
-                    sec.Sec(txtOzelKod1, KartTuru.KisiAdres);
+                    sec.Sec(txtOzelKod1, KartTuru.AdresBilgileri);
                 else if (sender == txtOzelKod2)
-                    sec.Sec(txtOzelKod2, KartTuru.KisiAdres);
+                    sec.Sec(txtOzelKod2, KartTuru.AdresBilgileri);
                 else if (sender == txtAdresTurleri)
                     sec.Sec(txtAdresTurleri, KartTuru.AdresTurleri);
 

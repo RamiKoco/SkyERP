@@ -11,10 +11,15 @@ namespace AsamaGlobal.ERP.Model.Entities
         public override string Kod { get; set; }
 
         [Required, StringLength(50), ZorunluAlan("Meslek Adı", "txtMeslekAdi")]
-        public string MeslekAdi { get; set; }
+        public string Ad { get; set; }
+        public long? OzelKod1Id { get; set; }
+        public long? OzelKod2Id { get; set; }
 
         [StringLength(500)]
         public string Aciklama { get; set; }
+
+        public OzelKod OzelKod1 { get; set; }
+        public OzelKod OzelKod2 { get; set; }
 
     }
 }

@@ -43,8 +43,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.VergiDairesiForms
             btnSil.Visibility = ShowSilButton ? BarItemVisibility.Always : BarItemVisibility.Never;
         }
         protected override void Listele()
-        {
-            //Tablo.GridControl.DataSource = ((VergiDairesiBll)Bll).List(FilterFunctions.Filter<VergiDairesi>(AktifKartlariGoster));
+        {           
             var list = ((VergiDairesiBll)Bll).List(_filter);
             Tablo.GridControl.DataSource = list;
 

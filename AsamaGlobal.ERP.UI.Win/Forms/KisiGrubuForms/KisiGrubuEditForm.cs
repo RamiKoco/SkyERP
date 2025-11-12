@@ -35,7 +35,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiGrubuForms
             var entity = (KisiGrubu)OldEntity;
 
             txtKod.Text = entity.Kod;
-            txtKisiGrubuAdi.Text = entity.GrupAdi;
+            txtKisiGrubuAdi.Text = entity.Ad;
             tglDurum.IsOn = entity.Durum;
 
         }
@@ -45,7 +45,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiGrubuForms
             {
                 Id = Id,
                 Kod = txtKod.Text,
-                GrupAdi = txtKisiGrubuAdi.Text,
+                Ad = txtKisiGrubuAdi.Text,
                 Durum = tglDurum.IsOn
             };
             ButonEnabledDurumu();

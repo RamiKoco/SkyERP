@@ -34,7 +34,7 @@
             this.tablo = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridView();
             this.colId = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colKod = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
-            this.colGrupAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
+            this.colAd = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablo)).BeginInit();
@@ -100,7 +100,7 @@
             this.tablo.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colId,
             this.colKod,
-            this.colGrupAdi});
+            this.colAd});
             this.tablo.GridControl = this.grid;
             this.tablo.Name = "tablo";
             this.tablo.OptionsMenu.EnableColumnMenu = false;
@@ -147,18 +147,18 @@
             this.colKod.VisibleIndex = 0;
             this.colKod.Width = 144;
             // 
-            // colGrupAdi
+            // colAd
             // 
-            this.colGrupAdi.Caption = "Grup Adı";
-            this.colGrupAdi.FieldName = "GrupAdi";
-            this.colGrupAdi.Name = "colGrupAdi";
-            this.colGrupAdi.OptionsColumn.AllowEdit = false;
-            this.colGrupAdi.StatusBarAciklama = null;
-            this.colGrupAdi.StatusBarKisaYol = null;
-            this.colGrupAdi.StatusBarKisaYolAciklama = null;
-            this.colGrupAdi.Visible = true;
-            this.colGrupAdi.VisibleIndex = 1;
-            this.colGrupAdi.Width = 289;
+            this.colAd.Caption = "Grup Adı";
+            this.colAd.FieldName = "Ad";
+            this.colAd.Name = "colAd";
+            this.colAd.OptionsColumn.AllowEdit = false;
+            this.colAd.StatusBarAciklama = null;
+            this.colAd.StatusBarKisaYol = null;
+            this.colAd.StatusBarKisaYolAciklama = null;
+            this.colAd.Visible = true;
+            this.colAd.VisibleIndex = 1;
+            this.colAd.Width = 289;
             // 
             // KisiGrubuListForm
             // 
@@ -188,6 +188,6 @@
         private UserControls.Grid.MyGridView tablo;
         private UserControls.Grid.MyGridColumn colId;
         private UserControls.Grid.MyGridColumn colKod;
-        private UserControls.Grid.MyGridColumn colGrupAdi;
+        private UserControls.Grid.MyGridColumn colAd;
     }
 }

@@ -1,7 +1,7 @@
-﻿using AbcYazilim.OgrenciTakip.Common.Enums;
-using AsamaGlobal.ERP.Bll.General;
+﻿using AsamaGlobal.ERP.Bll.General;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Functions;
+using AsamaGlobal.ERP.Common.Message;
 using AsamaGlobal.ERP.Data.Contexts;
 using AsamaGlobal.ERP.Model.Dto;
 using AsamaGlobal.ERP.Model.Entities;
@@ -9,19 +9,24 @@ using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraLayout.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Windows.Forms;
 
 namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
 {
     public partial class IletisimlerEditForm : BaseEditForm
     {
+        private long? _anaKayitId;
+        private long? _kayitId;
+        private readonly KayitTuru _kayitTuru;
         public IletisimlerEditForm()
         {
             InitializeComponent();
-
+        
             DataLayoutControl = myDataLayoutControl;
             Bll = new GenelIletisimBll(myDataLayoutControl);
             txtKayitTuru.Properties.Items.AddRange(EnumFunctions.GetEnumDescriptionList<KayitTuru>());
@@ -31,14 +36,14 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
                         .Cast<string>()
                         .Select(x => new CheckedListBoxItem(x))
                         .ToArray());
-
             BaseKartTuru = KartTuru.GenelIletisim;
             txtKayitTuru.SelectedIndexChanged += (s, e) =>
-            {
+            {               
                 txtKayitHesabi.Id = 0;
                 txtKayitHesabi.Text = "";
             };
             txtIletisimTurleri.EditValueChanged += TxtIletisimTurleri_EditValueChanged;
+            tglVoip.EditValueChanged += tglVoip_EditValueChanged;
             EventsLoad();
         }      
         public override void Yukle()
@@ -46,29 +51,83 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
             OldEntity = BaseIslemTuru == IslemTuru.EntityInsert
                 ? new GenelIletisimS()
                 : ((GenelIletisimBll)Bll).Single(FilterFunctions.Filter<GenelIletisim>(Id));
-            NesneyiKontrollereBagla();    
+   
+            if (BaseIslemTuru != IslemTuru.EntityInsert)
+            {
+                var old = (GenelIletisimS)OldEntity;
+                if (_kayitId == null)
+                    _kayitId = old.KayitId;
+                if (_anaKayitId == null)
+                    _anaKayitId = old.AnaKayitId;
+            }
+            NesneyiKontrollereBagla();
             if (BaseIslemTuru != IslemTuru.EntityInsert) return;
             Id = BaseIslemTuru.IdOlustur(OldEntity);
-            txtKod.Text = ((GenelIletisimBll)Bll).YeniKodVer();
-            txtBaslik.Focus();   
+            //txtKod.Text = ((GenelIletisimBll)Bll).YeniKodVer();
+            Expression<Func<GenelIletisim, bool>> filter = null;
+
+            switch (_kayitTuru)
+            {
+                case KayitTuru.Kisi:
+                    filter = x => x.KisiId == _anaKayitId;
+                    break;
+                case KayitTuru.Personel:
+                    filter = x => x.PersonelId == _anaKayitId;
+                    break;
+                case KayitTuru.Meslek:
+                    filter = x => x.MeslekId == _anaKayitId;
+                    break;
+                case KayitTuru.Cari:
+                    filter = x => x.CarilerId == _anaKayitId;
+                    break;
+                case KayitTuru.CariSube:
+                    filter = x => x.CariSubelerId == _anaKayitId;
+                    break;
+            }
+
+            txtKod.Text = ((GenelIletisimBll)Bll).YeniKodVer(filter);
+            txtBaslik.Focus();
         }
         protected override void NesneyiKontrollereBagla()
         {
             var entity = (GenelIletisimS)OldEntity;
+            
             txtKayitTuru.SelectedIndexChanged -= txtKayitTuru_SelectedIndexChanged;
             txtKod.Text = entity.Kod;
             txtBaslik.Text = entity.Baslik;
             txtWeb.Text = entity.Web;
             txtKayitTuru.SelectedItem = entity.KayitTuru.ToName();
-
             if (entity.KayitTuru == KayitTuru.Kisi)
                 txtKayitHesabi.Id = entity.KisiId ?? null;
             else if (entity.KayitTuru == KayitTuru.Personel)
                 txtKayitHesabi.Id = entity.PersonelId ?? null;
+            else if (entity.KayitTuru == KayitTuru.Meslek)
+                txtKayitHesabi.Id = entity.MeslekId ?? null;
             else if (entity.KayitTuru == KayitTuru.Cari)
                 txtKayitHesabi.Id = entity.CarilerId ?? null;
+            else if (entity.KayitTuru == KayitTuru.CariSube)
+                txtCariSube.Id = entity.CariSubelerId ?? null;
             else
                 txtKayitHesabi.Id = null;
+
+            if (entity.KayitTuru == KayitTuru.CariSube)
+            {
+                txtKayitHesabi.Id = entity.CarilerId;
+                txtKayitHesabi.Text = entity.KayitHesabiAdi;        
+                txtCariSube.Id = entity.CariSubelerId;
+                txtCariSube.Text = entity.AnaKayitHesabiAdi;                
+            }
+            else
+            {
+
+                txtKayitHesabi.Id =
+                   entity.KayitTuru == KayitTuru.Kisi ? entity.KisiId :
+                   entity.KayitTuru == KayitTuru.Personel ? entity.PersonelId :
+                   entity.KayitTuru == KayitTuru.Meslek ? entity.MeslekId :
+                   entity.KayitTuru == KayitTuru.Cari ? entity.CarilerId :
+                   (long?)null;
+                txtKayitHesabi.Text = entity.KayitHesabiAdi;
+            }
             txtKayitHesabi.Text = entity.KayitHesabiAdi;
             txtIletisimTurleri.EditValue = entity.IletisimTuru.ToName();
             txtKanallar.SetEditValue(entity.Kanallar);
@@ -94,19 +153,25 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
             tglVoip.IsOn = entity.VoipMi;
             tglVarsayilanYap.IsOn = entity.VarsayilanYap;
             tglDurum.IsOn = entity.Durum;
+            _kayitId = entity.KayitId != null ? entity.KayitId : txtKayitHesabi.Id;
+            _anaKayitId = entity.AnaKayitId != null ? entity.AnaKayitId : txtKayitHesabi.Id;
             txtKayitTuru.SelectedIndexChanged += txtKayitTuru_SelectedIndexChanged;
-
             ButonEnabledDurumu();
         }
         protected override void GuncelNesneOlustur()
-        {
+        {           
             var kayitTuru = txtKayitTuru.SelectedItem?.ToString().GetEnum<KayitTuru>() ?? KayitTuru.Kisi;
             var kisiId = kayitTuru == KayitTuru.Kisi
              ? (txtKayitHesabi.Id == 0 ? null : txtKayitHesabi.Id)
              : null;
             var meslekId = kayitTuru == KayitTuru.Meslek ? txtKayitHesabi.Id : null;
             var personelId = kayitTuru == KayitTuru.Personel ? txtKayitHesabi.Id : null;
-            var eskiEntity = OldEntity as GenelIletisimS; // Burada cast ediyoruz.
+            var carilerId = kayitTuru == KayitTuru.Cari ? txtKayitHesabi.Id : null;
+            var cariSubeId = kayitTuru == KayitTuru.CariSube ? txtCariSube.Id : null;
+            long? anaKayitId = null;
+            long? kayitId = null;
+
+            var eskiEntity = OldEntity as GenelIletisimS;
 
             var kanalListesi = (txtKanallar.EditValue?.ToString() ?? "")
                                .Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries)
@@ -123,6 +188,40 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
             bool yeniWhatsapp = kanalListesi.Any() ? kanalListesi.Contains("Whatsapp") : eskiWhatsapp;
             bool yeniEposta = kanalListesi.Any() ? kanalListesi.Contains("E-Posta") : eskiEposta;
 
+            if (kayitTuru == KayitTuru.CariSube)
+            {              
+                var yeniKayitId = txtCariSube.Id != 0 ? txtCariSube.Id : null;                
+                var yeniAnaKayitId = txtKayitHesabi.Id != 0 ? txtKayitHesabi.Id : null;             
+                kayitId = yeniKayitId ?? _kayitId;
+                anaKayitId = yeniAnaKayitId ?? _anaKayitId;
+
+                if ((anaKayitId == null || anaKayitId == kayitId) && _anaKayitId != null)
+                    anaKayitId = _anaKayitId;
+             
+                if (anaKayitId == null && txtKayitHesabi.Id != 0)
+                    anaKayitId = txtKayitHesabi.Id;
+            }
+
+            else if (kayitTuru == KayitTuru.Kisi ||
+                     kayitTuru == KayitTuru.Personel ||
+                     kayitTuru == KayitTuru.Meslek ||
+                     kayitTuru == KayitTuru.Cari)
+                        {
+                            kayitId = txtKayitHesabi.Id != 0 ? txtKayitHesabi.Id : _kayitId;
+                            anaKayitId = (_anaKayitId != null && _anaKayitId != 0)
+                                ? _anaKayitId
+                                : kayitId;
+                        }
+          
+            else
+            {
+                kayitId = _kayitId ?? txtKayitHesabi.Id;
+                anaKayitId = _anaKayitId ?? kayitId;
+            }
+
+            if (kayitId == 0) kayitId = null;
+            if (anaKayitId == 0) anaKayitId = null;
+
             CurrentEntity = new GenelIletisim
             {
                 Id = Id,
@@ -133,6 +232,9 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
                 KayitTuru = kayitTuru,
                 KisiId = kisiId,
                 PersonelId = personelId,
+                MeslekId = meslekId,
+                CarilerId = carilerId,
+                CariSubelerId = cariSubeId,
                 Arama = yeniArama,
                 Sms = yeniSms,
                 Whatsapp = yeniWhatsapp,
@@ -152,12 +254,16 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
                 SosyalMedyaPlatformuId = txtSosyalMedyaPlatformu.Id,
                 OzelKod1Id = txtOzelKod1.Id,
                 OzelKod2Id = txtOzelKod2.Id,
-                Aciklama = txtAciklama.Text,
-                KayitHesabiAdi=txtKayitHesabi.Text,
+                Aciklama = txtAciklama.Text,              
                 VarsayilanYap = tglVarsayilanYap.IsOn,
                 VoipMi = tglVoip.IsOn,
-                Durum = tglDurum.IsOn
-            };
+                Durum = tglDurum.IsOn,
+                AnaKayitId = anaKayitId,
+                KayitId = kayitId,
+                KayitHesabiAdi = txtKayitHesabi.Text,
+                AnaKayitHesabiAdi = kayitTuru == KayitTuru.CariSube ? txtCariSube.Text : null
+            };         
+                
             if (tglVarsayilanYap.IsOn)
             {
                 using (var context = new ERPContext())
@@ -172,6 +278,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
                     context.SaveChanges();
                 }
             }
+
             ButonEnabledDurumu();
         }
         private void tglVoip_EditValueChanged(object sender, EventArgs e)
@@ -183,8 +290,11 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
         }
         protected internal override void ButonEnabledDurumu()
         {
-            if (!IsLoaded) return;
+            if (!IsLoaded) return;       
+            var tempOld = OldEntity as GenelIletisimS;
+            var tempCurrent = CurrentEntity as GenelIletisim;           
             base.ButonEnabledDurumu();
+
             if (txtIletisimTurleri.EditValue == null) return;
             IletisimTuru iletisimTuru;
 
@@ -229,15 +339,13 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
 
                 txtKanallar.Properties.Items.Add(listItem);
             }
-
-            // Telefon gibi diğer türlerde seçimleri temizlemek için:
             if (tur != IletisimTuru.EPosta)
             {
-                txtKanallar.SetEditValue(null); // Önceki seçimleri temizle
+                txtKanallar.SetEditValue(null);
             }
             else
             {
-                // E-Posta için default seçili zaten ayarlandı, ekstra işlem yok
+                // E-Posta için default seçili zaten ayarlandı,
             }
 
         }
@@ -412,6 +520,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
             if (!(sender is ButtonEdit)) return;
 
             using (var sec = new SelectFunctions())
+            {
                 if (sender == txtOzelKod1)
                     sec.Sec(txtOzelKod1, KartTuru.GenelIletisim);
                 else if (sender == txtOzelKod2)
@@ -421,20 +530,77 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IletisimlerForms
                 else if (sender == txtKayitHesabi)
                 {
                     var kayitTuru = txtKayitTuru.Text.GetEnum<KayitTuru>();
+
                     if (kayitTuru == KayitTuru.Kisi)
+                    {
                         sec.Sec(txtKayitHesabi, KartTuru.Kisi);
+                        _kayitId = txtKayitHesabi.Id;
+                        _anaKayitId = null;
+                    }
                     else if (kayitTuru == KayitTuru.Personel)
+                    {
                         sec.Sec(txtKayitHesabi, KartTuru.Personel);
+                        _kayitId = txtKayitHesabi.Id;
+                        _anaKayitId = null;
+                    }
+                    else if (kayitTuru == KayitTuru.Cari)
+                    {
+                        sec.Sec(txtKayitHesabi, KartTuru.Cariler);
+                        _kayitId = txtKayitHesabi.Id;
+                        _anaKayitId = null;
+                    }
+                    else if (kayitTuru == KayitTuru.CariSube)
+                    {
+                        sec.Sec(txtKayitHesabi, KartTuru.Cariler);
+
+                        if (txtKayitHesabi.Id == null || txtKayitHesabi.Id == 0)
+                        {
+                            Messages.UyariMesaji("Cari seçilmeden şube seçimi yapılamaz.");
+                            return;
+                        }
+
+                        txtKayitHesabi.ControlEnabledChange(txtCariSube);
+                        sec.Sec(txtCariSube, txtKayitHesabi);
+
+                        _anaKayitId = txtKayitHesabi.Id; // Ana cari
+                        _kayitId = txtCariSube.Id;       // Şube
+                    }
                     else if (kayitTuru == KayitTuru.Meslek)
+                    {
                         sec.Sec(txtKayitHesabi, KartTuru.Meslek);
+                        _kayitId = txtKayitHesabi.Id;
+                        _anaKayitId = null;
+                    }
                     else
+                    {
                         sec.Sec(txtKayitHesabi);
+                        _kayitId = txtKayitHesabi.Id;
+                        _anaKayitId = null;
+                    }
                 }
+                else if (sender == txtCariSube)
+                    sec.Sec(txtCariSube, txtKayitHesabi);
+            }
         }
         private void txtKayitTuru_SelectedIndexChanged(object sender, EventArgs e)
         {
+            layoutControlItem6.Visibility = LayoutVisibility.Never;
             txtKayitHesabi.Id = 0;
             txtKayitHesabi.Text = string.Empty;
+            var kayitTuru = txtKayitTuru.Text.GetEnum<KayitTuru>();
+            txtCariSube.Enabled = kayitTuru == KayitTuru.CariSube;      
         }
+        protected override void Control_EnabledChange(object sender, EventArgs e)
+        {
+            if (sender != txtKayitHesabi)
+                return;
+            else if(sender == txtKayitHesabi)
+            {
+                var kayitTuru = txtKayitTuru.Text.GetEnum<KayitTuru>();
+                if (kayitTuru == KayitTuru.CariSube)
+                    txtKayitHesabi.ControlEnabledChange(txtCariSube);
+            }           
+        }
+       
     }
 }

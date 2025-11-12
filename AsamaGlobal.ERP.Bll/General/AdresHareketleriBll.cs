@@ -18,7 +18,7 @@ namespace AbcYazilim.OgrenciTakip.Bll.General
             return List(filter, x => new AdresHareketleriL
             {
                 Id = x.Id,
-                KisiId = (long)x.GenelAdres.KisiId,
+                KisiId = (long)x.GenelAdres.KayitId,
                 PersonelId = (long)x.GenelAdres.PersonelId,
                 GenelAdresId = x.GenelAdresId,
                 Baslik = x.GenelAdres.Baslik,

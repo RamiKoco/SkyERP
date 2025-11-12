@@ -238,7 +238,7 @@
             this.gridBand4.Columns.Add(this.colSoyad);
             this.gridBand4.Name = "gridBand4";
             this.gridBand4.VisibleIndex = 1;
-            this.gridBand4.Width = 310;
+            this.gridBand4.Width = 321;
             // 
             // colKimlikNo
             // 
@@ -262,7 +262,7 @@
             this.colAd.StatusBarKisaYol = null;
             this.colAd.StatusBarKisaYolAciklama = null;
             this.colAd.Visible = true;
-            this.colAd.Width = 101;
+            this.colAd.Width = 110;
             // 
             // colSoyad
             // 
@@ -274,7 +274,7 @@
             this.colSoyad.StatusBarKisaYol = null;
             this.colSoyad.StatusBarKisaYolAciklama = null;
             this.colSoyad.Visible = true;
-            this.colSoyad.Width = 108;
+            this.colSoyad.Width = 110;
             // 
             // gridBand3
             // 

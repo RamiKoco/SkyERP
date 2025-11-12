@@ -11,7 +11,7 @@ namespace AsamaGlobal.ERP.Model.Entities.CariEntity.CariSube
         public override string Kod { get; set; }
 
         [Required, StringLength(50), ZorunluAlan("Cari Şube", "txtCariSube")]
-        public string CariSubeAdi { get; set; }
+        public string Ad { get; set; }
         public long CarilerId { get; set; }
         public long? CariSubeGrubuId { get; set; }
         public long? OzelKod1Id { get; set; }

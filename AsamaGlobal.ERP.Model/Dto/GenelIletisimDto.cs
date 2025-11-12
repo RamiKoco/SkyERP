@@ -1,4 +1,4 @@
-﻿using AbcYazilim.OgrenciTakip.Common.Enums;
+﻿using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Model.Entities;
 using AsamaGlobal.ERP.Model.Entities.Base;
 using System;
@@ -26,6 +26,7 @@ namespace AsamaGlobal.ERP.Model.Dto
         public bool Sms { get; set; }
         public bool Whatsapp { get; set; }
         public bool EPBool { get; set; }
+        public string Ilgili { get; set; }
         public bool VarsayilanYap { get; set; }
         public string UlkeKodu { get; set; }
         public string Numara { get; set; }
@@ -36,11 +37,13 @@ namespace AsamaGlobal.ERP.Model.Dto
         public string SosyalMedyaUrl { get; set; }
         public string SIPKullaniciAdi { get; set; }
         public string SIPServer { get; set; }
-        public string Ilgili { get; set; }
         public short Oncelik { get; set; }
         public bool VoipMi { get; set; }
         public string Web { get; set; }
-        public string KayitHesabiAdi { get; set; }
+        public string AnaKayitHesabiAdi { get; set; }
+        public string KayitHesabiAdi { get; set; }       
+        public long? AnaKayitId { get; set; }
+        public long? KayitId { get; set; }
         public string SosyalMedyaPlatformuAdi { get; set; }
         public string Aciklama { get; set; }
         public string OzelKod1Adi { get; set; }

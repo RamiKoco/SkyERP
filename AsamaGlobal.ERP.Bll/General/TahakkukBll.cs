@@ -133,7 +133,7 @@ namespace AsamaGlobal.ERP.Bll.General
                     IsAdresIlceAdi = y.Iletisim.IsAdresIlce.IlceAdi,
                     IsAdresTam = y.Iletisim.IsAdres + " - " + y.Iletisim.IsAdresIlce.IlceAdi + " / " + y.Iletisim.IsAdresIl.IlAdi,
                     YakinlikAdi = y.Yakinlik.YakinlikAdi,
-                    MeslekAdi = y.Iletisim.Meslek.MeslekAdi,
+                    MeslekAdi = y.Iletisim.Meslek.Ad,
                     IsyeriAdi = y.Iletisim.Isyeri.IsyeriAdi,
                     GorevAdi = y.Iletisim.Gorev.GorevAdi
                 }).FirstOrDefault(),
@@ -158,7 +158,7 @@ namespace AsamaGlobal.ERP.Bll.General
                     IsAdresIlceAdi = y.Iletisim.IsAdresIlce.IlceAdi,
                     IsAdresTam = y.Iletisim.IsAdres + " - " + y.Iletisim.IsAdresIlce.IlceAdi + " / " + y.Iletisim.IsAdresIl.IlAdi,
                     YakinlikAdi = y.Yakinlik.YakinlikAdi,
-                    MeslekAdi = y.Iletisim.Meslek.MeslekAdi,
+                    MeslekAdi = y.Iletisim.Meslek.Ad,
                     IsyeriAdi = y.Iletisim.Isyeri.IsyeriAdi,
                     GorevAdi = y.Iletisim.Gorev.GorevAdi
                 }).FirstOrDefault(),
@@ -183,7 +183,7 @@ namespace AsamaGlobal.ERP.Bll.General
                     IsAdresIlceAdi = y.Iletisim.IsAdresIlce.IlceAdi,
                     IsAdresTam = y.Iletisim.IsAdres + " - " + y.Iletisim.IsAdresIlce.IlceAdi + " / " + y.Iletisim.IsAdresIl.IlAdi,
                     YakinlikAdi = y.Yakinlik.YakinlikAdi,
-                    MeslekAdi = y.Iletisim.Meslek.MeslekAdi,
+                    MeslekAdi = y.Iletisim.Meslek.Ad,
                     IsyeriAdi = y.Iletisim.Isyeri.IsyeriAdi,
                     GorevAdi = y.Iletisim.Gorev.GorevAdi
                 }).FirstOrDefault(),
@@ -282,7 +282,7 @@ namespace AsamaGlobal.ERP.Bll.General
                 VeliAdi = x.VeliBilgileri.Iletisim.Adi,
                 VeliSoyadi = x.VeliBilgileri.Iletisim.Soyadi,
                 VeliYakinlikAdi = x.VeliBilgileri.Yakinlik.YakinlikAdi,
-                VeliMeslekAdi = x.VeliBilgileri.Iletisim.Meslek.MeslekAdi,
+                VeliMeslekAdi = x.VeliBilgileri.Iletisim.Meslek.Ad,
                 HizmetTutar = x.HizmetBilgileri.NetHizmet,
                 HizmetIndirim = x.IndirimBilgileri.NetIndirim,
                 HizmetNetTutar = x.HizmetBilgileri.NetHizmet - x.IndirimBilgileri.NetIndirim,

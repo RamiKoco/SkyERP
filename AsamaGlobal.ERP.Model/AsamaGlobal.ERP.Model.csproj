@@ -65,6 +65,7 @@
     <Compile Include="Dto\BelgeTuruDto.cs" />
     <Compile Include="Dto\BilgiNotlariDto.cs" />
     <Compile Include="Dto\CariDto.cs" />
+    <Compile Include="Dto\CariDto\KisiKayitTuruBaglantiDto.cs" />
     <Compile Include="Dto\CariDto\CariGrubuDto.cs" />
     <Compile Include="Dto\CariDto\CarilerDto.cs" />
     <Compile Include="Dto\CariDto\CariSubeDto\CariSubeGrubuDto.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Dto\KardesBilgileriDto.cs" />
     <Compile Include="Dto\KasaDto.cs" />
     <Compile Include="Dto\KimlikTuruDto.cs" />
+    <Compile Include="Dto\KisiDto\CariKayitTuruBaglantiDto.cs" />
     <Compile Include="Dto\KisiDto\KisiDto.cs" />
     <Compile Include="Dto\KullaniciBirimYetkileriDto.cs" />
     <Compile Include="Dto\KullaniciDto.cs" />
@@ -98,6 +100,7 @@
     <Compile Include="Dto\KurumTuruDto.cs" />
     <Compile Include="Dto\MakbuzDto.cs" />
     <Compile Include="Dto\MakbuzHareketleriDto.cs" />
+    <Compile Include="Dto\MeslekDto.cs" />
     <Compile Include="Dto\OdemeBilgileriDto.cs" />
     <Compile Include="Dto\OgrenciDto.cs" />
     <Compile Include="Dto\OkulDto.cs" />
@@ -121,6 +124,7 @@
     <Compile Include="Entities\AdresTurleri.cs" />
     <Compile Include="Entities\BaglantiAyarlari.cs" />
     <Compile Include="Entities\BelgeTuru.cs" />
+    <Compile Include="Entities\CariEntity\KisiKayitTuruBaglanti.cs" />
     <Compile Include="Entities\CariEntity\CariGruplari\CariGrubu.cs" />
     <Compile Include="Entities\CariEntity\Cariler.cs" />
     <Compile Include="Entities\CariEntity\CariSube\CariSubeGrubu.cs" />
@@ -174,6 +178,7 @@
     <Compile Include="Entities\Kasa.cs" />
     <Compile Include="Entities\KayitKaynak.cs" />
     <Compile Include="Entities\KimlikTuru.cs" />
+    <Compile Include="Entities\KisiEntity\CariKayitTuruBaglanti.cs" />
     <Compile Include="Entities\KisiEntity\Kisi.cs" />
     <Compile Include="Entities\KisiEntity\KisiGrubu.cs" />
     <Compile Include="Entities\Kontenjan.cs" />

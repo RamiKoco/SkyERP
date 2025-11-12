@@ -1489,11 +1489,23 @@
     <Compile Include="UserControls\UserControl\Base\BaseTablo.Designer.cs">
       <DependentUpon>BaseTablo.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControl\CariEditFormTable\KisiKayitTuruBaglantiTable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControl\CariEditFormTable\KisiKayitTuruBaglantiTable.Designer.cs">
+      <DependentUpon>KisiKayitTuruBaglantiTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserControl\CariEditFormTable\YorumlarTable.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\UserControl\CariEditFormTable\YorumlarTable.Designer.cs">
       <DependentUpon>YorumlarTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControl\CariSubelerEditFormTable\KisiKayitTuruBaglantiTable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControl\CariSubelerEditFormTable\KisiKayitTuruBaglantiTable.Designer.cs">
+      <DependentUpon>KisiKayitTuruBaglantiTable.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UserControl\CariSubelerEditFormTable\YorumlarTable.cs">
       <SubType>UserControl</SubType>
@@ -1542,6 +1554,12 @@
     </Compile>
     <Compile Include="UserControls\UserControl\KisiEditFormTable\BilgiNotlariTable.Designer.cs">
       <DependentUpon>BilgiNotlariTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControl\KisiEditFormTable\CariKayitTuruBaglantiTable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControl\KisiEditFormTable\CariKayitTuruBaglantiTable.Designer.cs">
+      <DependentUpon>CariKayitTuruBaglantiTable.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UserControl\KisiEditFormTable\IletisimBilgileriTable.cs">
       <SubType>UserControl</SubType>
@@ -2310,8 +2328,14 @@
     <EmbeddedResource Include="UserControls\UserControl\Base\BaseTablo.resx">
       <DependentUpon>BaseTablo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControl\CariEditFormTable\KisiKayitTuruBaglantiTable.resx">
+      <DependentUpon>KisiKayitTuruBaglantiTable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControl\CariEditFormTable\YorumlarTable.resx">
       <DependentUpon>YorumlarTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControl\CariSubelerEditFormTable\KisiKayitTuruBaglantiTable.resx">
+      <DependentUpon>KisiKayitTuruBaglantiTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControl\CariSubelerEditFormTable\YorumlarTable.resx">
       <DependentUpon>YorumlarTable.cs</DependentUpon>
@@ -2336,6 +2360,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControl\KisiEditFormTable\BilgiNotlariTable.resx">
       <DependentUpon>BilgiNotlariTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControl\KisiEditFormTable\CariKayitTuruBaglantiTable.resx">
+      <DependentUpon>CariKayitTuruBaglantiTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControl\KisiEditFormTable\IletisimBilgileriTable.resx">
       <DependentUpon>IletisimBilgileriTable.cs</DependentUpon>
@@ -3211,6 +3238,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\paste_16x163.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usergroup_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drilldownonseries_chart_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kpi_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chartsshowlegend_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usergroup_16x161.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

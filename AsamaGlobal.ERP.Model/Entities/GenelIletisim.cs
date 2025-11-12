@@ -1,4 +1,4 @@
-﻿using AbcYazilim.OgrenciTakip.Common.Enums;
+﻿using AsamaGlobal.ERP.Common.Enums;
 using AbcYazilim.OgrenciTakip.Model.Entities;
 using AsamaGlobal.ERP.Model.Attributes;
 using AsamaGlobal.ERP.Model.Entities.Base;
@@ -19,6 +19,8 @@ namespace AsamaGlobal.ERP.Model.Entities
         [Required, StringLength(30), ZorunluAlan("Baslik", "txtBaslik")]
         public string Baslik { get; set; }
         public KayitTuru KayitTuru { get; set; }
+        public long? KayitId { get; set; }
+        public long? AnaKayitId { get; set; }
         public IletisimTuru IletisimTuru { get; set; } = IletisimTuru.Telefon;
         public IletisimDurumu IzinDurumu { get; set; } = IletisimDurumu.Belirtilmedi;
         public IletisimKanalTipi IletisimKanalTipi { get; set; } = IletisimKanalTipi.Arama;
@@ -33,18 +35,19 @@ namespace AsamaGlobal.ERP.Model.Entities
         public string DahiliNo { get; set; }
         [StringLength(30)]
         public string EPosta { get; set; }
+        public string Ilgili { get; set; }
         public string Kanallar { get; set; }
         public bool Arama { get; set; }
         public bool Sms { get; set; }
         public bool Whatsapp { get; set; }
         public bool EPBool { get; set; }
+        public string AnaKayitHesabiAdi { get; set; }
         public string KayitHesabiAdi { get; set; }
         public bool VarsayilanYap { get; set; }
         public string KullaniciAdi { get; set; }
         public string SosyalMedyaUrl { get; set; }
         public string SIPKullaniciAdi { get; set; }
         public string SIPServer { get; set; }
-        public string Ilgili { get; set; }
         public short Oncelik { get; set; }
         public bool VoipMi { get; set; } = false;
         [Column(TypeName = "date")]
@@ -56,6 +59,7 @@ namespace AsamaGlobal.ERP.Model.Entities
         public long? CariSubelerId { get; set; }
         public long? KisiId { get; set; }
         public long? PersonelId { get; set; }
+        public long? MeslekId { get; set; }
         public long? SosyalMedyaPlatformuId { get; set; }
         public long? OzelKod1Id { get; set; }
         public long? OzelKod2Id { get; set; }
@@ -67,6 +71,7 @@ namespace AsamaGlobal.ERP.Model.Entities
         public CariSubeler CariSubeler { get; set; }
         public Kisi Kisi { get; set; }
         public Personel Personel { get; set; }
+        public Meslek Meslek { get; set; }
         public SosyalMedyaPlatformu SosyalMedyaPlatformu { get; set; }
         public OzelKod OzelKod1 { get; set; }
         public OzelKod OzelKod2 { get; set; }

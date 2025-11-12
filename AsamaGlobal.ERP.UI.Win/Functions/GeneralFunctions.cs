@@ -313,7 +313,10 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
         {
             return new BindingList<T>((IList<T>) list);
         }
-
+        public static BindingList<T> ToBindingList<T>(this IEnumerable<BaseEntity> list)
+        {
+            return new BindingList<T>(list.Cast<T>().ToList());
+        }      
         public static BaseTablo AddTable(this BaseTablo tablo, BaseEditForm frm)
         {
             tablo.Dock = DockStyle.Fill;
@@ -605,6 +608,13 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
                 section.SectionInformation.ForceSave = true;
                 configuration.Save();
             }
+        }
+
+        public static string GetEnumDescription(this Enum value)
+        {
+            var field = value.GetType().GetField(value.ToString());
+            var attribute = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
+            return attribute?.Description ?? value.ToString();
         }
     }
 }

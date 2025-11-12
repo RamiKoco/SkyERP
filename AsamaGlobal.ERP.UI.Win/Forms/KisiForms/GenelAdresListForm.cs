@@ -26,11 +26,13 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
             Tablo = tablo;
             BaseKartTuru = KartTuru.GenelAdres;
             Navigator = longNavigator.Navigator;
-            Text = Text + $" - ( {_kisiAdi} {_kisiSoyadi})";
+            Text = Text + $" - ( {_kisiAdi} {_kisiSoyadi} )";
+            tablo.ViewCaption = Text;
         }
         protected override void Listele()
         {
-            Tablo.GridControl.DataSource = ((GenelAdresBll)Bll).List(x => x.Durum == AktifKartlariGoster && x.KisiId == _kisiId);
+            Tablo.GridControl.DataSource = ((GenelAdresBll)Bll)
+                  .List(x => x.Durum == AktifKartlariGoster && x.KayitId == _kisiId);
         }
         protected override void ShowEditForm(long id)
         {

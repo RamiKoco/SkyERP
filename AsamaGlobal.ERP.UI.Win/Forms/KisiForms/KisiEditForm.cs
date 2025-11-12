@@ -1,5 +1,4 @@
-﻿using AbcYazilim.OgrenciTakip.Common.Enums;
-using AbcYazilim.OgrenciTakip.Model.Dto.KisiDto;
+﻿using AbcYazilim.OgrenciTakip.Model.Dto.KisiDto;
 using AsamaGlobal.ERP.Bll.General.KisiBll;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Functions;
@@ -10,6 +9,7 @@ using AsamaGlobal.ERP.Model.Entities.KisiEntity;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
 using AsamaGlobal.ERP.UI.Win.UserControls.UserControl.Base;
+using AsamaGlobal.ERP.UI.Win.UserControls.UserControl.CariEditFormTable;
 using AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable;
 using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraEditors;
@@ -24,6 +24,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
     {
         protected internal GridView Tablo;
         private BaseTablo _bilgiNotlariTable;
+        private BaseTablo _cariBaglantiTable;
         private BaseTablo _iletisimBilgileriTable;
         private BaseTablo _adreslerTable;
         private List<long> _oldEtiketIdListesi = new List<long>();
@@ -192,6 +193,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
         {
             if (_bilgiNotlariTable != null && TabloDegisti())
                 _bilgiNotlariTable.Yukle();
+            if (_cariBaglantiTable != null && TabloDegisti())
+                _cariBaglantiTable.Yukle();
             if (_iletisimBilgileriTable != null && TabloDegisti())
                 _iletisimBilgileriTable.Yukle();
             if (_adreslerTable != null && TabloDegisti())
@@ -203,6 +206,12 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
             {
                 tabUst.SelectedPage = pageNotlar;
                 _bilgiNotlariTable.Tablo.GridControl.Focus();
+                return true;
+            }
+            if (_cariBaglantiTable != null && _cariBaglantiTable.HataliGiris())
+            {
+                tabUst.SelectedPage = pageBaglantilar;
+                _cariBaglantiTable.Tablo.GridControl.Focus();
                 return true;
             }
             if (_iletisimBilgileriTable != null && _iletisimBilgileriTable.HataliGiris())
@@ -243,8 +252,9 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
         }
         protected override bool BagliTabloKaydet()
         {
-            if (_bilgiNotlariTable != null && !_bilgiNotlariTable.Kaydet()) return false;
             if (_adreslerTable != null && !_adreslerTable.Kaydet()) return false;
+            if (_bilgiNotlariTable != null && !_bilgiNotlariTable.Kaydet()) return false;
+            if (_cariBaglantiTable != null && !_cariBaglantiTable.Kaydet()) return false;            
             if (_iletisimBilgileriTable != null && !_iletisimBilgileriTable.Kaydet()) return false;
 
             var seciliEtiketIdler = _etiketHelper.EtiketIdleriniAl(txtContainer.TokenEditControl.EditValue);
@@ -272,6 +282,20 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
 
                 _bilgiNotlariTable.Tablo.GridControl.Focus();
             }
+            else if (e.Page == pageBaglantilar)
+            {                
+                if (BaseIslemTuru == IslemTuru.EntityInsert)
+                    return;
+
+                if (pageBaglantilar.Controls.Count == 0)
+                {
+                    _cariBaglantiTable = new CariKayitTuruBaglantiTable().AddTable(this);
+                    pageBaglantilar.Controls.Add(_cariBaglantiTable);
+                    _cariBaglantiTable.Yukle();
+                }
+
+                _cariBaglantiTable.Tablo.GridControl.Focus();
+            }
 
             else if (e.Page == pageIletisimBilgileri)
             {
@@ -298,7 +322,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
                 _adreslerTable.Tablo.GridControl.Focus();
                
             }
-        }
+        }   
         private bool TabloDegisti()
         {
             bool Degisti(BaseTablo tablo)
@@ -307,12 +331,19 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
                 if (list == null)
                     return false;
 
-                return list.Cast<IBaseHareketEntity>()
-                           .Any(x => x.Insert || x.Update || x.Delete);
+                // C# 7.3 uyumlu kontrol
+                var hareketList = list as IEnumerable<IBaseHareketEntity>;
+                if (hareketList == null)
+                    return false;
+
+                return hareketList.Any(x => x.Insert || x.Update || x.Delete);
             }
+
             if (Degisti(_bilgiNotlariTable)) return true;
-            if (Degisti(_iletisimBilgileriTable)) return true;
-            if (Degisti(_adreslerTable)) return true;
+            if (Degisti(_cariBaglantiTable)) return true;
+            // _iletisimBilgileriTable IBaseHareketEntity değil, o yüzden atla
+            // if (Degisti(_iletisimBilgileriTable)) return true;
+            //if (Degisti(_adreslerTable)) return true;
 
             return false;
         }

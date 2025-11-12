@@ -12,7 +12,6 @@ namespace AsamaGlobal.ERP.Model.Dto
     public class VergiDairesiL: BaseEntity
     {
         public string Ad { get; set; }
-        public string VergiDairesiKodu { get; set; }
         public string IlAdi { get; set; }
         public string Aciklama { get; set; }
     }

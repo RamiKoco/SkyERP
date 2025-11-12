@@ -7,14 +7,13 @@ namespace AsamaGlobal.ERP.Model.Entities
 {
     public class VergiDairesi : BaseEntityDurum
     {
-        [Index("IX_Kod", IsUnique = true)]
+        [Index("IX_Kod", IsUnique = true), ZorunluAlan("Vergi Dairesi Kodu", "txtKod")]
+        [Column("VergiDairesiKodu")]
         public override string Kod { get; set; }
 
         [Required, StringLength(50), ZorunluAlan("Vergi Dairesi Adı", "txtAd")]
         public string Ad { get; set; }
 
-        [StringLength(20)]
-        public string VergiDairesiKodu { get; set; }
         [ZorunluAlan("İl Adı", "txtIl")]
         public long IlId { get; set; }
 

@@ -14,7 +14,7 @@ namespace AsamaGlobal.ERP.Model.Dto.CariDto.CariSubeDto
 
     public class CariSubelerL : BaseEntity
     {
-        public string CariSubeAdi { get; set; }
+        public string Ad { get; set; }
         public string CariSubeGrubuAdi { get; set; }
         public string Aciklama { get; set; }
         public string OzelKod1Adi { get; set; }

@@ -140,7 +140,7 @@ namespace AsamaGlobal.ERP.Bll.General
                 VeliIbanNo = x.VeliBilgileri.Iletisim.IbanNo,
                 VeliKartNo = x.VeliBilgileri.Iletisim.KartNo,
                 VeliYakinlikAdi = x.VeliBilgileri.Yakinlik.YakinlikAdi,
-                VeliMeslekAdi = x.VeliBilgileri.Iletisim.Meslek.MeslekAdi,
+                VeliMeslekAdi = x.VeliBilgileri.Iletisim.Meslek.Ad,
                 VeliIsyeriAdi = x.VeliBilgileri.Iletisim.Isyeri.IsyeriAdi,
                 VeliGorevAdi = x.VeliBilgileri.Iletisim.Gorev.GorevAdi,
                 BrutHizmet = x.HizmetBilgileri.BrutHizmet,

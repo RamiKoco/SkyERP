@@ -1,9 +1,8 @@
-﻿using AbcYazilim.OgrenciTakip.Common.Enums;
+﻿using AsamaGlobal.ERP.Common.Enums;
 using AbcYazilim.OgrenciTakip.Model.Dto;
 using AbcYazilim.OgrenciTakip.Model.Entities;
 using AsamaGlobal.ERP.Bll.Base;
 using AsamaGlobal.ERP.Bll.Interfaces;
-using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Model.Entities.Base;
 using System;
 using System.Collections.Generic;

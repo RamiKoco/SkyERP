@@ -28,7 +28,7 @@ namespace AsamaGlobal.ERP.Bll.General.CarilerBll
                 Kod = x.Kod,
                 KimlikNo = x.KimlikNo,
                 Ad = x.Ad,
-                Soyad = x.Soyad,
+                Soyad = x.Soyad,                
                 Sahis = x.Sahis,
                 Unvan = x.Unvan,
                 VergiNo = x.VergiNo,

@@ -1,4 +1,4 @@
-﻿using AbcYazilim.OgrenciTakip.Common.Enums;
+﻿using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Model.Entities;
 using AsamaGlobal.ERP.Model.Entities.Base;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,11 +14,13 @@ namespace AsamaGlobal.ERP.Model.Dto
         public string IlceAdi { get; set; }
         public string OzelKod1Adi { get; set; }
         public string OzelKod2Adi { get; set; }
-        public string KayitHesabiAdi { get; set; }
+        //public string KayitHesabiAdi { get; set; }
     }
     public class GenelAdresL : BaseEntity
     {
         public KayitTuru KayitTuru { get; set; }
+        public long? AnaKayitId { get; set; }
+        public long? KayitId { get; set; }
         public string UlkeAdi { get; set; }
         public string IlAdi { get; set; }
         public string IlceAdi { get; set; }
@@ -31,6 +33,7 @@ namespace AsamaGlobal.ERP.Model.Dto
         public string PostaKodu { get; set; }
         public string Adres { get; set; }
         public string KayitHesabiAdi { get; set; }
+        public string AnaKayitHesabiAdi { get; set; }
         public AdresTipi AdresTipi { get; set; }
         public decimal Enlem { get; set; }
         public decimal Boylam { get; set; }

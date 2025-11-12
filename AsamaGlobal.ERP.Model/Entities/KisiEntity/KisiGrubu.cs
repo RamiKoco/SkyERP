@@ -11,7 +11,7 @@ namespace AsamaGlobal.ERP.Model.Entities.KisiEntity
         public override string Kod { get; set; }
 
         [Required, StringLength(50), ZorunluAlan("Grup Adı", "txtGrupAdi")]
-        public string GrupAdi { get; set; }
+        public string Ad { get; set; }
 
     }
 }

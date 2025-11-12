@@ -25,6 +25,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
             BaseKartTuru = KartTuru.GenelAdres;
             Navigator = longNavigator.Navigator;
             Text = Text + $" - ( {_cariSubeAdi} )";
+            tablo.ViewCaption = Text;
         }
         protected override void Listele()
         {

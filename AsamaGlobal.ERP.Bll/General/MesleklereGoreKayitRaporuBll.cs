@@ -19,7 +19,7 @@ namespace AsamaGlobal.ERP.Bll.General
                 Tahakkuk = x,
                 x.Sube,
                 MeslekId = x.IletisimBilgileri.Where(y => y.Veli).Select(y => y.Iletisim.MeslekId).FirstOrDefault(),
-                MeslekAdi = x.IletisimBilgileri.Where(y => y.Veli).Select(y => y.Iletisim.Meslek.MeslekAdi).FirstOrDefault(),
+                MeslekAdi = x.IletisimBilgileri.Where(y => y.Veli).Select(y => y.Iletisim.Meslek.Ad).FirstOrDefault(),
 
 
                 HizmetBilgileri = x.HizmetBilgileri.GroupBy(y => y.TahakkukId).DefaultIfEmpty().Select(y => new

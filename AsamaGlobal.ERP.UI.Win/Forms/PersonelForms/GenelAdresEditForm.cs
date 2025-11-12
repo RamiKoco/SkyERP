@@ -1,5 +1,4 @@
-﻿using AbcYazilim.OgrenciTakip.Common.Enums;
-using AsamaGlobal.ERP.Bll.General;
+﻿using AsamaGlobal.ERP.Bll.General;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Functions;
 using AsamaGlobal.ERP.Model.Dto;
@@ -18,6 +17,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
         private readonly long _personelId;
         private readonly string _personelAdi;
         private readonly string _personelSoyadi;
+        private long? _anaKayitId;
+        private long? _kayitId;
         #endregion
         public GenelAdresEditForm(params object[] prm)
         {
@@ -34,6 +35,14 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
         public override void Yukle()
         {
             OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new GenelAdresS() : ((GenelAdresBll)Bll).Single(FilterFunctions.Filter<GenelAdres>(Id));
+            if (BaseIslemTuru != IslemTuru.EntityInsert)
+            {
+                var old = (GenelAdresS)OldEntity;
+                if (_kayitId == null)
+                    _kayitId = old.KayitId;
+                if (_anaKayitId == null)
+                    _anaKayitId = old.AnaKayitId;
+            }
             NesneyiKontrollereBagla();
             Text = Text + $" - ( {_personelAdi} {_personelSoyadi} )📌";
             if (BaseIslemTuru != IslemTuru.EntityInsert) return;
@@ -67,6 +76,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             txtBoylam.Text = (entity.Boylam ?? 0m).ToString("F6", CultureInfo.InvariantCulture);
             txtAciklama.Text = entity.Aciklama;
             tglDurum.IsOn = entity.Durum;
+            _kayitId = entity.KayitId;
+            _anaKayitId = entity.AnaKayitId;
         }
         protected override void GuncelNesneOlustur()
         {
@@ -94,19 +105,22 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
                 AdresTurleriId = txtAdresTurleri.Id,
                 PostaKodu = txtPostaKodu.Text,
                 Adres = txtAdres.Text,
-                PersonelId = BaseIslemTuru == IslemTuru.EntityInsert ? _personelId : ((GenelAdresS)OldEntity).PersonelId,
                 Enlem = enlem,
                 Boylam = boylam,
                 Aciklama = txtAciklama.Text,
-                Durum = tglDurum.IsOn
+                Durum = tglDurum.IsOn,
+                PersonelId = BaseIslemTuru == IslemTuru.EntityInsert ? _personelId : ((GenelAdresS)OldEntity).PersonelId,
+                AnaKayitId = BaseIslemTuru == IslemTuru.EntityInsert ? _personelId : ((GenelAdresS)OldEntity).PersonelId,
+                KayitId = BaseIslemTuru == IslemTuru.EntityInsert ? _personelId : ((GenelAdresS)OldEntity).PersonelId,
+                KayitHesabiAdi = ((GenelAdresS)OldEntity).KayitHesabiAdi,
+                AnaKayitHesabiAdi = null
             };
             ButonEnabledDurumu();
         }
         protected override bool EntityInsert()
         {
-            return ((GenelAdresBll)Bll).Insert(CurrentEntity, x => x.Kod == CurrentEntity.Kod && x.PersonelId == _personelId);
+            return ((GenelAdresBll)Bll).Insert(CurrentEntity, x => x.Kod == CurrentEntity.Kod && x.KayitId == _personelId);
         }
-
         protected override bool EntityUpdate()
         {
             return ((GenelAdresBll)Bll).Update(OldEntity, CurrentEntity, x => x.Kod == CurrentEntity.Kod && x.PersonelId == _personelId);
@@ -123,9 +137,9 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
                 else if (sender == txtIlce)
                     sec.Sec(txtIlce, txtIl);
                 else if (sender == txtOzelKod1)
-                    sec.Sec(txtOzelKod1, KartTuru.PersonelAdres);
+                    sec.Sec(txtOzelKod1, KartTuru.AdresBilgileri);
                 else if (sender == txtOzelKod2)
-                    sec.Sec(txtOzelKod2, KartTuru.PersonelAdres);
+                    sec.Sec(txtOzelKod2, KartTuru.AdresBilgileri);
                 else if (sender == txtAdresTurleri)
                     sec.Sec(txtAdresTurleri, KartTuru.AdresTurleri);
 

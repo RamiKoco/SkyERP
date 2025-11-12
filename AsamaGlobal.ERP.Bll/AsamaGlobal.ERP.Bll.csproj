@@ -76,6 +76,7 @@
     <Compile Include="General\BelgeTuruBll.cs" />
     <Compile Include="General\BilgiNotlariBll.cs" />
     <Compile Include="General\CariBll.cs" />
+    <Compile Include="General\CarilerBll\KisiKayitTuruBaglantiBll.cs" />
     <Compile Include="General\CarilerBll\CariGruplariBll\CariGrubuBll.cs" />
     <Compile Include="General\CarilerBll\CarilerBll.cs" />
     <Compile Include="General\CarilerBll\CariSubeBll\CariSubeGrubuBll.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="General\KasaBll.cs" />
     <Compile Include="General\KayitKaynakBll.cs" />
     <Compile Include="General\KimlikTuruBll.cs" />
+    <Compile Include="General\KisiBll\CariKayitTuruBaglantiBll.cs" />
     <Compile Include="General\KisiBll\KisiBll.cs" />
     <Compile Include="General\KisiBll\KisiGrubuBll.cs" />
     <Compile Include="General\KontenjanBll.cs" />

@@ -22,10 +22,10 @@ namespace AsamaGlobal.ERP.Model.Entities.CariEntity
         public string Ad { get; set; }
         [StringLength(30)]
         public string Soyad { get; set; }
-     
+    
         [StringLength(20)]
         public string VergiNo { get; set; }
-        public bool Sahis { get; set; } 
+        public bool Sahis { get; set; }        
         [StringLength(500)]
         public string Aciklama { get; set; }
         public string SektorAdi { get; set; }
@@ -41,9 +41,7 @@ namespace AsamaGlobal.ERP.Model.Entities.CariEntity
         public long? OzelKod3Id { get; set; }
         public long? OzelKod4Id { get; set; }
         public long? OzelKod5Id { get; set; }
-        public Sektor Sektor { get; set; }
-        //[NotMapped]
-        //public List<Sektor> Sektorler { get; set; } = new List<Sektor>();
+        public Sektor Sektor { get; set; }     
         public CariGrubu CariGrubu { get; set; }
         public CariTuru CariTuru { get; set; }
         public Etiket Etiket { get; set; }

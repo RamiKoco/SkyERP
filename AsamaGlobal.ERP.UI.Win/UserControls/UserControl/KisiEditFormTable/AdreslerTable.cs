@@ -1,7 +1,7 @@
-﻿using AbcYazilim.OgrenciTakip.Bll.General;
-using AbcYazilim.OgrenciTakip.Model.Dto;
+﻿using AsamaGlobal.ERP.Bll.General;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Message;
+using AsamaGlobal.ERP.Model.Dto;
 using AsamaGlobal.ERP.UI.Win.Forms.KisiForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
 using AsamaGlobal.ERP.UI.Win.Show;
@@ -16,7 +16,7 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
         {
             InitializeComponent();
 
-            Bll = new AdresHareketleriBll();
+            Bll = new GenelAdresBll();
             Tablo = tablo;
             EventsLoad();
             TabloEventsYukle();
@@ -26,19 +26,17 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
             insUptNavigator.Navigator.Buttons.Edit.Visible = false;
 
         }
-
         protected internal override void Listele()
         {
 
-            var list = ((AdresHareketleriBll)Bll)
-                .List(x => x.KisiId == OwnerForm.Id)
-                .ToBindingList<AdresHareketleriL>();
+            var list = ((GenelAdresBll)Bll)
+                .List(x => x.KayitId == OwnerForm.Id)
+                .ToBindingList<GenelAdresL>();
 
             if (Tablo?.GridControl != null)
                 Tablo.GridControl.DataSource = list;
 
         }
-
         protected internal override bool HataliGiris()
         {
             if (!TableValueChanged) return false;
@@ -46,7 +44,7 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
 
             for (int i = 0; i < tablo.DataRowCount; i++)
             {
-                var entity = tablo.GetRow<AdresHareketleriL>(i);
+                var entity = tablo.GetRow<GenelAdresL>(i);
 
                 if (!tablo.HasColumnErrors) continue;
                 Messages.TabloEksikBilgiMesaji($"{tablo.ViewCaption} Tablosu");
@@ -57,9 +55,9 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
         }     
         protected override void OpenEntity()
         {
-            var entity = tablo.GetRow<AdresHareketleriL>();
+            var entity = tablo.GetRow<GenelAdresL>();
             if (entity == null) return;
-            ShowEditForms<KisiEditForm>.ShowDialogEditForm(KartTuru.Kisi, entity.GenelAdresId);
+            ShowEditForms<KisiEditForm>.ShowDialogEditForm(KartTuru.Kisi, entity.Id);
 
         }
         protected virtual void TabloEventsYukle()
@@ -71,8 +69,7 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
             Tablo.MouseUp -= Tablo_MouseUp;
             
             Tablo.KeyDown += Tablo_KeyDown;
-        }
-    
+        }    
 
     }
 }

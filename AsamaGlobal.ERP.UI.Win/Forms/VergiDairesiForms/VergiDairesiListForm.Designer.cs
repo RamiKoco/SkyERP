@@ -32,7 +32,7 @@
             this.grid = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridControl();
             this.tablo = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridView();
             this.colId = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
-            this.colVergiDairesiKodu = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
+            this.colKod = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colAd = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colIlAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colAciklama = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
@@ -93,7 +93,7 @@
             this.tablo.Appearance.ViewCaption.Options.UseForeColor = true;
             this.tablo.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colId,
-            this.colVergiDairesiKodu,
+            this.colKod,
             this.colAd,
             this.colIlAdi,
             this.colAciklama});
@@ -128,20 +128,20 @@
             this.colId.StatusBarKisaYol = null;
             this.colId.StatusBarKisaYolAciklama = null;
             // 
-            // colVergiDairesiKodu
+            // colKod
             // 
-            this.colVergiDairesiKodu.AppearanceCell.Options.UseTextOptions = true;
-            this.colVergiDairesiKodu.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colVergiDairesiKodu.Caption = "Vergi Dairesi Kodu";
-            this.colVergiDairesiKodu.FieldName = "VergiDairesiKodu";
-            this.colVergiDairesiKodu.Name = "colVergiDairesiKodu";
-            this.colVergiDairesiKodu.OptionsColumn.AllowEdit = false;
-            this.colVergiDairesiKodu.StatusBarAciklama = null;
-            this.colVergiDairesiKodu.StatusBarKisaYol = null;
-            this.colVergiDairesiKodu.StatusBarKisaYolAciklama = null;
-            this.colVergiDairesiKodu.Visible = true;
-            this.colVergiDairesiKodu.VisibleIndex = 0;
-            this.colVergiDairesiKodu.Width = 120;
+            this.colKod.AppearanceCell.Options.UseTextOptions = true;
+            this.colKod.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colKod.Caption = "Vergi Dairesi Kodu";
+            this.colKod.FieldName = "Kod";
+            this.colKod.Name = "colKod";
+            this.colKod.OptionsColumn.AllowEdit = false;
+            this.colKod.StatusBarAciklama = null;
+            this.colKod.StatusBarKisaYol = null;
+            this.colKod.StatusBarKisaYolAciklama = null;
+            this.colKod.Visible = true;
+            this.colKod.VisibleIndex = 0;
+            this.colKod.Width = 120;
             // 
             // colAd
             // 
@@ -216,7 +216,7 @@
         private UserControls.Grid.MyGridControl grid;
         private UserControls.Grid.MyGridView tablo;
         private UserControls.Grid.MyGridColumn colId;
-        private UserControls.Grid.MyGridColumn colVergiDairesiKodu;
+        private UserControls.Grid.MyGridColumn colKod;
         private UserControls.Grid.MyGridColumn colAd;
         private UserControls.Grid.MyGridColumn colAciklama;
         private UserControls.Navigators.LongNavigator longNavigator;

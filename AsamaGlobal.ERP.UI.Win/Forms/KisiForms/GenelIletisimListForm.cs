@@ -27,6 +27,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
             BaseKartTuru = KartTuru.GenelIletisim;
             Navigator = longNavigator.Navigator;
             Text = Text + $" - ( {_kisiAdi} {_kisiSoyadi} )";
+            tablo.ViewCaption = Text;
         }
         protected override void Listele()
         {

@@ -2,6 +2,7 @@
 using AbcYazilim.OgrenciTakip.Model.Dto.KisiDto;
 using AbcYazilim.OgrenciTakip.Model.Entities;
 using AsamaGlobal.ERP.Common.Enums;
+using AsamaGlobal.ERP.Common.Message;
 using AsamaGlobal.ERP.Model.Dto;
 using AsamaGlobal.ERP.Model.Dto.CariDto;
 using AsamaGlobal.ERP.Model.Dto.CariDto.CariSubeDto;
@@ -19,6 +20,7 @@ using AsamaGlobal.ERP.UI.Win.Forms.BankaSubeForms;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
 using AsamaGlobal.ERP.UI.Win.Forms.CariForms;
 using AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariGruplariForms;
+using AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms;
 using AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms.CariSubeGrubuForms;
 using AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariTurleriForms;
 using AsamaGlobal.ERP.UI.Win.Forms.DepartmanForms;
@@ -107,7 +109,12 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
             _prmEdit = prmEdit;
             SecimYap();
         }
-
+        public void SecCariSube(MyButtonEdit subeEdit, MyButtonEdit cariEdit)
+        {
+            _btnEdit = subeEdit;
+            _prmEdit = cariEdit;
+            SecimYap();
+        }
         private void SecimYap()
         {
             switch (_btnEdit.Name)
@@ -270,7 +277,7 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
                     if (entity != null)
                     {
                         _btnEdit.Id = entity.Id;
-                        _btnEdit.EditValue = entity.MeslekAdi;
+                        _btnEdit.EditValue = entity.Ad;
                     }
                 }
                     break;
@@ -292,7 +299,7 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
                         if (entity != null)
                         {
                             _btnEdit.Id = entity.Id;
-                            _btnEdit.EditValue = entity.GrupAdi;
+                            _btnEdit.EditValue = entity.Ad;
                         }
                     }
                     break;
@@ -425,7 +432,7 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
                             if (entity != null)
                             {
                                 _btnEdit.Id = entity.Id;
-                                _btnEdit.EditValue = entity.MeslekAdi;
+                                _btnEdit.EditValue = entity.Ad;
                             }
                         }
                         else if (_kartTuru == KartTuru.Personel)
@@ -437,9 +444,50 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
                                 _btnEdit.EditValue = entity.Ad;
                             }
                         }
+                        else if (_kartTuru == KartTuru.Cariler)
+                        {
+                            var entity = (CarilerL)ShowListForms<CarilerListForm>.ShowDialogListForm(KartTuru.Cariler, _btnEdit.Id);
+                            if (entity != null)
+                            {
+                                _btnEdit.Id = entity.Id;
+                                _btnEdit.EditValue = entity.Unvan;
+                            }
+                        }
+                        else if (_kartTuru == KartTuru.CariSubeler)
+                        {
+                            var entity = (CariSubelerL)ShowListForms<CariSubelerListForm>.ShowDialogListForm(KartTuru.CariSubeler, _btnEdit.Id);
+                            if (entity != null)
+                            {
+                                _btnEdit.Id = entity.Id;
+                                _btnEdit.EditValue = entity.Ad;
+                            }
+                        }
                         // diğer türler...
                     }
                     break;
+
+                case "txtCariSube":
+                {
+                        if (_prmEdit == null || _prmEdit.Id == 0)
+                        {
+                            Messages.UyariMesaji("Lütfen önce cari seçimi yapınız.");
+                            return;
+                        }
+
+                        var entity = (CariSubelerL)ShowListForms<CariSubelerListForm>.ShowDialogListForm(
+                            KartTuru.CariSubeler,
+                            _btnEdit?.Id ?? 0,
+                            _prmEdit.Id,
+                            _prmEdit.Text
+                        );
+
+                        if (entity != null)
+                        {
+                            _btnEdit.Id = entity.Id;
+                            _btnEdit.EditValue = entity.Ad;
+                        }
+                }
+                break;
 
                 case "txtIsyeri":
                 {

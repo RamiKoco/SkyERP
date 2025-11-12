@@ -1,12 +1,8 @@
-﻿using AbcYazilim.OgrenciTakip.Common.Enums;
-using AsamaGlobal.ERP.Bll.General;
-using AsamaGlobal.ERP.Bll.General.CarilerBll;
+﻿using AsamaGlobal.ERP.Bll.General;
 using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Functions;
 using AsamaGlobal.ERP.Model.Dto;
-using AsamaGlobal.ERP.Model.Dto.CariDto;
 using AsamaGlobal.ERP.Model.Entities;
-using AsamaGlobal.ERP.Model.Entities.CariEntity;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
 using DevExpress.XtraEditors;
@@ -20,6 +16,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
         #region Variables
         private readonly long _cariId;
         private readonly string _cariAdi;
+        private long? _anaKayitId;
+        private long? _kayitId;
         #endregion
         public GenelAdresEditForm(params object[] prm)
         {
@@ -35,6 +33,14 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
         public override void Yukle()
         {
             OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new GenelAdresS() : ((GenelAdresBll)Bll).Single(FilterFunctions.Filter<GenelAdres>(Id));
+            if (BaseIslemTuru != IslemTuru.EntityInsert)
+            {
+                var old = (GenelAdresS)OldEntity;
+                if (_kayitId == null)
+                    _kayitId = old.KayitId;
+                if (_anaKayitId == null)
+                    _anaKayitId = old.AnaKayitId;
+            }
             NesneyiKontrollereBagla();
             Text = Text + $" - ( {_cariAdi} )";
             if (BaseIslemTuru != IslemTuru.EntityInsert) return;
@@ -68,6 +74,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
             txtBoylam.Text = (entity.Boylam ?? 0m).ToString("F6", CultureInfo.InvariantCulture);
             txtAciklama.Text = entity.Aciklama;
             tglDurum.IsOn = entity.Durum;
+            _kayitId = entity.KayitId;
+            _anaKayitId = entity.AnaKayitId;
         }
         protected override void GuncelNesneOlustur()
         {
@@ -95,11 +103,15 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
                 AdresTurleriId = txtAdresTurleri.Id,
                 PostaKodu = txtPostaKodu.Text,
                 Adres = txtAdres.Text,
-                CarilerId = BaseIslemTuru == IslemTuru.EntityInsert ? _cariId : ((GenelAdresS)OldEntity).CarilerId,
                 Enlem = enlem,
                 Boylam = boylam,
                 Aciklama = txtAciklama.Text,
-                Durum = tglDurum.IsOn
+                Durum = tglDurum.IsOn,
+                CarilerId = BaseIslemTuru == IslemTuru.EntityInsert ? _cariId : ((GenelAdresS)OldEntity).CarilerId,
+                AnaKayitId = BaseIslemTuru == IslemTuru.EntityInsert ? _cariId : ((GenelAdresS)OldEntity).CarilerId,
+                KayitId = BaseIslemTuru == IslemTuru.EntityInsert ? _cariId : ((GenelAdresS)OldEntity).CarilerId,
+                KayitHesabiAdi = ((GenelAdresS)OldEntity).KayitHesabiAdi,
+                AnaKayitHesabiAdi = null
             };
             ButonEnabledDurumu();
         }
@@ -107,7 +119,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
         {
             return ((GenelAdresBll)Bll).Insert(CurrentEntity, x => x.Kod == CurrentEntity.Kod && x.CarilerId == _cariId);
         }
-
         protected override bool EntityUpdate()
         {
             return ((GenelAdresBll)Bll).Update(OldEntity, CurrentEntity, x => x.Kod == CurrentEntity.Kod && x.CarilerId == _cariId);
@@ -124,9 +135,9 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
                 else if (sender == txtIlce)
                     sec.Sec(txtIlce, txtIl);
                 else if (sender == txtOzelKod1)
-                    sec.Sec(txtOzelKod1, KartTuru.CariAdres);
+                    sec.Sec(txtOzelKod1, KartTuru.AdresBilgileri);
                 else if (sender == txtOzelKod2)
-                    sec.Sec(txtOzelKod2, KartTuru.CariAdres);
+                    sec.Sec(txtOzelKod2, KartTuru.AdresBilgileri);
                 else if (sender == txtAdresTurleri)
                     sec.Sec(txtAdresTurleri, KartTuru.AdresTurleri);
 

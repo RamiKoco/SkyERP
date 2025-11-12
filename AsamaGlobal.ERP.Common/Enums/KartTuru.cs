@@ -228,5 +228,9 @@ namespace AsamaGlobal.ERP.Common.Enums
         Sektor = 111,
         [Description("Cari-Şube Grubu Kartı")]
         CariSubeGrubu = 112,
+        [Description("Kişi Kayıt Türü Bağlantıları")]
+        KisiKayitTuruBaglanti = 113,
+        [Description("Cari Kayıt Türü Bağlantıları")]
+        CariKayitTuruBaglanti = 114,
     }
 }
