@@ -367,84 +367,149 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
                     }
                     break;
 
+                //case "repositoryCariler":
+                //    {
+                //        var id = _tablo.GetRowCellId(_idColumn);
+                //        var current = _tablo.GetRow(_tablo.FocusedRowHandle) as KisiKayitTuruBaglantiL;
+                //        var list = _tablo.DataController.ListSource as IList<KisiKayitTuruBaglantiL>;
+
+                //        if (current == null) return;
+                //        if (list == null)
+                //            list = _tablo.DataController.ListSource.Cast<KisiKayitTuruBaglantiL>().ToList();
+
+                //        BaseEntity entity = null;
+
+                //        if (current.KayitTuru == KayitTuru.Cari)
+                //        {
+                //            entity = ShowListForms<CarilerListForm>.ShowDialogListForm(KartTuru.Cariler, seciliGelecekId: null);
+                //            if (entity == null) return;
+                //            var sube = (CarilerL)entity;
+                //            current.KayitId = sube.Id;                           
+                //            current.KayitHesabi = sube.Unvan;
+                //            current.Kod = sube.Kod;
+
+                //            _tablo.SetFocusedRowCellValue(_tablo.Columns["Kod"], current.Kod);
+                //            _tablo.SetFocusedRowCellValue(_tablo.Columns["KayitHesabi"], current.KayitHesabi);
+                //            _navigator.Buttons.DoClick(_navigator.Buttons.EndEdit);
+                //        }
+
+                //        else if (current.KayitTuru == KayitTuru.CariSube)
+                //        {
+                //            entity = ShowListForms<CariSubelerListForm>.ShowDialogListForm(
+                //                KartTuru.CariSubeler, seciliGelecekId: null);
+
+                //            if (entity == null) return;
+
+                //            var sube = (CariSubelerL)entity;
+                //            current.KayitId = sube.Id;
+                //            current.KayitHesabi = sube.Ad;
+                //            current.Kod = sube.Kod;
+
+                //            _tablo.SetFocusedRowCellValue(_tablo.Columns["Kod"], current.Kod);
+                //            _navigator.Buttons.DoClick(_navigator.Buttons.EndEdit);
+
+                //        }
+                //        else
+                //        {
+                //            Messages.UyariMesaji("Lütfen önce geçerli bir kayıt türü seçin (Cari veya Cari Şube).");
+                //            return;
+                //        }
+
+                //        if (entity == null) return;
+
+                //        bool exists = list.Any(x => x.KayitId == entity.Id && !ReferenceEquals(x, current));
+                //        if (exists)
+                //        {
+                //            Messages.UyariMesaji("Bu kayıt zaten listede mevcut! Satır iptal edildi.");
+                //            _tablo.CloseEditor();
+                //            _tablo.CancelUpdateCurrentRow();
+                //            _tablo.HideEditor();
+
+                //            try
+                //            {
+                //                current.Kod = null;
+                //                current.KayitHesabi = null;
+                //            }
+                //            catch { }
+
+                //            _tablo.BeginUpdate();
+                //            if (list.Contains(current))
+                //                list.Remove(current);
+                //            _tablo.EndUpdate();
+
+                //            _tablo.RefleshDataSource();
+                //            _tablo.RefreshData();
+                //            _tablo.ClearSelection();
+                //            _tablo.FocusedRowHandle = DevExpress.XtraGrid.GridControl.InvalidRowHandle;
+                //            _navigator.Buttons.DoClick(_navigator.Buttons.CancelEdit);
+                //            return;
+                //        }
+
+                //        if (current.KayitTuru == KayitTuru.Cari)
+                //        {
+                //            var cari = (CarilerL)entity;
+                //            current.KayitId = cari.Id;
+                //            current.KayitHesabi = cari.Unvan;
+                //            current.Kod = cari.Kod;
+                //        }
+                //        else if (current.KayitTuru == KayitTuru.CariSube)
+                //        {
+                //            var sube = (CariSubelerL)entity;
+                //            current.KayitId = sube.Id;
+                //            current.KayitHesabi = sube.Ad;
+                //            current.Kod = sube.Kod;
+                //        }
+
+                //        _tablo.RefleshDataSource();
+                //        _navigator.Buttons.DoClick(_navigator.Buttons.EndEdit);
+                //    }
+                //    break;
+
                 case "repositoryCariler":
                     {
-                        var id = _tablo.GetRowCellId(_idColumn);
                         var current = _tablo.GetRow(_tablo.FocusedRowHandle) as KisiKayitTuruBaglantiL;
-                        var list = _tablo.DataController.ListSource as IList<KisiKayitTuruBaglantiL>;
-
                         if (current == null) return;
-                        if (list == null)
-                            list = _tablo.DataController.ListSource.Cast<KisiKayitTuruBaglantiL>().ToList();
+
+                        var list = _tablo.DataController.ListSource as IList<KisiKayitTuruBaglantiL>;
+                        if (list == null) return;
 
                         BaseEntity entity = null;
 
-                        if (current.KayitTuru == KayitTuru.Cari)
+                        switch (current.KayitTuru)
                         {
-                            entity = ShowListForms<CarilerListForm>.ShowDialogListForm(KartTuru.Cariler, seciliGelecekId: null);
-                            if (entity == null) return;
-                            var sube = (CarilerL)entity;
-                            current.KayitId = sube.Id;                           
-                            current.KayitHesabi = sube.Unvan;
-                            current.Kod = sube.Kod;
+                            case KayitTuru.Cari:
+                                entity = ShowListForms<CarilerListForm>.ShowDialogListForm(KartTuru.Cariler, seciliGelecekId: null);
+                                break;
 
-                            _tablo.SetFocusedRowCellValue(_tablo.Columns["Kod"], current.Kod);
-                            _tablo.SetFocusedRowCellValue(_tablo.Columns["KayitHesabi"], current.KayitHesabi);
-                            _navigator.Buttons.DoClick(_navigator.Buttons.EndEdit);
-                        }
+                            case KayitTuru.CariSube:
+                                entity = ShowListForms<CariSubelerListForm>.ShowDialogListForm(KartTuru.CariSubeler, seciliGelecekId: null);
+                                break;
 
-                        else if (current.KayitTuru == KayitTuru.CariSube)
-                        {
-                            entity = ShowListForms<CariSubelerListForm>.ShowDialogListForm(
-                                KartTuru.CariSubeler, seciliGelecekId: null);
-
-                            if (entity == null) return;
-
-                            var sube = (CariSubelerL)entity;
-                            current.KayitId = sube.Id;
-                            current.KayitHesabi = sube.Ad;
-                            current.Kod = sube.Kod;
-
-                            _tablo.SetFocusedRowCellValue(_tablo.Columns["Kod"], current.Kod);
-                            _navigator.Buttons.DoClick(_navigator.Buttons.EndEdit);
-
-                        }
-                        else
-                        {
-                            Messages.UyariMesaji("Lütfen önce geçerli bir kayıt türü seçin (Cari veya Cari Şube).");
-                            return;
+                            default:
+                                Messages.UyariMesaji("Lütfen önce geçerli bir kayıt türü seçin (Cari veya Cari Şube).");
+                                return;
                         }
 
                         if (entity == null) return;
 
+                        // Aynı kayıt daha önce eklenmiş mi kontrolü
                         bool exists = list.Any(x => x.KayitId == entity.Id && !ReferenceEquals(x, current));
                         if (exists)
                         {
                             Messages.UyariMesaji("Bu kayıt zaten listede mevcut! Satır iptal edildi.");
                             _tablo.CloseEditor();
                             _tablo.CancelUpdateCurrentRow();
-                            _tablo.HideEditor();
 
-                            try
-                            {
-                                current.Kod = null;
-                                current.KayitHesabi = null;
-                            }
-                            catch { }
-
-                            _tablo.BeginUpdate();
-                            if (list.Contains(current))
-                                list.Remove(current);
-                            _tablo.EndUpdate();
+                            // geri alma / temizleme
+                            current.Kod = null;
+                            current.KayitHesabi = null;
+                            current.KayitId = 0;
 
                             _tablo.RefleshDataSource();
-                            _tablo.RefreshData();
-                            _tablo.ClearSelection();
-                            _tablo.FocusedRowHandle = DevExpress.XtraGrid.GridControl.InvalidRowHandle;
-                            _navigator.Buttons.DoClick(_navigator.Buttons.CancelEdit);
                             return;
                         }
 
+                        // Seçilen kaydı mapping
                         if (current.KayitTuru == KayitTuru.Cari)
                         {
                             var cari = (CarilerL)entity;
@@ -452,7 +517,7 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
                             current.KayitHesabi = cari.Unvan;
                             current.Kod = cari.Kod;
                         }
-                        else if (current.KayitTuru == KayitTuru.CariSube)
+                        else // CariSube
                         {
                             var sube = (CariSubelerL)entity;
                             current.KayitId = sube.Id;

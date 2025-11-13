@@ -29,12 +29,14 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
         #region Variables
         private BaseTablo _yorumlarTable;
         private BaseTablo _cariBaglantiTable;
+        private BaseTablo _cariSubelerTable;
         private List<long> _oldEtiketIdListesi = new List<long>();
         private List<long> _guncelEtiketIdListesi = new List<long>();
         private List<long> _oldSektorIdListesi = new List<long>();
         private List<long> _guncelSektorIdListesi = new List<long>();
         private EtiketHelper _etiketHelper;
         #endregion
+
         public CarilerEditForm()
         {
             InitializeComponent();
@@ -53,6 +55,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
                 ButonEnabledDurumu();
             };
         }
+
         public override void Yukle()
         {
             OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new CarilerS() : ((CarilerBll)Bll).Single(FilterFunctions.Filter<Cariler>(Id));          
@@ -63,6 +66,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
             txtKod.Text = ((CarilerBll)Bll).YeniKodVer();
             txtUnvan.Focus();
         }  
+
         protected override void NesneyiKontrollereBagla()
         {          
             var entity = (CarilerS)OldEntity;    
@@ -101,6 +105,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
             SahisDurumunuAyarla(entity.Sahis);
             SektorYukle();
         }  
+
         protected override void GuncelNesneOlustur()
         {          
             _guncelEtiketIdListesi = _etiketHelper.EtiketIdleriniAl(txtContainer.TokenEditControl.EditValue);
@@ -132,6 +137,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
             BagliTabloYukle();
             ButonEnabledDurumu();
         }
+
         private void KisiyeAitEtiketleriYukle()
         {
             using (var db = new ERPContext())
@@ -150,6 +156,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
                 _oldEtiketIdListesi = seciliEtiketler;
             }
         }    
+
         public override bool Kaydet(bool kapanis)
         {
 
@@ -193,6 +200,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
             _oldEtiketIdListesi = _guncelEtiketIdListesi.ToList();
             return base.Kaydet(kapanis);
         }
+
         protected override void SecimYap(object sender)
         {
             if (!(sender is ButtonEdit)) return;
@@ -258,6 +266,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
                     sec.Sec(txtKayitKaynak);             
               
         }
+
         private void TxtKimlikTuru_IdChanged(object sender, EventArgs e)
         {
             if (txtKimlikTuru.Id == null)
@@ -272,6 +281,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
             if (txtKimlikNo.Text.Length > yeniUzunluk)
                 txtKimlikNo.Text = txtKimlikNo.Text.Substring(0, yeniUzunluk);
         }
+
         private void TxtKimlikTuru_EditValueChanged(object sender, EventArgs e)
         {
             if (txtKimlikTuru.EditValue == null)
@@ -295,6 +305,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
                 txtKimlikNo.Properties.Mask.EditMask = null;
             }
         }
+
         private void TxtKimlikNo_Validating(object sender, CancelEventArgs e)
         {
             if (txtKimlikTuru.Id == null)
@@ -340,13 +351,63 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
                 }
             }
         }
+
         protected override void BagliTabloYukle()
         {
             if (_yorumlarTable != null && TabloDegisti())
                 _yorumlarTable.Yukle();
             if (_cariBaglantiTable != null && TabloDegisti())
                 _cariBaglantiTable.Yukle();
+            if (_cariSubelerTable != null && TabloDegisti())
+                _cariSubelerTable.Yukle();
         }
+        protected override void Control_SelectedPageChanged(object sender, SelectedPageChangedEventArgs e)
+        {
+            if (e.Page == pageGenelBilgiler)
+            {
+                txtUnvan.Focus();
+                txtKimlikNo.SelectAll();
+            }
+
+            else if (e.Page == pageYorumlar)
+            {
+                if (pageYorumlar.Controls.Count == 0)
+                {
+                    _yorumlarTable = new YorumlarTable().AddTable(this);
+                    pageYorumlar.Controls.Add(_yorumlarTable);
+                    _yorumlarTable.Yukle();
+
+                }
+                _yorumlarTable.Tablo.GridControl.Focus();
+            }
+            else if (e.Page == pageIlgiliKisiler)
+            {
+                if (BaseIslemTuru == IslemTuru.EntityInsert)
+                    return;
+
+                if (pageIlgiliKisiler.Controls.Count == 0)
+                {
+                    _cariBaglantiTable = new KisiKayitTuruBaglantiTable().AddTable(this);
+                    pageIlgiliKisiler.Controls.Add(_cariBaglantiTable);
+                    _cariBaglantiTable.Yukle();
+                }
+
+                _cariBaglantiTable.Tablo.GridControl.Focus();
+            }
+            else if (e.Page == pageSubeBilgileri)
+            {
+                if (pageSubeBilgileri.Controls.Count == 0)
+                {
+                    _cariSubelerTable = new CariSubelerTable().AddTable(this);
+                    pageSubeBilgileri.Controls.Add(_cariSubelerTable);
+                    _cariSubelerTable.Yukle();
+                }
+
+                _cariSubelerTable.Tablo.GridControl.Focus();
+
+            }
+        }
+
         protected override bool BagliTabloHataliGirisKontrol()
         { 
             if (_yorumlarTable != null && _yorumlarTable.HataliGiris())
@@ -361,8 +422,10 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
                 _cariBaglantiTable.Tablo.GridControl.Focus();
                 return true;
             }
+
             return false;
         }
+
         protected internal override void ButonEnabledDurumu()
         {   
 
@@ -387,52 +450,24 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
             }
 
         }
+
         protected override bool BagliTabloKaydet()
         {
             if (_yorumlarTable != null && !_yorumlarTable.Kaydet()) return false;
-            if (_cariBaglantiTable != null && !_cariBaglantiTable.Kaydet()) return false;
+            if (_cariBaglantiTable != null)
+            {
+                var cariTable = _cariBaglantiTable as KisiKayitTuruBaglantiTable;
+                if (cariTable != null && !cariTable.KaydetKontrollu())
+                    return false;
+            }
 
             var seciliEtiketIdler = _etiketHelper.EtiketIdleriniAl(txtContainer.TokenEditControl.EditValue);
             _etiketHelper.BaglantilariGuncelle(KayitTuru.Cari, Id, seciliEtiketIdler);
             _oldEtiketIdListesi = seciliEtiketIdler.ToList();
             _oldSektorIdListesi = _guncelSektorIdListesi.ToList();
             return true;
-        }
-        protected override void Control_SelectedPageChanged(object sender, SelectedPageChangedEventArgs e)
-        {
-            if (e.Page == pageGenelBilgiler)
-            {
-                txtUnvan.Focus();
-                txtKimlikNo.SelectAll();
-            }
+        } 
 
-            else if (e.Page == pageYorumlar)
-            {
-                if (pageYorumlar.Controls.Count == 0)
-                {
-                    _yorumlarTable = new YorumlarTable().AddTable(this);
-                    pageYorumlar.Controls.Add(_yorumlarTable);
-                    _yorumlarTable.Yukle();
-
-                }
-                _yorumlarTable.Tablo.GridControl.Focus();
-            }
-            else if (e.Page == pageIlgiliKisiler)
-            {
-                // Yeni kayıttaysa tabloyu hiç oluşturma!
-                if (BaseIslemTuru == IslemTuru.EntityInsert)
-                    return;
-
-                if (pageIlgiliKisiler.Controls.Count == 0)
-                {
-                    _cariBaglantiTable = new KisiKayitTuruBaglantiTable().AddTable(this);
-                    pageIlgiliKisiler.Controls.Add(_cariBaglantiTable);
-                    _cariBaglantiTable.Yukle();
-                }
-
-                _cariBaglantiTable.Tablo.GridControl.Focus();
-            }
-        }
         private bool TabloDegisti()
         {
             bool Degisti(BaseTablo tablo)
@@ -448,10 +483,12 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
             if (Degisti(_cariBaglantiTable)) return true;
             return false;
         }
+
         private void tglSahis_Toggled(object sender, EventArgs e)
         {
             SahisDurumunuAyarla(tglSahis.IsOn);
         }
+
         private void SahisDurumunuAyarla(bool sahisMi)
         {            
             this.SuspendLayout();
@@ -494,6 +531,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms
                 this.PerformLayout();
             }
         }
+
         #region Sektörler
         private void SektorYukle()
         {

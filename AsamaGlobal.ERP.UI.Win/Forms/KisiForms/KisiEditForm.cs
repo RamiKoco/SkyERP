@@ -9,7 +9,6 @@ using AsamaGlobal.ERP.Model.Entities.KisiEntity;
 using AsamaGlobal.ERP.UI.Win.Forms.BaseForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
 using AsamaGlobal.ERP.UI.Win.UserControls.UserControl.Base;
-using AsamaGlobal.ERP.UI.Win.UserControls.UserControl.CariEditFormTable;
 using AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable;
 using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraEditors;
@@ -213,20 +212,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
                 tabUst.SelectedPage = pageBaglantilar;
                 _cariBaglantiTable.Tablo.GridControl.Focus();
                 return true;
-            }
-            if (_iletisimBilgileriTable != null && _iletisimBilgileriTable.HataliGiris())
-            {
-                tabUst.SelectedPage = pageIletisimBilgileri;
-                _iletisimBilgileriTable.Tablo.GridControl.Focus();
-                return true;
-            }
-
-            if (_adreslerTable != null && _adreslerTable.HataliGiris())
-            {
-                tabUst.SelectedPage = pageAdresBilgileri;
-                _adreslerTable.Tablo.GridControl.Focus();
-                return true;
-            }
+            }    
 
             return false;
         }
@@ -251,11 +237,15 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
 
         }
         protected override bool BagliTabloKaydet()
-        {
-            if (_adreslerTable != null && !_adreslerTable.Kaydet()) return false;
+        {           
             if (_bilgiNotlariTable != null && !_bilgiNotlariTable.Kaydet()) return false;
-            if (_cariBaglantiTable != null && !_cariBaglantiTable.Kaydet()) return false;            
-            if (_iletisimBilgileriTable != null && !_iletisimBilgileriTable.Kaydet()) return false;
+
+            if (_cariBaglantiTable != null)
+            {
+                var cariTable = _cariBaglantiTable as CariKayitTuruBaglantiTable;
+                if (cariTable != null && !cariTable.KaydetKontrollu())
+                    return false;
+            }
 
             var seciliEtiketIdler = _etiketHelper.EtiketIdleriniAl(txtContainer.TokenEditControl.EditValue);
             _etiketHelper.BaglantilariGuncelle(KayitTuru.Kisi, Id, seciliEtiketIdler);
@@ -331,7 +321,6 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
                 if (list == null)
                     return false;
 
-                // C# 7.3 uyumlu kontrol
                 var hareketList = list as IEnumerable<IBaseHareketEntity>;
                 if (hareketList == null)
                     return false;
@@ -340,10 +329,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
             }
 
             if (Degisti(_bilgiNotlariTable)) return true;
-            if (Degisti(_cariBaglantiTable)) return true;
-            // _iletisimBilgileriTable IBaseHareketEntity değil, o yüzden atla
-            // if (Degisti(_iletisimBilgileriTable)) return true;
-            //if (Degisti(_adreslerTable)) return true;
+            if (Degisti(_cariBaglantiTable)) return true;         
 
             return false;
         }

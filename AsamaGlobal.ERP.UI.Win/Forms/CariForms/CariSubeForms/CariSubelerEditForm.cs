@@ -229,7 +229,12 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
         protected override bool BagliTabloKaydet()
         {
             if (_yorumlarTable != null && !_yorumlarTable.Kaydet()) return false;
-            if (_cariBaglantiTable != null && !_cariBaglantiTable.Kaydet()) return false;
+            if (_cariBaglantiTable != null)
+            {
+                var cariTable = _cariBaglantiTable as KisiKayitTuruBaglantiTable;
+                if (cariTable != null && !cariTable.KaydetKontrollu())
+                    return false;
+            }
 
             var seciliEtiketIdler = _etiketHelper.EtiketIdleriniAl(txtContainer.TokenEditControl.EditValue);
             _etiketHelper.BaglantilariGuncelle(KayitTuru.CariSube, Id, seciliEtiketIdler);

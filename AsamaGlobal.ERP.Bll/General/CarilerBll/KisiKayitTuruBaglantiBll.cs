@@ -32,23 +32,15 @@ namespace AsamaGlobal.ERP.Bll.General.CarilerBll
                         KisiAdi = x.Kisi != null
                                 ? x.Kisi.Ad + " " + (x.Kisi.Soyad ?? "")
                                 : null,
-                        //Kod = x.KayitId != 0 ? context.Cariler.Where(c => c.Id == x.KayitId)
-                        //                .Select(c => c.Kod)
-                        //                .FirstOrDefault() : null,
-                        //KayitHesabi = context.Cariler
-                        //        .Where(c => c.Id == x.KayitId)
-                        //        .Select(c => c.Unvan)
-                        //        .FirstOrDefault(),
-
-                        Kod = x.KayitId != 0 ? context.Cariler.Where(c => c.Id == x.KayitId)
-                                        .Select(c => c.Kod)
-                                        .Concat(context.CariSubeler.Where(s => s.Id == x.KayitId)
-                                        .Select(s => s.Kod)).FirstOrDefault() : null,
-                                         KayitHesabi = context.Cariler
-                                        .Where(c => c.Id == x.KayitId)
-                                        .Select(c => c.Unvan)
-                                        .Concat(context.CariSubeler.Where(s => s.Id == x.KayitId)
-                                        .Select(s => s.Ad)).FirstOrDefault(),    
+                              
+                        Kod = context.Cariler.Where(c => c.Id == x.KayitId)
+                                            .Select(c => c.Kod)
+                                            .Concat(context.CariSubeler.Where(s => s.Id == x.KayitId)
+                                            .Select(s => s.Kod)).FirstOrDefault() ?? "Bilinmiyor",
+                        KayitHesabi = context.Cariler.Where(c => c.Id == x.KayitId)
+                                                    .Select(c => c.Unvan)
+                                                    .Concat(context.CariSubeler.Where(s => s.Id == x.KayitId)
+                                                    .Select(s => s.Ad)).FirstOrDefault() ?? "Bilinmiyor",
                     }).ToList();
 
                 return list;

@@ -1,6 +1,6 @@
-﻿using AsamaGlobal.ERP.Common.Enums;
-using AsamaGlobal.ERP.Bll.General.CarilerBll;
+﻿using AsamaGlobal.ERP.Bll.General.CarilerBll;
 using AsamaGlobal.ERP.Bll.General.KisiBll;
+using AsamaGlobal.ERP.Common.Enums;
 using AsamaGlobal.ERP.Common.Message;
 using AsamaGlobal.ERP.Model.Dto.CariDto;
 using AsamaGlobal.ERP.Model.Entities.KisiEntity;
@@ -10,11 +10,14 @@ using AsamaGlobal.ERP.UI.Win.UserControls.UserControl.Base;
 using DevExpress.XtraGrid.Views.Base;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.CariEditFormTable
 {
     public partial class KisiKayitTuruBaglantiTable : BaseTablo
     {
+        private KayitTuru _kayitTuru;
+
         public KisiKayitTuruBaglantiTable()
         {
             InitializeComponent();
@@ -22,6 +25,7 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.CariEditFormTable
             Bll = new KisiKayitTuruBaglantiBll();
             Tablo = tablo;
             EventsLoad();
+           
         }
 
         protected internal override void Listele()
@@ -35,9 +39,15 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.CariEditFormTable
         {
             var source = tablo.DataController.ListSource;
 
+            if (OwnerForm is CarilerEditForm)
+                _kayitTuru = KayitTuru.Cari;           
+            else
+                _kayitTuru = KayitTuru.CariSube; 
+
             var row = new KisiKayitTuruBaglantiL
             {
                 KayitId = OwnerForm.Id,
+                KayitTuru = _kayitTuru,
                 Insert = true
             };
 
@@ -61,7 +71,6 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.CariEditFormTable
             var list = tablo.DataController.ListSource as IList<KisiKayitTuruBaglantiL>;
             if (list == null) return;
 
-            // 🔸 Aynı kişi birden fazla eklenmesin
             if (entity.KisiId != null && list.Any(x => x.KisiId == entity.KisiId && !ReferenceEquals(x, entity)))
             {
                 Messages.UyariMesaji("Bu kişi zaten listede mevcut! Satır iptal edildi.");
@@ -87,24 +96,18 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.CariEditFormTable
 
             if (entity.KisiId == null) return;
 
-            // 🔹 KayitTuru'nu form türüne göre belirle
-            if (OwnerForm is CariEditForm)
-                entity.KayitTuru = KayitTuru.Cari;
-            else
-                entity.KayitTuru = KayitTuru.Kisi;
 
             using (var bll = new KisiBll())
             {
                 var kisi = (Kisi)bll.Single(x => x.Id == entity.KisiId);
                 if (kisi == null) return;
 
-                // 🔹 Kayıt türüne göre kod ve ad biçimi değişir
                 if (entity.KayitTuru == KayitTuru.Cari)
                 {
                     entity.Kod = kisi.Kod;
                     entity.KisiAdi = kisi.Ad;
                 }
-                else // KayitTuru.Kisi
+                else
                 {
                     entity.Kod = kisi.Kod;
                     entity.KisiAdi = kisi.Ad + " " + kisi.Soyad;
@@ -124,5 +127,59 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.CariEditFormTable
             if (e.FocusedColumn == colPozisyonAdi)
                 e.FocusedColumn.Sec(tablo, insUptNavigator.Navigator, repositoryPozisyon, colPozisyonId);
         }
+
+        public bool KaydetKontrollu()
+        {
+            if (!(tablo.DataController.ListSource is IList<KisiKayitTuruBaglantiL> list) || !list.Any())
+                return true;
+
+            var invalidRows = list.Where(x =>
+                string.IsNullOrWhiteSpace(x.KisiAdi) ||
+                x.KayitId == 0
+            ).ToList();
+
+            if (invalidRows.Any())
+            {
+                string message = $"Toplam {invalidRows.Count} kayıt hatalı.\n" +
+                                 "Kişi seçimi yapılmamış kayıtlar kaydedilemez.";
+                Messages.UyariMesaji(message);
+
+                foreach (var row in invalidRows)
+                {
+                    int index = list.IndexOf(row);
+                    if (index >= 0)
+                        tablo.FocusedRowHandle = index;
+                }
+
+                return false;
+            }
+
+            return this.Kaydet();
+        }
+
+        protected override void HareketSil()
+        {
+            if (Tablo.DataRowCount == 0) return;
+            if (Messages.SilMesaj("İşlem Satırı") != DialogResult.Yes) return;
+
+            var list = Tablo.DataController.ListSource as IList<KisiKayitTuruBaglantiL>;
+            var row = Tablo.GetRow<KisiKayitTuruBaglantiL>();
+
+            if (row != null)
+            {
+                if (row.Id == 0 || row.Insert)
+                {
+                    list.Remove(row); // henüz kaydedilmemiş satır
+                }
+                else
+                {
+                    row.Delete = true; // veritabanında silinecek
+                }
+
+                Tablo.RefleshDataSource();
+                ButonEnabledDurumu(true);
+            }
+        }
+   
     }
 }

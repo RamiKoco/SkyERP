@@ -105,6 +105,7 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.pageYorumlar = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.pageIlgiliKisiler = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.pageSubeBilgileri = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -253,12 +254,14 @@
             this.tabUst.Controls.Add(this.pageGenelBilgiler);
             this.tabUst.Controls.Add(this.pageYorumlar);
             this.tabUst.Controls.Add(this.pageIlgiliKisiler);
+            this.tabUst.Controls.Add(this.pageSubeBilgileri);
             this.tabUst.Location = new System.Drawing.Point(12, 12);
             this.tabUst.Name = "tabUst";
             this.tabUst.PageProperties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.tabUst.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.pageGenelBilgiler,
             this.pageIlgiliKisiler,
+            this.pageSubeBilgileri,
             this.pageYorumlar});
             this.tabUst.RegularSize = new System.Drawing.Size(844, 361);
             this.tabUst.SelectedPage = this.pageGenelBilgiler;
@@ -440,6 +443,10 @@
             this.txtVergiNo.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.txtVergiNo.Properties.AppearanceFocused.BackColor = System.Drawing.Color.LightCyan;
             this.txtVergiNo.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.txtVergiNo.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.None;
+            this.txtVergiNo.Properties.Mask.EditMask = "\\d{11}";
+            this.txtVergiNo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.txtVergiNo.Properties.Mask.PlaceHolder = ' ';
             this.txtVergiNo.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtVergiNo.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
             this.txtVergiNo.Properties.MaskSettings.Set("allowBlankInput", true);
@@ -608,6 +615,7 @@
             this.txtKimlikNo.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.txtKimlikNo.Properties.AppearanceFocused.BackColor = System.Drawing.Color.LightCyan;
             this.txtKimlikNo.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.txtKimlikNo.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.None;
             this.txtKimlikNo.Properties.MaskSettings.Set("isAutoComplete", false);
             this.txtKimlikNo.Properties.MaskSettings.Set("isOptimistic", false);
             this.txtKimlikNo.Properties.MaxLength = 50;
@@ -1099,7 +1107,7 @@
             this.pageYorumlar.Caption = "Yorumlar";
             this.pageYorumlar.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.paste_16x161;
             this.pageYorumlar.Name = "pageYorumlar";
-            this.pageYorumlar.Size = new System.Drawing.Size(844, 298);
+            this.pageYorumlar.Size = new System.Drawing.Size(844, 361);
             // 
             // pageIlgiliKisiler
             // 
@@ -1107,7 +1115,15 @@
             this.pageIlgiliKisiler.Caption = "İlgili Kişiler";
             this.pageIlgiliKisiler.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.usergroup_16x16;
             this.pageIlgiliKisiler.Name = "pageIlgiliKisiler";
-            this.pageIlgiliKisiler.Size = new System.Drawing.Size(844, 328);
+            this.pageIlgiliKisiler.Size = new System.Drawing.Size(844, 361);
+            // 
+            // pageSubeBilgileri
+            // 
+            this.pageSubeBilgileri.BackgroundPadding = new System.Windows.Forms.Padding(2);
+            this.pageSubeBilgileri.Caption = "Şube Bilgileri";
+            this.pageSubeBilgileri.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.documentmap_16x161;
+            this.pageSubeBilgileri.Name = "pageSubeBilgileri";
+            this.pageSubeBilgileri.Size = new System.Drawing.Size(844, 361);
             // 
             // Root
             // 
@@ -1295,5 +1311,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraBars.Navigation.TabNavigationPage pageIlgiliKisiler;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage pageSubeBilgileri;
     }
 }

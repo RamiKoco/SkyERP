@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 namespace AsamaGlobal.ERP.Model.Entities.CariEntity
 {
     public class KisiKayitTuruBaglanti : BaseHareketEntity
-    {
+    {      
         public long KayitId { get; set; }
         public KayitTuru KayitTuru { get; set; }
         public long? KisiId { get; set; }

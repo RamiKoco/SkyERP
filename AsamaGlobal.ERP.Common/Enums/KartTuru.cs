@@ -230,7 +230,5 @@ namespace AsamaGlobal.ERP.Common.Enums
         CariSubeGrubu = 112,
         [Description("Kişi Kayıt Türü Bağlantıları")]
         KisiKayitTuruBaglanti = 113,
-        [Description("Cari Kayıt Türü Bağlantıları")]
-        CariKayitTuruBaglanti = 114,
     }
 }

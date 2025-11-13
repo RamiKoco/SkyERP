@@ -313,23 +313,11 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
         }
         protected override bool BagliTabloHataliGirisKontrol()
         {
-            if (_adreslerTable != null && _adreslerTable.HataliGiris())
-            {
-                tabUst.SelectedPage = pageAdresBilgileri;
-                _adreslerTable.Tablo.GridControl.Focus();
-                return true;
-            }
+           
             if (_bilgiNotlariTable != null && _bilgiNotlariTable.HataliGiris())
             {
                 tabUst.SelectedPage = pageNotlar;
                 _bilgiNotlariTable.Tablo.GridControl.Focus();
-                return true;
-            }
-
-            if (_iletisimBilgileriTable != null && _iletisimBilgileriTable.HataliGiris())
-            {
-                tabUst.SelectedPage = pageIletisimBilgileri;
-                _iletisimBilgileriTable.Tablo.GridControl.Focus();
                 return true;
             }
         
@@ -362,9 +350,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
         }
         protected override bool BagliTabloKaydet()
         { 
-            if (_adreslerTable != null && !_adreslerTable.Kaydet()) return false;
             if (_bilgiNotlariTable != null && !_bilgiNotlariTable.Kaydet()) return false;
-            if (_iletisimBilgileriTable != null && !_iletisimBilgileriTable.Kaydet()) return false;
+
             if (_personelBelgeTable != null && !_personelBelgeTable.Kaydet()) return false;
 
             var seciliEtiketIdler = _etiketHelper.EtiketIdleriniAl(txtContainer.TokenEditControl.EditValue);
@@ -483,10 +470,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
                 return hareketList.Any(x => x.Insert || x.Update || x.Delete);
             }
 
-            if (Degisti(_bilgiNotlariTable)) return true;
-            // _iletisimBilgileriTable IBaseHareketEntity değil, o yüzden atla
-            // if (Degisti(_iletisimBilgileriTable)) return true;
-            //if (Degisti(_adreslerTable)) return true;
+            if (Degisti(_bilgiNotlariTable)) return true;       
+            if (Degisti(_personelBelgeTable)) return true;       
 
             return false;
         }

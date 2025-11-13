@@ -4,12 +4,13 @@ using AsamaGlobal.ERP.Common.Message;
 using AsamaGlobal.ERP.Model.Dto.CariDto;
 using AsamaGlobal.ERP.Model.Entities.CariEntity;
 using AsamaGlobal.ERP.Model.Entities.CariEntity.CariSube;
-using AsamaGlobal.ERP.UI.Win.Forms.CariForms;
 using AsamaGlobal.ERP.UI.Win.Functions;
 using AsamaGlobal.ERP.UI.Win.UserControls.UserControl.Base;
 using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraEditors.Controls;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
 {
@@ -25,13 +26,15 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
 
             repositoryKayitTuru.Items.Clear();
 
-            repositoryKayitTuru.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(
+            repositoryKayitTuru.Items.Add(new ImageComboBoxItem(
                 KayitTuru.Cari.GetEnumDescription(), KayitTuru.Cari));
 
-            repositoryKayitTuru.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(
+            repositoryKayitTuru.Items.Add(new ImageComboBoxItem(
                 KayitTuru.CariSube.GetEnumDescription(), KayitTuru.CariSube));           
 
-            repositoryKayitTuru.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            repositoryKayitTuru.TextEditStyle = TextEditStyles.DisableTextEditor;
+
+            tablo.CellValueChanging += Tablo_CellValueChanging;
         }
 
         protected internal override void Listele()
@@ -42,13 +45,17 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
         }
 
         protected override void HareketEkle()
-        {
-            var source = tablo.DataController.ListSource;
+        {    
+            var currentKayitTuru = KayitTuru.Cari;
+            if (currentKayitTuru == 0) return; 
 
+            var source = tablo.DataController.ListSource;
             var row = new KisiKayitTuruBaglantiL
             {
                 KisiId = OwnerForm.Id,
-                Insert = true
+                Insert = true,
+                KayitTuru = currentKayitTuru,
+                KayitHesabi = string.Empty    // null yerine boş string
             };
 
             source.Add(row);
@@ -63,64 +70,65 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
         {
             base.Tablo_CellValueChanged(sender, e);
 
-            if (e.Column != colKayitId) return;
-
             var entity = tablo.GetRow<KisiKayitTuruBaglantiL>();
             if (entity == null) return;
 
             var list = tablo.DataController.ListSource as IList<KisiKayitTuruBaglantiL>;
             if (list == null) return;
-           
-            if (entity.KayitId != null && list.Any(x => x.KayitId == entity.KayitId && !ReferenceEquals(x, entity)))
+             
+            if (e.Column == colKayitTuru)
             {
-                Messages.UyariMesaji("Bu kişi zaten listede mevcut! Satır iptal edildi.");
-
-                tablo.CloseEditor();
-                tablo.CancelUpdateCurrentRow();
-                tablo.HideEditor();
-
-                try { entity.KayitHesabi = null; } catch { }
-
-                tablo.BeginUpdate();
-                if (list.Contains(entity))
-                    list.Remove(entity);
-                tablo.EndUpdate();
-
+                entity.KayitId = 0;
+                entity.KayitHesabi = null;
+                entity.KodKisi = null;
                 tablo.RefleshDataSource();
-                tablo.RefreshData();
-                tablo.ClearSelection();
-                tablo.FocusedRowHandle = DevExpress.XtraGrid.GridControl.InvalidRowHandle;
-
-                return;
+                return; 
             }
-
-            if (entity.KayitId == null) return;
-            
-            if (OwnerForm is CarilerEditForm)
-                entity.KayitTuru = KayitTuru.Cari;
-            else
-                entity.KayitTuru = KayitTuru.Kisi;
-
-            using (var bll = new CarilerBll())
+           
+            if (e.Column == colKayitId && entity.KayitId != 0)
             {
-                var kisi = (Cariler)bll.Single(x => x.Id == entity.KayitId);
-                var sube = (CariSubeler)bll.Single(x => x.Id == entity.KayitId);
-                if (kisi == null) return;
+                
+                if (list.Any(x => x.KayitId == entity.KayitId && !ReferenceEquals(x, entity)))
+                {
+                    Messages.UyariMesaji("Bu kayıt zaten listede mevcut! Satır iptal edildi.");
+
+                    tablo.CancelUpdateCurrentRow();
+
+                    entity.KayitId = 0;
+                    entity.KayitHesabi = null;
+                    entity.KodKisi = null;
+
+                    tablo.RefleshDataSource();
+                    return;
+                }
                 
                 if (entity.KayitTuru == KayitTuru.Cari)
                 {
-                    entity.KodKisi = kisi.Kod;
-                    entity.KayitHesabi = kisi.Unvan;
+                    using (var bll = new CarilerBll())
+                    {
+                        var cari = (Cariler)bll.Single(x => x.Id == entity.KayitId);
+                        if (cari != null)
+                        {
+                            entity.KodKisi = cari.Kod;
+                            entity.KayitHesabi = cari.Unvan;
+                        }
+                    }
                 }
-
-                else
+                else if (entity.KayitTuru == KayitTuru.CariSube)
                 {
-                    entity.KodKisi = sube.Kod;
-                    entity.KayitHesabi = sube.Ad;
+                    using (var bll = new CarilerBll())
+                    {
+                        var sube = (CariSubeler)bll.Single(x => x.Id == entity.KayitId);
+                        if (sube != null)
+                        {
+                            entity.KodKisi = sube.Kod;
+                            entity.KayitHesabi = sube.Ad;
+                        }
+                    }
                 }
-            }
 
-            tablo.RefleshDataSource();
+                tablo.RefleshDataSource();
+            }
         }
 
         protected override void Tablo_FocusedColumnChanged(object sender, FocusedColumnChangedEventArgs e)
@@ -134,13 +142,13 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
                 e.FocusedColumn.Sec(tablo, insUptNavigator.Navigator, repositoryPozisyon, colPozisyonId);
         }
 
-        private void RepositoryKayitTuru_Format(object sender, DevExpress.XtraEditors.Controls.ConvertEditValueEventArgs e)
+        private void RepositoryKayitTuru_Format(object sender, ConvertEditValueEventArgs e)
         {
             if (e.Value is KayitTuru kayitTuru)
                 e.Value = kayitTuru.GetEnumDescription();
         }
 
-        private void RepositoryKayitTuru_ParseEditValue(object sender, DevExpress.XtraEditors.Controls.ConvertEditValueEventArgs e)
+        private void RepositoryKayitTuru_ParseEditValue(object sender, ConvertEditValueEventArgs e)
         {
             if (e.Value is string text)
             {
@@ -149,6 +157,76 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
                 else
                     e.Value = KayitTuru.Cari;
             }
+
         }
+ 
+        public bool KaydetKontrollu()
+        {
+            if (!(tablo.DataController.ListSource is IList<KisiKayitTuruBaglantiL> list) || !list.Any())
+                return true;
+
+            var invalidRows = list.Where(x =>
+                x.KayitTuru != 0 &&
+                (x.KayitId == 0 || string.IsNullOrWhiteSpace(x.KayitHesabi))
+            ).ToList();
+
+            if (invalidRows.Any())
+            {
+                string message = $"Toplam {invalidRows.Count} kayıt hatalı.\n" +
+                                 "Kayıt türü değiştirilen ancak kaydı seçilmeyen satırlar kaydedilemez.";
+                Messages.UyariMesaji(message);
+
+                foreach (var row in invalidRows)
+                {
+                    int index = list.IndexOf(row);
+                    if (index >= 0)
+                        tablo.FocusedRowHandle = index;
+                }
+
+                return false;
+            }
+
+            return this.Kaydet();
+        }
+        protected override void HareketSil()
+        {
+            if (Tablo.DataRowCount == 0) return;
+            if (Messages.SilMesaj("İşlem Satırı") != DialogResult.Yes) return;
+
+            var list = Tablo.DataController.ListSource as IList<KisiKayitTuruBaglantiL>;
+            var row = Tablo.GetRow<KisiKayitTuruBaglantiL>();
+
+            if (row != null)
+            {
+                if (row.KayitId == 0)
+                {                    
+                    list.Remove(row);
+                }
+                else
+                {
+                    row.Delete = true;
+                }
+
+                Tablo.RefleshDataSource();
+                ButonEnabledDurumu(true);
+            }
+        }
+
+        private void Tablo_CellValueChanging(object sender, CellValueChangedEventArgs e)
+        {
+            if (e.Column == colKayitTuru)
+            {
+                var entity = tablo.GetRow<KisiKayitTuruBaglantiL>();
+                if (entity == null) return;
+               
+                entity.KayitId = 0;
+                entity.KayitHesabi = string.Empty;
+                entity.KodKisi = null;
+
+                tablo.RefleshDataSource();
+                ButonEnabledDurumu(false);
+            }
+        }
+
     }
 }
