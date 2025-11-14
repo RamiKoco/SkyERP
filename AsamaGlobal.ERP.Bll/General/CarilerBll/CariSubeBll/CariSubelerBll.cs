@@ -45,6 +45,7 @@ namespace AsamaGlobal.ERP.Bll.General.CarilerBll
                 Kod = x.Kod,
                 Ad = x.Ad,
                 CariSubeGrubuAdi = x.CariSubeGrubu.Ad,
+                CarilerAdi = x.Cariler.Unvan,
                 OzelKod1Adi = x.OzelKod1.OzelKodAdi,
                 OzelKod2Adi = x.OzelKod2.OzelKodAdi,
                 Aciklama = x.Aciklama

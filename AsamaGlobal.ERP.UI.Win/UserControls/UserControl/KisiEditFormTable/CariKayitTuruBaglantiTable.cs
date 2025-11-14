@@ -55,7 +55,8 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
                 KisiId = OwnerForm.Id,
                 Insert = true,
                 KayitTuru = currentKayitTuru,
-                KayitHesabi = string.Empty    // null yerine boş string
+                KayitHesabi = string.Empty,
+                Kod=string.Empty
             };
 
             source.Add(row);
@@ -80,7 +81,7 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
             {
                 entity.KayitId = 0;
                 entity.KayitHesabi = null;
-                entity.KodKisi = null;
+                entity.Kod = null;
                 tablo.RefleshDataSource();
                 return; 
             }
@@ -96,7 +97,7 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
 
                     entity.KayitId = 0;
                     entity.KayitHesabi = null;
-                    entity.KodKisi = null;
+                    entity.Kod = null;
 
                     tablo.RefleshDataSource();
                     return;
@@ -109,7 +110,7 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
                         var cari = (Cariler)bll.Single(x => x.Id == entity.KayitId);
                         if (cari != null)
                         {
-                            entity.KodKisi = cari.Kod;
+                            entity.Kod = cari.Kod;
                             entity.KayitHesabi = cari.Unvan;
                         }
                     }
@@ -121,7 +122,7 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
                         var sube = (CariSubeler)bll.Single(x => x.Id == entity.KayitId);
                         if (sube != null)
                         {
-                            entity.KodKisi = sube.Kod;
+                            entity.Kod = sube.Kod;
                             entity.KayitHesabi = sube.Ad;
                         }
                     }
@@ -221,7 +222,7 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.UserControl.KisiEditFormTable
                
                 entity.KayitId = 0;
                 entity.KayitHesabi = string.Empty;
-                entity.KodKisi = null;
+                entity.Kod = string.Empty;
 
                 tablo.RefleshDataSource();
                 ButonEnabledDurumu(false);

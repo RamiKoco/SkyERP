@@ -35,6 +35,8 @@
             this.colKod = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colAd = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colRenkAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
+            this.colOzelKod1Adi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
+            this.colOzelKod2Adi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colAciklama = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.longNavigator = new AsamaGlobal.ERP.UI.Win.UserControls.Navigators.LongNavigator();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
@@ -74,7 +76,7 @@
             this.grid.MainView = this.tablo;
             this.grid.MenuManager = this.ribbonControl;
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(1058, 323);
+            this.grid.Size = new System.Drawing.Size(1058, 299);
             this.grid.TabIndex = 2;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tablo});
@@ -96,6 +98,8 @@
             this.colKod,
             this.colAd,
             this.colRenkAdi,
+            this.colOzelKod1Adi,
+            this.colOzelKod2Adi,
             this.colAciklama});
             this.tablo.GridControl = this.grid;
             this.tablo.Name = "tablo";
@@ -141,7 +145,7 @@
             this.colKod.StatusBarKisaYolAciklama = null;
             this.colKod.Visible = true;
             this.colKod.VisibleIndex = 0;
-            this.colKod.Width = 132;
+            this.colKod.Width = 80;
             // 
             // colAd
             // 
@@ -154,7 +158,7 @@
             this.colAd.StatusBarKisaYolAciklama = null;
             this.colAd.Visible = true;
             this.colAd.VisibleIndex = 1;
-            this.colAd.Width = 167;
+            this.colAd.Width = 150;
             // 
             // colRenkAdi
             // 
@@ -167,7 +171,33 @@
             this.colRenkAdi.StatusBarKisaYolAciklama = null;
             this.colRenkAdi.Visible = true;
             this.colRenkAdi.VisibleIndex = 2;
-            this.colRenkAdi.Width = 150;
+            this.colRenkAdi.Width = 120;
+            // 
+            // colOzelKod1Adi
+            // 
+            this.colOzelKod1Adi.Caption = "Özel Kod-1";
+            this.colOzelKod1Adi.FieldName = "OzelKod1Adi";
+            this.colOzelKod1Adi.Name = "colOzelKod1Adi";
+            this.colOzelKod1Adi.OptionsColumn.AllowEdit = false;
+            this.colOzelKod1Adi.StatusBarAciklama = null;
+            this.colOzelKod1Adi.StatusBarKisaYol = null;
+            this.colOzelKod1Adi.StatusBarKisaYolAciklama = null;
+            this.colOzelKod1Adi.Visible = true;
+            this.colOzelKod1Adi.VisibleIndex = 3;
+            this.colOzelKod1Adi.Width = 120;
+            // 
+            // colOzelKod2Adi
+            // 
+            this.colOzelKod2Adi.Caption = "Özel Kod-2";
+            this.colOzelKod2Adi.FieldName = "OzelKod2Adi";
+            this.colOzelKod2Adi.Name = "colOzelKod2Adi";
+            this.colOzelKod2Adi.OptionsColumn.AllowEdit = false;
+            this.colOzelKod2Adi.StatusBarAciklama = null;
+            this.colOzelKod2Adi.StatusBarKisaYol = null;
+            this.colOzelKod2Adi.StatusBarKisaYolAciklama = null;
+            this.colOzelKod2Adi.Visible = true;
+            this.colOzelKod2Adi.VisibleIndex = 4;
+            this.colOzelKod2Adi.Width = 120;
             // 
             // colAciklama
             // 
@@ -179,8 +209,8 @@
             this.colAciklama.StatusBarKisaYol = null;
             this.colAciklama.StatusBarKisaYolAciklama = null;
             this.colAciklama.Visible = true;
-            this.colAciklama.VisibleIndex = 3;
-            this.colAciklama.Width = 344;
+            this.colAciklama.VisibleIndex = 5;
+            this.colAciklama.Width = 350;
             // 
             // longNavigator
             // 
@@ -195,14 +225,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1058, 482);
-            this.Controls.Add(this.longNavigator);
             this.Controls.Add(this.grid);
+            this.Controls.Add(this.longNavigator);
             this.IconOptions.ShowIcon = false;
             this.Name = "PozisyonListForm";
             this.Text = "Pozisyon Kartları";
             this.Controls.SetChildIndex(this.ribbonControl, 0);
-            this.Controls.SetChildIndex(this.grid, 0);
             this.Controls.SetChildIndex(this.longNavigator, 0);
+            this.Controls.SetChildIndex(this.grid, 0);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablo)).EndInit();
@@ -221,5 +251,7 @@
         private UserControls.Grid.MyGridColumn colAd;
         private UserControls.Grid.MyGridColumn colRenkAdi;
         private UserControls.Grid.MyGridColumn colAciklama;
+        private UserControls.Grid.MyGridColumn colOzelKod1Adi;
+        private UserControls.Grid.MyGridColumn colOzelKod2Adi;
     }
 }

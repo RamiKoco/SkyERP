@@ -35,6 +35,10 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PozisyonForms
             var entity = (PozisyonS)OldEntity;
             txtKod.Text = entity.Kod;
             txtPozisyonAdi.Text = entity.Ad;
+            txtOzelKod1.Id = entity.OzelKod1Id;
+            txtOzelKod1.Text = entity.OzelKod1Adi;
+            txtOzelKod2.Id = entity.OzelKod2Id;
+            txtOzelKod2.Text = entity.OzelKod2Adi;
             txtRenk.Id = entity.RenkId;
             txtRenk.Text = entity.RenkAdi;
             txtAciklama.Text = entity.Aciklama;
@@ -47,6 +51,8 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PozisyonForms
                 Id = Id,
                 Kod = txtKod.Text,
                 Ad = txtPozisyonAdi.Text,
+                OzelKod1Id = txtOzelKod1.Id,
+                OzelKod2Id = txtOzelKod2.Id,
                 RenkId = txtRenk.Id,
                 Aciklama = txtAciklama.Text,
                 Durum = tglDurum.IsOn
@@ -58,7 +64,11 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PozisyonForms
             if (!(sender is ButtonEdit)) return;
 
             using (var sec = new SelectFunctions())
-                if (sender == txtRenk)
+                if (sender == txtOzelKod1)
+                    sec.Sec(txtOzelKod1, KartTuru.Pozisyon);
+                else if (sender == txtOzelKod2)
+                    sec.Sec(txtOzelKod2, KartTuru.Pozisyon);
+                else if(sender == txtRenk)
                     sec.Sec(txtRenk, KartTuru.Pozisyon);
 
         }

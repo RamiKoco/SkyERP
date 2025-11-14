@@ -34,6 +34,7 @@
             this.colId = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colKod = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colAd = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
+            this.colCarilerAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colOzelKod1Adi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colOzelKod2Adi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colAciklama = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
@@ -96,6 +97,7 @@
             this.colId,
             this.colKod,
             this.colAd,
+            this.colCarilerAdi,
             this.colOzelKod1Adi,
             this.colOzelKod2Adi,
             this.colAciklama});
@@ -156,7 +158,18 @@
             this.colAd.StatusBarKisaYolAciklama = null;
             this.colAd.Visible = true;
             this.colAd.VisibleIndex = 1;
-            this.colAd.Width = 120;
+            this.colAd.Width = 175;
+            // 
+            // colCarilerAdi
+            // 
+            this.colCarilerAdi.Caption = "Ana Cari";
+            this.colCarilerAdi.FieldName = "CarilerAdi";
+            this.colCarilerAdi.Name = "colCarilerAdi";
+            this.colCarilerAdi.OptionsColumn.AllowEdit = false;
+            this.colCarilerAdi.StatusBarAciklama = null;
+            this.colCarilerAdi.StatusBarKisaYol = null;
+            this.colCarilerAdi.StatusBarKisaYolAciklama = null;
+            this.colCarilerAdi.Width = 175;
             // 
             // colOzelKod1Adi
             // 
@@ -237,5 +250,6 @@
         private UserControls.Grid.MyGridColumn colAd;
         private UserControls.Grid.MyGridColumn colOzelKod1Adi;
         private UserControls.Grid.MyGridColumn colOzelKod2Adi;
+        private UserControls.Grid.MyGridColumn colCarilerAdi;
     }
 }

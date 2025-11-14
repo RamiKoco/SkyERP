@@ -25,6 +25,10 @@ namespace AbcYazilim.OgrenciTakip.Bll.General
                 Id = x.Id,
                 Kod = x.Kod,
                 Ad = x.Ad,
+                OzelKod1Id = x.OzelKod1Id,
+                OzelKod1Adi = x.OzelKod1.OzelKodAdi,
+                OzelKod2Id = x.OzelKod2Id,
+                OzelKod2Adi = x.OzelKod2.OzelKodAdi,
                 RenkId = x.RenkId,
                 RenkAdi = x.Renk.RenkAdi,
                 Aciklama = x.Aciklama,
@@ -40,6 +44,8 @@ namespace AbcYazilim.OgrenciTakip.Bll.General
                 Id = x.Id,
                 Kod = x.Kod,
                 Ad = x.Ad,
+                OzelKod1Adi = x.OzelKod1.OzelKodAdi,
+                OzelKod2Adi = x.OzelKod2.OzelKodAdi,
                 RenkAdi = x.Renk.RenkAdi,
                 Aciklama = x.Aciklama
 

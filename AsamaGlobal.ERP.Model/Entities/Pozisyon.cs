@@ -1,4 +1,5 @@
 ﻿using AsamaGlobal.ERP.Model.Attributes;
+using AsamaGlobal.ERP.Model.Entities;
 using AsamaGlobal.ERP.Model.Entities.Base;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,10 +13,14 @@ namespace AbcYazilim.OgrenciTakip.Model.Entities
 
         [Required, StringLength(50), ZorunluAlan("Pozisyon Adı", "txtPozisyonAdi")]
         public string Ad { get; set; }
+        public long? OzelKod1Id { get; set; }
+        public long? OzelKod2Id { get; set; }
+
         [StringLength(500)]
         public string Aciklama { get; set; }
         public long? RenkId { get; set; }
-
+        public OzelKod OzelKod1 { get; set; }
+        public OzelKod OzelKod2 { get; set; }
         public Renk Renk { get; set; }
     }
 }

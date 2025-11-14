@@ -273,7 +273,7 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
 
                 case "txtMeslek":
                 {
-                    var entity = (Meslek)ShowListForms<MeslekListForm>.ShowDialogListForm(KartTuru.Meslek, _btnEdit.Id);
+                    var entity = (MeslekL)ShowListForms<MeslekListForm>.ShowDialogListForm(KartTuru.Meslek, _btnEdit.Id);
                     if (entity != null)
                     {
                         _btnEdit.Id = entity.Id;
