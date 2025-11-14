@@ -34,7 +34,7 @@
             this.tablo = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridView();
             this.colId = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colKod = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
-            this.colKayitKaynakAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
+            this.colAd = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colAciklama = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
@@ -101,7 +101,7 @@
             this.tablo.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colId,
             this.colKod,
-            this.colKayitKaynakAdi,
+            this.colAd,
             this.colAciklama});
             this.tablo.GridControl = this.grid;
             this.tablo.Name = "tablo";
@@ -149,18 +149,18 @@
             this.colKod.VisibleIndex = 0;
             this.colKod.Width = 139;
             // 
-            // colKayitKaynakAdi
+            // colAd
             // 
-            this.colKayitKaynakAdi.Caption = "Kaynak Adı";
-            this.colKayitKaynakAdi.FieldName = "KayitKaynakAdi";
-            this.colKayitKaynakAdi.Name = "colKayitKaynakAdi";
-            this.colKayitKaynakAdi.OptionsColumn.AllowEdit = false;
-            this.colKayitKaynakAdi.StatusBarAciklama = null;
-            this.colKayitKaynakAdi.StatusBarKisaYol = null;
-            this.colKayitKaynakAdi.StatusBarKisaYolAciklama = null;
-            this.colKayitKaynakAdi.Visible = true;
-            this.colKayitKaynakAdi.VisibleIndex = 1;
-            this.colKayitKaynakAdi.Width = 207;
+            this.colAd.Caption = "Kaynak Adı";
+            this.colAd.FieldName = "Ad";
+            this.colAd.Name = "colAd";
+            this.colAd.OptionsColumn.AllowEdit = false;
+            this.colAd.StatusBarAciklama = null;
+            this.colAd.StatusBarKisaYol = null;
+            this.colAd.StatusBarKisaYolAciklama = null;
+            this.colAd.Visible = true;
+            this.colAd.VisibleIndex = 1;
+            this.colAd.Width = 207;
             // 
             // colAciklama
             // 
@@ -203,7 +203,7 @@
         private UserControls.Grid.MyGridView tablo;
         private UserControls.Grid.MyGridColumn colId;
         private UserControls.Grid.MyGridColumn colKod;
-        private UserControls.Grid.MyGridColumn colKayitKaynakAdi;
+        private UserControls.Grid.MyGridColumn colAd;
         private UserControls.Grid.MyGridColumn colAciklama;
     }
 }

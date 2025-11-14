@@ -37,7 +37,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IlForms
         {
             var entity = Tablo.GetRow<Il>();
             if (entity == null) return;
-            ShowListForms<IlceListForm>.ShowListForm(KartTuru.Ilce,entity.Id,entity.IlAdi);
+            ShowListForms<IlceListForm>.ShowListForm(KartTuru.Ilce,entity.Id,entity.Ad);
         }
     }
 }

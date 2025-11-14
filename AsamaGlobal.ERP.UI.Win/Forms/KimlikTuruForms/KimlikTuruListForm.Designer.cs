@@ -33,7 +33,7 @@
             this.tablo = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridView();
             this.colId = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colKod = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
-            this.colKimlikAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
+            this.colAd = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colUlkeAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colOzelKod1Adi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colOzelKod2Adi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
@@ -96,7 +96,7 @@
             this.tablo.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colId,
             this.colKod,
-            this.colKimlikAdi,
+            this.colAd,
             this.colUlkeAdi,
             this.colOzelKod1Adi,
             this.colOzelKod2Adi,
@@ -147,18 +147,18 @@
             this.colKod.VisibleIndex = 0;
             this.colKod.Width = 100;
             // 
-            // colKimlikAdi
+            // colAd
             // 
-            this.colKimlikAdi.Caption = "Kimlik Adı";
-            this.colKimlikAdi.FieldName = "KimlikAdi";
-            this.colKimlikAdi.Name = "colKimlikAdi";
-            this.colKimlikAdi.OptionsColumn.AllowEdit = false;
-            this.colKimlikAdi.StatusBarAciklama = null;
-            this.colKimlikAdi.StatusBarKisaYol = null;
-            this.colKimlikAdi.StatusBarKisaYolAciklama = null;
-            this.colKimlikAdi.Visible = true;
-            this.colKimlikAdi.VisibleIndex = 1;
-            this.colKimlikAdi.Width = 250;
+            this.colAd.Caption = "Kimlik Adı";
+            this.colAd.FieldName = "Ad";
+            this.colAd.Name = "colAd";
+            this.colAd.OptionsColumn.AllowEdit = false;
+            this.colAd.StatusBarAciklama = null;
+            this.colAd.StatusBarKisaYol = null;
+            this.colAd.StatusBarKisaYolAciklama = null;
+            this.colAd.Visible = true;
+            this.colAd.VisibleIndex = 1;
+            this.colAd.Width = 250;
             // 
             // colUlkeAdi
             // 
@@ -248,7 +248,7 @@
         private UserControls.Grid.MyGridColumn colId;
         private UserControls.Grid.MyGridColumn colKod;
         private UserControls.Navigators.LongNavigator longNavigator;
-        private UserControls.Grid.MyGridColumn colKimlikAdi;
+        private UserControls.Grid.MyGridColumn colAd;
         private UserControls.Grid.MyGridColumn colUlkeAdi;
         private UserControls.Grid.MyGridColumn colOzelKod1Adi;
         private UserControls.Grid.MyGridColumn colOzelKod2Adi;

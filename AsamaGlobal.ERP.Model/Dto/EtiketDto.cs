@@ -16,7 +16,7 @@ namespace AbcYazilim.OgrenciTakip.Model.Dto
     }
     public class EtiketL : BaseEntity
     {
-        public string EtiketAdi { get; set; }
+        public string Ad { get; set; }
         public KayitTuru KayitTuru { get; set; }
         public string Aciklama { get; set; }
         public string RenkAdi { get; set; }

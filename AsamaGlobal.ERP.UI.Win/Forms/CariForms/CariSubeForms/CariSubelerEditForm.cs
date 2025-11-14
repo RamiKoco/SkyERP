@@ -79,7 +79,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
             txtOzelKod2.Text = entity.OzelKod2Adi;
             txtAciklama.Text = entity.Aciklama;
             tglDurum.IsOn = entity.Durum;
-            KisiyeAitEtiketleriYukle();
+            EtiketleriYukle();
             BagliTabloYukle();
             ButonEnabledDurumu();
         }
@@ -104,7 +104,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
             ButonEnabledDurumu();
         }
 
-        private void KisiyeAitEtiketleriYukle()
+        private void EtiketleriYukle()
         {
             using (var db = new ERPContext())
             {
@@ -114,7 +114,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.CariForms.CariSubeForms
                     .ToList();
                 var etiketAdlari = db.Etiket
                     .Where(e => seciliEtiketler.Contains(e.Id))
-                    .ToDictionary(e => e.Id, e => e.EtiketAdi);
+                    .ToDictionary(e => e.Id, e => e.Ad);
 
                 txtContainer.TokenEditControl.EtiketAdlariniYukle(etiketAdlari);
                 txtContainer.TokenEditControl.EditValue = string.Join(",", seciliEtiketler);

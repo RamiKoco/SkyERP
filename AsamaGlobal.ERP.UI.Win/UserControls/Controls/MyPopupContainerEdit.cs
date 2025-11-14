@@ -91,7 +91,7 @@ namespace AsamaGlobal.ERP.UI.Win.UserControls.Controls
             txtEtiket.Properties.Tokens.Clear();
             foreach (var etiket in etiketListesi)
             {
-                var token = new TokenEditToken(etiket.EtiketAdi, etiket.Id.ToString());
+                var token = new TokenEditToken(etiket.Ad, etiket.Id.ToString());
                 txtEtiket.Properties.Tokens.Add(token);
             }
         }

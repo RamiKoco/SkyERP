@@ -12,7 +12,7 @@ namespace AbcYazilim.OgrenciTakip.Model.Entities
         public override string Kod { get; set; }
 
         [Required, StringLength(50), ZorunluAlan("Kimlik Adı", "txtKimlikAdi")]
-        public string KimlikAdi { get; set; }
+        public string Ad { get; set; }
         [Required]
         public string KarakterTipi { get; set; }
         [Required]

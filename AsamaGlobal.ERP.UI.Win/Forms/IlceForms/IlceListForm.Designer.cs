@@ -29,11 +29,12 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IlceForms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IlceListForm));
             this.grid = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridControl();
             this.tablo = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridView();
             this.colId = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colKod = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
-            this.colIlceAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
+            this.colAd = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colAciklama = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.longNavigator = new AsamaGlobal.ERP.UI.Win.UserControls.Navigators.LongNavigator();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
@@ -44,23 +45,36 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IlceForms
             // ribbonControl
             // 
             this.ribbonControl.ExpandCollapseItem.Id = 0;
-            // 
-            // 
-            // 
-            this.ribbonControl.SearchEditItem.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Left;
-            this.ribbonControl.SearchEditItem.EditWidth = 150;
-            this.ribbonControl.SearchEditItem.Id = -5000;
-            this.ribbonControl.SearchEditItem.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            this.ribbonControl.Size = new System.Drawing.Size(914, 135);
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
+            // 
+            // btnGonder
+            // 
+            this.btnGonder.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGonder.ImageOptions.Image")));
+            this.btnGonder.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGonder.ImageOptions.LargeImage")));
+            // 
+            // btnYeniMakbuz
+            // 
+            this.btnYeniMakbuz.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnYeniMakbuz.ImageOptions.Image")));
+            this.btnYeniMakbuz.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnYeniMakbuz.ImageOptions.LargeImage")));
+            // 
+            // btnYeniRapor
+            // 
+            this.btnYeniRapor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnYeniRapor.ImageOptions.Image")));
+            this.btnYeniRapor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnYeniRapor.ImageOptions.LargeImage")));
+            // 
+            // barSubItem8
+            // 
+            this.barSubItem8.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem8.ImageOptions.Image")));
             // 
             // grid
             // 
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.Location = new System.Drawing.Point(0, 109);
+            this.grid.Location = new System.Drawing.Point(0, 135);
             this.grid.MainView = this.tablo;
             this.grid.MenuManager = this.ribbonControl;
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(914, 325);
+            this.grid.Size = new System.Drawing.Size(914, 299);
             this.grid.TabIndex = 2;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tablo});
@@ -80,7 +94,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IlceForms
             this.tablo.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colId,
             this.colKod,
-            this.colIlceAdi,
+            this.colAd,
             this.colAciklama});
             this.tablo.GridControl = this.grid;
             this.tablo.Name = "tablo";
@@ -128,18 +142,18 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IlceForms
             this.colKod.VisibleIndex = 0;
             this.colKod.Width = 100;
             // 
-            // colIlceAdi
+            // colAd
             // 
-            this.colIlceAdi.Caption = "İlçe Adı";
-            this.colIlceAdi.FieldName = "IlceAdi";
-            this.colIlceAdi.Name = "colIlceAdi";
-            this.colIlceAdi.OptionsColumn.AllowEdit = false;
-            this.colIlceAdi.StatusBarAciklama = null;
-            this.colIlceAdi.StatusBarKisaYol = null;
-            this.colIlceAdi.StatusBarKisaYolAciklama = null;
-            this.colIlceAdi.Visible = true;
-            this.colIlceAdi.VisibleIndex = 1;
-            this.colIlceAdi.Width = 200;
+            this.colAd.Caption = "İlçe Adı";
+            this.colAd.FieldName = "Ad";
+            this.colAd.Name = "colAd";
+            this.colAd.OptionsColumn.AllowEdit = false;
+            this.colAd.StatusBarAciklama = null;
+            this.colAd.StatusBarKisaYol = null;
+            this.colAd.StatusBarKisaYolAciklama = null;
+            this.colAd.Visible = true;
+            this.colAd.VisibleIndex = 1;
+            this.colAd.Width = 200;
             // 
             // colAciklama
             // 
@@ -190,7 +204,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IlceForms
         private UserControls.Grid.MyGridColumn colId;
         private UserControls.Grid.MyGridColumn colKod;
         private UserControls.Navigators.LongNavigator longNavigator;
-        private UserControls.Grid.MyGridColumn colIlceAdi;
+        private UserControls.Grid.MyGridColumn colAd;
         private UserControls.Grid.MyGridColumn colAciklama;
     }
 }

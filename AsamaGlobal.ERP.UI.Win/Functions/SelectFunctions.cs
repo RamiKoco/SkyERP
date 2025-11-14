@@ -141,7 +141,7 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
                     if (entity != null)
                     {
                         _btnEdit.Id = entity.Id;
-                        _btnEdit.EditValue = entity.IlAdi;
+                        _btnEdit.EditValue = entity.Ad;
                     }
                 }
                     break;
@@ -157,7 +157,7 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
                     if (entity != null)
                     {
                         _btnEdit.Id = entity.Id;
-                        _btnEdit.EditValue = entity.IlceAdi;
+                        _btnEdit.EditValue = entity.Ad;
                     }
                 }
                     break;
@@ -288,7 +288,7 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
                         if (entity != null)
                         {
                             _btnEdit.Id = entity.Id;
-                            _btnEdit.EditValue = entity.KayitKaynakAdi;
+                            _btnEdit.EditValue = entity.Ad;
                         }
                     }
                     break;
@@ -310,7 +310,7 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
                         if (entity != null)
                         {
                             _btnEdit.Id = entity.Id;
-                            _btnEdit.EditValue = entity.EtiketAdi;
+                            _btnEdit.EditValue = entity.Ad;
                         }
                     }
                     break;
@@ -549,7 +549,7 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
                         if (entity != null)
                         {
                             _btnEdit.Id = entity.Id;
-                            _btnEdit.EditValue = entity.KimlikAdi;
+                            _btnEdit.EditValue = entity.Ad;
                         }
                     }
                     break;

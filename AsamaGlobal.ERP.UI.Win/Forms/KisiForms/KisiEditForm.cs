@@ -78,7 +78,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
             txtOzelKod2.Text = entity.OzelKod2Adi;
             tglDurum.IsOn = entity.Durum;        
             BagliTabloYukle();
-            KisiyeAitEtiketleriYukle();
+            EtiketleriYukle();
             ButonEnabledDurumu();
         }
         protected override void GuncelNesneOlustur()
@@ -105,7 +105,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
             BagliTabloYukle();
             ButonEnabledDurumu();
         }    
-        private void KisiyeAitEtiketleriYukle()
+        private void EtiketleriYukle()
         {
             using (var db = new ERPContext())
             {
@@ -117,7 +117,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KisiForms
                 // Sözlüğü yükle
                 var etiketAdlari = db.Etiket
                     .Where(e => seciliEtiketler.Contains(e.Id))
-                    .ToDictionary(e => e.Id, e => e.EtiketAdi);
+                    .ToDictionary(e => e.Id, e => e.Ad);
 
                 txtContainer.TokenEditControl.EtiketAdlariniYukle(etiketAdlari);
 

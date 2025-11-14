@@ -35,7 +35,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IlForms
             this.tablo = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridView();
             this.colId = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colKod = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
-            this.colIlAdi = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
+            this.colAd = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             this.colAciklama = new AsamaGlobal.ERP.UI.Win.UserControls.Grid.MyGridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
@@ -102,7 +102,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IlForms
             this.tablo.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colId,
             this.colKod,
-            this.colIlAdi,
+            this.colAd,
             this.colAciklama});
             this.tablo.GridControl = this.grid;
             this.tablo.Name = "tablo";
@@ -150,18 +150,18 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IlForms
             this.colKod.VisibleIndex = 0;
             this.colKod.Width = 100;
             // 
-            // colIlAdi
+            // colAd
             // 
-            this.colIlAdi.Caption = "İl Adı";
-            this.colIlAdi.FieldName = "IlAdi";
-            this.colIlAdi.Name = "colIlAdi";
-            this.colIlAdi.OptionsColumn.AllowEdit = false;
-            this.colIlAdi.StatusBarAciklama = null;
-            this.colIlAdi.StatusBarKisaYol = null;
-            this.colIlAdi.StatusBarKisaYolAciklama = null;
-            this.colIlAdi.Visible = true;
-            this.colIlAdi.VisibleIndex = 1;
-            this.colIlAdi.Width = 200;
+            this.colAd.Caption = "İl Adı";
+            this.colAd.FieldName = "Ad";
+            this.colAd.Name = "colAd";
+            this.colAd.OptionsColumn.AllowEdit = false;
+            this.colAd.StatusBarAciklama = null;
+            this.colAd.StatusBarKisaYol = null;
+            this.colAd.StatusBarKisaYolAciklama = null;
+            this.colAd.Visible = true;
+            this.colAd.VisibleIndex = 1;
+            this.colAd.Width = 200;
             // 
             // colAciklama
             // 
@@ -204,7 +204,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IlForms
         private UserControls.Grid.MyGridView tablo;
         private UserControls.Grid.MyGridColumn colId;
         private UserControls.Grid.MyGridColumn colKod;
-        private UserControls.Grid.MyGridColumn colIlAdi;
+        private UserControls.Grid.MyGridColumn colAd;
         private UserControls.Grid.MyGridColumn colAciklama;
     }
 }

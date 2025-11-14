@@ -31,11 +31,11 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnaForm));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem1 = new DevExpress.Utils.ToolTipSeparatorItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem4 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnOkulKartlari = new DevExpress.XtraBars.BarButtonItem();
             this.btnIlKartlari = new DevExpress.XtraBars.BarButtonItem();
@@ -738,16 +738,16 @@ namespace AsamaGlobal.ERP.UI.Win.GenelForms
             this.btnSube.ItemAppearance.Normal.Options.UseForeColor = true;
             this.btnSube.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D));
             this.btnSube.Name = "btnSube";
-            toolTipTitleItem1.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.comment_16x16;
-            toolTipTitleItem1.Text = "(Ctrl + D)";
-            toolTipItem1.Text = "Şube ve Dönem Seçiniz.";
-            toolTipItem2.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.suggestion_16x16;
-            toolTipItem2.Text = "Şube ve Dönem Seçimi Yapılır.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            superToolTip1.Items.Add(toolTipSeparatorItem1);
-            superToolTip1.Items.Add(toolTipItem2);
-            this.btnSube.SuperTip = superToolTip1;
+            toolTipTitleItem4.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.comment_16x16;
+            toolTipTitleItem4.Text = "(Ctrl + D)";
+            toolTipItem7.Text = "Şube ve Dönem Seçiniz.";
+            toolTipItem8.ImageOptions.Image = global::AsamaGlobal.ERP.UI.Win.Properties.Resources.suggestion_16x16;
+            toolTipItem8.Text = "Şube ve Dönem Seçimi Yapılır.";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem7);
+            superToolTip4.Items.Add(toolTipSeparatorItem4);
+            superToolTip4.Items.Add(toolTipItem8);
+            this.btnSube.SuperTip = superToolTip4;
             // 
             // skinDropDownButtonItem1
             // 

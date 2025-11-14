@@ -34,7 +34,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KayitKaynakForms
             var entity = (KayitKaynak)OldEntity;
 
             txtKod.Text = entity.Kod;
-            txtKayitKaynakAdi.Text = entity.KayitKaynakAdi;
+            txtKayitKaynakAdi.Text = entity.Ad;
             txtAciklama.Text = entity.Aciklama;
             tglDurum.IsOn = entity.Durum;
 
@@ -45,7 +45,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KayitKaynakForms
             {
                 Id = Id,
                 Kod = txtKod.Text,
-                KayitKaynakAdi = txtKayitKaynakAdi.Text,
+                Ad = txtKayitKaynakAdi.Text,
                 Aciklama = txtAciklama.Text,
                 Durum = tglDurum.IsOn
             };

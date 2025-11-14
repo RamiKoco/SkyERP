@@ -59,7 +59,7 @@ namespace AsamaGlobal.ERP.Bll.General
                 VadeYazi = x.OdemeBelgesi.VadeYazi,
                 Aciklama = x.OdemeBelgesi.Aciklama,
                 SubeAdi = x.OdemeBelgesi.Tahakkuk.Sube.SubeAdi,
-                SubeIlAdi = x.OdemeBelgesi.Tahakkuk.Sube.AdresIl.IlAdi,
+                SubeIlAdi = x.OdemeBelgesi.Tahakkuk.Sube.AdresIl.Ad,
                 Tahsil = x.Toplamlar.Tahsil,
                 Tahsilde = x.Toplamlar.Tahsilde,
                 Iade = x.Toplamlar.Iade,

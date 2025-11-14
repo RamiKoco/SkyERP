@@ -14,7 +14,7 @@ namespace AbcYazilim.OgrenciTakip.Model.Entities
         public override string Kod { get; set; }
 
         [Required, StringLength(80), ZorunluAlan("Etiket Adı", "txtEtiketAdi")]
-        public string EtiketAdi { get; set; }
+        public string Ad { get; set; }
         [Required, ZorunluAlan("Kayıt Türü", "txtKayitTuru")]
         public KayitTuru? KayitTuru { get; set; }
         [StringLength(500)]

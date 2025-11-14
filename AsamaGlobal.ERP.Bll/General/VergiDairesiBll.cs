@@ -25,7 +25,7 @@ namespace AsamaGlobal.ERP.Bll.General
                 Kod = x.Kod,
                 Ad = x.Ad,
                 IlId = x.IlId,
-                IlAdi = x.Il.IlAdi,
+                IlAdi = x.Il.Ad,
                 Aciklama = x.Aciklama,
                 Durum = x.Durum
 
@@ -38,7 +38,7 @@ namespace AsamaGlobal.ERP.Bll.General
                 Id = x.Id,
                 Kod = x.Kod,
                 Ad = x.Ad,
-                IlAdi = x.Il.IlAdi,
+                IlAdi = x.Il.Ad,
                 Aciklama = x.Aciklama
             }).OrderBy(x => x.Kod).ToList();
         }

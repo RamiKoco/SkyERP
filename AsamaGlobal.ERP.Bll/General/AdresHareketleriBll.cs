@@ -30,8 +30,8 @@ namespace AbcYazilim.OgrenciTakip.Bll.General
                 Enlem = x.GenelAdres.Enlem ?? 0,
                 Boylam = x.GenelAdres.Boylam ?? 0,               
                 UlkeAdi = x.GenelAdres.Ulke.UlkeAdi,
-                IlAdi = x.GenelAdres.Il.IlAdi,
-                IlceAdi = x.GenelAdres.Ilce.IlceAdi,                
+                IlAdi = x.GenelAdres.Il.Ad,
+                IlceAdi = x.GenelAdres.Ilce.Ad,                
                 AdresTurleriAdi = x.GenelAdres.AdresTurleri.Ad
 
             }).ToList();

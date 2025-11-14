@@ -14,7 +14,7 @@ namespace AbcYazilim.OgrenciTakip.Model.Dto
     }
     public class KimlikTuruL : BaseEntity
     {
-        public string KimlikAdi { get; set; }
+        public string Ad { get; set; }
         public string UlkeAdi { get; set; }
         public string OzelKod1Adi { get; set; }
         public string OzelKod2Adi { get; set; }

@@ -35,7 +35,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KimlikTuruForms
         {
             var entity = (KimlikTuruS)OldEntity;
             txtKod.Text = entity.Kod;
-            txtKimlikTuruAdi.Text = entity.KimlikAdi;
+            txtKimlikTuruAdi.Text = entity.Ad;
             txtUlke.Id = entity.UlkeId;
             txtUlke.Text = entity.UlkeAdi;
             txtOzelKod1.Id = entity.OzelKod1Id;
@@ -56,7 +56,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.KimlikTuruForms
             {
                 Id = Id,
                 Kod = txtKod.Text,
-                KimlikAdi = txtKimlikTuruAdi.Text,
+                Ad = txtKimlikTuruAdi.Text,
                 UlkeId = txtUlke.Id,
                 OzelKod1Id = txtOzelKod1.Id,
                 OzelKod2Id = txtOzelKod2.Id,

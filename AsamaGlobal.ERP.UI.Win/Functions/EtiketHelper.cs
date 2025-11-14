@@ -24,7 +24,7 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
             .ToList();
 
             txtEtiket.Properties.DataSource = _tumEtiketler;
-            txtEtiket.Properties.DisplayMember = "EtiketAdi";
+            txtEtiket.Properties.DisplayMember = "Ad";
             txtEtiket.Properties.ValueMember = "Id";
 
             txtEtiket.Properties.CustomDrawTokenBackground -= TxtEtiket_CustomDrawTokenBackground;
@@ -62,7 +62,7 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
                     }
                 }
 
-                var text = e.Info.Description ?? _tumEtiketler?.FirstOrDefault(x => x.Id == id)?.EtiketAdi ?? "";
+                var text = e.Info.Description ?? _tumEtiketler?.FirstOrDefault(x => x.Id == id)?.Ad ?? "";
                 var g = e.Cache.Graphics;
                 var font = e.Info.PaintAppearance?.Font ?? SystemFonts.DefaultFont;
                 var textSize = g.MeasureString(text, font);
@@ -99,7 +99,7 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
             if (string.IsNullOrEmpty(text))
             {
                 var id = ResolveEtiketId(e.Value);
-                text = _tumEtiketler?.FirstOrDefault(x => x.Id == id)?.EtiketAdi ?? string.Empty;
+                text = _tumEtiketler?.FirstOrDefault(x => x.Id == id)?.Ad ?? string.Empty;
             }
             if (string.IsNullOrEmpty(text)) { e.Handled = false; return; }
 
@@ -213,7 +213,7 @@ namespace AsamaGlobal.ERP.UI.Win.Functions
         }
         public string GetEtiketAdi(long id)
         {
-            return _tumEtiketler?.FirstOrDefault(x => x.Id == id)?.EtiketAdi ?? id.ToString();
+            return _tumEtiketler?.FirstOrDefault(x => x.Id == id)?.Ad ?? id.ToString();
         }
         public Color? GetEtiketBackColor(long id) =>
     _tumEtiketler?.FirstOrDefault(x => x.Id == id) is EtiketL e

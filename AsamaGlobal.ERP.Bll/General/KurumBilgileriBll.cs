@@ -23,9 +23,9 @@ namespace AsamaGlobal.ERP.Bll.General
                 VergiDairesi = x.VergiDairesi,
                 VergiNo = x.VergiNo,
                 IlId = x.IlId,
-                IlAdi = x.Il.IlAdi,
+                IlAdi = x.Il.Ad,
                 IlceId = x.IlceId,
-                IlceAdi = x.Ilce.IlceAdi
+                IlceAdi = x.Ilce.Ad
 
             });
         }

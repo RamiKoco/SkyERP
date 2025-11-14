@@ -11,7 +11,7 @@ namespace AsamaGlobal.ERP.Model.Entities
         public override string Kod { get; set; }
         
         [Required,StringLength(50), ZorunluAlan("İlçe Adı", "txtIlceAdi")]
-        public string IlceAdi { get; set; }
+        public string Ad { get; set; }
         public long IlId { get; set; }
 
         [StringLength(500)]

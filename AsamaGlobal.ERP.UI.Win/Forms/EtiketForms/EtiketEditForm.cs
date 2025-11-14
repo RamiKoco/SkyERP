@@ -38,7 +38,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.EtiketForms
             var entity = (EtiketS)OldEntity;
 
             txtKod.Text = entity.Kod;
-            txtEtiketAdi.Text = entity.EtiketAdi;
+            txtEtiketAdi.Text = entity.Ad;
             txtKayitTuru.SelectedItem = entity.KayitTuru?.ToName();
             txtAciklama.Text = entity.Aciklama;
             txtRenk.Id = entity.RenkId;
@@ -61,7 +61,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.EtiketForms
             {
                 Id = Id,
                 Kod = txtKod.Text,
-                EtiketAdi = txtEtiketAdi.Text,
+                Ad = txtEtiketAdi.Text,
                 //KayitTuru = txtKayitTuru.Text.GetEnum<KayitTuru>(),
                 KayitTuru = string.IsNullOrWhiteSpace(txtKayitTuru.Text)
                             ? (KayitTuru?)null

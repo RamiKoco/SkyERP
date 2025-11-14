@@ -22,7 +22,7 @@ namespace AbcYazilim.OgrenciTakip.Bll.General
             {
                 Id = x.Id,
                 Kod = x.Kod,
-                EtiketAdi = x.EtiketAdi,
+                Ad = x.Ad,
                 KayitTuru = x.KayitTuru,
                 Aciklama = x.Aciklama,
                 RenkId = x.RenkId,
@@ -44,7 +44,7 @@ namespace AbcYazilim.OgrenciTakip.Bll.General
             {
                 Id = x.Id,
                 Kod = x.Kod,
-                EtiketAdi = x.EtiketAdi,
+                Ad = x.Ad,
                 KayitTuru =(x.KayitTuru ?? 0),
                 Aciklama = x.Aciklama,
                 RenkAdi = x.Renk.RenkAdi,

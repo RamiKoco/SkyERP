@@ -105,8 +105,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             txtOzelKod2.Id = entity.OzelKod2Id;
             txtOzelKod2.Text = entity.OzelKod2Adi;
             tglDurum.IsOn = entity.Durum;
-
-            KisiyeAitEtiketleriYukle();
+            EtiketleriYukle();
         }
         private void ImgResim_EditValueChanged(object sender, EventArgs e)
         {
@@ -172,7 +171,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
             else
                 txtAskerlikDurumu.Visible = true;
         }  
-        private void KisiyeAitEtiketleriYukle()
+        private void EtiketleriYukle()
         {
             using (var db = new ERPContext())
             {
@@ -184,7 +183,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.PersonelForms
                 // Sözlüğü yükle
                 var etiketAdlari = db.Etiket
                     .Where(e => seciliEtiketler.Contains(e.Id))
-                    .ToDictionary(e => e.Id, e => e.EtiketAdi);
+                    .ToDictionary(e => e.Id, e => e.Ad);
 
                 txtContainer.TokenEditControl.EtiketAdlariniYukle(etiketAdlari);
 

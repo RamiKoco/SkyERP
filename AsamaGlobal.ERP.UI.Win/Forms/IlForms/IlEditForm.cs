@@ -34,7 +34,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IlForms
             var entity = (Il)OldEntity;
 
             txtKod.Text = entity.Kod;
-            txtIlAdi.Text = entity.IlAdi;
+            txtIlAdi.Text = entity.Ad;
             txtAciklama.Text = entity.Aciklama;
             tglDurum.IsOn = entity.Durum;
         }
@@ -45,7 +45,7 @@ namespace AsamaGlobal.ERP.UI.Win.Forms.IlForms
             {
                 Id = Id,
                 Kod = txtKod.Text,
-                IlAdi = txtIlAdi.Text,
+                Ad = txtIlAdi.Text,
                 Aciklama = txtAciklama.Text,
                 Durum = tglDurum.IsOn
             };

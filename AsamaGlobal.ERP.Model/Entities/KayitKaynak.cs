@@ -11,7 +11,7 @@ namespace AbcYazilim.OgrenciTakip.Model.Entities
         public override string Kod { get; set; }
 
         [Required, StringLength(50), ZorunluAlan("Kaynak Adı", "txtKayitKaynakAdi")]
-        public string KayitKaynakAdi { get; set; }
+        public string Ad { get; set; }
 
         [StringLength(500)]
         public string Aciklama { get; set; }

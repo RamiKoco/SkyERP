@@ -24,7 +24,7 @@ namespace AbcYazilim.OgrenciTakip.Bll.General
 
                 Id = x.Id,
                 Kod = x.Kod,
-                KimlikAdi = x.KimlikAdi,
+                Ad = x.Ad,
                 UlkeId = x.UlkeId,
                 UlkeAdi = x.Ulke.UlkeAdi,
                 OzelKod1Id = x.OzelKod1Id,
@@ -45,7 +45,7 @@ namespace AbcYazilim.OgrenciTakip.Bll.General
             {
                 Id = x.Id,
                 Kod = x.Kod,
-                KimlikAdi = x.KimlikAdi,
+                Ad = x.Ad,
                 UlkeAdi = x.Ulke.UlkeAdi,
                 OzelKod1Adi = x.OzelKod1.OzelKodAdi,
                 OzelKod2Adi = x.OzelKod2.OzelKodAdi,

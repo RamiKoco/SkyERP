@@ -13,7 +13,7 @@ namespace AsamaGlobal.ERP.Model.Entities
         public override string Kod { get; set; }
 
         [Required,StringLength(50),ZorunluAlan("İl Adı","txtIlAdi")]
-        public string IlAdi { get; set; }
+        public string Ad { get; set; }
 
         [StringLength(500)]
         public string Aciklama { get; set; }
